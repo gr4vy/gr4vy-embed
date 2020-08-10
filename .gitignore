@@ -1,0 +1,5 @@
+dist/*.js
+yarn-error.log
+storybook-static
+*.tgz
+coverage
