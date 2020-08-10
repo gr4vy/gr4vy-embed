@@ -1,8 +1,8 @@
-# Gr4vy Hosted UI
+# Gr4vy Embed for React
 
 ![Active project](https://img.shields.io/badge/status-active-brightgreen)
 
-The part of a Gr4vy checkout form that is hosted on a gr4vy.com page.
+The Gr4vy embedded payment form, for usage in a React app.
 
 Visit [Gr4vy.com](https://gr4vy.com) for more details.
 
