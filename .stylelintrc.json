@@ -1,0 +1,9 @@
+
+{
+  "extends": "stylelint-config-recommended-scss",
+  "rules": {
+    "selector-pseudo-class-no-unknown": null,
+    "no-descending-specificity": null,
+    "length-zero-no-unit": null
+  }
+}

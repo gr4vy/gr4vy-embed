@@ -10,5 +10,5 @@ export default {
 }
 
 export const Default = () => (
-  <Gr4vy url='http://127.0.0.1:8080' />
+  <Gr4vy hostname='127.0.0.1:8080' />
 )

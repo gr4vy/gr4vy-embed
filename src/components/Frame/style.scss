@@ -1,0 +1,28 @@
+.frame {
+  position: relative;
+}
+
+.iframe {
+  visibility: hidden;
+
+  &[data-loaded=true] {
+    visibility: visible;
+  }
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  padding: 4em 0;
+
+  &[data-loaded=true] {
+    display: none;
+  }
+  
+  img {
+    height: 3em;
+    fill: #438980;
+    color: #438980;
+  }
+}

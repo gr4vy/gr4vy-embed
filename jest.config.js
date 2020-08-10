@@ -6,5 +6,9 @@ module.exports = {
   "coverageReporters": [
     `text`,
     `html`
-  ]
+  ],
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sss|styl)$": `<rootDir>/node_modules/jest-css-modules`,
+    "\\.(svg)$": `<rootDir>/tests/__mocks__/fileMock.js`
+  }
 }

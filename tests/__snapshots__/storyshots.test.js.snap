@@ -1,15 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Storyshots Integrations/Gr4vy Default 1`] = `
-<iframe
-  frameBorder={0}
-  scrolling="no"
-  src="http://127.0.0.1:8080"
-  style={
-    Object {
-      "width": "100%",
+<div
+  className="frame"
+>
+  <div
+    className="loader"
+    data-loaded={false}
+  >
+    <img
+      src="test-file-stub"
+    />
+  </div>
+  <iframe
+    className="iframe"
+    data-loaded={false}
+    frameBorder={0}
+    scrolling="no"
+    src="http://127.0.0.1:8080/?hostname=127.0.0.1%3A8080"
+    style={
+      Object {
+        "height": "100px",
+        "width": "100%",
+      }
     }
-  }
-  title="Secure Payment Method Frame"
-/>
+    title="Secure Payment Method Frame"
+  />
+</div>
 `;
