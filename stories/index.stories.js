@@ -10,5 +10,14 @@ export default {
 }
 
 export const Default = () => (
-  <Gr4vy hostname='127.0.0.1:8080' />
+  <Gr4vy 
+    flow={[`authorize`, `capture`, `store`]}
+    amount={ 1299 }
+    currency='USD'
+    iframeHost='localhost:8080' 
+    apiHost='localhost:3100' 
+    bearerToken='123456'
+    showButton
+    debug='log'
+  />
 )

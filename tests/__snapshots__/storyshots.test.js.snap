@@ -6,7 +6,7 @@ exports[`Storyshots Integrations/Gr4vy Default 1`] = `
 >
   <div
     className="loader"
-    data-loaded={false}
+    data-loaded={true}
   >
     <img
       src="test-file-stub"
@@ -14,10 +14,10 @@ exports[`Storyshots Integrations/Gr4vy Default 1`] = `
   </div>
   <iframe
     className="iframe"
-    data-loaded={false}
+    data-loaded={true}
     frameBorder={0}
     scrolling="no"
-    src="http://127.0.0.1:8080/?hostname=127.0.0.1%3A8080"
+    src="http://localhost:8080"
     style={
       Object {
         "height": "100px",

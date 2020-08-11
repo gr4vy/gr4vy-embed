@@ -1,38 +1,55 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
-import framebus from 'framebus'
 
 import View, { defaultStyle } from './View'
+import Logger from './Logger'
+import Emitter from './Emitter'
 
-const Frame = ({
-  hostname
-}) => {
-  const [loaded, setLoaded] = useState(false)
+const Frame = (options) => {
+  const url = `http://${options.iframeHost}`
+
+  const [loaded, setLoaded] = useState(true)
   const [style, setStyle] = useState(defaultStyle)
 
-  const url = new URL(`http://${hostname}`)
-  url.searchParams.set(`hostname`, hostname)
+  const logger = new Logger({ options })
+  const emitter = new Emitter({ logger, url })
 
-  useEffect(() => {
-    framebus.on(`loaded`, ({ loaded }) => {
-      console.log(loaded)
-      setLoaded(loaded)
-    })
-    framebus.on(`resize`, ({ frame }) => {
-      console.log(frame)
-      setStyle({...style, height: frame.height })
-    })
+  useLayoutEffect(() => {
+    emitter.onFrameReady(() => emitter.updateOptions({ options }))
+    emitter.onFormLoaded(() => setLoaded(true))
+    emitter.onResize(height => setStyle({...style, height }))
+
+    emitter.subscribe(`formUpdate`, options.onEvent)
+    emitter.subscribe(`resourceCreated`, options.onEvent)
+    emitter.subscribe(`apiError`, options.onEvent)
   }, [])
 
   return <View 
-    url={String(url)} 
+    url={url} 
     loaded={loaded} 
     style={style} 
   />
 }
 
 Frame.propTypes = {
-  hostname: PropTypes.string.isRequired
+  flow: PropTypes.arrayOf(PropTypes.string).isRequired,
+  bearerToken: PropTypes.string.isRequired,
+  apiHost: PropTypes.string.isRequired,
+  iframeHost: PropTypes.string.isRequired,
+
+  amount: PropTypes.number,
+  currency: PropTypes.string,
+  showButton: PropTypes.bool,
+  preferResponse: PropTypes.string,
+  debug: PropTypes.string,
+
+  onEvent: PropTypes.func
+}
+
+Frame.defaultProps = {
+  showButton: false,
+  flow: [`authorize`, `capture`, `store`],
+  onEvent: () => {}
 }
 
 export default Frame
