@@ -16,7 +16,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "test": "jest",
-    "test:watch": "jest --watchAll --collect-coverage --verbose"
+    "test:watch": "jest --watchAll --collect-coverage"
   },
   "files": [
     "dist/**/*"
@@ -30,13 +30,13 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
-    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-actions": "^6.0.2",
     "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-knobs": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addon-storyshots": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/react": "^5.3.19",
+    "@storybook/addon-knobs": "^6.0.2",
+    "@storybook/addon-links": "^6.0.2",
+    "@storybook/addon-storyshots": "^6.0.2",
+    "@storybook/addons": "^6.0.2",
+    "@storybook/react": "^6.0.2",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
@@ -49,7 +49,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-react": "^7.20.3",
-    "jest": "^25.1.0",
+    "jest": "^26.3.0",
     "jest-css-modules": "^2.1.0",
     "nock": "^13.0.3",
     "node-sass": "^4.14.1",

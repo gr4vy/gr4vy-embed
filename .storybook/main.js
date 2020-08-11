@@ -1,3 +1,5 @@
+const custom = require(`../webpack/common.js`)
+
 module.exports = {
   stories: ['../stories/**/*.stories.js'],
   addons: [
@@ -6,6 +8,6 @@ module.exports = {
     '@storybook/addon-knobs/register'
   ],
   webpackFinal: async config => {
-    return config;
-  },
-};
+    return { ...config, module: { ...config.module, rules: custom.module.rules } };
+  }
+}
