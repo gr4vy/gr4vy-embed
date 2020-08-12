@@ -1,44 +1,56 @@
 import framebus from 'framebus'
 
+/**
+ * A wrapper around the framebus library that handles
+ * logging and subscriptions
+ */
 export default class Emitter {
-  constructor({ logger, url }) {
+  /**
+   * Initialize with a logger, the url of the iframe, 
+   * and an optional framebus instance (used in testing mostly)
+   */
+  constructor({ logger, url, options = {} }) {
     this.logger = logger
     this.target = url
+    this.framebus = options.framebus || framebus
   }
 
-  onFrameReady(callback) {
-    this.on(`frameReady`, callback)
+  /**
+   * Listens for a framebus event, then logs any message it receives and 
+   * passes the data to the callbacl
+   */
+  on(key, callback) {
+    this.framebus.on(key, data => {
+      this.logger.log(`Page received - ${key}`, data)
+      callback?.(data)
+    })
   }
 
-  updateOptions({ options = {} }) {
+  /**
+   * Similar to on, but also returns the key of the event. This is used to
+   * propegate events to a callback provided by a user.
+   */
+  subscribe(key, callback) {
+    if (!callback) { return }
+    this.on(key, data => callback?.(key, data))
+  }
+
+  /**
+   * Sends the options to the iframe once it's loaded.
+   */
+  updateOptions({ options }) {
     let parentHost = document?.location?.host
     this.emit(`updateOptions`, { ...options, parentHost })
-  }
-  
-  onFormLoaded(callback) {
-    this.on(`formLoaded`, data => callback(data.loaded))
-  }
-
-  onResize(callback) {
-    this.on(`resize`, data => callback(data.frame.height))
-  }
-
-  subscribe(key, callback) {
-    this.on(key, data => callback(key, data))
   }
 
   // PRIVATE
 
-  on(key, callback) {
-    framebus.on(key, data => {
-      this.logger.log(`Page received - ${key}`, data)
-      callback(data)
-    })
-  }
-
+  /**
+   * Internal function used to emit an event and log the data
+   */
   emit(key, value) {
     this.logger.log(`Page emits - ${key}`, value)
-    framebus.emit(key, value)
+    this.framebus.emit(key, value)
   }
 }
 

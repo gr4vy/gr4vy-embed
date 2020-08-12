@@ -14,8 +14,8 @@ module.exports = merge(common, {
     overlay: {
       warnings: true,
       errors: true,
-      port: 8081
     },
+    port: 8081,
     open: true,
     progress: true,
     disableHostCheck: true

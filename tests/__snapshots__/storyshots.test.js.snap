@@ -6,7 +6,7 @@ exports[`Storyshots Integration Default 1`] = `
 >
   <div
     className="loader"
-    data-loaded={true}
+    data-loaded={false}
   >
     <img
       src="test-file-stub"
@@ -14,10 +14,10 @@ exports[`Storyshots Integration Default 1`] = `
   </div>
   <iframe
     className="iframe"
-    data-loaded={true}
+    data-loaded={false}
     frameBorder={0}
     scrolling="no"
-    src="http://127.0.0.1:8080"
+    src="http://127.0.0.1:8080/"
     style={
       Object {
         "height": "100px",
