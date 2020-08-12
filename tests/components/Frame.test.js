@@ -6,7 +6,6 @@ import Frame from '../../src/components/Frame'
 import { frameUrl } from '../../src/components/Frame/functions'
 import { defaultStyle } from '../../src/components/Frame/View'
 
-
 const options = {
   flow: [`store`],
   iframeHost: `localhost:8080`,
@@ -14,16 +13,16 @@ const options = {
   bearerToken: `123456`
 }
 
-describe(`Controller`, () => {
-  let listeners = null
-  let framebus = null
+class MockBus {
+  constructor() { this.listeners = [] }
+  on(key, callback) { this.listeners[key] = callback }
+  emit(key, data) { this.listeners[key]?.(data) }
+}
 
+describe(`Controller`, () => {
+  let framebus = null
   beforeEach(() => {
-    listeners = []
-    framebus = {
-      on: (key, callback) => { listeners[key] = callback },
-      emit: (key, data) => { listeners[key]?.(data) }
-    }
+    framebus = new MockBus()
   })
 
   test(`should default to be not loaded`, () => {

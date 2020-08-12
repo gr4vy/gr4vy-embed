@@ -2,31 +2,30 @@ import fb from 'framebus'
 
 import Emitter from '../../../src/components/Frame/Emitter'
 import { act } from 'react-dom/test-utils'
+class MockBus {
+  constructor() { this.listeners = [] }
+  on(key, callback) { this.listeners[key] = callback }
+  emit(key, data) { this.listeners[key]?.(data) }
+}
 
 describe(`Emitter`, () => {
-  let listeners = null
   let framebus = null
 
   beforeEach(() => {
-    listeners = []
-    framebus = {
-      on: (key, callback) => { listeners[key] = callback },
-      emit: (key, data) => { listeners[key]?.(data) }
-    }
+    framebus = new MockBus()
   })
 
   test(`should take a logger and url`, () => {
     const logger = jest.mock()
-    const url = jest.mock()
+    const url = `http://localhost:8080/`
     const emitter = new Emitter({ logger, url })
     expect(emitter.logger).toBe(logger)
-    expect(emitter.logger).toBe(url)
-    expect(emitter.framebus).toBe(fb)
+    expect(emitter.framebus).toEqual(fb.target(`http://localhost:8080`))
   })
 
   test(`should take an optional framebus`, () => {
     const logger = jest.mock()
-    const url = jest.mock()
+    const url = `http://localhost:8080/`
     const options = { framebus }
     const emitter = new Emitter({ logger, url, options })
     expect(emitter.framebus).toBe(framebus)
@@ -35,7 +34,7 @@ describe(`Emitter`, () => {
   describe(`.on`, () => {
     test(`should call the callback when an event is received`, () => {
       const logger = { log: jest.fn() }
-      const url = jest.mock()
+      const url = `http://localhost:8080/`
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
@@ -53,7 +52,7 @@ describe(`Emitter`, () => {
 
     test(`should allow for a missing callback function`, () => {
       const logger = { log: jest.fn() }
-      const url = jest.mock()
+      const url = `http://localhost:8080/`
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
@@ -69,7 +68,7 @@ describe(`Emitter`, () => {
   describe(`.subscribe`, () => {
     test(`should call the callback when an event is received`, () => {
       const logger = { log: jest.fn() }
-      const url = jest.mock()
+      const url = `http://localhost:8080/`
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
@@ -87,7 +86,7 @@ describe(`Emitter`, () => {
 
     test(`should allow for a missing callback function`, () => {
       const logger = { log: jest.fn() }
-      const url = jest.mock()
+      const url = `http://localhost:8080/`
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
@@ -103,7 +102,7 @@ describe(`Emitter`, () => {
   describe(`.updateOptions`, () => {
     test(`should emit an event`, () => {
       const logger = { log: jest.fn() }
-      const url = jest.mock()
+      const url = `http://localhost:8080/`
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
@@ -111,8 +110,8 @@ describe(`Emitter`, () => {
       framebus.on(`updateOptions`, callback)
 
       emitter.updateOptions({ options: { foo: `bar` } })
-      expect(callback).toBeCalledWith({ foo: `bar`, parentHost: `localhost` })
-      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, { foo: `bar`, parentHost: `localhost` })
+      expect(callback).toBeCalledWith({ foo: `bar`, parentHost: `http://localhost` })
+      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, { foo: `bar`, parentHost: `http://localhost` })
     })
   })
 })
