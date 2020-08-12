@@ -10,7 +10,7 @@
     "clean": "rm -rf dist/* storybook-static *.tgz",
     "dev": "concurrently 'yarn start' 'yarn storybook' 'yarn test:watch'",
     "lint": "yarn lint:css; yarn lint:js",
-    "lint:js": "yarn eslint src/**/*js tests/**/*js dev/**/*.js *.js",
+    "lint:js": "yarn eslint src/**/*js tests/**/*js dev/**/*.js stories/**/*.js webpack/**/*.js .storybook/**/*.js *.js",
     "lint:css": "yarn stylelint src/**/*.scss",
     "release": "yarn version; git push --tags",
     "start": "webpack-dev-server --config webpack/dev.js",
