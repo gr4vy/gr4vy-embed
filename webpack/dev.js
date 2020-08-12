@@ -15,9 +15,14 @@ module.exports = merge(common, {
       warnings: true,
       errors: true,
     },
+    host: `0.0.0.0`,
     port: 8081,
     open: true,
     progress: true,
     disableHostCheck: true
+  },
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 1000
   }
 })

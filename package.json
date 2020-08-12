@@ -12,8 +12,9 @@
     "lint": "yarn lint:css; yarn lint:js",
     "lint:js": "yarn eslint src/**/*js tests/**/*js dev/**/*.js *.js",
     "lint:css": "yarn stylelint src/**/*.scss",
+    "release": "yarn version; git push --tags",
     "start": "webpack-dev-server --config webpack/dev.js",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6007",
     "storybook:build": "build-storybook",
     "test": "jest",
     "test:watch": "jest --watchAll --collect-coverage"
