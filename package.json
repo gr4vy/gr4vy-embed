@@ -9,7 +9,7 @@
   "scripts": {
     "build:package": "concurrently 'yarn build:esm' 'yarn build:umd'",
     "build:umd": "webpack --config webpack/umd.js",
-    "build:esm": "babel src --out-dir esm --copy-files",
+    "build:esm": "babel src --ignore 'src/public/*.js' --out-dir esm --copy-files --no-copy-ignored",
     "build:cdn": "webpack --config webpack/cdn.js",
     "build": "webpack  --config webpack/prod.js",
     "clean": "rm -rf esm umd storybook-static *.tgz static",

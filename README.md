@@ -66,6 +66,17 @@ The options for this integration are as follows.
 | `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                               |
 | `showButton`  | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
 
+### UMD vs ESM
+
+By default the project exports a bundled UMD version of the library. This version is
+not optimized for bundling and chunking. An ESM version of the library is available in the `/esm` folder and can be used as follows.
+
+```js
+import { Embedded, Standalone } from '@gr4vypop/embedded-components/esm'
+```
+
+> Using the ESM components requires a few additional dependencies to compile SASS, CSS modules, and JSX. Please see the `/example` folder for a minimal example of a project using Webpack and Babel.
+
 ## Development
 
 To get started with this project, follow these steps.
