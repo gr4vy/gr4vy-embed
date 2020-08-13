@@ -7,7 +7,7 @@
   "author": "Gr4vy <code@gr4vy.com>",
   "license": "MIT",
   "scripts": {
-    "build:package": "concurrently 'yarn build:cjs' 'yarn build:umd' 'yarn build:react' 'yarn build:react-umd'",
+    "build:package": "concurrently 'yarn build:cjs' 'yarn build:react' 'yarn build:react-umd'",
     "build:cjs": "webpack --config webpack/cjs.js",
     "build:umd": "webpack --config webpack/umd.js",
     "build:react": "babel src --ignore 'src/umd/*.js' --ignore 'src/dev.js' --out-dir react --copy-files --no-copy-ignored",
@@ -26,7 +26,6 @@
   },
   "files": [
     "cjs/**/*",
-    "umd/**/*",
     "react/**/*",
     "react-umd/**/*"
   ],
