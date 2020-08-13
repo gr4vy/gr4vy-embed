@@ -1,8 +1,8 @@
-# Gr4vy Embed for React
+# Gr4vy Embed
 
 ![Active project](https://img.shields.io/badge/status-active-brightgreen)
 
-Quickly embed a credit card form in your React app and store the card details, authorize the card, and capture a transaction. 
+Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction. 
 
 ![Card Form](./docs/images/card_form.png)
 
@@ -111,6 +111,8 @@ ReactDOM.render(
 )
 ```
 
+### Options
+
 The options for this integration are as follows.
 
 | Field         | Default                     | Description                                                                                                                                                                                                                                                          |
@@ -122,6 +124,7 @@ The options for this integration are as follows.
 | `flow`        | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
 | `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                               |
 | `showButton`  | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
+
 ## Development
 
 To get started with this project, follow these steps.
