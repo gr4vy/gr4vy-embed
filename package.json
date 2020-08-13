@@ -1,18 +1,18 @@
 {
-  "name": "@gr4vypop/embed-react",
+  "name": "@gr4vypop/embed",
   "version": "0.0.4",
   "description": "The Gr4vy embedded payment form, for usage in a React app.",
-  "main": "umd/index.js",
-  "module": "esm/index.js",
+  "main": "cjs/index.js",
+  "module": "react/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
   "license": "MIT",
   "scripts": {
-    "build:package": "concurrently 'yarn build:esm' 'yarn build:umd'",
+    "build:package": "concurrently 'yarn build:cjs' 'yarn build:umd' 'yarn build:react' 'yarn build:react-umd'",
+    "build:cjs": "webpack --config webpack/cjs.js",
     "build:umd": "webpack --config webpack/umd.js",
-    "build:esm": "babel src --ignore 'src/public/*.js' --out-dir esm --copy-files --no-copy-ignored",
-    "build:cdn": "webpack --config webpack/cdn.js",
-    "build": "webpack  --config webpack/prod.js",
-    "clean": "rm -rf esm umd storybook-static *.tgz static",
+    "build:react": "babel src --ignore 'src/umd/*.js' --ignore 'src/dev.js' --out-dir react --copy-files --no-copy-ignored",
+    "build:react-umd": "webpack --config webpack/react-umd.js",
+    "clean": "rm -rf umd react cjs react-umd storybook-static *.tgz static coverage",
     "dev": "concurrently 'yarn start' 'yarn storybook' 'yarn test:watch'",
     "lint": "yarn lint:css; yarn lint:js",
     "lint:js": "yarn eslint src/**/*js tests/**/*js stories/**/*.js webpack/**/*.js .storybook/**/*.js *.js",
@@ -25,8 +25,10 @@
     "test:watch": "jest --watchAll --collect-coverage"
   },
   "files": [
+    "cjs/**/*",
     "umd/**/*",
-    "esm/**/*"
+    "react/**/*",
+    "react-umd/**/*"
   ],
   "peerDependencies": {
     "react": "^16.13.1",
@@ -49,7 +51,6 @@
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-react-css-modules": "^5.2.6",
-    "compression-webpack-plugin": "^4.0.1",
     "concurrently": "^5.2.0",
     "css-loader": "^4.0.0",
     "enzyme": "^3.11.0",

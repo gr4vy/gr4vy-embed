@@ -1,6 +1,8 @@
 node_modules/
-esm
-umd
+/umd
+/react
+/react-umd
+/cjs
 yarn-error.log
 storybook-static
 *.tgz

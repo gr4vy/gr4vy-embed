@@ -22,22 +22,79 @@ registry=https://npm.pkg.github.com/gr4vypop
 Then, via the command line, install this package as follows.
 
 ```bash
-npm install @gr4vypop/embed-react --save-prod
-# yarn add @gr4vypop/embed-react --save
+npm install @gr4vypop/embed --save-prod
+# yarn add @gr4vypop/embed --save
 ```
 
 ## Get started
 
-This project exposes a simple integration that allows a Gr4vy form
-to be embeded in any React UI.
+This project provides a few different ways to integrate.
 
-The integration takes all the fields needed to make an API call directly.
+### CDN
+
+The easiest way is to install via your cluster's CDN. Simply inject the script at the top
+of your page.
+
+```html
+<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X'></script>
+```
+
+Then, create an empty HTML element in the page and provide it with a class name or an ID, and 
+then call the `setup` function to bind Gr4vy Embed to the element.
+
+```html
+<div id='form'></div>
+<script>
+  gr4vy.setup({
+    element: '#form',
+    options: {
+      flow: ['authorize', 'capture', 'store'],
+      amount: 1299,
+      currency: 'USD',
+      frameHost: '127.0.0.1:8080',
+      apiHost: '127.0.0.1:3100',
+      bearerToken: 'JWT_TOKEN',
+      showButton: true,
+      debug: 'debug'
+    }
+  })
+</script>
+```
+
+### Node
+
+If you are using Node you can import Gr4vy rather than using a script tag.
+
+```js
+const gr4vy = require(`@gr4vypop/embed/cjs`) 
+// or using CSS modules
+import gr4vy from (`@gr4vypop/embed/cjs`)
+
+gr4vy.setup({...})
+```
+
+### React
+
+This project also comes with 2 integrations for React. Both versions do not come with `react` or 
+`react-dom` bundled, but the UMD version comes with all the assets bundled into one JS file.
+
+```js
+// A version that requires you to bring your own Babel, and more. See below.
+import Gr4vy from '@gr4vypop/embed/react'
+// A version with all assets bundled into 1 JS file
+import Gr4vy from '@gr4vypop/embed/react-umd'
+```
+
+> Using the ESM components requires a few additional dependencies to compile SASS, CSS modules, and JSX. Please see the `/example` folder for a minimal example of a project using Webpack and Babel.
+
+The component can be used as any regular React component and accepts the same options as
+the regular CDN / Node integration.
 
 ```js
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Gr4vy from '@gr4vypop/embed-react'
+import Gr4vy from '@gr4vypop/embed'
 
 ReactDOM.render(
   <Gr4vy 
@@ -65,18 +122,6 @@ The options for this integration are as follows.
 | `flow`        | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
 | `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                               |
 | `showButton`  | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
-
-### UMD vs ESM
-
-By default the project exports a bundled UMD version of the library. This version is
-not optimized for bundling and chunking. An ESM version of the library is available in the `/esm` folder and can be used as follows.
-
-```js
-import { Embedded, Standalone } from '@gr4vypop/embedded-components/esm'
-```
-
-> Using the ESM components requires a few additional dependencies to compile SASS, CSS modules, and JSX. Please see the `/example` folder for a minimal example of a project using Webpack and Babel.
-
 ## Development
 
 To get started with this project, follow these steps.
@@ -87,8 +132,8 @@ To get started, clone the project and install the required dependencies. This
 project relies on the `yarn` package manager.
 
 ```sh
-git clone git@github.com:gr4vypop/embed-react.git
-cd embed-react
+git clone git@github.com:gr4vypop/embed.git
+cd embed
 # npm i -g yarn
 yarn install
 ``` 
@@ -161,6 +206,8 @@ This projects folder structure is as follows.
 - .storybook/ # Configuration for Storybook
 - docs/ # Additional documentation resources
 - src/
+  - index.js # The React entry point for this library
+  - dev.js # The entry point for the dev server
   - components/ 
     - Frame/ # All the UI for the wrapper that loads the iFrame
       - index.js # The controler for the Frame, this controls behaviour and not what is displayed
@@ -170,6 +217,7 @@ This projects folder structure is as follows.
       - loaders.svg # An animated SVG loader, shown while the page loads
       - Emitter/ # A helper class used to communicate with the parent frame
       - Logger # A helper class used to output debug statements to the console
+  - umd/ # The UMD entry point for the CDN / Node integration which bundles React and uses a setup method
 - stories/ # Storybook stories
 - tests/ # Tests, test configuration, and snapshots
 - webpack/ # Configuration for Webpack, the tool used to transpile the source into a single file

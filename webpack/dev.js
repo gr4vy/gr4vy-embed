@@ -4,12 +4,14 @@ const path = require(`path`)
 const { merge } = require(`webpack-merge`)
 const common = require(`./common.js`)
 
+// Builds and spins up a version of the integration for the
+// dev server
 module.exports = merge(common, {
   mode: `development`,
   output: {
-    filename: `gr4vy-embeded.js`,
+    filename: `gr4vy-embed.js`,
   },
-  entry: path.resolve(`./src/public/index.js`),
+  entry: path.resolve(`./src/dev.js`),
   devServer: {
     overlay: {
       warnings: true,

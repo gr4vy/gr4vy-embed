@@ -18,7 +18,7 @@ module.exports = {
     progress: true
   },
   // this is only needed because we use a linked 
-  // package reference to embed-react.
+  // package reference to @gr4vypop/embed.
   resolve: {
     alias: { react: require.resolve(`react`) }
   },

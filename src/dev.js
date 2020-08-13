@@ -1,6 +1,12 @@
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Gr4vy from '..'
+
+/**
+ * Simple entry point for the dev server. This is loaded when 
+ * running `yarn dev` or `yarn start`.
+ */
 
 const log = (key, payload) => {
   console.debug(`Merchant page received ${key}`, payload)

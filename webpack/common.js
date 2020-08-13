@@ -1,5 +1,6 @@
 const StylelintPlugin = require(`stylelint-webpack-plugin`)
 
+// Shared settings between all builds
 module.exports = {
   module: {
     rules: [
