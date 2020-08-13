@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Gr4vy from '../src/'
+import Gr4vy from '..'
 
 const log = (key, payload) => {
   console.debug(`Merchant page received ${key}`, payload)
@@ -23,5 +23,5 @@ ReactDOM.render(
       onEvent={log}
     />
   </div>,
-  document.getElementById(`app`)
+  document.body
 )

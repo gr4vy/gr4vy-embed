@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { frame, iframe, loader } from './style.scss'
+import { frame, iframe, loader } from './style.module.scss'
 import icon from './loader.svg'
 
 const defaultStyle = { width: `100%`, height: `100px` }

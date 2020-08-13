@@ -1,5 +1,8 @@
-dist/*.js
+dist
+esm
+umd
 yarn-error.log
 storybook-static
 *.tgz
 coverage
+package-lock.json

@@ -148,8 +148,6 @@ This projects folder structure is as follows.
 - .github/
   - workflows/ # GitHub actions for CI/CD
 - .storybook/ # Configuration for Storybook
-- dev/ # The HTML and JS entry that is used when running `yarn start`
-- dist/ # The folder that is used when the package is compiled and published
 - docs/ # Additional documentation resources
 - src/
   - components/ 
