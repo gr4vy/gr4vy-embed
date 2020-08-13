@@ -1,6 +1,6 @@
 {
   "name": "@gr4vypop/embed-react",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "The Gr4vy embedded payment form, for usage in a React app.",
   "main": "umd/index.js",
   "module": "esm/index.js",
@@ -17,7 +17,7 @@
     "lint": "yarn lint:css; yarn lint:js",
     "lint:js": "yarn eslint src/**/*js tests/**/*js stories/**/*.js webpack/**/*.js .storybook/**/*.js *.js",
     "lint:css": "yarn stylelint src/**/*.scss",
-    "release": "yarn version; git push --tags",
+    "release": "yarn version; git push --tags; git push",
     "start": "webpack-dev-server --config webpack/dev.js",
     "storybook": "start-storybook -p 6007",
     "storybook:build": "build-storybook",
