@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Gr4vy from '../'
+import Frame from '../components/Frame'
+import { FormProvider } from '../contexts/FormContext'
+
+import { argumentError } from './functions'
 
 /**
  * Setup function for the UMD version of our integration.
@@ -10,27 +13,27 @@ import Gr4vy from '../'
  */
 const setup = ({
   element,
+  form = null,
   options
 }) => {
-  // try and get the container 
   const container = document.querySelector(element)
-  
-  // if no container was found, throw an error and return
-  if (!container) {
-    const error = {
-      code: `argumentError`,
-      argument: `element`,
-      message: `${element} must be a valid HTML element`
-    }
+  if (!container) { 
+    return argumentError(`element`, `${element} must be a valid HTML element`, options)
+  }
 
-    console.error(`Gr4vy - Error`, error)
-    options?.onEvent?.(`argumentError`, error)
-    return
+  let formContainer = null
+  if (form) {
+    formContainer = document.querySelector(form)
+    if (!formContainer) {
+      return argumentError(`form`, `${form} must be a valid HTML element`, options)
+    }
   }
 
   // Use react to bind the form to to the container
   ReactDOM.render(
-    <Gr4vy {...options} />,
+    <FormProvider container={formContainer}>
+      <Frame {...options} />
+    </FormProvider>,
     container
   )
 }

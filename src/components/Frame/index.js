@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useLayoutEffect, useContext } from 'react'
 import PropTypes from 'prop-types'
 
 import View, { defaultStyle } from './View'
@@ -6,6 +6,7 @@ import Logger from './Logger'
 import Emitter from './Emitter'
 
 import { frameUrl, validate } from './functions'
+import { FormContext } from '../../contexts/FormContext'
 
 /**
  * Loads the embedded Gr4vy UI through an iFrame.
@@ -23,6 +24,8 @@ const Frame = (options) => {
   // keep track of the width and height of the UI, which is updated as the 
   // frame content changes
   const [style, setStyle] = useState(defaultStyle)
+  // try to load the optional form
+  const form = useContext(FormContext)
 
   // deterimine the URL for the frame
   const url = frameUrl(options)
@@ -39,6 +42,17 @@ const Frame = (options) => {
     emitter.on(`formLoaded`, () => setLoaded(true))
     // listen for resize events and resize the iframe to match the size of the content
     emitter.on(`resize`, ({ frame: { height }}) => setStyle({...style, height }))
+
+    if (form) {
+      // listen to a hijacked form and use it to trigger a form submission
+      form.hijack(() => emitter.submitForm())
+      // listen to a resourceCreated event and inject the resource ID and submit the form.
+      emitter.on(`resourceCreated`, ({ data }) => {
+        form.inject(`resource_type`, data.resource_type)
+        form.inject(`resource_id`, data.resource_id)
+        form.submit()
+      })
+    }
 
     // allow the component user to subscribe to cross-frame events by providing
     // an onEvent handler

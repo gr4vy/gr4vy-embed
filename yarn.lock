@@ -6054,6 +6054,11 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+form-napper@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/form-napper/-/form-napper-2.0.0.tgz#5b0d0bb1b5ce5b8a017fd2612e1888caf063f827"
+  integrity sha1-Ww0LsbXOW4oBf9JhLhiIyvBj+Cc=
+
 format@^0.2.0:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/format/-/format-0.2.2.tgz#d6170107e9efdc4ed30c9dc39016df942b5cb58b"

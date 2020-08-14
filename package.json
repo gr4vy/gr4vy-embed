@@ -59,6 +59,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-react": "^7.20.3",
+    "form-napper": "^2.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.3.0",
     "jest-css-modules": "^2.1.0",

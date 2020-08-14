@@ -9,13 +9,13 @@ export default class Emitter {
    * Initialize with a logger, the url of the iframe, 
    * and an optional framebus instance (used in testing mostly)
    */
-  constructor({ logger, url, options = {} }) {
+  constructor({ logger, options = {} }) {
     this.logger = logger
     this.framebus = options.framebus || framebus
     
-    if (url && this.framebus.target) {
-      this.framebus = this.framebus.target(url.replace(/\/$/, ``))
-    }
+    // if (url && this.framebus.target) {
+    //   this.framebus = this.framebus.target(url.replace(/\/$/, ``))
+    // }
   }
 
   /**
@@ -46,6 +46,13 @@ export default class Emitter {
   updateOptions({ options }) {
     let parentHost = `${document?.location?.protocol}//${document?.location?.host}`
     this.emit(`updateOptions`, { ...options, parentHost })
+  }
+
+  /**
+   * Sends a message to try and submit the form
+   */
+  submitForm() {
+    this.emit(`submitForm`)
   }
 
   // PRIVATE
