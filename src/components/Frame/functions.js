@@ -33,6 +33,8 @@ export const frameUrl = ({
   if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
     url.protocol = `http`
   }
+  const parentHost = `${document?.location?.protocol}//${document?.location?.host}`
+  url.searchParams.set(`parentHost`, parentHost)
   return String(url)
 }
 
