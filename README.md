@@ -122,8 +122,80 @@ The options for this integration are as follows.
 | `bearerToken` | `null`                      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                                        |
 | `currency`    | `null`                      | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                                      |
 | `flow`        | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
-| `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                               |
+| `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                    |
 | `showButton`  | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
+| `onEvent`     | `null`                      | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                                |
+
+
+### Events
+
+The `onEvent` option can be used to listen to certain events emitted from the form.
+
+```js
+gr4vy.setup({
+  element: '#form',
+  options: {
+    flow: ['authorize', 'capture', 'store'],
+    ...,
+    onEvent: (name, data) => {
+      ...
+    }
+  }
+})
+```
+
+Currently, we emit the following events.
+
+#### `agumentError`
+
+Returned when the initial input (`element`, `options`) are incorrectly formatted or missing.
+
+```json
+{
+  "code": "argumentError",
+  "option": "options.currency",
+  "message": "must be a valid number"
+}
+```
+
+#### `formUpdate`
+
+Returned when the form updates.
+
+```json
+{ 
+  "valid": false 
+}
+```
+
+#### `resourceCreated`
+
+Returned when an authorization or card form was successfully created. This ID in this object can be used
+to query the resource server-side, to check on the status of the object.
+
+```json
+{
+  "type": "status",
+  "status": "pending",
+  "resource_type": "transactions.authorization",
+  "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83"
+}
+```
+
+#### `apiError`
+
+Returned when the form encounters an API error.
+
+```json
+{
+  "type": "error",
+  "code": "unauthorized",
+  "status": 401,
+  "message": "No valid API authentication found",
+  "documentation_url": "https://developer.gr4vy.com/errors/unauthorized",
+  "additional_context": null
+}
+```
 
 ## Development
 

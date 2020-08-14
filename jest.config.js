@@ -8,7 +8,7 @@ module.exports = {
     `html`
   ],
   "coveragePathIgnorePatterns": [
-    `src/dev.js`
+    `src/dev/*`
   ],
   "moduleNameMapper": {
     "\\.(css|less|scss|sss|styl)$": `<rootDir>/node_modules/jest-css-modules`,

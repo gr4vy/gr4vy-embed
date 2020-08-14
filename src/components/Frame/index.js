@@ -5,7 +5,7 @@ import View, { defaultStyle } from './View'
 import Logger from './Logger'
 import Emitter from './Emitter'
 
-import { frameUrl } from './functions'
+import { frameUrl, validate } from './functions'
 
 /**
  * Loads the embedded Gr4vy UI through an iFrame.
@@ -15,6 +15,9 @@ import { frameUrl } from './functions'
  * it resizes the iframe and shows it to the user.
  */
 const Frame = (options) => {
+  // validate that all required options are present, in the right format,
+  // type, etc
+  const valid = validate(options)
   // keep the state of the UI to determine if the frame can be shown
   const [loaded, setLoaded] = useState(false)
   // keep track of the width and height of the UI, which is updated as the 
@@ -47,6 +50,7 @@ const Frame = (options) => {
   return <View 
     url={url} 
     loaded={loaded} 
+    valid={valid}
     style={style} 
   />
 }

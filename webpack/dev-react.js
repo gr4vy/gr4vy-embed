@@ -11,7 +11,7 @@ module.exports = merge(common, {
   output: {
     filename: `gr4vy-embed.js`,
   },
-  entry: path.resolve(`./src/dev.js`),
+  entry: path.resolve(`./src/dev/react.js`),
   devServer: {
     overlay: {
       warnings: true,

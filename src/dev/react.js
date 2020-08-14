@@ -15,6 +15,11 @@ const log = (key, payload) => {
   }
 }
 
+// add a root element, as React throws warnings when directly attached to the body
+const root = document.createElement(`div`)
+root.setAttribute(`id`, `root`)
+document.body.appendChild(root)
+
 ReactDOM.render(
   <div>
     <Gr4vy 
@@ -29,5 +34,5 @@ ReactDOM.render(
       onEvent={log}
     />
   </div>,
-  document.body
+  document.querySelector(`#root`)
 )

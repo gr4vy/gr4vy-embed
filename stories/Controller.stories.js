@@ -50,6 +50,7 @@ export const Default = () => (
 export const Loading = () => (
   <View 
     url='http://localhost:8080'
+    valid
     style={defaultStyle}
     loaded={false}
   />
