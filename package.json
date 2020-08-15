@@ -1,6 +1,6 @@
 {
   "name": "@gr4vy/embed",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "The Gr4vy embedded payment form, for usage in a React app.",
   "main": "cjs/index.js",
   "module": "react/index.js",
