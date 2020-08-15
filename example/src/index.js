@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Gr4vy from '@gr4vypop/embed'
+import Gr4vy from '@gr4vy/embed'
 
 ReactDOM.render(
   <Gr4vy 

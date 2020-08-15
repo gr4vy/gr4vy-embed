@@ -16,14 +16,14 @@ To add GitHub's package repository, add a `.npmrc` file to your project
 with the following content.
 
 ```sh
-registry=https://npm.pkg.github.com/gr4vypop
+registry=https://npm.pkg.github.com/gr4vy
 ```
 
 Then, via the command line, install this package as follows.
 
 ```bash
-npm install @gr4vypop/embed --save-prod
-# yarn add @gr4vypop/embed --save
+npm install @gr4vy/embed --save-prod
+# yarn add @gr4vy/embed --save
 ```
 
 ## Get started
@@ -66,9 +66,9 @@ then call the `setup` function to bind Gr4vy Embed to the element.
 If you are using Node you can import Gr4vy rather than using a script tag.
 
 ```js
-const gr4vy = require(`@gr4vypop/embed/cjs`) 
+const gr4vy = require(`@gr4vy/embed/cjs`) 
 // or using CSS modules
-import gr4vy from (`@gr4vypop/embed/cjs`)
+import gr4vy from (`@gr4vy/embed/cjs`)
 
 gr4vy.setup({...})
 ```
@@ -80,9 +80,9 @@ This project also comes with 2 integrations for React. Both versions do not come
 
 ```js
 // A version that requires you to bring your own Babel, and more. See below.
-import Gr4vy from '@gr4vypop/embed/react'
+import Gr4vy from '@gr4vy/embed/react'
 // A version with all assets bundled into 1 JS file
-import Gr4vy from '@gr4vypop/embed/react-umd'
+import Gr4vy from '@gr4vy/embed/react-umd'
 ```
 
 > Using the ESM components requires a few additional dependencies to compile SASS, CSS modules, and JSX. Please see the `/example` folder for a minimal example of a project using Webpack and Babel.
@@ -94,7 +94,7 @@ the regular CDN / Node integration.
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import Gr4vy from '@gr4vypop/embed'
+import Gr4vy from '@gr4vy/embed'
 
 ReactDOM.render(
   <Gr4vy 
@@ -207,7 +207,7 @@ To get started, clone the project and install the required dependencies. This
 project relies on the `yarn` package manager.
 
 ```sh
-git clone git@github.com:gr4vypop/embed.git
+git clone git@github.com:gr4vy/embed.git
 cd embed
 # npm i -g yarn
 yarn install
