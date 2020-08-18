@@ -198,18 +198,18 @@ describe(`frameUrl`, () => {
   test(`should return a full URL for a hostname`, () => {
     expect(frameUrl({ 
       iframeHost: `cdn.apple.app.gr4vy.com`
-    })).toEqual(`https://cdn.apple.app.gr4vy.com/`)
+    })).toEqual(`https://cdn.apple.app.gr4vy.com/?parentHost=http%3A%2F%2Flocalhost`)
   })
 
   test(`should return an insecure URL for localhost`, () => {
     expect(frameUrl({ 
       iframeHost: `localhost:8000`
-    })).toEqual(`http://localhost:8000/`)
+    })).toEqual(`http://localhost:8000/?parentHost=http%3A%2F%2Flocalhost`)
   })
 
   test(`should return an insecure URL for 127.0.0.1`, () => {
     expect(frameUrl({ 
       iframeHost: `127.0.0.1:8000`
-    })).toEqual(`http://127.0.0.1:8000/`)
+    })).toEqual(`http://127.0.0.1:8000/?parentHost=http%3A%2F%2Flocalhost`)
   })
 })

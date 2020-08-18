@@ -110,8 +110,24 @@ describe(`Emitter`, () => {
       framebus.on(`updateOptions`, callback)
 
       emitter.updateOptions({ options: { foo: `bar` } })
-      expect(callback).toBeCalledWith({ foo: `bar`, parentHost: `http://localhost` })
-      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, { foo: `bar`, parentHost: `http://localhost` })
+      expect(callback).toBeCalledWith({ foo: `bar` })
+      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, { foo: `bar` })
+    })
+  })
+
+  describe(`.submitForm`, () => {
+    test(`should emit an event`, () => {
+      const logger = { log: jest.fn() }
+      const url = `http://localhost:8080/`
+      const options = { framebus }
+      const emitter = new Emitter({ logger, url, options })
+
+      const callback = jest.fn()
+      framebus.on(`submitForm`, callback)
+
+      emitter.submitForm()
+      expect(callback).toHaveBeenCalled()
+      expect(logger.log).toHaveBeenCalledWith(`Page emits - submitForm`, undefined)
     })
   })
 })

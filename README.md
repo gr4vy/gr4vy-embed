@@ -242,9 +242,9 @@ yarn test
 yarn lint
 ```
 
-To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test:watch` command is available.
+To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test!` command is available.
 
-> **Note:** We try to keep a coverage of a 100%. Run the `yarn test:watch` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
+> **Note:** We try to keep a coverage of a 100%. Run the `yarn test!` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
 
 
 ### Development with Docker

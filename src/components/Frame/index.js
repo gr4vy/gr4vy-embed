@@ -46,6 +46,7 @@ const Frame = (options) => {
     if (form) {
       // listen to a hijacked form and use it to trigger a form submission
       form.hijack(() => emitter.submitForm())
+
       // listen to a resourceCreated event and inject the resource ID and submit the form.
       emitter.on(`resourceCreated`, ({ data }) => {
         form.inject(`gr4vy_resource_type`, data.resource_type)

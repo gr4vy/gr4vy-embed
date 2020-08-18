@@ -1,9 +1,13 @@
 import React from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
+import FormNapper from 'form-napper'
 
 import Frame from '../../src/components/Frame'
 import { defaultStyle } from '../../src/components/Frame/View'
+import { FormProvider } from '../../src/contexts/FormContext'
+
+jest.mock(`form-napper`)
 
 const options = {
   flow: [`store`],
@@ -14,8 +18,13 @@ const options = {
 
 class MockBus {
   constructor() { this.listeners = [] }
-  on(key, callback) { this.listeners[key] = callback }
-  emit(key, data) { this.listeners[key]?.(data) }
+  on(key, callback) { 
+    this.listeners[key] = this.listeners[key] || []
+    this.listeners[key].push(callback)
+  }
+  emit(key, data) { 
+    this.listeners[key]?.map(callback => callback(data))
+  }
 }
 
 describe(`Controller`, () => {
@@ -30,7 +39,7 @@ describe(`Controller`, () => {
       loaded: false,
       valid: true,
       style: defaultStyle,
-      url: `http://localhost:8080/`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
     })
   })
 
@@ -62,7 +71,7 @@ describe(`Controller`, () => {
       loaded: true,
       valid: true,
       style: defaultStyle,
-      url: `http://localhost:8080/`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
     })
   })
 
@@ -81,7 +90,7 @@ describe(`Controller`, () => {
       loaded: false,
       valid: true,
       style: { ...defaultStyle, height: `123px` },
-      url: `http://localhost:8080/`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
     })
   })
 
@@ -103,5 +112,32 @@ describe(`Controller`, () => {
     expect(options.onEvent).toHaveBeenCalledWith(`formUpdate`, {})
     expect(options.onEvent).toHaveBeenCalledWith(`resourceCreated`, {})
     expect(options.onEvent).toHaveBeenCalledWith(`apiError`, {})
+  })
+
+  test(`should hijack the parent form when present`, () => {
+    const element = document.createElement(`form`)
+    const form = { hijack: jest.fn(), inject: jest.fn(), submit: jest.fn() }
+    FormNapper.mockImplementation(() => form)
+
+    options.framebus = framebus
+
+    const component = mount(
+      <FormProvider container={element}>
+        <Frame {...options} />
+      </FormProvider>
+    )
+    
+    act(() => { 
+      framebus.emit(`resourceCreated`, { data: {
+        resource_type: `card`,
+        resource_id: `id`
+      }}) 
+    })
+    component.update()
+
+    expect(form.hijack).toHaveBeenCalledWith(expect.any(Function))
+    expect(form.inject).toHaveBeenCalledWith(`gr4vy_resource_type`, `card`)
+    expect(form.inject).toHaveBeenCalledWith(`gr4vy_resource_id`, `id`)
+    expect(form.submit).toHaveBeenCalled()
   })
 })

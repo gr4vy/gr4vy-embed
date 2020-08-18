@@ -25,17 +25,24 @@ const setup = ({
   if (form) {
     formContainer = document.querySelector(form)
     if (!formContainer) {
-      return argumentError(`form`, `${form} must be a valid HTML element`, options)
+      return argumentError(`form`, `${form} must be a valid HTML form`, options)
     }
   }
 
   // Use react to bind the form to to the container
-  ReactDOM.render(
-    <FormProvider container={formContainer}>
+  if (form) {
+    ReactDOM.render(
+      <FormProvider container={formContainer}>
+        <Frame {...options} />
+      </FormProvider>
+      , container
+    )
+  } else {
+    ReactDOM.render(
       <Frame {...options} />
-    </FormProvider>,
-    container
-  )
+      , container
+    )
+  }
 }
 
 export { setup } 
