@@ -1,6 +1,6 @@
 {
   "name": "@gr4vy/embed",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
   "main": "cjs/index.js",
   "module": "react/index.js",
