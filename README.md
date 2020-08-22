@@ -4,7 +4,7 @@
 
 Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction. 
 
-![Card Form](./docs/images/card_form.png)
+![Card Form](docs/images/card_form.png)
 
 Visit [Gr4vy.com](https://gr4vy.com) for more details.
 
