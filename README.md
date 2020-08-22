@@ -10,16 +10,7 @@ Visit [Gr4vy.com](https://gr4vy.com) for more details.
 
 ## Usage
 
-This project is currently hosted in GitHub and therefore can only be installed with those who have access to this repository.
-
-To add GitHub's package repository, add a `.npmrc` file to your project 
-with the following content.
-
-```sh
-registry=https://npm.pkg.github.com/gr4vy
-```
-
-Then, via the command line, install this package as follows.
+Via the command line, install this package as follows.
 
 ```bash
 npm install @gr4vy/embed --save-prod

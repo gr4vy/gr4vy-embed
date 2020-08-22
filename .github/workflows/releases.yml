@@ -24,9 +24,16 @@ jobs:
           yarn install
           yarn build:package
 
-      - name: Publish the package
+      - name: Publish the package to GitHub
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           registry: https://npm.pkg.github.com/
+          check-version: true
+
+      - name: Publish the package to NPM
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          registry: https://registry.npmjs.org/
           check-version: true
