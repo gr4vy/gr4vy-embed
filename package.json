@@ -30,7 +30,8 @@
   "files": [
     "cjs/**/*",
     "react/**/*",
-    "react-umd/**/*"
+    "react-umd/**/*",
+    "docs/**/*"
   ],
   "peerDependencies": {
     "react": "^16.13.1",
