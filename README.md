@@ -1,6 +1,8 @@
 # Gr4vy Embed
 
-![Active project](https://img.shields.io/badge/status-active-brightgreen)
+![NPM Version](https://img.shields.io/npm/v/@gr4vy/embed?color=green&style=for-the-badge)
+![License](https://img.shields.io/npm/l/@gr4vy/embed?style=for-the-badge)
+![Bundled Size](https://img.shields.io/static/v1?label=bundled%20size&message=8kb&color=blue&style=for-the-badge)
 
 Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction. 
 
@@ -191,6 +193,17 @@ Returned when the form encounters an API error.
   "additional_context": null
 }
 ```
+
+## Library size
+
+We've worked hard to keep this library as small as possible. Depending on your implementation, you can expect the following estimated dependency sizes.
+
+| Format                                              | Size   | Compressed |
+| --------------------------------------------------- | ------ | ---------- |
+| React Component                                     | `52K`  | `8K`       |
+| React Component, bundled without `peerDependencies` | `20K`  | `8K`       |
+| CommonJS library                                    | `148K` | `48K`      |
+| CDN version                                         | `148K` | `48K`      |
 
 ## Development
 
