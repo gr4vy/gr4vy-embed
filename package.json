@@ -7,6 +7,7 @@
   "author": "Gr4vy <code@gr4vy.com>",
   "license": "MIT",
   "repository": "github:gr4vy/embed",
+  "homepage": "https://gr4vy.com",
   "scripts": {
     "build:package": "concurrently 'yarn build:cjs' 'yarn build:react' 'yarn build:react-umd'",
     "build:cjs": "webpack --config webpack/cjs.js",
