@@ -8,3 +8,4 @@ storybook-static
 *.tgz
 coverage
 package-lock.json
+node_modules

@@ -1,11 +1,12 @@
 {
   "name": "@gr4vy/embed",
   "version": "0.0.8",
-  "description": "The Gr4vy embedded payment form, for usage in a React app.",
+  "description": "Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
   "main": "cjs/index.js",
   "module": "react/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
   "license": "MIT",
+  "repository": "github:gr4vy/embed",
   "scripts": {
     "build:package": "concurrently 'yarn build:cjs' 'yarn build:react' 'yarn build:react-umd'",
     "build:cjs": "webpack --config webpack/cjs.js",
