@@ -27,17 +27,20 @@ The easiest way is to install via your cluster's CDN. Simply inject the script a
 of your page.
 
 ```html
-<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X'></script>
+<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js'></script>
 ```
 
 Then, create an empty HTML element in the page and provide it with a class name or an ID, and 
 then call the `setup` function to bind Gr4vy Embed to the element.
 
 ```html
-<div id='form'></div>
+<form action='/submit' className='form'>
+  <div id='container'></div>
+</form>
 <script>
   gr4vy.setup({
-    element: '#form',
+    element: '#container',
+    form: '.form',
     options: {
       flow: ['authorize', 'capture', 'store'],
       amount: 1299,
@@ -169,7 +172,8 @@ to query the resource server-side, to check on the status of the object.
   "type": "status",
   "status": "pending",
   "resource_type": "transactions.authorization",
-  "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83"
+  "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83",
+  "external_identifier": "user-1234"
 }
 ```
 
