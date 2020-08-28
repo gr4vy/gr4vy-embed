@@ -1,25 +1,18 @@
 # Gr4vy Embed
 
-![Active project](https://img.shields.io/badge/status-active-brightgreen)
+![NPM Version](https://img.shields.io/npm/v/@gr4vy/embed?color=green&style=for-the-badge)
+![License](https://img.shields.io/npm/l/@gr4vy/embed?style=for-the-badge)
+![Bundled Size](https://img.shields.io/static/v1?label=bundled%20size&message=8kb&color=blue&style=for-the-badge)
 
 Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction. 
 
-![Card Form](./docs/images/card_form.png)
+![Card Form](docs/images/card_form.png)
 
 Visit [Gr4vy.com](https://gr4vy.com) for more details.
 
 ## Usage
 
-This project is currently hosted in GitHub and therefore can only be installed with those who have access to this repository.
-
-To add GitHub's package repository, add a `.npmrc` file to your project 
-with the following content.
-
-```sh
-registry=https://npm.pkg.github.com/gr4vy
-```
-
-Then, via the command line, install this package as follows.
+Via the command line, install this package as follows.
 
 ```bash
 npm install @gr4vy/embed --save-prod
@@ -36,17 +29,20 @@ The easiest way is to install via your cluster's CDN. Simply inject the script a
 of your page.
 
 ```html
-<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X'></script>
+<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js'></script>
 ```
 
 Then, create an empty HTML element in the page and provide it with a class name or an ID, and 
 then call the `setup` function to bind Gr4vy Embed to the element.
 
 ```html
-<div id='form'></div>
+<form action='/submit' className='form'>
+  <div id='container'></div>
+</form>
 <script>
   gr4vy.setup({
-    element: '#form',
+    element: '#container',
+    form: '.form',
     options: {
       flow: ['authorize', 'capture', 'store'],
       amount: 1299,
@@ -178,7 +174,8 @@ to query the resource server-side, to check on the status of the object.
   "type": "status",
   "status": "pending",
   "resource_type": "transactions.authorization",
-  "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83"
+  "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83",
+  "external_identifier": "user-1234"
 }
 ```
 
@@ -196,6 +193,17 @@ Returned when the form encounters an API error.
   "additional_context": null
 }
 ```
+
+## Library size
+
+We've worked hard to keep this library as small as possible. Depending on your implementation, you can expect the following estimated dependency sizes.
+
+| Format                                              | Size   | Compressed |
+| --------------------------------------------------- | ------ | ---------- |
+| React Component                                     | `52K`  | `8K`       |
+| React Component, bundled without `peerDependencies` | `20K`  | `8K`       |
+| CommonJS library                                    | `148K` | `48K`      |
+| CDN version                                         | `148K` | `48K`      |
 
 ## Development
 
