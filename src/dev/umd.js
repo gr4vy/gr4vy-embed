@@ -46,6 +46,6 @@ setup({
     showButton: false,
     debug: `debug`,
     onEvent: log,
-    externalIdentifier: 'user-123'
+    externalIdentifier: `user-123`
   }
 })
