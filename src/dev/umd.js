@@ -10,6 +10,8 @@ const log = (key, payload) => {
   console.debug(`Merchant page received ${key}`, payload)
   if (key === `resourceCreated`) {
     alert(`Resource created: ${payload.data.resource_type}:${payload.data.resource_id}`)
+  } else if (key === `timeoutError`) {
+    alert(`Error: ${payload.message}`)
   }
 }
 
@@ -43,6 +45,7 @@ setup({
     bearerToken: `123456`,
     showButton: false,
     debug: `debug`,
-    onEvent: log
+    onEvent: log,
+    externalIdentifier: 'user-123'
   }
 })

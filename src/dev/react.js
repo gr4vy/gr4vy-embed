@@ -32,6 +32,7 @@ ReactDOM.render(
       showButton
       debug='debug'
       onEvent={log}
+      externalIdentifier='user-123'
     />
   </div>,
   document.querySelector(`#root`)

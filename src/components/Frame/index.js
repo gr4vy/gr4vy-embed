@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useContext } from 'react'
+import React, { useState, useLayoutEffect, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import View, { defaultStyle } from './View'
@@ -21,6 +21,8 @@ const Frame = (options) => {
   const valid = validate(options)
   // keep the state of the UI to determine if the frame can be shown
   const [loaded, setLoaded] = useState(false)
+  // tracks if the form has timed out
+  const [timedOut, setTimedOut] = useState(false)
   // keep track of the width and height of the UI, which is updated as the 
   // frame content changes
   const [style, setStyle] = useState(defaultStyle)
@@ -60,7 +62,16 @@ const Frame = (options) => {
     emitter.subscribe(`formUpdate`, options.onEvent)
     emitter.subscribe(`resourceCreated`, options.onEvent)
     emitter.subscribe(`apiError`, options.onEvent)
+
+    // set a timeout to check for changes
+    setTimeout(() => { setTimedOut(true)  }, options.timeout)
   }, [])
+
+  // When we reach the timeout, check if the form is loaded and if not throw an error.
+  useEffect(() => {
+    if (loaded || !timedOut){ return }
+    options.onEvent(`timeoutError`, { "message": `Embedded form timed out` })
+  }, [loaded, timedOut])
 
   return <View 
     url={url} 
@@ -94,14 +105,20 @@ Frame.propTypes = {
   // wether to output any debug messages. Must be set to `log` or `debug`.
   debug: PropTypes.string,
   // a callback function that's used to subscribe to events
-  onEvent: PropTypes.func
+  onEvent: PropTypes.func,
+  // the timeout we wait for the embedded form to load before we thow an `error` event
+  timeout: PropTypes.number.isRequired,
+  // an optional external identifier
+  externalIdentifier: PropTypes.string
 }
 
 Frame.defaultProps = {
   // defaults to all flow features
   flow: [`authorize`, `capture`, `store`],
   // defaults to hidding the button
-  showButton: false
+  showButton: false,
+  // the default timeout to wait for the embedded form is 10 seconds
+  timeout: 10000
 }
 
 export default Frame

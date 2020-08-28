@@ -12,6 +12,7 @@ ReactDOM.render(
     bearerToken='JWT_TOKEN'
     showButton
     debug='debug'
+    externalIdentifier='user-123'
   />,
   document.getElementById(`app`)
 )

@@ -43,6 +43,14 @@ describe(`Controller`, () => {
     })
   })
 
+  test(`should time out if the form doesn't load in time`, () => {
+    jest.useFakeTimers()
+    options.onEvent = jest.fn()
+    mount(<Frame {...options} />)
+    act(() => jest.runAllTimers())
+    expect(options.onEvent).toHaveBeenCalledWith(`timeoutError`, {"message": `Embedded form timed out`})
+  })
+
   test(`should pass the options to the frame when it's ready`, () => {
     // create a mock frame bus and listen to updateOptions
     const callback = jest.fn()
@@ -116,7 +124,10 @@ describe(`Controller`, () => {
 
   test(`should hijack the parent form when present`, () => {
     const element = document.createElement(`form`)
-    const form = { hijack: jest.fn(), inject: jest.fn(), submit: jest.fn() }
+    let hijackFunction = null
+    const form = { hijack: jest.fn((callback) => {
+      hijackFunction = callback
+    }), inject: jest.fn(), submit: jest.fn() }
     FormNapper.mockImplementation(() => form)
 
     options.framebus = framebus
@@ -139,5 +150,11 @@ describe(`Controller`, () => {
     expect(form.inject).toHaveBeenCalledWith(`gr4vy_resource_type`, `card`)
     expect(form.inject).toHaveBeenCalledWith(`gr4vy_resource_id`, `id`)
     expect(form.submit).toHaveBeenCalled()
+
+    framebus.on(`submitForm`, jest.fn())
+
+    act(() => { hijackFunction() })
+
+    expect(framebus.listeners.submitForm[0]).toHaveBeenCalled()
   })
 })
