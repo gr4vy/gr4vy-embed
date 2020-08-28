@@ -17,7 +17,7 @@ module.exports = merge(common, {
       warnings: true,
       errors: true
     },
-    host: `0.0.0.0`,
+    host: `127.0.0.1`,
     port: 8081,
     open: true,
     progress: true,

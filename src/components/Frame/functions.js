@@ -14,11 +14,13 @@ export const validate = (options) => (
   isHost(options, `apiHost`) && 
   isHost(options, `iframeHost`) && 
   isNumber(options, `amount`) && 
+  isNumber(options, `timeout`) && 
   isString(options, `currency`, { minLength: 3, maxLength: 3, optional: true }) && 
   isType(options, `showButton`, `boolean`, { optional: true }) && 
   isString(options, `preferResponse`, { optional: true }) && 
   isOneOf(options, `debug`, [`debug`, `log`]) && 
   isType(options, `onEvent`, `function`, { optional: true }) && 
+  isString(options, `externalIdentifier`, { optional: true }) &&
   isRequired(options, `currency`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`))) &&
   isRequired(options, `amount`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`)))
 )
@@ -33,6 +35,8 @@ export const frameUrl = ({
   if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
     url.protocol = `http`
   }
+  const parentHost = `${document?.location?.protocol}//${document?.location?.host}`
+  url.searchParams.set(`parentHost`, parentHost)
   return String(url)
 }
 

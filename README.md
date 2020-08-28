@@ -32,12 +32,14 @@ of your page.
 <script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js'></script>
 ```
 
-Then, create an empty HTML element in the page and provide it with a class name or an ID, and 
-then call the `setup` function to bind Gr4vy Embed to the element.
+Then, assuming your page has a form and a container to attach the form to, call the
+`gr4vy.setup` function and attach the form to the container element, as well as specify
+the form to attach any new values to.
 
 ```html
 <form action='/submit' className='form'>
   <div id='container'></div>
+  <input type='submit' value='Submit'>
 </form>
 <script>
   gr4vy.setup({
@@ -51,11 +53,21 @@ then call the `setup` function to bind Gr4vy Embed to the element.
       apiHost: '127.0.0.1:3100',
       bearerToken: 'JWT_TOKEN',
       showButton: true,
-      debug: 'debug'
+      debug: 'debug',
+      externalIdentifier: 'user-1234'
     }
   })
 </script>
 ```
+
+When the form is submitted, the embedded Gr4vy form will submit the payment details and 
+insert two new hidden input fields in the form. Your application can use these details
+on the server to query for more information about the status of it.
+
+| Hidden field          | Description                                                                                                                                                     |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `gr4vy_resource_type` | The type of the resource that was created by the embedded form. This is currently either a `card` or a `transactions.authorization`.                            |
+| `gr4vy_resource_id`   | The ID of the resource that was created by the embedded form. This can be used by the server-side SDK to query for more information about the created resource. |
 
 ### Node
 
@@ -107,21 +119,35 @@ ReactDOM.render(
 )
 ```
 
+### Element & Form
+
+When using the CDN/Node version of this library it needs to be provided
+two HTML elements to attach itself to. The values for these elements are 
+a query string that can be parsed by `document.querySelector`. For example,
+`<div class="container" />` would be represented as `.container`, while
+`<form id="cardform">` would be represented by `#cardform`.
+
+| HTML Element | Example      | Description                                                                                                                                                                                      |
+| ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `element`    | `.container` | Specifies the HTML element to attach the form to. Gr4vy Embed will insert the form at this location.                                                                                             |
+| `form`       | `#cardform`  | Specifies the HTML Form to attach additional inputs to. Gr4vy will automatically insert hidden Input fields into this form containing the created resource (often an authorization) ID and type. |
+
 ### Options
 
 The options for this integration are as follows.
 
-| Field         | Default                     | Description                                                                                                                                                                                                                                                          |
-| ------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `amount`      | `null`                      | The amount to authorize or capture in the specified `currency`. Not required if the `flow` is set to `store` only.                                                                                                                                                   |
-| `apiHost`     | `null`                      | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                                                                                                     |
-| `bearerToken` | `null`                      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                                        |
-| `currency`    | `null`                      | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                                      |
-| `flow`        | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
-| `frameHost`   | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                    |
-| `showButton`  | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
-| `onEvent`     | `null`                      | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                                |
-
+| Field                | Default                     | Description                                                                                                                                                                                                                                                          |
+| -------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`             | `null`                      | The amount to authorize or capture in the specified `currency`. Not required if the `flow` is set to `store` only.                                                                                                                                                   |
+| `apiHost`            | `null`                      | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                                                                                                     |
+| `bearerToken`        | `null`                      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                                        |
+| `currency`           | `null`                      | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                                      |
+| `flow`               | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
+| `frameHost`          | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                    |
+| `showButton`         | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
+| `onEvent`            | `null`                      | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                                |
+| `timeout`            | `10000`                     | The optional timeout to wait for the embedded form to load before it throws a `timeoutError` to the `onEvent` handler.                                                                                                                                               |
+| `externalIdentifier` | `null`                      | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID                                                                              |
 
 ### Events
 
@@ -166,7 +192,7 @@ Returned when the form updates.
 
 #### `resourceCreated`
 
-Returned when an authorization or card form was successfully created. This ID in this object can be used
+Returned when an authorization or card was successfully created. This ID in this object can be used
 to query the resource server-side, to check on the status of the object.
 
 ```json
@@ -176,6 +202,16 @@ to query the resource server-side, to check on the status of the object.
   "resource_type": "transactions.authorization",
   "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83",
   "external_identifier": "user-1234"
+}
+```
+
+#### `timeoutError`
+
+Returned when the embedded form could not be loaded within the set timeout.
+
+```json
+{ 
+  "message": "Embedded form timed out" 
 }
 ```
 
@@ -235,7 +271,7 @@ You could also run these commands individually as follows.
 
 ```sh
 yarn start
-yarn test:watch
+yarn test!
 yarn storybook
 ```
 
@@ -250,9 +286,9 @@ yarn test
 yarn lint
 ```
 
-To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test:watch` command is available.
+To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test!` command is available.
 
-> **Note:** We try to keep a coverage of a 100%. Run the `yarn test:watch` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
+> **Note:** We try to keep a coverage of a 100%. Run the `yarn test!` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
 
 
 ### Development with Docker

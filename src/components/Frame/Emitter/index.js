@@ -11,11 +11,14 @@ export default class Emitter {
    */
   constructor({ logger, url, options = {} }) {
     this.logger = logger
-    this.framebus = options.framebus || framebus
-    
-    if (url && this.framebus.target) {
-      this.framebus = this.framebus.target(url.replace(/\/$/, ``))
-    }
+    this.framebus = this.initFramebus({ url, options })
+  }
+
+  initFramebus({ url, options }) {
+    let fb = options.framebus || framebus
+    if (!url || !fb.target) { return fb }
+    const parsedUrl = new URL(url)
+    return fb.target(`${parsedUrl.protocol}//${parsedUrl.host}`)
   }
 
   /**
@@ -23,8 +26,6 @@ export default class Emitter {
    * passes the data to the callbacl
    */
   on(key, callback) {
-
-    // console.dir(this.target)
     this.framebus.on(key, data => {
       this.logger.log(`Page received - ${key}`, data)
       callback?.(data)
@@ -44,8 +45,14 @@ export default class Emitter {
    * Sends the options to the iframe once it's loaded.
    */
   updateOptions({ options }) {
-    let parentHost = `${document?.location?.protocol}//${document?.location?.host}`
-    this.emit(`updateOptions`, { ...options, parentHost })
+    this.emit(`updateOptions`, options)
+  }
+
+  /**
+   * Sends a message to try and submit the form
+   */
+  submitForm() {
+    this.emit(`submitForm`)
   }
 
   // PRIVATE

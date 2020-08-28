@@ -17,7 +17,7 @@ exports[`Storyshots Integration Default 1`] = `
     data-loaded={false}
     frameBorder={0}
     scrolling="no"
-    src="http://127.0.0.1:8080/"
+    src="http://127.0.0.1:8080/?parentHost=http%3A%2F%2Flocalhost"
     style={
       Object {
         "height": "100px",

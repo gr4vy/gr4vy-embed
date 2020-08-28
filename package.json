@@ -15,7 +15,7 @@
     "build:react": "babel src --ignore 'src/umd/*.js' --ignore 'src/dev.js' --out-dir react --copy-files --no-copy-ignored",
     "build:react-umd": "webpack --config webpack/react-umd.js",
     "clean": "rm -rf umd react cjs react-umd storybook-static *.tgz static coverage",
-    "dev": "concurrently 'yarn start' 'yarn storybook' 'yarn test:watch'",
+    "dev": "concurrently 'yarn start' 'yarn storybook' 'yarn test!'",
     "lint": "yarn lint:css; yarn lint:js",
     "lint:js": "yarn eslint src/**/*js tests/**/*js stories/**/*.js webpack/**/*.js .storybook/**/*.js *.js",
     "lint:css": "yarn stylelint src/**/*.scss",
@@ -25,7 +25,7 @@
     "storybook": "start-storybook -p 6007",
     "storybook:build": "build-storybook",
     "test": "jest",
-    "test:watch": "jest --watchAll --collect-coverage"
+    "test!": "jest --watchAll --collect-coverage"
   },
   "files": [
     "cjs/**/*",
@@ -62,6 +62,7 @@
     "eslint-loader": "^4.0.2",
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-react": "^7.20.3",
+    "form-napper": "^2.0.0",
     "html-webpack-plugin": "^4.3.0",
     "jest": "^26.3.0",
     "jest-css-modules": "^2.1.0",
