@@ -227,7 +227,7 @@ You could also run these commands individually as follows.
 
 ```sh
 yarn start
-yarn test:watch
+yarn test!
 yarn storybook
 ```
 
