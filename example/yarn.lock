@@ -914,12 +914,12 @@
   resolved "https://registry.yarnpkg.com/@braintree/uuid/-/uuid-0.1.0.tgz#ab9355015a7fb0e25cf3c2ff9cd32ece8ea304b0"
   integrity sha512-YvZJdlNcK5EnR+7M8AjgEAf4Qx696+FOSYlPfy5ePn80vODtVAUU0FxHnzKZC0og1VbDNQDDiwhthR65D4Na0g==
 
-"@gr4vy/embed@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@gr4vy/embed/-/embed-0.0.16.tgz#cd4ceaeae655092f7ec627cc5be6a6d704b5bdb6"
-  integrity sha512-/abJEVFALoj14XoHeTCQBI+BnsBLjXvHFwuo98zutKOEkPqNWXFuxaz6t+0pxDA2OwkMAO9+96iv+IdtTGr2Dg==
+"@gr4vy/embed@0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@gr4vy/embed/-/embed-0.0.17.tgz#21e8667a0739cd9e289eef62ddd98844c6e494f1"
+  integrity sha512-XI0Fg5wwNh8v0VFCSLHImQcBicC2f5euTDxOPXwl7lRBz6VXxXHXNCIGx9It3hw7dSsVQ4+U+z5sSv3gNq6MyQ==
   dependencies:
-    framebus "^4.0.2"
+    framebus "^5.0.0"
 
 "@types/eslint-scope@^3.7.0":
   version "3.7.0"
@@ -2438,10 +2438,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framebus@^4.0.2:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/framebus/-/framebus-4.0.5.tgz#c08fe758ad21879f23681d0029e1e86c74f2ef6c"
-  integrity sha512-fVmyLbiYUWW2HA5HL8++BR74mT9XXWEDy+vCirgcZsFVzyAMPnby8SMXo35ba3lNQk+8wwJ8etOeK9I03qsIxg==
+framebus@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/framebus/-/framebus-5.0.0.tgz#12cc44e18c3916701f49c58715ea4c219823b93c"
+  integrity sha512-UJZhlBzSg3vhcuiOoJVDlhcWHABfR8goZ7Nkc4DwVOkCoflrcnHTGfxFqPQSb48aXv5XiMTk/dEs5+fZj30QFw==
   dependencies:
     "@braintree/uuid" "^0.1.0"
 

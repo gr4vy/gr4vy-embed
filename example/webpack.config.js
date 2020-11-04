@@ -17,13 +17,6 @@ module.exports = {
     open: true,
     progress: true
   },
-  // this is only needed because we use a linked
-  // package reference to @gr4vy/embed.
-  resolve: {
-    alias: {
-      react: require.resolve(`react`)
-    }
-  },
   module: {
     rules: [
       {
