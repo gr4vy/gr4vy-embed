@@ -9,41 +9,46 @@ export const validate = (options) => (
     [`authorize`, `store`],
     [`authorize`],
     [`store`]
-  ]) && 
+  ]) &&
   isString(options, `bearerToken`) &&
-  isHost(options, `apiHost`) && 
-  isHost(options, `iframeHost`) && 
-  isNumber(options, `amount`) && 
-  isNumber(options, `timeout`) && 
-  isString(options, `currency`, { minLength: 3, maxLength: 3, optional: true }) && 
-  isType(options, `showButton`, `boolean`, { optional: true }) && 
-  isString(options, `preferResponse`, { optional: true }) && 
-  isOneOf(options, `debug`, [`debug`, `log`]) && 
-  isType(options, `onEvent`, `function`, { optional: true }) && 
+  isHost(options, `apiHost`) &&
+  isHost(options, `iframeHost`) &&
+  isNumber(options, `amount`) &&
+  isNumber(options, `timeout`) &&
+  isString(options, `currency`, { minLength: 3, maxLength: 3, optional: true }) &&
+  isType(options, `showButton`, `boolean`, { optional: true }) &&
+  isString(options, `preferResponse`, { optional: true }) &&
+  isOneOf(options, `debug`, [`debug`, `log`]) &&
+  isType(options, `onEvent`, `function`, { optional: true }) &&
   isString(options, `externalIdentifier`, { optional: true }) &&
   isRequired(options, `currency`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`))) &&
   isRequired(options, `amount`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`)))
 )
 
 /**
+ * Gets the parent frame's origin
+ */
+export const parentHost = () => {
+  return `${document?.location?.protocol}//${document?.location?.host}`
+}
+
+/**
  * Converts a iframeHost to a full URL with a scheme
  */
-export const frameUrl = ({
-  iframeHost
-}) => {
-  const url = new URL(`https://${iframeHost}`)
+export const frameUrl = (options, channel) => {
+  const url = new URL(`https://${options.iframeHost}`)
   if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
     url.protocol = `http`
   }
-  const parentHost = `${document?.location?.protocol}//${document?.location?.host}`
-  url.searchParams.set(`parentHost`, parentHost)
+  url.searchParams.set(`parentHost`, parentHost())
+  url.searchParams.set(`channel`, channel)
   return String(url)
 }
 
 // PRIVATE
 
 /**
- * Outputs a validation error to console.error and the 
+ * Outputs a validation error to console.error and the
  * onEvent handler
  */
 const error = (options, key, message) => {
@@ -67,12 +72,12 @@ const isOneOf = (options, key, array) => {
 
   const valid = value && array.includes(value)
 
-  if (!valid) { 
+  if (!valid) {
     error(options, key, `must be one of ${JSON.stringify(array)}`)
   }
   return valid
 }
- 
+
 /**
  * Validates that a field is an array and that the array matches any
  * of the provided options for the array
@@ -85,7 +90,7 @@ const isArray = (options, key, arrayOfArrays) => {
       array.every(arrayOption => value.includes(arrayOption))
   })
 
-  if (!valid) { 
+  if (!valid) {
     error(options, key, `must be one of ${JSON.stringify(arrayOfArrays)}`)
   }
   return valid
@@ -117,7 +122,7 @@ const isHost = (options, key) => {
     // ignore error specifics
   }
   const valid = !!url
-  
+
   if (!valid) {
     error(options, key, `must be a valid 'hostname' with an optional ':port'`)
   }
@@ -154,13 +159,13 @@ const isType = (options, key, type) => {
 }
 
 /**
- * Adds optional validation to a field if another field validates for the 
+ * Adds optional validation to a field if another field validates for the
  * function set out by the validator
  */
 const isRequired = (options, key, otherKey, validator) => {
   const value = options[key]
   const otherValue = options[otherKey]
-  
+
   const valid = !validator(otherValue) || !!value
 
   if (!valid) {

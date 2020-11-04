@@ -89,6 +89,7 @@
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
-    "framebus": "^5.0.0"
+    "framebus": "^5.0.0",
+    "uuid": "^8.3.1"
   }
 }

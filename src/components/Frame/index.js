@@ -1,5 +1,6 @@
 import { useState, useLayoutEffect, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { v4 as uuid } from 'uuid'
 
 import View, { defaultStyle } from './View'
 import Logger from './Logger'
@@ -26,14 +27,16 @@ const Frame = (options) => {
   // keep track of the width and height of the UI, which is updated as the
   // frame content changes
   const [style, setStyle] = useState(defaultStyle)
+  // Generate a channel ID
+  const [channel] = useState(uuid())
   // try to load the optional form
   const form = useContext(FormContext)
 
   // deterimine the URL for the frame
-  const url = frameUrl(options)
+  const url = frameUrl(options, channel)
   // initialize a logger and an emitter for cross frame comms
   const logger = new Logger({ options })
-  const emitter = new Emitter({ logger, url, options })
+  const emitter = new Emitter({ logger, url, options, channel })
 
   // wait for the UI to load and then register some events
   useLayoutEffect(() => {

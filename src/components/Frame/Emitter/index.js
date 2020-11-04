@@ -2,23 +2,28 @@ import Framebus from 'framebus'
 
 /**
  * A wrapper around the framebus library that handles
- * logging and subscriptions
+ * logging and subscr(iptions
  */
 export default class Emitter {
   /**
    * Initialize with a logger, the url of the iframe,
    * and an optional framebus instance (used in testing mostly)
    */
-  constructor({ logger, url, options = {} }) {
+  constructor({ logger, url, channel, options = {} }) {
     this.logger = logger
-    this.framebus = this.initFramebus({ url, options })
+    this.framebus = this.initFramebus({ url, options, channel })
   }
 
-  initFramebus({ url, options }) {
-    let fb = options.framebus || new Framebus()
-    if (!url || !fb.target) { return fb }
+  initFramebus({ url, options, channel }) {
+    if (options.framebus) { return options.framebus }
+
     const parsedUrl = new URL(url)
-    return fb.target({ origin: `${parsedUrl.protocol}//${parsedUrl.host}` })
+    const origin = `${parsedUrl.protocol}//${parsedUrl.host}`
+
+    return Framebus.target({
+      channel,
+      origin
+    })
   }
 
   /**
