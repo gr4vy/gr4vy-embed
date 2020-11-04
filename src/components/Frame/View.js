@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { frame, iframe, loader } from './style.module.scss'
+import css from './style.module.scss'
 import icon from './loader.svg'
 
 const defaultStyle = { width: `100%`, height: `100px` }
@@ -14,15 +14,15 @@ const View = ({
 }) => (
   <>
     { valid && (
-      <div className={frame}> 
-        <div 
-          className={loader}
+      <div className={css.frame}>
+        <div
+          className={css.loader}
           data-loaded={loaded}
         >
-          <img className={style.icon} src={icon} />
+          <img className={css.icon} src={icon} />
         </div>
-        <iframe 
-          className={iframe}
+        <iframe
+          className={css.iframe}
           data-loaded={loaded}
           src={url}
           frameBorder={0}
