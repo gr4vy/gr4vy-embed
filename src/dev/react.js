@@ -1,10 +1,9 @@
 
-import React from 'react'
 import ReactDOM from 'react-dom'
 import Gr4vy from '..'
 
 /**
- * Simple entry point for the dev server. This is loaded when 
+ * Simple entry point for the dev server. This is loaded when
  * running `yarn dev` or `yarn start`.
  */
 
@@ -22,12 +21,12 @@ document.body.appendChild(root)
 
 ReactDOM.render(
   <div>
-    <Gr4vy 
+    <Gr4vy
       flow={[`authorize`, `capture`, `store`]}
       amount={ 1299 }
       currency='USD'
-      iframeHost='localhost:8080' 
-      apiHost='localhost:3100' 
+      iframeHost='localhost:8080'
+      apiHost='localhost:3100'
       bearerToken='123456'
       showButton
       debug='debug'

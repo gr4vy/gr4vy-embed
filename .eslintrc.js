@@ -23,6 +23,8 @@ module.exports = {
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "quotes": ["error", "backtick"],
     "semi": ["error", "never"]
   },

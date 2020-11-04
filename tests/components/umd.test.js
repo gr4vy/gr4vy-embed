@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { setup } from '../../src/umd'
@@ -37,7 +36,7 @@ describe(`setup`, () => {
 
   test(`should render a Gr4vy form`, () => {
     setup({
-      element: `.query`, 
+      element: `.query`,
       options: validOptions
     })
     expect(global.document.querySelector).toHaveBeenCalledWith(`.query`)
@@ -46,7 +45,7 @@ describe(`setup`, () => {
 
   test(`should render a Gr4vy form with a form provider`, () => {
     setup({
-      element: `.query`, 
+      element: `.query`,
       form: `.form`,
       options: validOptions
     })
@@ -59,7 +58,7 @@ describe(`setup`, () => {
   test(`should not render a Gr4vy form if the ID could not be found`, () => {
     global.document.querySelector = jest.fn()
     setup({
-      element: `.query`, 
+      element: `.query`,
       options: validOptions
     })
     expect(global.document.querySelector).toHaveBeenCalledWith(`.query`)
@@ -82,7 +81,7 @@ describe(`setup`, () => {
       else { return null }
     })
     setup({
-      element: `.query`, 
+      element: `.query`,
       form: `.form`,
       options: validOptions
     })

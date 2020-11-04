@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useContext, useEffect } from 'react'
+import { useState, useLayoutEffect, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import View, { defaultStyle } from './View'
@@ -10,7 +10,7 @@ import { FormContext } from '../../contexts/FormContext'
 
 /**
  * Loads the embedded Gr4vy UI through an iFrame.
- * 
+ *
  * Starts by showing a loader, and then sends a message to the
  * embedded frame to initialize it. Once it receives the loaded message
  * it resizes the iframe and shows it to the user.
@@ -23,7 +23,7 @@ const Frame = (options) => {
   const [loaded, setLoaded] = useState(false)
   // tracks if the form has timed out
   const [timedOut, setTimedOut] = useState(false)
-  // keep track of the width and height of the UI, which is updated as the 
+  // keep track of the width and height of the UI, which is updated as the
   // frame content changes
   const [style, setStyle] = useState(defaultStyle)
   // try to load the optional form
@@ -73,16 +73,16 @@ const Frame = (options) => {
     options.onEvent(`timeoutError`, { "message": `Embedded form timed out` })
   }, [loaded, timedOut])
 
-  return <View 
-    url={url} 
-    loaded={loaded} 
+  return <View
+    url={url}
+    loaded={loaded}
     valid={valid}
-    style={style} 
+    style={style}
   />
 }
 
 Frame.propTypes = {
-  // determines what API calls to make 
+  // determines what API calls to make
   flow: PropTypes.arrayOf(PropTypes.string).isRequired,
   // the JWT access token used to authenticate the API
   bearerToken: PropTypes.string.isRequired,
@@ -99,7 +99,7 @@ Frame.propTypes = {
   currency: PropTypes.string,
   // wether to show a submit button in the embedded frame
   showButton: PropTypes.bool,
-  // a development option that allows sending a `Prefer` header to force a 
+  // a development option that allows sending a `Prefer` header to force a
   // certain API response from dev servers
   preferResponse: PropTypes.string,
   // wether to output any debug messages. Must be set to `log` or `debug`.

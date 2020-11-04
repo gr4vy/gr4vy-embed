@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 import PropTypes from 'prop-types'
 import FormNapper from 'form-napper'
 
@@ -17,7 +17,7 @@ const FormProvider = ({
     <FormContext.Provider value={form}>
       { children }
     </FormContext.Provider>
-  )  
+  )
 }
 
 FormProvider.propTypes = {

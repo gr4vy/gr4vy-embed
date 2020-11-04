@@ -1,5 +1,4 @@
 
-import React from 'react'
 import { withKnobs, boolean, text, select, optionsKnob, number } from "@storybook/addon-knobs"
 
 import Frame from '../src'
@@ -34,21 +33,21 @@ const debugOptions = {
 const currencyOptions = [`USD`, `GBP`, `EUR`]
 
 export const Default = () => (
-  <Frame 
+  <Frame
     flow={select(`Flow`, flowOptions, [`authorize`, `capture`, `store`], `Public`)}
     amount={number(`Amount`, 1299, {}, `Public`)}
     currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
     apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}
     bearerToken={text(`JWT token`, `1234567`, `Public`)}
-    showButton={boolean(`Enable submit button`, true, `Public`)} 
+    showButton={boolean(`Enable submit button`, true, `Public`)}
     debug={optionsKnob(`Enable debugging`, debugOptions, `log`, { display: `inline-radio` }, `Development`)}
     preferResponse={select(`Prefered server response`, responseOptions, ``, `Development`)}
   />
 )
 
 export const Loading = () => (
-  <View 
+  <View
     url='http://localhost:8080'
     valid
     style={defaultStyle}

@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 
 import css from './style.module.scss'
@@ -19,7 +18,7 @@ const View = ({
           className={css.loader}
           data-loaded={loaded}
         >
-          <img className={css.icon} src={icon} />
+          <img className={style.icon} src={icon} />
         </div>
         <iframe
           className={css.iframe}

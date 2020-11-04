@@ -1,4 +1,3 @@
-import React from 'react'
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import FormNapper from 'form-napper'
@@ -18,11 +17,11 @@ const options = {
 
 class MockBus {
   constructor() { this.listeners = [] }
-  on(key, callback) { 
+  on(key, callback) {
     this.listeners[key] = this.listeners[key] || []
     this.listeners[key].push(callback)
   }
-  emit(key, data) { 
+  emit(key, data) {
     this.listeners[key]?.map(callback => callback(data))
   }
 }
@@ -55,7 +54,7 @@ describe(`Controller`, () => {
     // create a mock frame bus and listen to updateOptions
     const callback = jest.fn()
     options.framebus = framebus
-    options.framebus.on(`updateOptions`, callback) 
+    options.framebus.on(`updateOptions`, callback)
 
     // mount the frame and pretend the iframe send a frameReady event
     mount(<Frame {...options} />)
@@ -109,10 +108,10 @@ describe(`Controller`, () => {
 
     // mount the frame and pretend the iframe sends events
     const component = mount(<Frame {...options} />)
-    act(() => { 
-      framebus.emit(`formUpdate`, {}) 
-      framebus.emit(`resourceCreated`, {}) 
-      framebus.emit(`apiError`, {}) 
+    act(() => {
+      framebus.emit(`formUpdate`, {})
+      framebus.emit(`resourceCreated`, {})
+      framebus.emit(`apiError`, {})
     })
     component.update()
 
@@ -137,12 +136,12 @@ describe(`Controller`, () => {
         <Frame {...options} />
       </FormProvider>
     )
-    
-    act(() => { 
+
+    act(() => {
       framebus.emit(`resourceCreated`, { data: {
         resource_type: `card`,
         resource_id: `id`
-      }}) 
+      }})
     })
     component.update()
 

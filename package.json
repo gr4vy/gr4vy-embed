@@ -34,8 +34,8 @@
     "docs/**/*"
   ],
   "peerDependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
@@ -63,7 +63,7 @@
     "eslint-plugin-jest": "^24.1.0",
     "eslint-plugin-react": "^7.20.3",
     "form-napper": "^2.0.0",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^5.0.0-alpha.10",
     "jest": "^26.3.0",
     "jest-css-modules": "^2.1.0",
     "nock": "^13.0.3",
