@@ -27,16 +27,14 @@ const Frame = (options) => {
   // keep track of the width and height of the UI, which is updated as the
   // frame content changes
   const [style, setStyle] = useState(defaultStyle)
-  // Generate a channel ID
-  const [channel] = useState(uuid())
   // try to load the optional form
   const form = useContext(FormContext)
 
   // deterimine the URL for the frame
-  const url = frameUrl(options, channel)
+  const url = frameUrl(options)
   // initialize a logger and an emitter for cross frame comms
   const logger = new Logger({ options })
-  const emitter = new Emitter({ logger, url, options, channel })
+  const emitter = new Emitter({ logger, url, options })
 
   // wait for the UI to load and then register some events
   useLayoutEffect(() => {
@@ -121,7 +119,9 @@ Frame.defaultProps = {
   // defaults to hidding the button
   showButton: false,
   // the default timeout to wait for the embedded form is 10 seconds
-  timeout: 10000
+  timeout: 10000,
+  // channel UI
+  channel: uuid()
 }
 
 export default Frame

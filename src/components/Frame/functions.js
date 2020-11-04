@@ -35,13 +35,13 @@ export const parentHost = () => {
 /**
  * Converts a iframeHost to a full URL with a scheme
  */
-export const frameUrl = (options, channel) => {
+export const frameUrl = (options) => {
   const url = new URL(`https://${options.iframeHost}`)
   if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
     url.protocol = `http`
   }
   url.searchParams.set(`parentHost`, parentHost())
-  url.searchParams.set(`channel`, channel)
+  url.searchParams.set(`channel`, options.channel)
   return String(url)
 }
 

@@ -108,7 +108,7 @@ describe(`validate`, () => {
     const options = {
       ...validOptions,
       apiHost: `127.0.0.1:8000`,
-    }    
+    }
     expect(validate(options)).toBeTruthy()
   })
 
@@ -196,20 +196,23 @@ describe(`validate`, () => {
 
 describe(`frameUrl`, () => {
   test(`should return a full URL for a hostname`, () => {
-    expect(frameUrl({ 
-      iframeHost: `cdn.apple.app.gr4vy.com`
-    })).toEqual(`https://cdn.apple.app.gr4vy.com/?parentHost=http%3A%2F%2Flocalhost`)
+    expect(frameUrl({
+      iframeHost: `cdn.apple.app.gr4vy.com`,
+      channel: `mychannel`
+    })).toEqual(`https://cdn.apple.app.gr4vy.com/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
   })
 
   test(`should return an insecure URL for localhost`, () => {
-    expect(frameUrl({ 
-      iframeHost: `localhost:8000`
-    })).toEqual(`http://localhost:8000/?parentHost=http%3A%2F%2Flocalhost`)
+    expect(frameUrl({
+      iframeHost: `localhost:8000`,
+      channel: `mychannel`
+    })).toEqual(`http://localhost:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
   })
 
   test(`should return an insecure URL for 127.0.0.1`, () => {
-    expect(frameUrl({ 
-      iframeHost: `127.0.0.1:8000`
-    })).toEqual(`http://127.0.0.1:8000/?parentHost=http%3A%2F%2Flocalhost`)
+    expect(frameUrl({
+      iframeHost: `127.0.0.1:8000`,
+      channel: `mychannel`
+    })).toEqual(`http://127.0.0.1:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
   })
 })

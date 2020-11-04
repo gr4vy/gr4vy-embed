@@ -12,7 +12,8 @@ const options = {
   flow: [`store`],
   iframeHost: `localhost:8080`,
   apiHost: `localhost:3100`,
-  bearerToken: `123456`
+  bearerToken: `123456`,
+  channel: `mychannel`
 }
 
 class MockBus {
@@ -38,7 +39,7 @@ describe(`Controller`, () => {
       loaded: false,
       valid: true,
       style: defaultStyle,
-      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
     })
   })
 
@@ -78,7 +79,7 @@ describe(`Controller`, () => {
       loaded: true,
       valid: true,
       style: defaultStyle,
-      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
     })
   })
 
@@ -97,7 +98,7 @@ describe(`Controller`, () => {
       loaded: false,
       valid: true,
       style: { ...defaultStyle, height: `123px` },
-      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost`
+      url: `http://localhost:8080/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
     })
   })
 

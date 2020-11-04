@@ -43,6 +43,7 @@ export const Default = () => (
     showButton={boolean(`Enable submit button`, true, `Public`)}
     debug={optionsKnob(`Enable debugging`, debugOptions, `log`, { display: `inline-radio` }, `Development`)}
     preferResponse={select(`Prefered server response`, responseOptions, ``, `Development`)}
+    channel='mychannel'
   />
 )
 

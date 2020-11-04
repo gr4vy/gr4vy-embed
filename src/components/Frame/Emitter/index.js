@@ -14,14 +14,14 @@ export default class Emitter {
     this.framebus = this.initFramebus({ url, options, channel })
   }
 
-  initFramebus({ url, options, channel }) {
+  initFramebus({ url, options }) {
     if (options.framebus) { return options.framebus }
 
     const parsedUrl = new URL(url)
     const origin = `${parsedUrl.protocol}//${parsedUrl.host}`
 
     return Framebus.target({
-      channel,
+      channel: options.channel,
       origin
     })
   }
