@@ -26,11 +26,11 @@ module.exports = {
             }
           },
           { loader: `postcss-loader` },
-          { 
+          {
             loader: `sass-loader`,
             options: {
               sourceMap: true,
-            }, 
+            },
           },
         ]
       },
@@ -55,6 +55,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new StylelintPlugin()
+    new StylelintPlugin({
+      files: `src/**/*.scss`
+    })
   ]
 }

@@ -1,4 +1,4 @@
-import framebus from 'framebus'
+import Framebus from 'framebus'
 
 /**
  * A wrapper around the framebus library that handles
@@ -6,7 +6,7 @@ import framebus from 'framebus'
  */
 export default class Emitter {
   /**
-   * Initialize with a logger, the url of the iframe, 
+   * Initialize with a logger, the url of the iframe,
    * and an optional framebus instance (used in testing mostly)
    */
   constructor({ logger, url, options = {} }) {
@@ -15,14 +15,14 @@ export default class Emitter {
   }
 
   initFramebus({ url, options }) {
-    let fb = options.framebus || framebus
+    let fb = options.framebus || new Framebus()
     if (!url || !fb.target) { return fb }
     const parsedUrl = new URL(url)
-    return fb.target(`${parsedUrl.protocol}//${parsedUrl.host}`)
+    return fb.target({ origin: `${parsedUrl.protocol}//${parsedUrl.host}` })
   }
 
   /**
-   * Listens for a framebus event, then logs any message it receives and 
+   * Listens for a framebus event, then logs any message it receives and
    * passes the data to the callbacl
    */
   on(key, callback) {

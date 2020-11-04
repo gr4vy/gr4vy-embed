@@ -6154,10 +6154,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framebus@^4.0.2:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/framebus/-/framebus-4.0.5.tgz#c08fe758ad21879f23681d0029e1e86c74f2ef6c"
-  integrity sha512-fVmyLbiYUWW2HA5HL8++BR74mT9XXWEDy+vCirgcZsFVzyAMPnby8SMXo35ba3lNQk+8wwJ8etOeK9I03qsIxg==
+framebus@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/framebus/-/framebus-5.0.0.tgz#12cc44e18c3916701f49c58715ea4c219823b93c"
+  integrity sha512-UJZhlBzSg3vhcuiOoJVDlhcWHABfR8goZ7Nkc4DwVOkCoflrcnHTGfxFqPQSb48aXv5XiMTk/dEs5+fZj30QFw==
   dependencies:
     "@braintree/uuid" "^0.1.0"
 

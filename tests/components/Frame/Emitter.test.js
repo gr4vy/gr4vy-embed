@@ -1,4 +1,4 @@
-import fb from 'framebus'
+import Framebus from 'framebus'
 
 import Emitter from '../../../src/components/Frame/Emitter'
 import { act } from 'react-dom/test-utils'
@@ -10,6 +10,7 @@ class MockBus {
 
 describe(`Emitter`, () => {
   let framebus = null
+  let fb = fb = new Framebus()
 
   beforeEach(() => {
     framebus = new MockBus()
@@ -20,7 +21,7 @@ describe(`Emitter`, () => {
     const url = `http://localhost:8080/`
     const emitter = new Emitter({ logger, url })
     expect(emitter.logger).toBe(logger)
-    expect(emitter.framebus).toEqual(fb.target(`http://localhost:8080`))
+    expect(emitter.framebus).toEqual(fb.target({ origin: `http://localhost:8080` }))
   })
 
   test(`should take an optional framebus`, () => {
@@ -39,13 +40,13 @@ describe(`Emitter`, () => {
       const emitter = new Emitter({ logger, url, options })
 
       const data = jest.mock()
-      const callback = jest.fn() 
+      const callback = jest.fn()
       emitter.on(`resize`, callback)
 
       act(() => {
         framebus.emit(`resize`, data)
       })
-      
+
       expect(callback).toHaveBeenCalledWith(data)
       expect(logger.log).toHaveBeenCalledWith(`Page received - resize`, data)
     })
@@ -73,13 +74,13 @@ describe(`Emitter`, () => {
       const emitter = new Emitter({ logger, url, options })
 
       const data = jest.mock()
-      const callback = jest.fn() 
+      const callback = jest.fn()
       emitter.subscribe(`resize`, callback)
 
       act(() => {
         framebus.emit(`resize`, data)
       })
-      
+
       expect(callback).toHaveBeenCalledWith(`resize`, data)
       expect(logger.log).toHaveBeenCalledWith(`Page received - resize`, data)
     })
