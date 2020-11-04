@@ -9,6 +9,7 @@ exports[`Storyshots Integration Default 1`] = `
     data-loaded={false}
   >
     <img
+      className="icon"
       src="test-file-stub"
     />
   </div>
@@ -38,6 +39,7 @@ exports[`Storyshots Integration Loading 1`] = `
     data-loaded={false}
   >
     <img
+      className="icon"
       src="test-file-stub"
     />
   </div>
