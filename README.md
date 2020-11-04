@@ -4,7 +4,7 @@
 ![License](https://img.shields.io/npm/l/@gr4vy/embed?style=for-the-badge)
 ![Bundled Size](https://img.shields.io/static/v1?label=bundled%20size&message=8kb&color=blue&style=for-the-badge)
 
-Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction. 
+Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.
 
 ![Card Form](docs/images/card_form.png)
 
@@ -60,7 +60,7 @@ the form to attach any new values to.
 </script>
 ```
 
-When the form is submitted, the embedded Gr4vy form will submit the payment details and 
+When the form is submitted, the embedded Gr4vy form will submit the payment details and
 insert two new hidden input fields in the form. Your application can use these details
 on the server to query for more information about the status of it.
 
@@ -74,7 +74,7 @@ on the server to query for more information about the status of it.
 If you are using Node you can import Gr4vy rather than using a script tag.
 
 ```js
-const gr4vy = require(`@gr4vy/embed/cjs`) 
+const gr4vy = require(`@gr4vy/embed/cjs`)
 // or using CSS modules
 import gr4vy from (`@gr4vy/embed/cjs`)
 
@@ -83,7 +83,7 @@ gr4vy.setup({...})
 
 ### React
 
-This project also comes with 2 integrations for React. Both versions do not come with `react` or 
+This project also comes with 2 integrations for React. Both versions do not come with `react` or
 `react-dom` bundled, but the UMD version comes with all the assets bundled into one JS file.
 
 ```js
@@ -105,7 +105,7 @@ import ReactDOM from 'react-dom'
 import Gr4vy from '@gr4vy/embed'
 
 ReactDOM.render(
-  <Gr4vy 
+  <Gr4vy
     flow={['authorize', 'capture', 'store']}
     amount={1299}
     currency={'USD'}
@@ -122,7 +122,7 @@ ReactDOM.render(
 ### Element & Form
 
 When using the CDN/Node version of this library it needs to be provided
-two HTML elements to attach itself to. The values for these elements are 
+two HTML elements to attach itself to. The values for these elements are
 a query string that can be parsed by `document.querySelector`. For example,
 `<div class="container" />` would be represented as `.container`, while
 `<form id="cardform">` would be represented by `#cardform`.
@@ -185,8 +185,8 @@ Returned when the initial input (`element`, `options`) are incorrectly formatted
 Returned when the form updates.
 
 ```json
-{ 
-  "valid": false 
+{
+  "valid": false
 }
 ```
 
@@ -210,8 +210,8 @@ to query the resource server-side, to check on the status of the object.
 Returned when the embedded form could not be loaded within the set timeout.
 
 ```json
-{ 
-  "message": "Embedded form timed out" 
+{
+  "message": "Embedded form timed out"
 }
 ```
 
@@ -255,7 +255,7 @@ git clone git@github.com:gr4vy/embed.git
 cd embed
 # npm i -g yarn
 yarn install
-``` 
+```
 
 ### Development Server & Storybook
 
@@ -279,7 +279,7 @@ yarn storybook
 
 ### Local testing and linting
 
-Tests and linting are provided by a mix of `jest`, `storybook` and `eslint`. Storybook is used to check if the UI has changes since it last recorded a snapshot. 
+Tests and linting are provided by a mix of `jest`, `storybook` and `eslint`. Storybook is used to check if the UI has changes since it last recorded a snapshot.
 
 ```sh
 yarn test
@@ -291,18 +291,9 @@ To update snapshots (after you've validated that the changes are desirable) you 
 > **Note:** We try to keep a coverage of a 100%. Run the `yarn test!` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
 
 
-### Development with Docker
-
-Alternatively, you can use Docker to run the local dev server without the need to install Node, Yarn, and any of the other
-dependencies.
-
-```sh
-docker-compose up
-```
-
 ### CI/CD & Publishing
 
-We use GitHub Actions to automatically test and lint our code, as well as control the publishing of new versions 
+We use GitHub Actions to automatically test and lint our code, as well as control the publishing of new versions
 of the package.
 
 To publish a new version, simply run:
@@ -311,7 +302,7 @@ To publish a new version, simply run:
 yarn release
 ```
 
-This command will ask for a new version number, update the `package.json`, and then push a new tag for 
+This command will ask for a new version number, update the `package.json`, and then push a new tag for
 that version. GitHub Actions then picks up the new tag and publishes it as a new package to GitHub's
 pacakage registry.
 
@@ -327,7 +318,7 @@ This projects folder structure is as follows.
 - src/
   - index.js # The React entry point for this library
   - dev.js # The entry point for the dev server
-  - components/ 
+  - components/
     - Frame/ # All the UI for the wrapper that loads the iFrame
       - index.js # The controler for the Frame, this controls behaviour and not what is displayed
       - View.js # The view for the Frame, this controls what is displayed, and not the behaviour

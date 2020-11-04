@@ -1,9 +1,0 @@
-node_modules/
-/umd
-/react
-/react-umd
-/cjs
-yarn-error.log
-storybook-static
-*.tgz
-coverage
