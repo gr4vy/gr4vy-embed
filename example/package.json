@@ -7,7 +7,7 @@
     "start": "webpack serve --config webpack.config.js"
   },
   "dependencies": {
-    "@gr4vy/embed": "0.0.17",
+    "@gr4vy/embed": "^0.0.19",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
