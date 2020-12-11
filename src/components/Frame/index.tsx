@@ -12,15 +12,15 @@ export type FrameProps = {
     The amount of a given currency to charge, must be used when authorize
     or capture have been set for the flow option
   */
-  amount?: number
+  amount: number
   /* 
       the currency to charge the amount in, must be used when authorize
       or capture have been set for the flow option
     */
-  currency?: string
-  iframeHost?: string // the hostname and port of the server that hosts the embedded UI
-  apiHost?: string // the hostname and port of the API server to use
-  bearerToken?: string // the JWT access token used to authenticate the API
+  currency: string
+  iframeHost: string // the hostname and port of the server that hosts the embedded UI
+  apiHost: string // the hostname and port of the API server to use
+  bearerToken: string // the JWT access token used to authenticate the API
   showButton?: boolean // wether to show a submit button in the embedded frame
   debug?: string // wether to output any debug messages. Must be set to `log` or `debug`.
   onEvent?: (name: string, event: { message: string }) => void // a callback function that's used to subscribe to events
