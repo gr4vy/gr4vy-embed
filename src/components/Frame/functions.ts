@@ -1,29 +1,41 @@
-
 /**
  * Validates the presence of all the required fields
  */
-export const validate = (options) => (
+export const validate = (options) =>
   isArray(options, `flow`, [
     [`authorize`, `capture`, `store`],
     [`authorize`, `capture`],
     [`authorize`, `store`],
     [`authorize`],
-    [`store`]
+    [`store`],
   ]) &&
   isString(options, `bearerToken`) &&
   isHost(options, `apiHost`) &&
   isHost(options, `iframeHost`) &&
   isNumber(options, `amount`) &&
   isNumber(options, `timeout`) &&
-  isString(options, `currency`, { minLength: 3, maxLength: 3, optional: true }) &&
-  isType(options, `showButton`, `boolean`, { optional: true }) &&
+  isString(options, `currency`, {
+    minLength: 3,
+    maxLength: 3,
+    optional: true,
+  }) &&
+  isType(options, `showButton`, `boolean`) &&
   isString(options, `preferResponse`, { optional: true }) &&
   isOneOf(options, `debug`, [`debug`, `log`]) &&
-  isType(options, `onEvent`, `function`, { optional: true }) &&
+  isType(options, `onEvent`, `function`) &&
   isString(options, `externalIdentifier`, { optional: true }) &&
-  isRequired(options, `currency`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`))) &&
-  isRequired(options, `amount`, `flow`, flow => (flow.includes(`authorize`) || flow.includes(`capture`)))
-)
+  isRequired(
+    options,
+    `currency`,
+    `flow`,
+    (flow) => flow.includes(`authorize`) || flow.includes(`capture`)
+  ) &&
+  isRequired(
+    options,
+    `amount`,
+    `flow`,
+    (flow) => flow.includes(`authorize`) || flow.includes(`capture`)
+  )
 
 /**
  * Gets the parent frame's origin
@@ -55,7 +67,7 @@ const error = (options, key, message) => {
   const error = {
     code: `argumentError`,
     argument: `options.${key}`,
-    message: message
+    message: message,
   }
 
   console.error(`Gr4vy - Error`, error)
@@ -68,7 +80,9 @@ const error = (options, key, message) => {
  */
 const isOneOf = (options, key, array) => {
   const value = options[key]
-  if ([undefined, null, ``].includes(value)) { return true }
+  if ([undefined, null, ``].includes(value)) {
+    return true
+  }
 
   const valid = value && array.includes(value)
 
@@ -85,10 +99,15 @@ const isOneOf = (options, key, array) => {
 const isArray = (options, key, arrayOfArrays) => {
   const value = options[key]
 
-  const valid = value && value?.[0] && arrayOfArrays.some(array => {
-    return array.length === value.length &&
-      array.every(arrayOption => value.includes(arrayOption))
-  })
+  const valid =
+    value &&
+    value?.[0] &&
+    arrayOfArrays.some((array) => {
+      return (
+        array.length === value.length &&
+        array.every((arrayOption) => value.includes(arrayOption))
+      )
+    })
 
   if (!valid) {
     error(options, key, `must be one of ${JSON.stringify(arrayOfArrays)}`)
@@ -99,11 +118,20 @@ const isArray = (options, key, arrayOfArrays) => {
 /**
  * Validates that a value is a non empty string
  */
-const isString = (options, key, { minLength = 1, maxLength = Infinity, optional = false } = {}) => {
+const isString = (
+  options,
+  key,
+  { minLength = 1, maxLength = Infinity, optional = false } = {}
+) => {
   const value = options[key]
-  if (optional && [undefined, null, ``].includes(value)) { return true }
+  if (optional && [undefined, null, ``].includes(value)) {
+    return true
+  }
 
-  const valid = (typeof value === `string`) && value.length >= minLength && value.length <= maxLength
+  const valid =
+    typeof value === `string` &&
+    value.length >= minLength &&
+    value.length <= maxLength
   if (!valid) {
     error(options, key, `must be a valid, non-empty string`)
   }
@@ -134,7 +162,9 @@ const isHost = (options, key) => {
  */
 const isNumber = (options, key) => {
   const value = options[key]
-  if ([undefined, null, ``].includes(value)) { return true }
+  if ([undefined, null, ``].includes(value)) {
+    return true
+  }
 
   const valid = !!value && !!Number(value)
   if (!valid) {
@@ -148,7 +178,9 @@ const isNumber = (options, key) => {
  */
 const isType = (options, key, type) => {
   const value = options[key]
-  if ([undefined, null, ``].includes(value)) { return true }
+  if ([undefined, null, ``].includes(value)) {
+    return true
+  }
 
   const valid = typeof value === type
 
@@ -169,7 +201,11 @@ const isRequired = (options, key, otherKey, validator) => {
   const valid = !validator(otherValue) || !!value
 
   if (!valid) {
-    error(options, key, `most be set when ${otherKey} is set to the current value`)
+    error(
+      options,
+      key,
+      `most be set when ${otherKey} is set to the current value`
+    )
   }
 
   return valid

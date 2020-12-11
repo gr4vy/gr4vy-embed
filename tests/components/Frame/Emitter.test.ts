@@ -1,31 +1,39 @@
 import Framebus from 'framebus'
-
-import Emitter from '../../../src/components/Frame/Emitter'
 import { act } from 'react-dom/test-utils'
+import Emitter from '../../../src/components/Frame/Emitter'
 class MockBus {
-  constructor() { this.listeners = [] }
-  on(key, callback) { this.listeners[key] = callback }
-  emit(key, data) { this.listeners[key]?.(data) }
+  listeners
+  constructor() {
+    this.listeners = []
+  }
+  on(key, callback) {
+    this.listeners[key] = callback
+  }
+  emit(key, data) {
+    this.listeners[key]?.(data)
+  }
 }
 
 describe(`Emitter`, () => {
   let framebus = null
-  let fb = fb = new Framebus()
+  const fb = new Framebus()
 
   beforeEach(() => {
     framebus = new MockBus()
   })
 
   test(`should take a logger and url`, () => {
-    const logger = jest.mock()
+    const logger = {}
     const url = `http://localhost:8080/`
     const emitter = new Emitter({ logger, url })
     expect(emitter.logger).toBe(logger)
-    expect(emitter.framebus).toEqual(fb.target({ origin: `http://localhost:8080` }))
+    expect(emitter.framebus).toEqual(
+      fb.target({ origin: `http://localhost:8080` })
+    )
   })
 
   test(`should take an optional framebus`, () => {
-    const logger = jest.mock()
+    const logger = {}
     const url = `http://localhost:8080/`
     const options = { framebus }
     const emitter = new Emitter({ logger, url, options })
@@ -39,7 +47,7 @@ describe(`Emitter`, () => {
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
-      const data = jest.mock()
+      const data = {}
       const callback = jest.fn()
       emitter.on(`resize`, callback)
 
@@ -57,7 +65,7 @@ describe(`Emitter`, () => {
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
-      const data = jest.mock()
+      const data = {}
       emitter.on(`resize`)
 
       act(() => {
@@ -73,7 +81,7 @@ describe(`Emitter`, () => {
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
-      const data = jest.mock()
+      const data = {}
       const callback = jest.fn()
       emitter.subscribe(`resize`, callback)
 
@@ -91,7 +99,7 @@ describe(`Emitter`, () => {
       const options = { framebus }
       const emitter = new Emitter({ logger, url, options })
 
-      const data = jest.mock()
+      const data = {}
       emitter.subscribe(`resize`)
 
       act(() => {
@@ -112,7 +120,9 @@ describe(`Emitter`, () => {
 
       emitter.updateOptions({ options: { foo: `bar` } })
       expect(callback).toBeCalledWith({ foo: `bar` })
-      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, { foo: `bar` })
+      expect(logger.log).toHaveBeenCalledWith(`Page emits - updateOptions`, {
+        foo: `bar`,
+      })
     })
   })
 
@@ -128,7 +138,10 @@ describe(`Emitter`, () => {
 
       emitter.submitForm()
       expect(callback).toHaveBeenCalled()
-      expect(logger.log).toHaveBeenCalledWith(`Page emits - submitForm`, undefined)
+      expect(logger.log).toHaveBeenCalledWith(
+        `Page emits - submitForm`,
+        undefined
+      )
     })
   })
 })

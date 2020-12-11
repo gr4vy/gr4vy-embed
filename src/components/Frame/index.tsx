@@ -1,13 +1,38 @@
 import { useState, useLayoutEffect, useContext, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { v4 as uuid } from 'uuid'
-
-import View, { defaultStyle } from './View'
-import Logger from './Logger'
-import Emitter from './Emitter'
-
-import { frameUrl, validate } from './functions'
 import { FormContext } from '../../contexts/FormContext'
+import Emitter from './Emitter'
+import Logger from './Logger'
+import View, { defaultStyle } from './View'
+import { frameUrl, validate } from './functions'
+
+export type FrameProps = {
+  flow: Array<string> // determines what API calls to make
+  /* 
+    The amount of a given currency to charge, must be used when authorize
+    or capture have been set for the flow option
+  */
+  amount: number
+  /* 
+      the currency to charge the amount in, must be used when authorize
+      or capture have been set for the flow option
+    */
+  currency: string
+  iframeHost: string // the hostname and port of the server that hosts the embedded UI
+  apiHost: string // the hostname and port of the API server to use
+  bearerToken: string // the JWT access token used to authenticate the API
+  showButton?: boolean // wether to show a submit button in the embedded frame
+  debug?: string // wether to output any debug messages. Must be set to `log` or `debug`.
+  onEvent?: (name: string, event: { message: string }) => void // a callback function that's used to subscribe to events
+  externalIdentifier?: string // an optional external identifier
+  timeout?: number // the timeout we wait for the embedded form to load before we thow an `error` event
+  /* 
+    a development option that allows sending a `Prefer` header to force a
+    certain API response from dev servers
+  */
+  preferResponse?: string
+  channel?: string
+}
 
 /**
  * Loads the embedded Gr4vy UI through an iFrame.
@@ -16,7 +41,15 @@ import { FormContext } from '../../contexts/FormContext'
  * embedded frame to initialize it. Once it receives the loaded message
  * it resizes the iframe and shows it to the user.
  */
-const Frame = (options) => {
+const Frame = (props: FrameProps) => {
+  const options = {
+    onEvent: () => {},
+    timeout: 10000,
+    flow: [`authorize`, `capture`, `store`],
+    showButton: false,
+    channel: uuid(),
+    ...props,
+  }
   // validate that all required options are present, in the right format,
   // type, etc
   const valid = validate(options)
@@ -44,7 +77,9 @@ const Frame = (options) => {
     // wait for a formLoaded message and then set the form to have loaded
     emitter.on(`formLoaded`, () => setLoaded(true))
     // listen for resize events and resize the iframe to match the size of the content
-    emitter.on(`resize`, ({ frame: { height }}) => setStyle({...style, height }))
+    emitter.on(`resize`, ({ frame: { height } }) =>
+      setStyle({ ...style, height })
+    )
 
     if (form) {
       // listen to a hijacked form and use it to trigger a form submission
@@ -65,63 +100,20 @@ const Frame = (options) => {
     emitter.subscribe(`apiError`, options.onEvent)
 
     // set a timeout to check for changes
-    setTimeout(() => { setTimedOut(true)  }, options.timeout)
+    setTimeout(() => {
+      setTimedOut(true)
+    }, options.timeout)
   }, [])
 
   // When we reach the timeout, check if the form is loaded and if not throw an error.
   useEffect(() => {
-    if (loaded || !timedOut){ return }
-    options.onEvent(`timeoutError`, { "message": `Embedded form timed out` })
+    if (loaded || !timedOut) {
+      return
+    }
+    options.onEvent(`timeoutError`, { message: `Embedded form timed out` })
   }, [loaded, timedOut])
 
-  return <View
-    url={url}
-    loaded={loaded}
-    valid={valid}
-    style={style}
-  />
-}
-
-Frame.propTypes = {
-  // determines what API calls to make
-  flow: PropTypes.arrayOf(PropTypes.string).isRequired,
-  // the JWT access token used to authenticate the API
-  bearerToken: PropTypes.string.isRequired,
-  // the hostname and port of the API server to use
-  apiHost: PropTypes.string.isRequired,
-  // the hostname and port of the server that hosts the embedded UI
-  iframeHost: PropTypes.string.isRequired,
-
-  // the amount of a given currency to charge, must be used when authorize
-  // or capture have been set for the flow option
-  amount: PropTypes.number,
-  // the currency to charge the amount in, must be used when authorize
-  // or capture have been set for the flow option
-  currency: PropTypes.string,
-  // wether to show a submit button in the embedded frame
-  showButton: PropTypes.bool,
-  // a development option that allows sending a `Prefer` header to force a
-  // certain API response from dev servers
-  preferResponse: PropTypes.string,
-  // wether to output any debug messages. Must be set to `log` or `debug`.
-  debug: PropTypes.string,
-  // a callback function that's used to subscribe to events
-  onEvent: PropTypes.func,
-  // the timeout we wait for the embedded form to load before we thow an `error` event
-  timeout: PropTypes.number.isRequired,
-  // an optional external identifier
-  externalIdentifier: PropTypes.string
-}
-
-Frame.defaultProps = {
-  // defaults to all flow features
-  flow: [`authorize`, `capture`, `store`],
-  // defaults to hidding the button
-  showButton: false,
-  // the default timeout to wait for the embedded form is 10 seconds
-  timeout: 10000,
-  // channel UI
-  channel: uuid()
+  return <View url={url} loaded={loaded} valid={valid} style={style} />
 }
 
 export default Frame
