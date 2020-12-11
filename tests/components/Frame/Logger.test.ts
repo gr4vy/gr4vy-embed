@@ -21,13 +21,12 @@ describe(`Emitter`, () => {
       const options = {}
       const logger = new Logger({ options })
 
-      logger.log(`key`, jest.mock())
+      logger.log(`key`, {})
 
       expect(console.log).not.toHaveBeenCalled()
       expect(console.debug).not.toHaveBeenCalled()
-
-      console.log.mockRestore()
-      console.debug.mockRestore()
+      ;(console.log as jest.Mock).mockRestore()
+      ;(console.debug as jest.Mock).mockRestore()
     })
 
     test(`should output to console.log for a debug level of log`, () => {
@@ -39,9 +38,11 @@ describe(`Emitter`, () => {
       const data = { foo: `bar` }
       logger.log(`key`, data)
 
-      expect(console.log).toHaveBeenCalledWith(`Gr4vy - key`, JSON.stringify(data, null, 2))
-
-      console.log.mockRestore()
+      expect(console.log).toHaveBeenCalledWith(
+        `Gr4vy - key`,
+        JSON.stringify(data, null, 2)
+      )
+      ;(console.log as jest.Mock).mockRestore()
     })
 
     test(`should output to console.debug for a debug level of debug`, () => {
@@ -54,9 +55,7 @@ describe(`Emitter`, () => {
       logger.log(`key`, data)
 
       expect(console.debug).toHaveBeenCalledWith(`Gr4vy - key`, data)
-
-      console.debug.mockRestore()
+      ;(console.debug as jest.Mock).mockRestore()
     })
-    
   })
 })

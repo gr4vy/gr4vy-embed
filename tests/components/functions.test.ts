@@ -1,16 +1,15 @@
-
 import { frameUrl, validate } from '../../src/components/Frame/functions'
 
 const validOptions = {
   flow: [`authorize`, `capture`, `store`],
-  amount:  1299,
+  amount: 1299,
   currency: `USD`,
   iframeHost: `cdn.apple.gr4vy.com`,
-  apiHost: `api.apple.gr4vy.com` ,
+  apiHost: `api.apple.gr4vy.com`,
   bearerToken: `123456`,
   showButton: true,
   debug: `debug`,
-  onEvent: () => {}
+  onEvent: () => {},
 }
 
 describe(`validate`, () => {
@@ -19,7 +18,7 @@ describe(`validate`, () => {
   })
 
   afterEach(() => {
-    console.error.mockRestore()
+    ;(console.error as jest.Mock).mockRestore()
   })
 
   test(`should accept valid options`, () => {
@@ -196,23 +195,35 @@ describe(`validate`, () => {
 
 describe(`frameUrl`, () => {
   test(`should return a full URL for a hostname`, () => {
-    expect(frameUrl({
-      iframeHost: `cdn.apple.app.gr4vy.com`,
-      channel: `mychannel`
-    })).toEqual(`https://cdn.apple.app.gr4vy.com/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
+    expect(
+      frameUrl({
+        iframeHost: `cdn.apple.app.gr4vy.com`,
+        channel: `mychannel`,
+      })
+    ).toEqual(
+      `https://cdn.apple.app.gr4vy.com/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
+    )
   })
 
   test(`should return an insecure URL for localhost`, () => {
-    expect(frameUrl({
-      iframeHost: `localhost:8000`,
-      channel: `mychannel`
-    })).toEqual(`http://localhost:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
+    expect(
+      frameUrl({
+        iframeHost: `localhost:8000`,
+        channel: `mychannel`,
+      })
+    ).toEqual(
+      `http://localhost:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
+    )
   })
 
   test(`should return an insecure URL for 127.0.0.1`, () => {
-    expect(frameUrl({
-      iframeHost: `127.0.0.1:8000`,
-      channel: `mychannel`
-    })).toEqual(`http://127.0.0.1:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`)
+    expect(
+      frameUrl({
+        iframeHost: `127.0.0.1:8000`,
+        channel: `mychannel`,
+      })
+    ).toEqual(
+      `http://127.0.0.1:8000/?parentHost=http%3A%2F%2Flocalhost&channel=mychannel`
+    )
   })
 })

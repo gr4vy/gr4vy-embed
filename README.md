@@ -29,7 +29,7 @@ The easiest way is to install via your cluster's CDN. Simply inject the script a
 of your page.
 
 ```html
-<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js'></script>
+<script src="https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js"></script>
 ```
 
 Then, assuming your page has a form and a container to attach the form to, call the
@@ -37,9 +37,9 @@ Then, assuming your page has a form and a container to attach the form to, call 
 the form to attach any new values to.
 
 ```html
-<form action='/submit' className='form'>
-  <div id='container'></div>
-  <input type='submit' value='Submit'>
+<form action="/submit" className="form">
+  <div id="container"></div>
+  <input type="submit" value="Submit" />
 </form>
 <script>
   gr4vy.setup({
@@ -54,8 +54,8 @@ the form to attach any new values to.
       bearerToken: 'JWT_TOKEN',
       showButton: true,
       debug: 'debug',
-      externalIdentifier: 'user-1234'
-    }
+      externalIdentifier: 'user-1234',
+    },
   })
 </script>
 ```
@@ -109,11 +109,11 @@ ReactDOM.render(
     flow={['authorize', 'capture', 'store']}
     amount={1299}
     currency={'USD'}
-    frameHost='127.0.0.1:8080'
-    apiHost='127.0.0.1:3100'
-    bearerToken='JWT_TOKEN'
+    frameHost="127.0.0.1:8080"
+    apiHost="127.0.0.1:3100"
+    bearerToken="JWT_TOKEN"
     showButton
-    debug='debug'
+    debug="debug"
   />,
   document.getElementById(`app`)
 )
@@ -289,7 +289,6 @@ yarn lint
 To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test!` command is available.
 
 > **Note:** We try to keep a coverage of a 100%. Run the `yarn test!` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
-
 
 ### CI/CD & Publishing
 
