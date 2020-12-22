@@ -14,14 +14,6 @@ export default {
   decorators: [withKnobs],
 }
 
-const flowOptions = {
-  'Store card only': [`store`],
-  'Authorize only': [`authorize`],
-  'Authorize and store': [`authorize`, `store`],
-  'Authorize and capture': [`authorize`, `capture`],
-  'Authorize, capture, and store': [`authorize`, `capture`, `store`],
-}
-
 const responseOptions = {
   '': ``,
   '202 - Request accepted': `prefer: code=202, example=Request accepted`,
@@ -39,13 +31,8 @@ const currencyOptions = [`USD`, `GBP`, `EUR`]
 
 export const Default = () => (
   <Frame
-    flow={select(
-      `Flow`,
-      flowOptions,
-      [`authorize`, `capture`, `store`],
-      `Public`
-    )}
     amount={number(`Amount`, 1299, {}, `Public`)}
+    capture={boolean(`Capture`, true, `Public`)}
     currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
     apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}

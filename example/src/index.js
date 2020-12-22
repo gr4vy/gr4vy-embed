@@ -3,7 +3,6 @@ import Gr4vy from '@gr4vy/embed'
 
 ReactDOM.render(
   <Gr4vy
-    flow={[`authorize`, `capture`, `store`]}
     amount={1299}
     currency={`USD`}
     apiHost='localhost:3100'
