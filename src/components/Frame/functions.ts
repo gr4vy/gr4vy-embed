@@ -2,40 +2,23 @@
  * Validates the presence of all the required fields
  */
 export const validate = (options) =>
-  isArray(options, `flow`, [
-    [`authorize`, `capture`, `store`],
-    [`authorize`, `capture`],
-    [`authorize`, `store`],
-    [`authorize`],
-    [`store`],
-  ]) &&
+  isType(options, `capture`, `boolean`) &&
   isString(options, `bearerToken`) &&
   isHost(options, `apiHost`) &&
   isHost(options, `iframeHost`) &&
   isNumber(options, `amount`) &&
+  isRequired(options, 'amount') &&
   isNumber(options, `timeout`) &&
   isString(options, `currency`, {
     minLength: 3,
     maxLength: 3,
-    optional: true,
+    optional: false,
   }) &&
   isType(options, `showButton`, `boolean`) &&
   isString(options, `preferResponse`, { optional: true }) &&
   isOneOf(options, `debug`, [`debug`, `log`]) &&
   isType(options, `onEvent`, `function`) &&
-  isString(options, `externalIdentifier`, { optional: true }) &&
-  isRequired(
-    options,
-    `currency`,
-    `flow`,
-    (flow) => flow.includes(`authorize`) || flow.includes(`capture`)
-  ) &&
-  isRequired(
-    options,
-    `amount`,
-    `flow`,
-    (flow) => flow.includes(`authorize`) || flow.includes(`capture`)
-  )
+  isString(options, `externalIdentifier`, { optional: true })
 
 /**
  * Gets the parent frame's origin
@@ -88,29 +71,6 @@ const isOneOf = (options, key, array) => {
 
   if (!valid) {
     error(options, key, `must be one of ${JSON.stringify(array)}`)
-  }
-  return valid
-}
-
-/**
- * Validates that a field is an array and that the array matches any
- * of the provided options for the array
- */
-const isArray = (options, key, arrayOfArrays) => {
-  const value = options[key]
-
-  const valid =
-    value &&
-    value?.[0] &&
-    arrayOfArrays.some((array) => {
-      return (
-        array.length === value.length &&
-        array.every((arrayOption) => value.includes(arrayOption))
-      )
-    })
-
-  if (!valid) {
-    error(options, key, `must be one of ${JSON.stringify(arrayOfArrays)}`)
   }
   return valid
 }
@@ -191,22 +151,13 @@ const isType = (options, key, type) => {
 }
 
 /**
- * Adds optional validation to a field if another field validates for the
- * function set out by the validator
+ * Validates that a value is a number or a string of a number
  */
-const isRequired = (options, key, otherKey, validator) => {
+const isRequired = (options, key) => {
   const value = options[key]
-  const otherValue = options[otherKey]
-
-  const valid = !validator(otherValue) || !!value
-
-  if (!valid) {
-    error(
-      options,
-      key,
-      `most be set when ${otherKey} is set to the current value`
-    )
+  if (![undefined, null, ``].includes(value)) {
+    return true
   }
-
-  return valid
+  error(options, key, `is required`)
+  return false
 }

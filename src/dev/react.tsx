@@ -23,7 +23,6 @@ document.body.appendChild(root)
 ReactDOM.render(
   <div>
     <Gr4vy
-      flow={[`authorize`, `capture`, `store`]}
       amount={1299}
       currency="USD"
       iframeHost="localhost:8080"

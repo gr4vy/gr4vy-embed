@@ -7,16 +7,17 @@ import View, { defaultStyle } from './View'
 import { frameUrl, validate } from './functions'
 
 export type FrameProps = {
-  flow: Array<string> // determines what API calls to make
   /* 
-    The amount of a given currency to charge, must be used when authorize
-    or capture have been set for the flow option
+    The amount of a given currency to charge
   */
   amount: number
-  /* 
-      the currency to charge the amount in, must be used when authorize
-      or capture have been set for the flow option
-    */
+  /**
+   * A flag to determine if payment should be captured at the same time as authorization
+   */
+  capture?: boolean
+  /**
+   * Currency to charge the amount in
+   */
   currency: string
   iframeHost: string // the hostname and port of the server that hosts the embedded UI
   apiHost: string // the hostname and port of the API server to use
@@ -45,7 +46,7 @@ const Frame = (props: FrameProps) => {
   const options = {
     onEvent: () => {},
     timeout: 10000,
-    flow: [`authorize`, `capture`, `store`],
+    capture: true,
     showButton: false,
     channel: uuid(),
     ...props,

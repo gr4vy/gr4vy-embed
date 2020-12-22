@@ -1,7 +1,6 @@
 import { frameUrl, validate } from '../../src/components/Frame/functions'
 
 const validOptions = {
-  flow: [`authorize`, `capture`, `store`],
   amount: 1299,
   currency: `USD`,
   iframeHost: `cdn.apple.gr4vy.com`,
@@ -23,24 +22,6 @@ describe(`validate`, () => {
 
   test(`should accept valid options`, () => {
     expect(validate(validOptions)).toBeTruthy()
-  })
-
-  test(`should make sure the flow is a valid set of options`, () => {
-    const options = {
-      ...validOptions,
-      flow: [`capture`, `store`],
-    }
-    expect(validate(options)).toBeFalsy()
-    expect(console.error).toBeCalledTimes(1)
-  })
-
-  test(`should make sure the flow is does not contain any extra options`, () => {
-    const options = {
-      ...validOptions,
-      flow: [`authorize`, `capture`, `store`, `refund`],
-    }
-    expect(validate(options)).toBeFalsy()
-    expect(console.error).toBeCalledTimes(1)
   })
 
   test(`should make sure the bearerToken is a string`, () => {
@@ -120,22 +101,13 @@ describe(`validate`, () => {
     expect(console.error).toBeCalledTimes(1)
   })
 
-  test(`should make sure the amount is present when needed`, () => {
+  test(`should make sure the amount is present`, () => {
     const options = {
       ...validOptions,
       amount: null,
     }
     expect(validate(options)).toBeFalsy()
     expect(console.error).toBeCalledTimes(1)
-  })
-
-  test(`should not require the amount if the flow doesnt need it`, () => {
-    const options = {
-      ...validOptions,
-      flow: [`store`],
-      amount: null,
-    }
-    expect(validate(options)).toBeTruthy()
   })
 
   test(`should make sure the currency is a valid string`, () => {
@@ -147,22 +119,13 @@ describe(`validate`, () => {
     expect(console.error).toBeCalledTimes(1)
   })
 
-  test(`should make sure the currency is present when needed`, () => {
+  test(`should make sure the currency is present`, () => {
     const options = {
       ...validOptions,
       currency: null,
     }
     expect(validate(options)).toBeFalsy()
     expect(console.error).toBeCalledTimes(1)
-  })
-
-  test(`should not require the currency if the flow doesnt need it`, () => {
-    const options = {
-      ...validOptions,
-      flow: [`store`],
-      currency: null,
-    }
-    expect(validate(options)).toBeTruthy()
   })
 
   test(`should require showButton to be a boolean`, () => {

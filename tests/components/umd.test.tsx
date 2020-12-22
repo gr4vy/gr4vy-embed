@@ -4,7 +4,6 @@ import { FormProvider } from '../../src/contexts/FormContext'
 import { setup } from '../../src/umd'
 
 const validOptions = {
-  flow: [`authorize`, `capture`, `store`],
   amount: 1299,
   currency: `USD`,
   iframeHost: `cdn.apple.gr4vy.com`,
