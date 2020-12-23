@@ -11,6 +11,7 @@ module.exports = merge(common, {
   output: {
     filename: `gr4vy-embed.js`,
   },
+  devtool: 'source-map',
   entry: path.resolve(`./src/dev/react.tsx`),
   devServer: {
     overlay: {
