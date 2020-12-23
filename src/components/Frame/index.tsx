@@ -43,12 +43,13 @@ export type FrameProps = {
  * it resizes the iframe and shows it to the user.
  */
 const Frame = (props: FrameProps) => {
+  const [channel] = useState(uuid())
   const options = {
     onEvent: () => {},
     timeout: 10000,
     capture: true,
     showButton: false,
-    channel: uuid(),
+    channel,
     ...props,
   }
   // validate that all required options are present, in the right format,

@@ -6,16 +6,6 @@ import { defaultStyle } from '../../src/components/Frame/View'
 import { FormProvider } from '../../src/contexts/FormContext'
 
 jest.mock(`form-napper`)
-
-const options = {
-  iframeHost: `localhost:8080`,
-  apiHost: `localhost:3100`,
-  bearerToken: `123456`,
-  channel: `mychannel`,
-  amount: 100,
-  currency: 'GBP',
-}
-
 class MockBus {
   listeners
   constructor() {
@@ -31,9 +21,22 @@ class MockBus {
 }
 
 describe(`Controller`, () => {
-  let framebus = null
+  let framebus = null,
+    options
+
   beforeEach(() => {
     framebus = new MockBus()
+    options = {
+      flow: [`store`],
+      iframeHost: `localhost:8080`,
+      apiHost: `localhost:3100`,
+      bearerToken: `123456`,
+      channel: `mychannel`,
+      amount: 200,
+      currency: 'GBP',
+      framebus,
+      onEvent: jest.fn(),
+    }
   })
 
   test(`should default to be not loaded`, () => {
@@ -48,10 +51,9 @@ describe(`Controller`, () => {
 
   test(`should time out if the form doesn't load in time`, () => {
     jest.useFakeTimers()
-    options['onEvent'] = jest.fn()
     mount(<Frame {...options} />)
     act(() => jest.runAllTimers())
-    expect(options['onEvent']).toHaveBeenCalledWith(`timeoutError`, {
+    expect(options.onEvent).toHaveBeenCalledWith(`timeoutError`, {
       message: `Embedded form timed out`,
     })
   })
@@ -59,8 +61,7 @@ describe(`Controller`, () => {
   test(`should pass the options to the frame when it's ready`, () => {
     // create a mock frame bus and listen to updateOptions
     const callback = jest.fn()
-    options['framebus'] = framebus
-    options['framebus'].on(`updateOptions`, callback)
+    options.framebus.on(`updateOptions`, callback)
 
     // mount the frame and pretend the iframe send a frameReady event
     mount(<Frame {...options} />)
@@ -73,9 +74,6 @@ describe(`Controller`, () => {
   })
 
   test(`should set the form to loaded once done`, () => {
-    // create a mock frame bus
-    options['framebus'] = framebus
-
     // mount the frame and pretend the iframe sends a formLoaded event
     const component = mount(<Frame {...options} />)
     act(() => {
@@ -93,9 +91,6 @@ describe(`Controller`, () => {
   })
 
   test(`should resize the frame on demand`, () => {
-    // create a mock frame bus
-    options['framebus'] = framebus
-
     // mount the frame and pretend the iframe sends a resize event
     const component = mount(<Frame {...options} />)
     act(() => {
@@ -113,10 +108,6 @@ describe(`Controller`, () => {
   })
 
   test(`should allow listening to frame events`, () => {
-    // create a mock frame bus
-    options['framebus'] = framebus
-    options['onEvent'] = jest.fn()
-
     // mount the frame and pretend the iframe sends events
     const component = mount(<Frame {...options} />)
     act(() => {
@@ -126,10 +117,10 @@ describe(`Controller`, () => {
     })
     component.update()
 
-    expect(options['onEvent']).toHaveBeenCalledTimes(3)
-    expect(options['onEvent']).toHaveBeenCalledWith(`formUpdate`, {})
-    expect(options['onEvent']).toHaveBeenCalledWith(`resourceCreated`, {})
-    expect(options['onEvent']).toHaveBeenCalledWith(`apiError`, {})
+    expect(options.onEvent).toHaveBeenCalledTimes(3)
+    expect(options.onEvent).toHaveBeenCalledWith(`formUpdate`, {})
+    expect(options.onEvent).toHaveBeenCalledWith(`resourceCreated`, {})
+    expect(options.onEvent).toHaveBeenCalledWith(`apiError`, {})
   })
 
   test(`should hijack the parent form when present`, () => {
@@ -143,8 +134,6 @@ describe(`Controller`, () => {
       submit: jest.fn(),
     }
     ;(FormNapper as jest.Mock).mockImplementation(() => form)
-
-    options['framebus'] = framebus
 
     const component = mount(
       <FormProvider container={element}>
