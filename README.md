@@ -29,7 +29,7 @@ The easiest way is to install via your cluster's CDN. Simply inject the script a
 of your page.
 
 ```html
-<script src='https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js'></script>
+<script src="https://cdn.acme.cluster.gr4vy.com/gr4vy-embed-vX.X.X.js"></script>
 ```
 
 Then, assuming your page has a form and a container to attach the form to, call the
@@ -37,16 +37,15 @@ Then, assuming your page has a form and a container to attach the form to, call 
 the form to attach any new values to.
 
 ```html
-<form action='/submit' className='form'>
-  <div id='container'></div>
-  <input type='submit' value='Submit'>
+<form action="/submit" className="form">
+  <div id="container"></div>
+  <input type="submit" value="Submit" />
 </form>
 <script>
   gr4vy.setup({
     element: '#container',
     form: '.form',
     options: {
-      flow: ['authorize', 'capture', 'store'],
       amount: 1299,
       currency: 'USD',
       frameHost: '127.0.0.1:8080',
@@ -54,8 +53,8 @@ the form to attach any new values to.
       bearerToken: 'JWT_TOKEN',
       showButton: true,
       debug: 'debug',
-      externalIdentifier: 'user-1234'
-    }
+      externalIdentifier: 'user-1234',
+    },
   })
 </script>
 ```
@@ -106,14 +105,13 @@ import Gr4vy from '@gr4vy/embed'
 
 ReactDOM.render(
   <Gr4vy
-    flow={['authorize', 'capture', 'store']}
     amount={1299}
     currency={'USD'}
-    frameHost='127.0.0.1:8080'
-    apiHost='127.0.0.1:3100'
-    bearerToken='JWT_TOKEN'
+    frameHost="127.0.0.1:8080"
+    apiHost="127.0.0.1:3100"
+    bearerToken="JWT_TOKEN"
     showButton
-    debug='debug'
+    debug="debug"
   />,
   document.getElementById(`app`)
 )
@@ -136,18 +134,18 @@ a query string that can be parsed by `document.querySelector`. For example,
 
 The options for this integration are as follows.
 
-| Field                | Default                     | Description                                                                                                                                                                                                                                                          |
-| -------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `amount`             | `null`                      | The amount to authorize or capture in the specified `currency`. Not required if the `flow` is set to `store` only.                                                                                                                                                   |
-| `apiHost`            | `null`                      | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                                                                                                     |
-| `bearerToken`        | `null`                      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                                        |
-| `currency`           | `null`                      | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                                      |
-| `flow`               | `authorize, capture, store` | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture, and if the card should be stored. Both `authorize` and `store` could be performed without the others. `capture` requires `authorize` to be present. |
-| `frameHost`          | `null`                      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                                    |
-| `showButton`         | `false`                     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                                   |
-| `onEvent`            | `null`                      | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                                |
-| `timeout`            | `10000`                     | The optional timeout to wait for the embedded form to load before it throws a `timeoutError` to the `onEvent` handler.                                                                                                                                               |
-| `externalIdentifier` | `null`                      | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID                                                                              |
+| Field                | Default | Description                                                                                                                                                                             |
+| -------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| `amount`             | `null`  | The amount to authorize or capture in the specified `currency`. only.                                                                                                                   |
+| `apiHost`            | `null`  | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                        |
+| `bearerToken`        | `null`  | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                           |
+| `capture`            | `true`  | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture                                                                         |
+| `currency`           | `null`  | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                         |     |
+| `frameHost`          | `null`  | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                       |
+| `showButton`         | `false` | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                      |
+| `onEvent`            | `null`  | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                   |
+| `timeout`            | `10000` | The optional timeout to wait for the embedded form to load before it throws a `timeoutError` to the `onEvent` handler.                                                                  |
+| `externalIdentifier` | `null`  | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID |
 
 ### Events
 
@@ -157,7 +155,6 @@ The `onEvent` option can be used to listen to certain events emitted from the fo
 gr4vy.setup({
   element: '#form',
   options: {
-    flow: ['authorize', 'capture', 'store'],
     ...,
     onEvent: (name, data) => {
       ...
@@ -289,7 +286,6 @@ yarn lint
 To update snapshots (after you've validated that the changes are desirable) you can run `yarn test -u`. To run tests continuously and watch for changes, the `yarn test!` command is available.
 
 > **Note:** We try to keep a coverage of a 100%. Run the `yarn test!` command to see more details on our current coverage level. Missed lines can be explored by opening the `coverage/index.html` file after a test has been run.
-
 
 ### CI/CD & Publishing
 

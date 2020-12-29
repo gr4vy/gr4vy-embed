@@ -11,25 +11,26 @@ module.exports = merge(common, {
   output: {
     filename: `gr4vy-embed.js`,
   },
-  entry: path.resolve(`./src/dev/react.js`),
+  devtool: 'source-map',
+  entry: path.resolve(`./src/dev/react.tsx`),
   devServer: {
     overlay: {
       warnings: true,
-      errors: true
+      errors: true,
     },
     host: `127.0.0.1`,
     port: 8081,
     open: true,
     progress: true,
-    disableHostCheck: true
+    disableHostCheck: true,
   },
   watchOptions: {
     aggregateTimeout: 300,
-    poll: 1000
+    poll: 1000,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: `Gr4vy - Embed`
-    })
-  ]
+      title: `Gr4vy - Embed`,
+    }),
+  ],
 })

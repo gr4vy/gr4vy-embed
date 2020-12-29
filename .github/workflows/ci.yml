@@ -3,7 +3,7 @@ name: CI
 on:
   push: {}
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   lint:
@@ -15,19 +15,19 @@ jobs:
         node-version: [14.x]
 
     steps:
-    - name: Check out the repo
-      uses: actions/checkout@v2
+      - name: Check out the repo
+        uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Lint the content
-      run: |
-        yarn install
-        yarn lint
-        yarn test
+      - name: Lint the content
+        run: |
+          yarn install
+          yarn lint
+          yarn test
 
   push-storybook:
     runs-on: ubuntu-latest

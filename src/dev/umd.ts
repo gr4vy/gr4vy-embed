@@ -1,15 +1,16 @@
-
 import { setup } from '../umd'
 
 /**
- * Simple entry point for the dev server. This is loaded when 
+ * Simple entry point for the dev server. This is loaded when
  * running `yarn dev` or `yarn start`.
  */
 
 const log = (key, payload) => {
   console.debug(`Merchant page received ${key}`, payload)
   if (key === `resourceCreated`) {
-    alert(`Resource created: ${payload.data.resource_type}:${payload.data.resource_id}`)
+    alert(
+      `Resource created: ${payload.data.resource_type}:${payload.data.resource_id}`
+    )
   } else if (key === `timeoutError`) {
     alert(`Error: ${payload.message}`)
   }
@@ -38,14 +39,14 @@ setup({
   form: `#form`,
   options: {
     flow: [`authorize`, `capture`, `store`],
-    amount:  1299,
+    amount: 1299,
     currency: `USD`,
     iframeHost: `127.0.0.1:8080`,
-    apiHost: `127.0.0.1:3100` ,
+    apiHost: `127.0.0.1:3100`,
     bearerToken: `123456`,
     showButton: false,
     debug: `debug`,
     onEvent: log,
-    externalIdentifier: `user-123`
-  }
+    externalIdentifier: `user-123`,
+  },
 })

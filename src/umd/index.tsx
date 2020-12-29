@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom'
 import Frame from '../components/Frame'
 import { FormProvider } from '../contexts/FormContext'
-
 import { argumentError } from './functions'
 
 /**
@@ -10,14 +9,14 @@ import { argumentError } from './functions'
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-const setup = ({
-  element,
-  form = null,
-  options
-}) => {
+const setup = ({ element, form = null, options }) => {
   const container = document.querySelector(element)
   if (!container) {
-    return argumentError(`element`, `${element} must be a valid HTML element`, options)
+    return argumentError(
+      `element`,
+      `${element} must be a valid HTML element`,
+      options
+    )
   }
 
   let formContainer = null
@@ -33,14 +32,11 @@ const setup = ({
     ReactDOM.render(
       <FormProvider container={formContainer}>
         <Frame {...options} />
-      </FormProvider>
-      , container
+      </FormProvider>,
+      container
     )
   } else {
-    ReactDOM.render(
-      <Frame {...options} />
-      , container
-    )
+    ReactDOM.render(<Frame {...options} />, container)
   }
 }
 

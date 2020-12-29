@@ -2,16 +2,17 @@ const StylelintPlugin = require(`stylelint-webpack-plugin`)
 
 // Shared settings between all builds
 module.exports = {
+  resolve: {
+    extensions: [`.tsx`, `.ts`, `.js`],
+  },
   module: {
     rules: [
+      
       {
         enforce: `pre`,
-        test: /\.jsx?$/,
+        test: /\.ts(x)?$/,
         loader: `eslint-loader`,
         exclude: /(node_modules|bower_components)/,
-        options: {
-          parser: `babel-eslint`
-        }
       },
       {
         test: /\.s?css$/,
@@ -21,9 +22,9 @@ module.exports = {
             loader: `css-loader`,
             options: {
               modules: {
-                localIdentName: `[path]___[name]__[local]___[hash:base64:5]`
-              }
-            }
+                localIdentName: `[path]___[name]__[local]___[hash:base64:5]`,
+              },
+            },
           },
           { loader: `postcss-loader` },
           {
@@ -32,14 +33,14 @@ module.exports = {
               sourceMap: true,
             },
           },
-        ]
+        ],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: `babel-loader`
-        }
+          loader: `babel-loader`,
+        },
       },
       {
         test: /\.svg$/,
@@ -50,13 +51,13 @@ module.exports = {
               limit: 10000,
             },
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
   plugins: [
     new StylelintPlugin({
-      files: `src/**/*.scss`
-    })
-  ]
+      files: `src/**/*.scss`,
+    }),
+  ],
 }

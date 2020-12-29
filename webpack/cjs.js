@@ -9,7 +9,7 @@ module.exports = merge(common, {
   output: {
     filename: `index.js`,
     path: path.resolve(`./cjs`),
-    libraryTarget: `commonjs2`
+    libraryTarget: `commonjs2`,
   },
-  entry: path.resolve(`./src/umd/index.js`)
+  entry: path.resolve(`./src/umd/index.tsx`),
 })
