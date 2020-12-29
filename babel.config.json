@@ -2,12 +2,6 @@
   "presets": [
     "@babel/preset-env",
     [
-      "@babel/preset-react",
-      {
-        "runtime": "automatic"
-      }
-    ],
-    [
       "@babel/preset-typescript",
       {
         "isTSX": true,
@@ -17,7 +11,6 @@
   ],
   "plugins": [
     "@babel/plugin-transform-typescript",
-    "react-css-modules",
     "@babel/plugin-transform-runtime"
   ],
   "ignore": ["**/*.d.ts"]

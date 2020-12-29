@@ -1,7 +1,4 @@
 dist
-/umd
-/react-umd
-/react
 /cjs
 yarn-error.log
 storybook-static

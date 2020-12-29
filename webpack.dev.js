@@ -1,18 +1,13 @@
 const HtmlWebpackPlugin = require(`html-webpack-plugin`)
 
 const path = require(`path`)
-const { merge } = require(`webpack-merge`)
-const common = require(`./common.js`)
 
-// Builds and spins up a version of the integration for the
-// dev server
-module.exports = merge(common, {
+module.exports = {
   mode: `development`,
   output: {
     filename: `gr4vy-embed.js`,
   },
-  devtool: 'source-map',
-  entry: path.resolve(`./src/dev/react.tsx`),
+  entry: path.resolve(`./dev/index.ts`),
   devServer: {
     overlay: {
       warnings: true,
@@ -33,4 +28,25 @@ module.exports = merge(common, {
       title: `Gr4vy - Embed`,
     }),
   ],
-})
+  module: {
+    rules: [
+
+      {
+        enforce: `pre`,
+        test: /\.ts(x)?$/,
+        loader: `eslint-loader`,
+        exclude: /(node_modules|bower_components)/,
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: `babel-loader`,
+        },
+      },
+    ],
+  },
+  resolve: {
+    extensions: [`.tsx`, `.ts`, `.js`],
+  }
+}

@@ -1,4 +1,4 @@
-import { setup } from '../umd'
+import { setup } from '../src'
 
 /**
  * Simple entry point for the dev server. This is loaded when
@@ -37,16 +37,14 @@ document.body.appendChild(form)
 setup({
   element: `#root`,
   form: `#form`,
-  options: {
-    flow: [`authorize`, `capture`, `store`],
-    amount: 1299,
-    currency: `USD`,
-    iframeHost: `127.0.0.1:8080`,
-    apiHost: `127.0.0.1:3100`,
-    bearerToken: `123456`,
-    showButton: false,
-    debug: `debug`,
-    onEvent: log,
-    externalIdentifier: `user-123`,
-  },
+  capture: true,
+  amount: 1299,
+  currency: `USD`,
+  iframeHost: `127.0.0.1:8080`,
+  apiHost: `127.0.0.1:3100`,
+  bearerToken: `123456`,
+  showButton: false,
+  debug: `debug`,
+  onEvent: log,
+  externalIdentifier: `user-123`,
 })

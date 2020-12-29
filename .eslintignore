@@ -4,8 +4,6 @@
 .vscode
 cjs
 node_modules
-react
-react-umd
 types
 webpack
 example

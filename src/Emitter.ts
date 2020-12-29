@@ -1,4 +1,5 @@
 import Framebus from 'framebus'
+import Logger from './Logger'
 
 /**
  * A wrapper around the framebus library that handles
@@ -11,21 +12,27 @@ export default class Emitter {
    * Initialize with a logger, the url of the iframe,
    * and an optional framebus instance (used in testing mostly)
    */
-  constructor({ logger, url, options = {} }) {
+  constructor({
+    logger,
+    channel,
+    iframeUrl,
+    framebus,
+  }: {
+    logger: Logger
+    channel: string
+    iframeUrl: string
+    framebus?: Framebus
+  }) {
     this.logger = logger
-    this.framebus = this.initFramebus({ url, options })
+    this.framebus = framebus ?? this.initFramebus({ channel, iframeUrl })
   }
 
-  initFramebus({ url, options }) {
-    if (options.framebus) {
-      return options.framebus
-    }
-
-    const parsedUrl = new URL(url)
+  initFramebus({ channel, iframeUrl }) {
+    const parsedUrl = new URL(iframeUrl)
     const origin = `${parsedUrl.protocol}//${parsedUrl.host}`
 
     return Framebus.target({
-      channel: options.channel,
+      channel,
       origin,
     })
   }
@@ -55,8 +62,8 @@ export default class Emitter {
   /**
    * Sends the options to the iframe once it's loaded.
    */
-  updateOptions({ options }) {
-    this.emit(`updateOptions`, options)
+  updateOptions(config) {
+    this.emit(`updateOptions`, config)
   }
 
   /**

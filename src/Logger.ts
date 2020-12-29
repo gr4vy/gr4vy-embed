@@ -4,8 +4,8 @@
 export default class Logger {
   debugLevel
 
-  constructor({ options }) {
-    this.debugLevel = options.debug || null
+  constructor(debugLevel) {
+    this.debugLevel = debugLevel || null
   }
 
   /**
