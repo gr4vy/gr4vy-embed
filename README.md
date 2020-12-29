@@ -199,7 +199,7 @@ to query the resource server-side, to check on the status of the object.
 {
   "type": "status",
   "status": "pending",
-  "resource_type": "transactions.authorization",
+  "resource_type": "transaction",
   "resource_id": "8724fd24-5489-4a5d-90fd-0604df7d3b83",
   "external_identifier": "user-1234"
 }
