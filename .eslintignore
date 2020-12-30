@@ -2,8 +2,4 @@
 .github
 .storybook
 .vscode
-cjs
 node_modules
-types
-webpack
-example

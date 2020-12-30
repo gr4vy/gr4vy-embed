@@ -1,6 +1,5 @@
-export type Config = {
-  element: string | HTMLElement // The element to insert the integration at
-  form?: string | HTMLElement // The form to bind the integration to
+export type Props = {
+  form?: string // The form to bind the integration to
   amount: number // The amount of a given currency to charge
   capture?: boolean // A flag to determine if payment should be captured at the same time as authorization
   currency: string // Currency to charge the amount in
@@ -15,12 +14,4 @@ export type Config = {
   preferResponse?: string // a development option that allows sending a `Prefer` header to force a certain API response from dev servers
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
-}
-
-export type InternalConfig = Config & {
-  element: HTMLElement
-  form: HTMLElement
-  iframeUrl: URL
-  channel: string
-  loaded?: boolean
 }

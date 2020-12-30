@@ -20,11 +20,15 @@ export const validateHTMLElement = ({
   callback,
 }: {
   argument: string
-  value: any
+  value: string | HTMLElement
   message: string
   required?: boolean
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
+  if (value instanceof Element) {
+    return true
+  }
+
   const element: HTMLElement = document.querySelector(value)
   if ((!required && [undefined, null].includes(value)) || element) {
     return true

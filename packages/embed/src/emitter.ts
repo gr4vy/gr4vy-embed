@@ -14,7 +14,7 @@ export const initEmitter = (
   const emit = loggedFramebusEmit(framebus, config)
   const subscribe = loggedFramebusSubscribe(framebus, config)
 
-  on('frameReady', () => emit('updateOptions', config))
+  on('frameReady', () => emit('updateOptions', options(config)))
   on('resize', (data) => (frame.style.height = `${data.frame.height}px`))
   on('formLoaded', () => {
     config.loaded = true
@@ -68,4 +68,25 @@ export const loggedFramebusSubscribe = (
   const emit = loggedFramebusEmit(framebus, config)
 
   on(eventName, (data) => emit(eventName, data))
+}
+
+export const options = (config: InternalConfig): object => {
+  const keys = [
+    'amount',
+    'currency',
+    'capture',
+    'apiHost',
+    'bearerToken',
+    'showButton',
+    'debug',
+    'externalIdentifier',
+    'preferResponse',
+    'buyerId',
+    'buyerExternalIdentifier',
+  ]
+
+  return keys.reduce((object, key) => {
+    object[key] = config[key]
+    return object
+  }, {})
 }

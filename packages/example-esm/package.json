@@ -1,6 +1,6 @@
 {
   "private": "true",
-  "name": "@gr4vy/embed-esm-example",
+  "name": "exampe-esm",
   "version": "0.0.19",
   "description": "Example project that shows how to use @gr4vy/embed as an ESM import",
   "main": "lib/index.js",

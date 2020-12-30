@@ -3,6 +3,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
@@ -16,9 +17,10 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'jest', 'prettier'],
   env: {
     browser: true,
+    'jest/globals': true,
     node: true,
   },
   rules: {
@@ -33,9 +35,22 @@ module.exports = {
     '@typescript-eslint/no-extra-semi': 0,
     'import/named': 0,
     'prettier/prettier': 'error',
+    'jest/no-disabled-tests': 'warn',
+    'jest/no-focused-tests': 'error',
+    'jest/no-identical-title': 'error',
+    'jest/prefer-to-have-length': 'warn',
+    'jest/valid-expect': 'error',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
     'import/order': [
       'error',
       { alphabetize: { order: 'asc' }, 'newlines-between': 'never' },
     ],
+    'react/prop-types': 0,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 }

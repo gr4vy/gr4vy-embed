@@ -57,7 +57,7 @@ export const getFrameUrl = ({
 
 // Appends the frame to the page
 export const attachFrame = (frame: HTMLElement, config: InternalConfig) => {
-  config.container.appendChild(frame)
+  config.element.appendChild(frame)
 }
 
 // Set a timer to throw a timeoutError event when the frame takes too long to load.

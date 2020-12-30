@@ -1,6 +1,6 @@
 import { generateChannelId } from './channel'
 import { getFrameUrl, setupFrame } from './frame'
-import { Config } from './types'
+import { Config, InternalConfig } from './types'
 import { validate } from './validation'
 
 /**
@@ -16,11 +16,15 @@ export const setup = (config: Config): void => {
   }
 
   // set up the additional config
-  const container: HTMLElement = document.querySelector(config.element)
-  const formContainer: HTMLElement = document.querySelector(config.form)
+  if (!(config.element instanceof Element)) {
+    config.element = document.querySelector(config.element) as HTMLElement
+  }
+  if (config.form && !(config.form instanceof Element)) {
+    config.form = document.querySelector(config.form) as HTMLElement
+  }
   const channel: string = generateChannelId()
   const iframeUrl: URL = getFrameUrl({ channel, config })
 
   // bind the new iframe
-  setupFrame({ ...config, container, formContainer, iframeUrl, channel })
+  setupFrame({ ...config, iframeUrl, channel } as InternalConfig)
 }
