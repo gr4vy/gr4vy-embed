@@ -1,12 +1,18 @@
 import { Config } from './types'
 
 // checks if a value is optional and if it has been set to either undefined or null
-const isOptional = ({ required, value }: { required: boolean; value: any }) => {
+export const isOptional = ({
+  required,
+  value,
+}: {
+  required: boolean
+  value: any
+}) => {
   return !required && [undefined, null].includes(value)
 }
 
 // Validates a HTML element
-const validateHTMLElement = ({
+export const validateHTMLElement = ({
   argument,
   value,
   message,
@@ -32,10 +38,8 @@ const validateHTMLElement = ({
   return false
 }
 
-/**
- * Validates a URI origin
- */
-const validateOrigin = ({
+// Validates a URI origin
+export const validateOrigin = ({
   argument,
   value,
   message,
@@ -66,7 +70,7 @@ const validateOrigin = ({
 }
 
 // Validates a number
-const validateNumber = ({
+export const validateNumber = ({
   argument,
   value,
   message,
@@ -95,7 +99,7 @@ const validateNumber = ({
 }
 
 // Validates a currency
-const validateCurrency = ({
+export const validateCurrency = ({
   argument,
   value,
   message,
@@ -123,7 +127,7 @@ const validateCurrency = ({
 }
 
 // Validates a type
-const validateType = ({
+export const validateType = ({
   argument,
   value,
   message,
@@ -153,7 +157,7 @@ const validateType = ({
 }
 
 // Validates that a value is one of the providef values
-const validateOneOf = ({
+export const validateOneOf = ({
   argument,
   value,
   allowedValues,
@@ -183,7 +187,7 @@ const validateOneOf = ({
 }
 
 // Emites an argument error to the command line and to the `onEvent` handler.
-const emitArgumentError = ({
+export const emitArgumentError = ({
   argument,
   message,
   callback,
@@ -202,7 +206,7 @@ const emitArgumentError = ({
 }
 
 // Validates all Config
-export const validateConfig = (options: Config) =>
+export const validate = (options: Config) =>
   validateHTMLElement({
     argument: 'element',
     value: options.element,
@@ -299,6 +303,22 @@ export const validateConfig = (options: Config) =>
     value: options.debug,
     allowedValues: ['debug', 'log'],
     message: 'must be set to either',
+    required: false,
+    callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'buyerExternalIdentifier',
+    value: options.buyerExternalIdentifier,
+    type: 'string',
+    message: 'must be a string',
+    required: false,
+    callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'buyerId',
+    value: options.buyerId,
+    type: 'string',
+    message: 'must be a string',
     required: false,
     callback: options.onEvent,
   })

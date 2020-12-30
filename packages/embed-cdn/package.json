@@ -17,7 +17,7 @@
     "build": "webpack --config webpack.prod.js",
     "prepack": "yarn build; yarn assets:copy",
     "postpack": "yarn assets:clean",
-    "lint": "eslint src --ext js"
+    "lint": "eslint src --ext ts"
   },
   "files": [
     "lib",
