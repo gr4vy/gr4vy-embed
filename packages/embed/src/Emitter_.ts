@@ -1,5 +1,5 @@
 import Framebus from 'framebus'
-import Logger from './Logger'
+import { InternalConfig } from './types'
 
 /**
  * A wrapper around the framebus library that handles
@@ -12,24 +12,14 @@ export default class Emitter {
    * Initialize with a logger, the url of the iframe,
    * and an optional framebus instance (used in testing mostly)
    */
-  constructor({
-    logger,
-    channel,
-    iframeUrl,
-    framebus,
-  }: {
-    logger: Logger
-    channel: string
-    iframeUrl: string
-    framebus?: Framebus
-  }) {
-    this.logger = logger
-    this.framebus = framebus ?? this.initFramebus({ channel, iframeUrl })
+  constructor(config: InternalConfig, framebus?: Framebus) {
+    this.logger = config.logger
+    this.framebus = framebus ?? this.initFramebus(config)
   }
 
-  initFramebus({ channel, iframeUrl }) {
-    const parsedUrl = new URL(iframeUrl)
-    const origin = `${parsedUrl.protocol}//${parsedUrl.host}`
+  initFramebus(config: InternalConfig) {
+    const { iframeUrl, channel } = config
+    const origin = `${iframeUrl.protocol}//${iframeUrl.host}`
 
     return Framebus.target({
       channel,

@@ -1,3 +1,7 @@
+import FormNapper from 'form-napper'
+import Emitter from './Emitter_'
+import Logger from './Logger_'
+
 export type Config = {
   element: string // The element to insert the integration at
   form: string // The form to bind the integration to
@@ -18,6 +22,11 @@ export type Config = {
 export type InternalConfig = Config & {
   container: HTMLElement
   formContainer: HTMLElement
-  iframeUrl: string
+  iframeUrl: URL
   channel: string
+  logger?: Logger
+  emitter?: Emitter
+  frame?: HTMLElement
+  loaded?: boolean
+  formNapper?: FormNapper
 }
