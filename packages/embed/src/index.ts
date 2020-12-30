@@ -1,8 +1,6 @@
 import FormNapper from 'form-napper'
-import { v4 as uuid } from 'uuid'
 import Emitter from './Emitter'
 import Logger from './Logger'
-import { frameSource } from './frameSource'
 import { Config, InternalConfig } from './types'
 import { validateConfig } from './validation'
 
@@ -22,14 +20,33 @@ const setup = (config: Config) => {
   if (validateConfig(config)) {
     const container: HTMLElement = document.querySelector(config.element)
     const formContainer: HTMLElement = document.querySelector(config.form)
-    const channel: string = uuid()
+    const channel: string = createChannel()
     const iframeUrl = frameSource({ channel, iframeHost: config.iframeHost })
 
     setupFrame({ ...config, container, formContainer, iframeUrl, channel })
   }
 }
 
-export const setupFrame = (config: InternalConfig) => {
+// Creates a channel ID
+const createChannel = () =>
+  window.crypto.getRandomValues(new Uint32Array(3)).join('')
+
+// Converts a iframeHost to a full URL with a scheme
+const frameSource = ({ channel, iframeHost }): string => {
+  const url = new URL(`https://${iframeHost}`)
+
+  if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
+    url.protocol = `http`
+  }
+  url.searchParams.set(
+    `parentHost`,
+    `${document?.location?.protocol}//${document?.location?.host}`
+  )
+  url.searchParams.set(`channel`, channel)
+  return String(url)
+}
+
+const setupFrame = (config: InternalConfig) => {
   initFrame(config)
   initForm(config)
   initEmitter(config)

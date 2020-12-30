@@ -16,10 +16,9 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'jest', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   env: {
     browser: true,
-    'jest/globals': true,
     node: true,
   },
   rules: {
@@ -34,11 +33,6 @@ module.exports = {
     '@typescript-eslint/no-extra-semi': 0,
     'import/named': 0,
     'prettier/prettier': 'error',
-    'jest/no-disabled-tests': 'warn',
-    'jest/no-focused-tests': 'error',
-    'jest/no-identical-title': 'error',
-    'jest/prefer-to-have-length': 'warn',
-    'jest/valid-expect': 'error',
     'import/order': [
       'error',
       { alphabetize: { order: 'asc' }, 'newlines-between': 'never' },

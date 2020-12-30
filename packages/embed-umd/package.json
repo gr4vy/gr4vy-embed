@@ -1,0 +1,40 @@
+{
+  "private": "true",
+  "name": "@gr4vy/embed-umd",
+  "version": "0.0.19",
+  "description": "Embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
+  "main": "lib/index.js",
+  "author": "Gr4vy <code@gr4vy.com>",
+  "license": "MIT",
+  "repository": "github:gr4vy/embed-cdn",
+  "homepage": "https://gr4vy.com",
+  "scripts": {
+    "assets:clean": "rm -f LICENSE README.md",
+    "assets:copy": "cp ../../LICENSE .; cp ../../README.md .",
+    "clean": "rm -rf lib *.tgz; yarn assets:clean",
+    "dev": "webpack serve --config webpack.dev.js",
+    "prebuild": "yarn clean",
+    "build": "webpack --config webpack.prod.js",
+    "prepack": "yarn build; yarn assets:copy",
+    "postpack": "yarn assets:clean",
+    "lint": "eslint src --ext js"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-typescript": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0",
+    "webpack-dev-server": "^3.11.1"
+  },
+  "dependencies": {
+    "@gr4vy/embed": "^0.0.19"
+  }
+}

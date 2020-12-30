@@ -1,0 +1,44 @@
+{
+  "name": "@gr4vy/embed",
+  "version": "0.0.19",
+  "description": "Embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
+  "main": "lib/index",
+  "types": "lib/index",
+  "author": "Gr4vy <code@gr4vy.com>",
+  "license": "MIT",
+  "repository": "github:gr4vy/embed",
+  "homepage": "https://gr4vy.com",
+  "scripts": {
+    "assets:copy": "cp ../../LICENSE .; cp ../../README.md .",
+    "assets:clean": "rm -f LICENSE README.md",
+    "clean": "rm -rf lib *.tgz; yarn assets:clean",
+    "prebuild": "yarn clean",
+    "build": "tsc",
+    "prepack": "yarn build; yarn assets:copy",
+    "postpack": "yarn assets:clean",
+    "lint": "eslint src --ext ts,tsx",
+    "dev": "tsc --watch"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.5.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "^2.2.1",
+    "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "form-napper": "^2.0.0",
+    "framebus": "^5.0.0"
+  }
+}

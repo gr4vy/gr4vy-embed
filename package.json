@@ -1,77 +1,17 @@
 {
-  "name": "@gr4vy/embed",
-  "version": "0.0.19",
-  "description": "Quickly embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
-  "main": "cjs/index.js",
-  "module": "react/index.js",
-  "author": "Gr4vy <code@gr4vy.com>",
-  "license": "MIT",
-  "repository": "github:gr4vy/embed",
-  "homepage": "https://gr4vy.com",
-  "types": "types",
-  "scripts": {
-    "prebuild": "yarn clean",
-    "build": "babel src --extensions \".ts,.tsx\" --out-dir cjs --copy-files --no-copy-ignored",
-    "build:types": "tsc --outDir types",
-    "clean": "rm -rf cjs storybook-static *.tgz static coverage types",
-    "dev": "concurrently 'yarn start' 'yarn storybook' 'yarn test!'",
-    "lint": "eslint src dev tests stories --ext ts,tsx",
-    "release": "yarn version; git push --tags; git push",
-    "start": "webpack serve --config webpack.dev.js",
-    "storybook": "start-storybook -p 6007",
-    "storybook:build": "build-storybook",
-    "test": "jest",
-    "test!": "jest --watchAll --collect-coverage"
-  },
-  "exports": {
-    "require": "./cjs/index.js",
-    "import": "./esm/index.js"
-  },
-  "files": [
-    "cjs/**/*",
-    "esm/**/*",
-    "docs/**/*",
-    "types/**/*"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/plugin-transform-typescript": "^7.12.1",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-typescript": "^7.12.7",
-    "@storybook/addon-actions": "~6.0.5",
-    "@storybook/addon-console": "^1.2.1",
-    "@storybook/addon-knobs": "~6.0.5",
-    "@storybook/addon-links": "~6.0.5",
-    "@storybook/addon-storyshots": "~6.0.5",
-    "@storybook/addons": "~6.0.5",
-    "@types/jest": "^26.0.18",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.1.0",
-    "babel-loader": "^8.1.0",
-    "concurrently": "^5.2.0",
-    "enzyme": "^3.11.0",
-    "eslint": "^7.5.0",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.0",
-    "eslint-plugin-prettier": "^3.2.0",
-    "form-napper": "^2.0.0",
-    "html-webpack-plugin": "^5.0.0-alpha.10",
-    "jest": "^26.3.0",
-    "nock": "^13.0.3",
-    "prettier": "^2.2.1",
-    "typescript": "^4.1.2",
-    "webpack": "^5.4.0",
-    "webpack-cli": "^4.1.0",
-    "webpack-dev-server": "^3.11.0"
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "lint": "lerna run lint",
+    "test": "lerna run test",
+    "build": "lerna run build",
+    "dev": "lerna run dev --parallel"
   },
-  "dependencies": {
-    "framebus": "^5.0.0",
-    "uuid": "^8.3.1"
+  "devDependencies": {
+    "lerna": "^3.22.1"
   }
 }

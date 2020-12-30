@@ -1,5 +1,5 @@
 dist
-/cjs
+lib
 yarn-error.log
 storybook-static
 *.tgz
@@ -7,3 +7,8 @@ coverage
 package-lock.json
 node_modules
 types
+*.d.ts
+*.js.map
+packages/*/LICENSE
+packages/*/README.md
+packages/*/src/**/*.js
