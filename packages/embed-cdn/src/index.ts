@@ -1,2 +1,3 @@
-import { setup } from '@gr4vy/embed'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { setup } = require('@gr4vy/embed')
 export { setup }

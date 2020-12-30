@@ -25,7 +25,7 @@ export const initEmitter = (
   subscribe('resourceCreated')
   subscribe('apiError')
 
-  form.hijack(() => emit('submitForm'))
+  form?.hijack?.(() => emit('submitForm'))
   on('transactionCreated', ({ data }) => {
     form.inject(`gr4vy_transaction_id`, data.id)
     form.submit()
