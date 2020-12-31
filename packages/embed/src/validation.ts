@@ -20,7 +20,7 @@ export const validateHTMLElement = ({
   callback,
 }: {
   argument: string
-  value: string | HTMLElement
+  value: string | HTMLElement | Element
   message: string
   required?: boolean
   callback?: (name: string, event: { message: string }) => void
