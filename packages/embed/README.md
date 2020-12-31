@@ -6,8 +6,7 @@
 Quickly embed Gr4vy in your Node app to store card details,
 authorize payments, and capture a transaction.
 
-Use [`@gr4vy/embed-react`](https://www.npmjs.com/package/@gr4vy/embed-react) in
-a React application.
+Use [`@gr4vy/embed-react`](../embed-react) in a React application.
 
 ## Usage
 
