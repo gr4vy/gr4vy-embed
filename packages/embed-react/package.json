@@ -1,5 +1,4 @@
 {
-  "private": "true",
   "name": "@gr4vy/embed-react",
   "version": "0.0.19",
   "description": "Embed a credit card form in your React app and store the card details, authorize the card, and capture a transaction.",
