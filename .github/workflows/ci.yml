@@ -29,31 +29,31 @@ jobs:
           yarn lint
           yarn test
 
-  push-storybook:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    timeout-minutes: 3
+  # push-storybook:
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   timeout-minutes: 3
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
 
-    needs:
-      - lint
+  #   needs:
+  #     - lint
 
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v2
 
-      - name: Compile the content
-        run: |
-          yarn install
-          yarn storybook:build
+  #     - name: Compile the content
+  #       run: |
+  #         yarn install
+  #         yarn storybook:build
 
-      - name: Push Storybook to GH pages
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: gh-pages
-          FOLDER: storybook-static
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Push Storybook to GH pages
+  #       uses: s0/git-publish-subdir-action@develop
+  #       env:
+  #         REPO: self
+  #         BRANCH: gh-pages
+  #         FOLDER: storybook-static
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
