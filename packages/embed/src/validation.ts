@@ -302,13 +302,6 @@ export const validate = (options: Config) =>
     message: 'must be valid, positive number',
     callback: options.onEvent,
   }) &&
-  validateNumber({
-    argument: 'timeout',
-    value: options.timeout,
-    message: 'must be valid, positive number',
-    required: false,
-    callback: options.onEvent,
-  }) &&
   validateOneOf({
     argument: 'debug',
     value: options.debug,
