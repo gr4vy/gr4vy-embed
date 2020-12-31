@@ -9,7 +9,8 @@
     "lint": "lerna run lint",
     "test": "lerna run test",
     "build": "lerna run build",
-    "dev": "lerna run dev --parallel"
+    "dev": "lerna run dev --parallel",
+    "release": "lerna publish"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
