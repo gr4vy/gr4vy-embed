@@ -4,7 +4,7 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "setup": "yarn clean; lerna bootstrap; yarn build;",
     "clean": "lerna clean -y; lerna run clean",
     "lint": "lerna run lint",
     "test": "lerna run test",
@@ -30,6 +30,7 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.22.0",
     "html-webpack-plugin": "^4.5.0",
+    "http-server": "^0.12.3",
     "lerna": "^3.22.1",
     "prettier": "^2.2.1",
     "ts-loader": "^8.0.12",

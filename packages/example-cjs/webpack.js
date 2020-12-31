@@ -30,7 +30,7 @@ module.exports = {
       errors: true,
     },
     host: '127.0.0.1',
-    port: 8081,
+    port: 9000,
     open: true,
     disableHostCheck: true,
   },
