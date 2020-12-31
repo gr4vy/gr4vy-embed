@@ -19,6 +19,11 @@
     "prepack": "yarn build; yarn assets:copy",
     "postpack": "yarn assets:clean"
   },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README"
+  ],
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
