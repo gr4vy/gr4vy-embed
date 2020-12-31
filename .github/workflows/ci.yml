@@ -27,6 +27,6 @@ jobs:
         run: |
           yarn config set workspaces-experimental true
           yarn install
-          yarn bootstrap
+          yarn setup
           yarn lint
           yarn test
