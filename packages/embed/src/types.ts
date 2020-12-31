@@ -1,6 +1,6 @@
 export type Config = {
-  element: string | HTMLElement // The element to insert the integration at
-  form?: string | HTMLElement // The form to bind the integration to
+  element: string | HTMLElement | Element // The element to insert the integration at
+  form?: string | HTMLElement | Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
   capture?: boolean // A flag to determine if payment should be captured at the same time as authorization
   currency: string // Currency to charge the amount in

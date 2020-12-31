@@ -1,7 +1,7 @@
 import { Config } from './types'
 
-// checks if a value is optional and if it has been set to either undefined or null
-export const isOptional = ({
+// checks if a value needs validation to pass
+export const canSkipValidation = ({
   required,
   value,
 }: {
@@ -30,20 +30,20 @@ export const validateHTMLElement = ({
   }
 
   const element: HTMLElement = document.querySelector(value)
-  if ((!required && [undefined, null].includes(value)) || element) {
+  if (canSkipValidation({ required, value }) || element) {
     return true
   }
 
   emitArgumentError({
     argument,
-    message: `${element} ${message}`,
+    message: `${argument} ${message}`,
     callback,
   })
   return false
 }
 
 // Validates a URI origin
-export const validateOrigin = ({
+export const validateHost = ({
   argument,
   value,
   message,
@@ -56,21 +56,28 @@ export const validateOrigin = ({
   required?: boolean
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
-  if (!required && [undefined, null].includes(value)) {
+  if (canSkipValidation({ required, value })) {
     return true
   }
 
+  let valid = false
+
   try {
-    new URL(`http://${value}`)
-    return true
+    const url = new URL(`http://${value}`)
+    valid = value === url.host
   } catch {
+    // do nothing here
+  }
+
+  if (!valid) {
     emitArgumentError({
       argument,
       message: `${argument} ${message}`,
       callback,
     })
-    return false
   }
+
+  return valid
 }
 
 // Validates a number
@@ -90,7 +97,7 @@ export const validateNumber = ({
   const number = Number(value)
   const valid = number > 0 && number <= 999999
 
-  if (isOptional({ required, value }) || valid) {
+  if (canSkipValidation({ required, value }) || valid) {
     return true
   }
 
@@ -118,7 +125,7 @@ export const validateCurrency = ({
 }): boolean => {
   const valid = typeof value === 'string' && value.length === 3
 
-  if (isOptional({ required, value }) || valid) {
+  if (canSkipValidation({ required, value }) || valid) {
     return true
   }
 
@@ -148,7 +155,7 @@ export const validateType = ({
 }): boolean => {
   const valid = typeof value === type
 
-  if (isOptional({ required, value }) || valid) {
+  if (canSkipValidation({ required, value }) || valid) {
     return true
   }
 
@@ -178,7 +185,7 @@ export const validateOneOf = ({
 }): boolean => {
   const valid = allowedValues.includes(value)
 
-  if (isOptional({ required, value }) || valid) {
+  if (canSkipValidation({ required, value }) || valid) {
     return true
   }
 
@@ -201,12 +208,12 @@ export const emitArgumentError = ({
   callback?: (name: string, event: { message: string }) => void
 }) => {
   const error = {
-    code: `emitArgumentError`,
+    code: `argumentError`,
     argument,
     message,
   }
   console.error(`Gr4vy - Error`, error)
-  callback?.(`emitArgumentError`, error)
+  callback?.(`argumentError`, error)
 }
 
 // Validates all Config
@@ -224,13 +231,13 @@ export const validate = (options: Config) =>
     message: 'must be a valid HTML form element',
     callback: options.onEvent,
   }) &&
-  validateOrigin({
+  validateHost({
     argument: 'iframeHost',
     value: options.iframeHost,
     message: 'must be a valid hostname with an optional :port',
     callback: options.onEvent,
   }) &&
-  validateOrigin({
+  validateHost({
     argument: 'apiHost',
     value: options.iframeHost,
     message: 'must be a valid hostname with an optional :port',
