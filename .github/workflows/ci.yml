@@ -26,6 +26,7 @@ jobs:
       - name: Lint the content
         run: |
           yarn config set workspaces-experimental true
+          yarn install
           yarn bootstrap
           yarn lint
           yarn test
