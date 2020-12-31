@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "@gr4vy/embed-cdn",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
   "main": "lib/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
@@ -17,6 +17,6 @@
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
-    "@gr4vy/embed": "^0.0.21"
+    "@gr4vy/embed": "^0.0.22"
   }
 }
