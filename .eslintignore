@@ -1,5 +1,4 @@
 .devcontainer
 .github
-.storybook
 .vscode
 node_modules

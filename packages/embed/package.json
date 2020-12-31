@@ -21,7 +21,8 @@
     "prepack": "yarn build; yarn assets:copy",
     "postpack": "yarn assets:clean",
     "lint": "eslint src/ --ext ts",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "test": "jest --colors"
   },
   "files": [
     "lib",

@@ -1,7 +1,6 @@
 dist
 lib
 yarn-error.log
-storybook-static
 *.tgz
 coverage
 package-lock.json
