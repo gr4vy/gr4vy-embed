@@ -4,7 +4,8 @@
     "packages/*"
   ],
   "scripts": {
-    "setup": "yarn clean; lerna bootstrap; yarn build;",
+    "bootstrap": "lerna bootstrap",
+    "setup": "yarn clean; yarn bootstrap; yarn build;",
     "clean": "lerna clean -y; lerna run clean",
     "lint": "lerna run lint",
     "test": "lerna run test",

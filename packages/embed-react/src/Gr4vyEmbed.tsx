@@ -2,7 +2,7 @@ import { setup } from '@gr4vy/embed'
 import React, { useRef, useEffect } from 'react'
 import { Props } from './types'
 
-const Gr4vy = (props: Props) => {
+const Gr4vyEmbed = (props: Props) => {
   const ref = useRef()
 
   useEffect(() => {
@@ -15,4 +15,6 @@ const Gr4vy = (props: Props) => {
   return <div ref={ref} />
 }
 
-export default Gr4vy
+Gr4vyEmbed.displayName = 'Gr4vyEmbed'
+
+export default Gr4vyEmbed

@@ -11,8 +11,6 @@ const log = (key, payload) => {
     alert(
       `Resource created: ${payload.data.resource_type}:${payload.data.resource_id}`
     )
-  } else if (key === `timeoutError`) {
-    alert(`Error: ${payload.message}`)
   }
 }
 

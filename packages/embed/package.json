@@ -13,12 +13,10 @@
     "import": "./esm/index.js"
   },
   "scripts": {
-    "assets:copy": "cp ../../LICENSE .; cp ../../README.md .",
-    "assets:clean": "rm -f LICENSE README.md",
-    "clean": "rm -rf lib *.tgz; yarn assets:clean",
+    "clean": "rm -rf lib *.tgz",
     "prebuild": "yarn clean",
     "build": "tsc",
-    "prepack": "yarn build; yarn assets:copy",
+    "prepack": "yarn build",
     "postpack": "yarn assets:clean",
     "lint": "eslint src/ --ext ts",
     "dev": "tsc --watch",

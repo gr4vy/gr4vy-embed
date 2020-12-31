@@ -10,7 +10,6 @@ export type Props = {
   debug?: string // wether to output any debug messages. Must be set to `log` or `debug`.
   onEvent?: (name: string, event: any) => void // a callback function that's used to subscribe to events
   externalIdentifier?: string // an optional external identifier
-  timeout?: number // the timeout we wait for the embedded form to load before we thow an `error` event
   preferResponse?: string // a development option that allows sending a `Prefer` header to force a certain API response from dev servers
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to

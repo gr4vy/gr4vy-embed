@@ -8,6 +8,4 @@ node_modules
 types
 *.d.ts
 *.js.map
-packages/*/LICENSE
-packages/*/README.md
 packages/*/src/**/*.js

@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 3
 
@@ -25,6 +25,7 @@ jobs:
 
       - name: Lint the content
         run: |
-          yarn install
+          yarn config set workspaces-experimental true
+          yarn bootstrap
           yarn lint
           yarn test

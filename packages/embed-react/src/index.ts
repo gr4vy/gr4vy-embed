@@ -1,3 +1,3 @@
-import Embed from './Embed'
+import Gr4vyEmbed from './Gr4vyEmbed'
 
-export default Embed
+export default Gr4vyEmbed

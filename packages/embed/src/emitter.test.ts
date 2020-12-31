@@ -126,9 +126,8 @@ describe('initFramebus()', () => {
     expect(fb.events['frameReady']).toHaveLength(1)
     expect(fb.events['resize']).toHaveLength(1)
     expect(fb.events['formLoaded']).toHaveLength(1)
-    expect(fb.events['transactionCreated']).toHaveLength(1)
+    expect(fb.events['transactionCreated']).toHaveLength(2)
     expect(fb.events['formUpdate']).toHaveLength(1)
-    expect(fb.events['resourceCreated']).toHaveLength(1)
     expect(fb.events['apiError']).toHaveLength(1)
 
     // trigger update options when the frame is ready
@@ -153,7 +152,7 @@ describe('initFramebus()', () => {
     expect(fb.events['submitForm'][0]).toHaveBeenCalled()
 
     // inject content and submit the form when the transaction was created
-    fb.emit('transactionCreated', { data: { id: '123' } })
+    fb.emit('transactionCreated', { id: '123' })
     expect(formNapper.inject).toHaveBeenCalledWith(
       `gr4vy_transaction_id`,
       '123'
@@ -163,8 +162,10 @@ describe('initFramebus()', () => {
     // subscribe to these events and pass them straight to the `onEvent` handler
     fb.emit('formUpdate', {})
     expect(validConfig.onEvent).toHaveBeenCalledWith('formUpdate', {})
-    fb.emit('resourceCreated', {})
-    expect(validConfig.onEvent).toHaveBeenCalledWith('resourceCreated', {})
+    fb.emit('transactionCreated', { id: '123' })
+    expect(validConfig.onEvent).toHaveBeenCalledWith('transactionCreated', {
+      id: '123',
+    })
     fb.emit('apiError', {})
     expect(validConfig.onEvent).toHaveBeenCalledWith('apiError', {})
   })

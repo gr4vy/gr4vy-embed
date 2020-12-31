@@ -9,15 +9,12 @@
   "repository": "github:gr4vy/embed",
   "homepage": "https://gr4vy.com",
   "scripts": {
-    "assets:copy": "cp ../../LICENSE .; cp ../../README.md .",
-    "assets:clean": "rm -f LICENSE README.md",
-    "clean": "rm -rf lib *.tgz; yarn assets:clean",
+    "clean": "rm -rf lib *.tgz",
     "dev": "webpack serve --config webpack.dev.js",
     "prebuild": "yarn clean",
     "build": "tsc",
     "lint": "eslint src dev --ext ts,tsx",
-    "prepack": "yarn build; yarn assets:copy",
-    "postpack": "yarn assets:clean"
+    "prepack": "yarn build"
   },
   "files": [
     "lib",
