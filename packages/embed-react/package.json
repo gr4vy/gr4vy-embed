@@ -15,7 +15,8 @@
     "build": "tsc",
     "lint": "eslint src dev --ext ts,tsx",
     "prepack": "yarn build",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "test": "jest --colors"
   },
   "files": [
     "lib",

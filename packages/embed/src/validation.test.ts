@@ -97,7 +97,7 @@ describe('validateHTMLElement()', () => {
   const argumentError = {
     argument: 'element',
     code: 'argumentError',
-    message: 'element must be a valid HTML element',
+    message: '#app must be a valid HTML element',
   }
 
   test('should return true if validation can be skipped', () => {

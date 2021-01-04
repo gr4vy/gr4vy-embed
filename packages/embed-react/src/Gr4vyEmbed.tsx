@@ -6,10 +6,12 @@ const Gr4vyEmbed = (props: Props) => {
   const ref = useRef()
 
   useEffect(() => {
-    setup({
-      ...props,
-      element: ref.current,
-    })
+    if (ref.current) {
+      setup({
+        ...props,
+        element: ref.current,
+      })
+    }
   }, [ref])
 
   return <div ref={ref} />

@@ -7,7 +7,7 @@ import {
   number,
 } from '@storybook/addon-knobs'
 import React from 'react'
-import Gr4vyEmbed from './Gr4vyEmbed'
+import Gr4vyEmbed from './'
 
 export default {
   title: `Embed React`,

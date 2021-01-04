@@ -36,7 +36,7 @@ export const validateHTMLElement = ({
 
   emitArgumentError({
     argument,
-    message: `${argument} ${message}`,
+    message: `${value} ${message}`,
     callback,
   })
   return false
