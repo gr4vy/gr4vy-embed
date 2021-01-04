@@ -22,9 +22,11 @@
     "test": "jest --colors"
   },
   "files": [
+    "esm",
     "lib",
     "LICENSE",
-    "README"
+    "README",
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "form-napper": "^2.0.0",
