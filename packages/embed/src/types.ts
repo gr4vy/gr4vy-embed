@@ -21,5 +21,4 @@ export type InternalConfig = Config & {
   form?: HTMLElement
   iframeUrl: URL
   channel: string
-  loaded?: boolean
 }

@@ -31,7 +31,6 @@ export const initFramebus = ({
   on('frameReady', () => emit('updateOptions', options(config)))
   on('resize', (data) => (frame.style.height = `${data.frame.height}px`))
   on('formLoaded', () => {
-    config.loaded = true
     frame.style.visibility = 'unset'
   })
 

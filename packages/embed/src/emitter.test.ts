@@ -143,7 +143,6 @@ describe('initFramebus()', () => {
 
     // update the config to set the form as loaded and show the UI
     fb.emit('formLoaded')
-    expect(validConfig.loaded).toEqual(true)
     expect(frame.style.visibility).toEqual('unset')
 
     // trigger a submitForm event when the form is submitted
