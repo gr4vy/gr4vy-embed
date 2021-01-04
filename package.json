@@ -11,7 +11,8 @@
     "test": "lerna run test",
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
-    "release": "lerna publish"
+    "release": "lerna publish",
+    "storybook": "lerna run storybook --parallel"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -21,6 +22,13 @@
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
     "@peculiar/webcrypto": "^1.1.4",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-console": "^1.2.2",
+    "@storybook/addon-knobs": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/addon-storyshots": "^6.1.11",
+    "@storybook/addons": "^6.1.11",
+    "@storybook/react": "^6.1.11",
     "@types/jest": "^26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",

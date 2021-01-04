@@ -14,7 +14,8 @@
     "prebuild": "yarn clean",
     "build": "tsc",
     "lint": "eslint src dev --ext ts,tsx",
-    "prepack": "yarn build"
+    "prepack": "yarn build",
+    "storybook": "start-storybook"
   },
   "files": [
     "lib",
