@@ -21,7 +21,8 @@
   "files": [
     "lib",
     "LICENSE",
-    "README"
+    "README",
+    "CHANGELOG.md"
   ],
   "peerDependencies": {
     "react": ">=16.8.0",
