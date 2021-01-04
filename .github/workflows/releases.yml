@@ -1,39 +1,39 @@
-name: Releases
+# name: Releases
 
-on:
-  push:
-    tags:
-      - 'v*.*.*'
+# on:
+#   push:
+#     tags:
+#       - 'v*.*.*'
 
-jobs:
-  publish:
-    runs-on: ubuntu-latest
-    timeout-minutes: 3
+# jobs:
+#   publish:
+#     runs-on: ubuntu-latest
+#     timeout-minutes: 3
 
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Check out the repo
+#         uses: actions/checkout@v2
 
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+#       - name: Use Node.js
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: '14.x'
 
-      - name: Build the package
-        run: |
-          yarn install
-          yarn build:package
+#       - name: Build the package
+#         run: |
+#           yarn install
+#           yarn build:package
 
-      - name: Publish the package to GitHub
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          registry: https://npm.pkg.github.com/
-          check-version: true
+#       - name: Publish the package to GitHub
+#         uses: JS-DevTools/npm-publish@v1
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           registry: https://npm.pkg.github.com/
+#           check-version: true
 
-      - name: Publish the package to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          registry: https://registry.npmjs.org/
-          check-version: true
+#       - name: Publish the package to NPM
+#         uses: JS-DevTools/npm-publish@v1
+#         with:
+#           token: ${{ secrets.NPM_TOKEN }}
+#           registry: https://registry.npmjs.org/
+#           check-version: true

@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "noImplicitAny": false,
-    "module": "es6",
+    "module": "commonjs",
     "target": "es5",
-    "jsx": "react-jsx",
     "allowJs": false,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "sourceMap": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/**/*.stories.*", "src/**/*.spec.*"]
+    "emitDeclarationOnly": false,
+    "sourceMap": true,
+    "esModuleInterop": true
+  }
 }
