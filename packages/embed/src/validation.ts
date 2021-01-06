@@ -72,7 +72,7 @@ export const validateHost = ({
   if (!valid) {
     emitArgumentError({
       argument,
-      message: `${argument} ${message}`,
+      message: `${value} ${message}`,
       callback,
     })
   }

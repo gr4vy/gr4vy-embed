@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
@@ -58,6 +59,7 @@ module.exports = {
     poll: 1000,
   },
   plugins: [
+    new Dotenv({ path: '../../.env' }),
     new HtmlWebpackPlugin({
       templateContent: `
         <html>
