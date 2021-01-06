@@ -51,6 +51,7 @@ The options for this integration are as follows.
 | `externalIdentifier`      | `null`  | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID                                                              |
 | `buyerId`                 | `null`  | An optional ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that ID. If no buyer with this ID exists then it will be ignored.                                                                                 |
 | `buyerExternalIdentifier` | `null`  | An optional external ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that external ID. If no buyer with this external ID exists then it will be ignored. This option is ignored if the `buyerId` is provided. |
+| `form`                    | `null`  | Specifies the HTML `<form>` element to attach additional inputs to. Gr4vy will automatically insert a hidden Input field into this form containing the transaction ID.                                                                               |
 
 ### Events
 
