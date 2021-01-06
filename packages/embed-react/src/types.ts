@@ -1,5 +1,5 @@
 export type Props = {
-  form?: string // The form to bind the integration to
+  form?: string | HTMLElement | Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
   capture?: boolean // A flag to determine if payment should be captured at the same time as authorization
   currency: string // Currency to charge the amount in
