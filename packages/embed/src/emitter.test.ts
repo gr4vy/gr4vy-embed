@@ -46,7 +46,7 @@ afterEach(() => {
 
 describe('loggedFramebusOn()', () => {
   test('should log and then create a callback', () => {
-    const on = loggedFramebusOn(framebus, 'log')
+    const on = loggedFramebusOn(framebus, true)
 
     const eventName = 'myEvent'
     const data = {}
@@ -55,13 +55,16 @@ describe('loggedFramebusOn()', () => {
     framebus.emit(eventName, data)
 
     expect(callback).toHaveBeenCalledWith(data)
-    expect(logSpy).toHaveBeenCalledWith(`Gr4vy - Page received - myEvent`, `{}`)
+    expect(logSpy).toHaveBeenCalledWith(`Gr4vy - Page received`, {
+      type: `myEvent`,
+      payload: {},
+    })
   })
 })
 
 describe('loggedFramebusEmit()', () => {
   test('should log and then emit', () => {
-    const emit = loggedFramebusEmit(framebus, 'log')
+    const emit = loggedFramebusEmit(framebus, true)
 
     const eventName = 'myEvent'
     const data = {}
@@ -69,14 +72,17 @@ describe('loggedFramebusEmit()', () => {
     framebus.on(eventName, callback)
     emit(eventName, data)
 
-    expect(logSpy).toHaveBeenCalledWith(`Gr4vy - Page emits - myEvent`, `{}`)
+    expect(logSpy).toHaveBeenCalledWith(`Gr4vy - Page emits`, {
+      type: `myEvent`,
+      payload: {},
+    })
   })
 })
 
 describe('loggedFramebusSubscribe()', () => {
   test('should trigger the callback when the event is emitted', () => {
     const callback = jest.fn()
-    const subscribe = loggedFramebusSubscribe(framebus, 'log', callback)
+    const subscribe = loggedFramebusSubscribe(framebus, true, callback)
 
     const eventName = 'myEvent'
     const data = {}
@@ -84,18 +90,24 @@ describe('loggedFramebusSubscribe()', () => {
     framebus.emit(eventName, data)
 
     expect(callback).toHaveBeenCalledWith(`myEvent`, {})
-    expect(logSpy).toHaveBeenCalledWith('Gr4vy - Page received - myEvent', '{}')
+    expect(logSpy).toHaveBeenCalledWith('Gr4vy - Page received', {
+      type: `myEvent`,
+      payload: {},
+    })
   })
 
   test('should work without a callback function', () => {
-    const subscribe = loggedFramebusSubscribe(framebus, 'log')
+    const subscribe = loggedFramebusSubscribe(framebus, true)
 
     const eventName = 'myEvent'
     const data = {}
     subscribe(eventName)
     framebus.emit(eventName, data)
 
-    expect(logSpy).toHaveBeenCalledWith('Gr4vy - Page received - myEvent', '{}')
+    expect(logSpy).toHaveBeenCalledWith('Gr4vy - Page received', {
+      type: `myEvent`,
+      payload: {},
+    })
   })
 })
 
@@ -172,6 +184,8 @@ describe('initFramebus()', () => {
   test('should work without a form', () => {
     const frame = document.createElement('iframe')
     initFramebus({ frame, config: validConfig })
+    const fb = (Framebus as any).getInstances()[1]
+    fb.emit('transactionCreated', { id: '123' })
   })
 })
 

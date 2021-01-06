@@ -7,7 +7,7 @@ export type Props = {
   apiHost: string // the hostname and port of the API server to use
   bearerToken: string // the JWT access token used to authenticate the API
   showButton?: boolean // wether to show a submit button in the embedded frame
-  debug?: string // wether to output any debug messages. Must be set to `log` or `debug`.
+  debug?: boolean // wether to output any debug messages. Must be set to `log` or `debug`.
   onEvent?: (name: string, event: any) => void // a callback function that's used to subscribe to events
   externalIdentifier?: string // an optional external identifier
   preferResponse?: string // a development option that allows sending a `Prefer` header to force a certain API response from dev servers

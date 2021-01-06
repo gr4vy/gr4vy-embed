@@ -38,13 +38,7 @@ export const Default = () => (
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}
     bearerToken={text(`JWT token`, `1234567`, `Public`)}
     showButton={boolean(`Enable submit button`, true, `Public`)}
-    debug={optionsKnob(
-      `Enable debugging`,
-      debugOptions,
-      `log`,
-      { display: `inline-radio` },
-      `Development`
-    )}
+    debug
     preferResponse={select(
       `Prefered server response`,
       responseOptions,

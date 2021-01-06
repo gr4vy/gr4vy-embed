@@ -10,7 +10,7 @@ setup({
   apiHost: '127.0.0.1:3100',
   bearerToken: '123456',
   showButton: false,
-  debug: 'log',
+  debug: true,
   onEvent: console.log,
   externalIdentifier: 'user-123',
 })

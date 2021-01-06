@@ -11,7 +11,7 @@ ReactDOM.render(
     apiHost="127.0.0.1:3100"
     bearerToken="123456"
     showButton
-    debug="log"
+    debug
     onEvent={console.log}
   />,
   document.querySelector('#app')
