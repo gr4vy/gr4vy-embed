@@ -4,7 +4,6 @@ import {
   validateNumber,
   validateCurrency,
   validateType,
-  validateOneOf,
   validateHTMLElement,
   validate,
   emitArgumentError,
@@ -167,7 +166,7 @@ describe('validateHost()', () => {
   const argumentError = {
     argument: 'frameHost',
     code: 'argumentError',
-    message: 'frameHost must be a valid host',
+    message: 'example/8888 must be a valid host',
   }
 
   test('should return true if validation can be skipped', () => {
@@ -238,7 +237,7 @@ describe('validateNumber()', () => {
   const argumentError = {
     argument: 'amount',
     code: 'argumentError',
-    message: 'amount must be a valid number',
+    message: 'null must be a valid number',
   }
 
   test('should return true if validation can be skipped', () => {
@@ -270,13 +269,15 @@ describe('validateNumber()', () => {
       value: 'example',
       callback: jest.fn(),
     }
+    const error = {
+      argument: 'amount',
+      code: 'argumentError',
+      message: 'example must be a valid number',
+    }
     const valid = validateNumber(options)
     expect(valid).toEqual(false)
-    expect(options.callback).toHaveBeenCalledWith(
-      'argumentError',
-      argumentError
-    )
-    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', argumentError)
+    expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 
   test('should return false if the number is negative', () => {
@@ -319,7 +320,7 @@ describe('validateCurrency()', () => {
   const argumentError = {
     argument: 'currency',
     code: 'argumentError',
-    message: 'currency must be a valid 3-digit currency code',
+    message: 'null must be a valid 3-digit currency code',
   }
 
   test('should return true if validation can be skipped', () => {
@@ -351,13 +352,15 @@ describe('validateCurrency()', () => {
       value: 123,
       callback: jest.fn(),
     }
+    const error = {
+      argument: 'currency',
+      code: 'argumentError',
+      message: '123 must be a valid 3-digit currency code',
+    }
     const valid = validateCurrency(options)
     expect(valid).toEqual(false)
-    expect(options.callback).toHaveBeenCalledWith(
-      'argumentError',
-      argumentError
-    )
-    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', argumentError)
+    expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 
   test('should return false if the currency code is not 3 digits', () => {
@@ -381,7 +384,7 @@ describe('validateType()', () => {
   const argumentError = {
     argument: 'capture',
     code: 'argumentError',
-    message: 'capture must be a boolean',
+    message: 'null must be a boolean',
   }
 
   test('should return true if validation can be skipped', () => {
@@ -413,64 +416,14 @@ describe('validateType()', () => {
       value: 123,
       callback: jest.fn(),
     }
+    const error = {
+      argument: 'capture',
+      code: 'argumentError',
+      message: '123 must be a boolean',
+    }
     const valid = validateType(options)
     expect(valid).toEqual(false)
-    expect(options.callback).toHaveBeenCalledWith(
-      'argumentError',
-      argumentError
-    )
-    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', argumentError)
-  })
-})
-
-describe('validateOneOf()', () => {
-  const defaultOptions = {
-    argument: 'debug',
-    allowedValues: ['debug', 'log'],
-    message: 'must be set to either',
-  }
-
-  const argumentError = {
-    argument: 'debug',
-    code: 'argumentError',
-    message: 'debug must be set to either ["debug","log"]',
-  }
-
-  test('should return true if validation can be skipped', () => {
-    const options = {
-      ...defaultOptions,
-      value: null,
-      required: false,
-      callback: jest.fn(),
-    }
-    const valid = validateOneOf(options)
-    expect(valid).toEqual(true)
-    expect(options.callback).not.toHaveBeenCalled()
-  })
-
-  test('should return true if the provided value is valid', () => {
-    const options = {
-      ...defaultOptions,
-      value: 'debug',
-      callback: jest.fn(),
-    }
-    const valid = validateOneOf(options)
-    expect(valid).toEqual(true)
-    expect(options.callback).not.toHaveBeenCalled()
-  })
-
-  test('should return false if the value is not one of the allowed options', () => {
-    const options = {
-      ...defaultOptions,
-      value: 'foo',
-      callback: jest.fn(),
-    }
-    const valid = validateOneOf(options)
-    expect(valid).toEqual(false)
-    expect(options.callback).toHaveBeenCalledWith(
-      'argumentError',
-      argumentError
-    )
-    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', argumentError)
+    expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 })

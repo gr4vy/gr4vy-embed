@@ -73,12 +73,12 @@ export const createFramebus = (config: InternalConfig) => {
  * @param framebus The framebus to wrap in a logger
  * @param debug The debug level
  */
-export const loggedFramebusOn = (framebus: Framebus, debug: string) => (
+export const loggedFramebusOn = (framebus: Framebus, debug: boolean) => (
   eventName: string,
   callback: (data: any) => void
 ) => {
   framebus.on(eventName, (data: any) => {
-    log(`Page received - ${eventName}`, data, debug)
+    log(`Page received`, { type: eventName, payload: data }, debug)
     callback(data)
   })
 }
@@ -90,11 +90,11 @@ export const loggedFramebusOn = (framebus: Framebus, debug: string) => (
  * @param framebus The framebus to wrap in a logger
  * @param debug The debug level
  */
-export const loggedFramebusEmit = (framebus: Framebus, debug: string) => (
+export const loggedFramebusEmit = (framebus: Framebus, debug: boolean) => (
   eventName: string,
   data?: any
 ) => {
-  log(`Page emits - ${eventName}`, data, debug)
+  log(`Page emits`, { type: eventName, payload: data }, debug)
   framebus.emit(eventName, data)
 }
 
@@ -108,7 +108,7 @@ export const loggedFramebusEmit = (framebus: Framebus, debug: string) => (
  */
 export const loggedFramebusSubscribe = (
   framebus: Framebus,
-  debug: string,
+  debug: boolean,
   onEvent?: (name: string, event: any) => void
 ) => (eventName) => {
   const on = loggedFramebusOn(framebus, debug)

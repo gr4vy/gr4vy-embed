@@ -103,7 +103,7 @@ export const validateNumber = ({
 
   emitArgumentError({
     argument,
-    message: `${argument} ${message}`,
+    message: `${value} ${message}`,
     callback,
   })
   return false
@@ -131,7 +131,7 @@ export const validateCurrency = ({
 
   emitArgumentError({
     argument,
-    message: `${argument} ${message}`,
+    message: `${value} ${message}`,
     callback,
   })
   return false
@@ -161,37 +161,7 @@ export const validateType = ({
 
   emitArgumentError({
     argument,
-    message: `${argument} ${message}`,
-    callback,
-  })
-  return false
-}
-
-// Validates that a value is one of the providef values
-export const validateOneOf = ({
-  argument,
-  value,
-  allowedValues,
-  message,
-  required = true,
-  callback,
-}: {
-  argument: string
-  value: any
-  allowedValues: any[]
-  message: string
-  required?: boolean
-  callback?: (name: string, event: { message: string }) => void
-}): boolean => {
-  const valid = allowedValues.includes(value)
-
-  if (canSkipValidation({ required, value }) || valid) {
-    return true
-  }
-
-  emitArgumentError({
-    argument,
-    message: `${argument} ${message} ${JSON.stringify(allowedValues)}`,
+    message: `${value} ${message}`,
     callback,
   })
   return false
@@ -302,11 +272,11 @@ export const validate = (options: Config) =>
     message: 'must be valid, positive number',
     callback: options.onEvent,
   }) &&
-  validateOneOf({
+  validateType({
     argument: 'debug',
     value: options.debug,
-    allowedValues: ['debug', 'log'],
-    message: 'must be set to either',
+    type: 'boolean',
+    message: 'must be a boolean',
     required: false,
     callback: options.onEvent,
   }) &&
