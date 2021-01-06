@@ -44,10 +44,10 @@ values for these elements are a query string that can be parsed by
 `<div class="container" />` would be represented as `.container`, while
 `<form id="cardform">` would be represented by `#cardform`.
 
-| HTML Element | Example      | Description                                                                                                                                                                                                                                                   |
-| ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `element`    | `.container` | Specifies the HTML element to attach the form to. Gr4vy Embed will insert the form at this location. This parameter also supports directly providing a HTML element.                                                                                          |
-| `form`       | `#cardform`  | Specifies the HTML Form to attach additional inputs to. Gr4vy will automatically insert hidden Input fields into this form containing the created resource (often an authorization) ID and type. This parameter also supports directly providing a HTML form. |
+| HTML Element | Example      | Description                                                                                                                                                                                       |
+| ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `element`    | `.container` | Specifies the HTML element to attach the form to. Gr4vy Embed will insert the form at this location. This parameter also supports directly providing a HTML element.                              |
+| `form`       | `#order`     | Specifies the HTML `<form>` element or a query for the element to attach additional inputs to. Gr4vy will automatically insert a hidden Input field into this form containing the transaction ID. |
 
 ### Options
 
