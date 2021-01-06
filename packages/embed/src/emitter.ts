@@ -39,8 +39,8 @@ export const initFramebus = ({
   // to insert a new gr4vy_transaction_id into the form
   formNapper?.hijack?.(() => emit('submitForm'))
   on('transactionCreated', (data) => {
-    formNapper.inject(`gr4vy_transaction_id`, data.id)
-    formNapper.submit()
+    formNapper?.inject?.(`gr4vy_transaction_id`, data.id)
+    formNapper?.submit?.()
   })
 
   // subscribe to events that are exposed to the onEvent handler passed in by
