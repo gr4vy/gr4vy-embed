@@ -27,6 +27,31 @@ export const initFramebus = ({
   const emit = loggedFramebusEmit(framebus, debug)
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
 
+  /**
+   * Basic overlay
+   */
+  const overlay = document.createElement('div')
+  overlay.style.position = 'fixed'
+  overlay.style.top = '0'
+  overlay.style.left = '0'
+  overlay.style.right = '0'
+  overlay.style.zIndex = '100'
+  overlay.style.background = 'rgba(0,0,0,0)'
+  overlay.style.transition = 'all 0.5s linear'
+  ;(overlay.style as any).backdropFilter = 'blur(2px)'
+  document.body.append(overlay)
+  function hideOverlay() {
+    overlay.style.bottom = 'unset'
+    overlay.style.background = 'rgba(0,0,0,0)'
+  }
+  function showOverlay() {
+    overlay.style.bottom = '0'
+    overlay.style.background = 'rgba(0,0,0,0.7)'
+  }
+  overlay.addEventListener('click', hideOverlay)
+  on('popupOpened', showOverlay)
+  on('popupClosed', hideOverlay)
+
   // listen to internal events needed to communicate with the nested frame
   on('frameReady', () => emit('updateOptions', options(config)))
   on('resize', (data) => (frame.style.height = `${data.frame.height}px`))

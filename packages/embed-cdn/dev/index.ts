@@ -42,7 +42,7 @@ setup({
   apiHost: process.env.API_HOST ?? '127.0.0.1:3000',
   bearerToken: `123456`,
   showButton: false,
-  debug: `debug`,
+  debug: true,
   onEvent: log,
   externalIdentifier: `user-123`,
 })
