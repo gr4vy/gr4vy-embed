@@ -28,6 +28,22 @@ export const initFramebus = ({
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
 
   /**
+   * Popup
+   */
+  let needsPopup = false
+  let popup: Window = null
+
+  on('needsPopup', (value) => {
+    needsPopup = value
+  })
+
+  on('popupUrl', (url) => {
+    if (needsPopup) {
+      popup.location.href = url
+    }
+  })
+
+  /**
    * Basic overlay
    */
   const overlay = document.createElement('div')
@@ -49,8 +65,6 @@ export const initFramebus = ({
     overlay.style.background = 'rgba(0,0,0,0.7)'
   }
   overlay.addEventListener('click', hideOverlay)
-  on('popupOpened', showOverlay)
-  on('popupClosed', hideOverlay)
 
   // listen to internal events needed to communicate with the nested frame
   on('frameReady', () => emit('updateOptions', options(config)))
@@ -62,8 +76,25 @@ export const initFramebus = ({
   // listen to the form to submit the form in the nested iframe
   // and listen to an event when the transaction was created
   // to insert a new gr4vy_transaction_id into the form
-  formNapper?.hijack?.(() => emit('submitForm'))
+  formNapper?.hijack?.(() => {
+    if (needsPopup) {
+      showOverlay()
+      const width = 500
+      const height = 589
+      const left = screen.width / 2 - width / 2
+      const top = screen.height / 2 - height / 2
+      popup = open(
+        '',
+        `Loading`,
+        `width=${width},height=${height},top=${top},left=${left}`
+      )
+      popup.document.write('<p>Loading...</p>')
+    }
+    emit('submitForm')
+  })
   on('transactionCreated', (data) => {
+    popup?.close()
+    popup = null
     formNapper?.inject?.(`gr4vy_transaction_id`, data.id)
     formNapper?.submit?.()
   })

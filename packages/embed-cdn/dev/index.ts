@@ -39,7 +39,7 @@ setup({
   amount: 1299,
   currency: `USD`,
   iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
-  apiHost: process.env.API_HOST ?? '127.0.0.1:3000',
+  apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
   bearerToken: `123456`,
   showButton: false,
   debug: true,
