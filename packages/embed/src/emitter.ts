@@ -62,8 +62,8 @@ function createLoader() {
   ${loadingBarCss}
   .gr4vy-skeleton {
     display: flex;
-    padding: 16px;
     border-bottom: 1px solid #BDC6D9;
+    padding: 16px;
   }
   .gr4vy-skeleton:last-child {
     border-bottom: none;
@@ -72,14 +72,18 @@ function createLoader() {
     border-radius: 50%;
     height: 16px;
     width: 16px;
+    margin-bottom: 4px;
+    margin-top: 4px;
     background-color: #DADBDC;
   }
   .gr4vy-skeleton-block {
     width: 50%;
     height: 16px;
     background-color: #DADBDC;
+    margin-bottom: 4px;
+    margin-top: 4px;
     margin-left: 16px;
-    
+    border-radius: 2px;
   }
   .gr4vy-container {
     border: 1px solid #BDC6D9;
@@ -97,6 +101,7 @@ function createLoader() {
     </div>
     <div class="gr4vy-skeleton">
       <div class="gr4vy-skeleton-radio"></div>
+      <div class="gr4vy-skeleton-block"></div>
     </div>
   </div>
   `
