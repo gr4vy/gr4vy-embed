@@ -14,7 +14,6 @@ const loadingBarCss = `
 }
 .gr4vy-loading-bar {
   height: 8px;
-  max-width: 480px;
   background-image: linear-gradient( 
 90deg
 , #009CDE 25%, #BEE7FA 25%, #BEE7FA 75%, #009CDE 75% );
