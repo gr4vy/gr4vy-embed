@@ -21,7 +21,7 @@ export const initFrame = ({ iframeUrl }: { iframeUrl: URL }): HTMLElement => {
   // add the default style of the frame
   frame.style.visibility = 'hidden'
   frame.style.width = '100%'
-  frame.style.height = '1px'
+  frame.style.height = '0px'
   frame.style.border = '0'
   frame.style.overflow = 'hidden'
 

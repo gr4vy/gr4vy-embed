@@ -10,3 +10,4 @@ types
 *.js.map
 packages/*/src/**/*.js
 .env
+.npmrc
