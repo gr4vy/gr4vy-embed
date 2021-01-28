@@ -16,8 +16,8 @@ describe('setupFrame()', () => {
       channel: '123',
     })
 
-    expect(element.innerHTML).toEqual(
-      '<iframe src="http://127.0.0.1:8080/" title="Secure payment frame - Gr4vy" style="visibility: hidden; width: 100%; height: 100px; border: 0px; overflow: hidden;" frameborder="0" scrolling="no"></iframe>'
+    expect(element.innerHTML).toContain(
+      '<iframe src="http://127.0.0.1:8080/" title="Secure payment frame - Gr4vy" style="visibility: hidden; width: 100%; height: 1px; border: 0px; overflow: hidden;" frameborder="0" scrolling="no"></iframe>'
     )
   })
 })
@@ -30,7 +30,7 @@ describe('initFrame()', () => {
     expect(frame).toBeInstanceOf(HTMLElement)
     expect(frame.getAttribute('src')).toEqual('http://localhost:8000/')
     expect(frame.getAttribute('style')).toEqual(
-      'visibility: hidden; width: 100%; height: 100px; border: 0px; overflow: hidden;'
+      'visibility: hidden; width: 100%; height: 1px; border: 0px; overflow: hidden;'
     )
     expect(frame.getAttribute('frameBorder')).toEqual('0')
     expect(frame.getAttribute('scrolling')).toEqual('no')

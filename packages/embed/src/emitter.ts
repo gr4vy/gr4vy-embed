@@ -3,6 +3,109 @@ import Framebus from 'framebus'
 import { log } from './logger'
 import { InternalConfig } from './types'
 
+const loadingBarCss = `
+@keyframes gr4vy-sweep {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 600px 0;
+  }
+}
+.gr4vy-loading-bar {
+  height: 8px;
+  max-width: 480px;
+  background-image: linear-gradient( 
+90deg
+, #009CDE 25%, #BEE7FA 25%, #BEE7FA 75%, #009CDE 75% );
+  background-size: 600px 8px;
+  -webkit-animation: gr4vy-sweep 2s infinite cubic-bezier(0.2,0.75,0.77,0.25);
+  animation: gr4vy-sweep 2s infinite cubic-bezier(0.2,0.75,0.77,0.25);
+}
+`
+
+const redirectDocument = `
+<html>
+  <head>
+    <title>Redirecting...</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato', sans-serif;
+        text-align: center;
+      }
+      .status {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      ${loadingBarCss}
+    </style>
+  </head>
+  <div class="gr4vy-loading-bar"></div>
+  <div class="status">
+    <p>Redirecting to payment provider...</p>
+  </div>
+</html>
+`
+
+function createLoader() {
+  const style = document.createElement('style')
+  style.innerText = `
+  ${loadingBarCss}
+  .gr4vy-skeleton {
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #BDC6D9;
+  }
+  .gr4vy-skeleton:last-child {
+    border-bottom: none;
+  }
+  .gr4vy-skeleton-radio {
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    background-color: #DADBDC;
+  }
+  .gr4vy-skeleton-block {
+    width: 50%;
+    height: 16px;
+    background-color: #DADBDC;
+    margin-left: 16px;
+    
+  }
+  .gr4vy-container {
+    border: 1px solid #BDC6D9;
+    max-width: 480px;
+  }
+  `
+  const container = document.createElement('div')
+  const skeleton = document.createElement('div')
+  skeleton.innerHTML = `
+  <div class="gr4vy-container">
+    <div class="gr4vy-loading-bar"></div>
+    <div class="gr4vy-skeleton">
+      <div class="gr4vy-skeleton-radio"></div>
+      <div class="gr4vy-skeleton-block"></div>
+    </div>
+    <div class="gr4vy-skeleton">
+      <div class="gr4vy-skeleton-radio"></div>
+    </div>
+  </div>
+  `
+  container.appendChild(style)
+  container.appendChild(skeleton)
+  return container
+}
+
 /**
  * Initializes the framebus connection to the nested frame.
  *
@@ -26,12 +129,14 @@ export const initFramebus = ({
   const on = loggedFramebusOn(framebus, debug)
   const emit = loggedFramebusEmit(framebus, debug)
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
+  const loader = createLoader()
+  config.element.appendChild(loader)
 
   /**
    * Popup
    */
   let needsPopup = false
-  let popup: Window = null
+  let popup: WindowProxy = null
 
   on('needsPopup', (value) => {
     needsPopup = value
@@ -69,8 +174,10 @@ export const initFramebus = ({
   // listen to internal events needed to communicate with the nested frame
   on('frameReady', () => emit('updateOptions', options(config)))
   on('resize', (data) => (frame.style.height = `${data.frame.height}px`))
-  on('formLoaded', () => {
+  on('optionsLoaded', () => {
     frame.style.visibility = 'unset'
+    frame.style.display = 'unset'
+    loader.style.display = 'none'
   })
 
   // listen to the form to submit the form in the nested iframe
@@ -88,7 +195,7 @@ export const initFramebus = ({
         `Loading`,
         `width=${width},height=${height},top=${top},left=${left}`
       )
-      popup.document.write('<p>Loading...</p>')
+      popup.document.write(redirectDocument)
     }
     emit('submitForm')
   })

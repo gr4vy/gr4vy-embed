@@ -137,7 +137,7 @@ describe('initFramebus()', () => {
     const fb = (Framebus as any).getInstances()[1]
     expect(fb.events['frameReady']).toHaveLength(1)
     expect(fb.events['resize']).toHaveLength(1)
-    expect(fb.events['formLoaded']).toHaveLength(1)
+    expect(fb.events['optionsLoaded']).toHaveLength(1)
     expect(fb.events['transactionCreated']).toHaveLength(2)
     expect(fb.events['formUpdate']).toHaveLength(1)
     expect(fb.events['apiError']).toHaveLength(1)
@@ -154,7 +154,7 @@ describe('initFramebus()', () => {
     expect(frame.style.height).toEqual('123px')
 
     // update the config to set the form as loaded and show the UI
-    fb.emit('formLoaded')
+    fb.emit('optionsLoaded')
     expect(frame.style.visibility).toEqual('unset')
 
     // trigger a submitForm event when the form is submitted
