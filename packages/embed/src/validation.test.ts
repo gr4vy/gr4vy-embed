@@ -5,6 +5,7 @@ import {
   validateCurrency,
   validateType,
   validateHTMLElement,
+  validateIntent,
   validate,
   emitArgumentError,
 } from './validation'
@@ -234,12 +235,6 @@ describe('validateNumber()', () => {
     message: 'must be a valid number',
   }
 
-  const argumentError = {
-    argument: 'amount',
-    code: 'argumentError',
-    message: 'null must be a valid number',
-  }
-
   test('should return true if validation can be skipped', () => {
     const options = {
       ...defaultOptions,
@@ -317,12 +312,6 @@ describe('validateCurrency()', () => {
     message: 'must be a valid 3-digit currency code',
   }
 
-  const argumentError = {
-    argument: 'currency',
-    code: 'argumentError',
-    message: 'null must be a valid 3-digit currency code',
-  }
-
   test('should return true if validation can be skipped', () => {
     const options = {
       ...defaultOptions,
@@ -376,15 +365,9 @@ describe('validateCurrency()', () => {
 
 describe('validateType()', () => {
   const defaultOptions = {
-    argument: 'capture',
+    argument: 'foo',
     type: 'boolean',
     message: 'must be a boolean',
-  }
-
-  const argumentError = {
-    argument: 'capture',
-    code: 'argumentError',
-    message: 'null must be a boolean',
   }
 
   test('should return true if validation can be skipped', () => {
@@ -417,11 +400,64 @@ describe('validateType()', () => {
       callback: jest.fn(),
     }
     const error = {
-      argument: 'capture',
+      argument: 'foo',
       code: 'argumentError',
       message: '123 must be a boolean',
     }
     const valid = validateType(options)
+    expect(valid).toEqual(false)
+    expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateIntent()', () => {
+  const defaultOptions = {
+    argument: 'intent',
+    message: 'must be a valid intent',
+  }
+
+  test('should return true if validation can be skipped', () => {
+    const options = {
+      ...defaultOptions,
+      value: null,
+      required: false,
+      callback: jest.fn(),
+    }
+    const valid = validateIntent(options)
+    expect(valid).toEqual(true)
+    expect(options.callback).not.toHaveBeenCalled()
+  })
+
+  test('should return true if the intent is valid', () => {
+    ;['authorize', 'capture', 'approve'].forEach((value) => {
+      const options = {
+        ...defaultOptions,
+        value,
+        callback: jest.fn(),
+      }
+      const valid = validateIntent({
+        ...defaultOptions,
+        value: 'authorize',
+        callback: jest.fn(),
+      })
+      expect(valid).toEqual(true)
+      expect(options.callback).not.toHaveBeenCalled()
+    })
+  })
+
+  test('should return false if the intent is not valid', () => {
+    const options = {
+      ...defaultOptions,
+      value: 123,
+      callback: jest.fn(),
+    }
+    const error = {
+      argument: 'intent',
+      code: 'argumentError',
+      message: '123 must be a valid intent',
+    }
+    const valid = validateIntent(options)
     expect(valid).toEqual(false)
     expect(options.callback).toHaveBeenCalledWith('argumentError', error)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)

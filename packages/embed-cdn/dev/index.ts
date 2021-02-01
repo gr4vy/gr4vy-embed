@@ -35,7 +35,7 @@ document.body.appendChild(form)
 setup({
   element: `#root`,
   form: `#form`,
-  capture: true,
+  intent: 'capture',
   amount: 1299,
   currency: `USD`,
   iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',

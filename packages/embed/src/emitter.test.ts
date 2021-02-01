@@ -200,7 +200,7 @@ describe('options()', () => {
       channel: 'asdasdasdasdasdasd',
       buyerExternalIdentifier: undefined,
       buyerId: undefined,
-      capture: undefined,
+      intent: undefined,
       debug: undefined,
       externalIdentifier: undefined,
       preferResponse: undefined,

@@ -6,10 +6,11 @@ jest.mock('@gr4vy/embed', () => ({
 import { setup } from '@gr4vy/embed'
 import { mount } from 'enzyme'
 import React from 'react'
+import { Props } from './types'
 import Gr4vyEmbed from './'
 
-const options = {
-  capture: true,
+const options: Props & { channel: string } = {
+  intent: 'capture',
   iframeHost: `localhost:8080`,
   apiHost: `localhost:3100`,
   bearerToken: `123456`,
@@ -25,7 +26,7 @@ test(`should default to be not loaded`, () => {
     amount: 200,
     apiHost: 'localhost:3100',
     bearerToken: '123456',
-    capture: true,
+    intent: 'capture',
     channel: 'mychannel',
     currency: 'GBP',
     element: expect.any(HTMLDivElement),

@@ -3,7 +3,7 @@ import { setup } from '@gr4vy/embed'
 setup({
   element: 'body',
   form: null,
-  capture: true,
+  intent: 'capture',
   amount: 1299,
   currency: 'USD',
   iframeHost: '127.0.0.1:8080',

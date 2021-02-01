@@ -137,6 +137,35 @@ export const validateCurrency = ({
   return false
 }
 
+export const validateIntent = ({
+  argument,
+  value,
+  message,
+  required = true,
+  callback,
+}: {
+  argument: string
+  value: any
+  message: string
+  required?: boolean
+  callback?: (name: string, event: { message: string }) => void
+}): boolean => {
+  const valid =
+    typeof value === 'string' &&
+    ['authorize', 'capture', 'approve'].includes(value)
+
+  if (canSkipValidation({ required, value }) || valid) {
+    return true
+  }
+
+  emitArgumentError({
+    argument,
+    message: `${value} ${message}`,
+    callback,
+  })
+  return false
+}
+
 // Validates a type
 export const validateType = ({
   argument,
@@ -213,11 +242,10 @@ export const validate = (options: Config) =>
     message: 'must be a valid hostname with an optional :port',
     callback: options.onEvent,
   }) &&
-  validateType({
-    argument: 'capture',
-    value: options.capture,
-    type: 'boolean',
-    message: 'must be a boolean',
+  validateIntent({
+    argument: 'intent',
+    value: options.intent,
+    message: 'must be a valid intent',
     required: false,
     callback: options.onEvent,
   }) &&
