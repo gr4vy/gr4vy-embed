@@ -32,7 +32,7 @@ setup({
   currency: 'USD',
   frameHost: '127.0.0.1:8080',
   apiHost: '127.0.0.1:3100',
-  bearerToken: '...'
+  bearerToken: '...',
 })
 ```
 
@@ -53,19 +53,19 @@ values for these elements are a query string that can be parsed by
 
 The options for this integration are as follows.
 
-| Field                     | Default | Description                                                                                                                                                                                                                                          |
-| ------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `amount`                  | `null`  | The amount to authorize or capture in the specified `currency`. only.                                                                                                                                                                                |
-| `apiHost`                 | `null`  | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                                                                                     |
-| `bearerToken`             | `null`  | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
-| `capture`                 | `true`  | Controls the behaviour of the integration, defining if it should perform an authorization, as well as a capture                                                                                                                                      |
-| `currency`                | `null`  | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                      |
-| `frameHost`               | `null`  | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                    |
-| `showButton`              | `false` | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                   |
-| `onEvent`                 | `null`  | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                |
-| `externalIdentifier`      | `null`  | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID                                                              |
-| `buyerId`                 | `null`  | An optional ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that ID. If no buyer with this ID exists then it will be ignored.                                                                                 |
-| `buyerExternalIdentifier` | `null`  | An optional external ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that external ID. If no buyer with this external ID exists then it will be ignored. This option is ignored if the `buyerId` is provided. |
+| Field                     | Default     | Description                                                                                                                                                                                                                                          |
+| ------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `amount`                  | `null`      | The amount to authorize or capture in the specified `currency`. only.                                                                                                                                                                                |
+| `apiHost`                 | `null`      | **Required** - The host (both hostname and port) of the Gr4vy API server to use.                                                                                                                                                                     |
+| `bearerToken`             | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
+| `intent`                  | `auhtorize` | Defines the intent of this API call. This determines the desired initial state of the transaction.                                                                                                                                                   |
+| `currency`                | `null`      | A valid, active, 3-character `ISO 4217` currency code to authorize or capture the `amount` for.                                                                                                                                                      |
+| `frameHost`               | `null`      | **Required** - The host (both hostname and port) of the server that hosts the Gr4vy payment form.                                                                                                                                                    |
+| `showButton`              | `false`     | Setting this value to `true` will show a **Submit** button within the UI. This is useful when the UI around this element does not contain a button                                                                                                   |
+| `onEvent`                 | `null`      | An optional event handler to bind to the form. This is called for various events, more on that below.                                                                                                                                                |
+| `externalIdentifier`      | `null`      | An optional external identifier that can be supplied. This will automatically be associated to any resource created by Gr4vy and can subsequently be used to find a resource by that ID                                                              |
+| `buyerId`                 | `null`      | An optional ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that ID. If no buyer with this ID exists then it will be ignored.                                                                                 |
+| `buyerExternalIdentifier` | `null`      | An optional external ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that external ID. If no buyer with this external ID exists then it will be ignored. This option is ignored if the `buyerId` is provided. |
 
 ### Events
 
@@ -129,7 +129,7 @@ Returned when the form encounters an API error.
   "code": "unauthorized",
   "status": 401,
   "message": "No valid API authentication found",
-  "details": [ ]
+  "details": []
 }
 ```
 

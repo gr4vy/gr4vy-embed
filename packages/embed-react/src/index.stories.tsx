@@ -3,7 +3,6 @@ import {
   boolean,
   text,
   select,
-  optionsKnob,
   number,
 } from '@storybook/addon-knobs'
 import React from 'react'
@@ -21,18 +20,14 @@ const responseOptions = {
   '401 - Unauthorized request': `prefer: code=401, example=An unauthorized request`,
 }
 
-const debugOptions = {
-  Off: ``,
-  'To Storybook': `log`,
-  'To Console': `debug`,
-}
-
 const currencyOptions = [`USD`, `GBP`, `EUR`]
+
+const intentOptions = [`capture`, `approve`, `auhtorize`]
 
 export const Default = () => (
   <Gr4vyEmbed
     amount={number(`Amount`, 1299, {}, `Public`)}
-    capture={boolean(`Capture`, true, `Public`)}
+    intent={select(`Intent`, intentOptions, 'capture', `Public`) as any}
     currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
     apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}

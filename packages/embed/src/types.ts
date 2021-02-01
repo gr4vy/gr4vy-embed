@@ -2,7 +2,7 @@ export type Config = {
   element: string | HTMLElement | Element // The element to insert the integration at
   form?: string | HTMLElement | Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
-  capture?: boolean // A flag to determine if payment should be captured at the same time as authorization
+  intent?: 'authorize' | 'capture' | 'approve' // Defines the intent of this API call. This determines the desired initial state of the transaction.
   currency: string // Currency to charge the amount in
   iframeHost: string // the hostname and port of the server that hosts the embedded UI
   apiHost: string // the hostname and port of the API server to use

@@ -293,7 +293,7 @@ export const options = (config: InternalConfig): object => {
     'amount',
     'channel',
     'currency',
-    'capture',
+    'intent',
     'apiHost',
     'bearerToken',
     'showButton',
