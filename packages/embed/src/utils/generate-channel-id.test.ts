@@ -1,4 +1,4 @@
-import { generateChannelId } from './channel'
+import { generateChannelId } from './generate-channel-id'
 
 describe('generateChannelId()', () => {
   test(`should create a random channel ID`, () => {
@@ -14,5 +14,6 @@ describe('generateChannelId()', () => {
     const crypto = global.crypto
     global.crypto = null
     expect(generateChannelId()).toBeDefined()
+    global.crypto = crypto
   })
 })

@@ -1,20 +1,17 @@
-jest.mock('./frame', () => ({
-  __esModule: true,
-  setupFrame: jest.fn(),
-  getFrameUrl: jest.fn().mockImplementation(() => 'https://example.com'),
-}))
+import { createFormController } from './form'
+import { validate } from './validation'
+import { setup } from './'
 
-import { setupFrame } from './frame'
-import { setup } from './index'
+jest.mock('./form')
+jest.mock('./validation')
 
-let errorSpy
-
-beforeEach(() => {
-  errorSpy = jest.spyOn(console, 'error').mockImplementation()
-
-  jest.spyOn(document, 'querySelector').mockImplementation(() => {
+jest.spyOn(document, 'querySelector').mockImplementation((query) => {
+  if (query === '#app') {
     return document.createElement('div')
-  })
+  }
+  if (query === '#form') {
+    return document.createElement('form')
+  }
 })
 
 afterEach(() => {
@@ -23,6 +20,7 @@ afterEach(() => {
 
 describe('setup()', () => {
   it('it should call the setup function if the props are valid', () => {
+    ;(validate as jest.Mock).mockReturnValue(true)
     setup({
       element: `#app`,
       form: `#form`,
@@ -32,12 +30,11 @@ describe('setup()', () => {
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
     })
-
-    expect(errorSpy).not.toHaveBeenCalled()
-    expect(setupFrame).toHaveBeenCalled()
+    expect(createFormController).toHaveBeenCalled()
   })
 
   it('it should also work with HTML elements directly', () => {
+    ;(validate as jest.Mock).mockReturnValue(true)
     setup({
       element: document.querySelector('#app'),
       form: document.querySelector('#form'),
@@ -47,13 +44,11 @@ describe('setup()', () => {
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
     })
-
-    expect(errorSpy).not.toHaveBeenCalled()
-    expect(setupFrame).toHaveBeenCalled()
+    expect(createFormController).toHaveBeenCalled()
   })
 
-  test('it should log an error if the props are invalid', () => {
-    setup({
+  test('it should exit when invalid config is given', () => {
+    const invalidConfig = {
       element: `#app`,
       form: `#form`,
       // incorrect amount
@@ -62,9 +57,12 @@ describe('setup()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
-    })
+    }
+    ;(validate as jest.Mock).mockReturnValue(false)
 
-    expect(errorSpy).toHaveBeenCalled()
-    expect(setupFrame).not.toHaveBeenCalled()
+    setup(invalidConfig)
+
+    expect(validate).toHaveBeenCalledWith(invalidConfig)
+    expect(createFormController).not.toHaveBeenCalled()
   })
 })

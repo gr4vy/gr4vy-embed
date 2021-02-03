@@ -5,4 +5,7 @@ module.exports = {
   ...config,
   setupFilesAfterEnv: [`./jest.setup.js`],
   collectCoverageFrom: ['src/**/*.ts'],
+  moduleNameMapper: {
+    '\\.(css)$': '<rootDir>/__mocks__/styleMock.ts',
+  },
 }

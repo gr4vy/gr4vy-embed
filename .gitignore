@@ -6,7 +6,6 @@ coverage
 package-lock.json
 node_modules
 types
-*.d.ts
 *.js.map
 packages/*/src/**/*.js
 .env

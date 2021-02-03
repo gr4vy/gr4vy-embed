@@ -1,0 +1,21 @@
+.gr4vy__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100vh;
+  z-index: 100;
+  transition: background-color 0.2s linear, max-height 0s linear;
+  backdrop-filter: blur(2px);
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.gr4vy__overlay--hidden {
+  max-height: 0;
+  backdrop-filter: unset;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s linear, max-height 0s linear;
+  transition-delay: 0s, 0.2s;
+}

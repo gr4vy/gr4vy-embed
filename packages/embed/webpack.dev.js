@@ -14,12 +14,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [`style-loader`, `css-loader`],
+      },
+      {
         test: /\.ts$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'],
-            plugins: ['@babel/plugin-transform-typescript'],
+            presets: ['@babel/preset-env', '@babel/preset-typescript'],
             exclude: /node_modules/,
           },
         },
