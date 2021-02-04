@@ -20,9 +20,5 @@ export const Skeleton = () => {
 }
 
 export const createSkeletonController = (element: HTMLDivElement) => {
-  const _element = element
-
-  optionsLoaded$.subscribe(() => {
-    _element.remove()
-  })
+  optionsLoaded$.subscribe(() => element.remove())
 }
