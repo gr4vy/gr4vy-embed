@@ -1,5 +1,12 @@
 import Framebus from 'framebus'
-import { frameHeight$, optionsLoaded$ } from '../subjects'
+import {
+  frameHeight$,
+  optionsLoaded$,
+  formSubmit$,
+  transactionCreated$,
+  approvalRequired$,
+  approvalUrl$,
+} from '../subjects'
 import {
   loggedFramebusOn,
   loggedFramebusEmit,
@@ -9,7 +16,7 @@ import {
 
 let validConfig
 
-jest.mock('../subjects')
+jest.mock('../utils/create-subject')
 
 beforeEach(() => {
   validConfig = {
@@ -111,14 +118,6 @@ describe('loggedFramebusSubscribe()', () => {
   })
 })
 
-// describe('createFramebus()', () => {
-//   test('should return a new framebus object', () => {
-//     const framebus = createFramebus(validConfig)
-//     expect(framebus.origin).toBe('http://127.0.0.1:8080')
-//     expect(framebus.channel).toBe(validConfig.channel)
-//   })
-// })
-
 describe('createEmitter', () => {
   test('should set up the framebus listeners', () => {
     // create a frame
@@ -146,42 +145,41 @@ describe('createEmitter', () => {
 
     // tigger an iframe resize when the iframe content resized
     fb.emit('resize', { frame: { height: 123 } })
-    expect(frameHeight$.next).toHaveBeenCalledWith(123)
+    expect(frameHeight$.value()).toBe(123)
 
     // update the config to set the form as loaded and show the UI
     fb.emit('optionsLoaded')
-    expect(optionsLoaded$.next).toHaveBeenCalled()
+    expect(optionsLoaded$.value()).toBe(true)
+
+    // approvals
+    fb.emit('approvalRequired')
+    expect(approvalRequired$.value()).toBe(true)
+
+    fb.emit('approvalNotRequired')
+    expect(approvalRequired$.value()).toBe(false)
+
+    fb.emit('approvalUrl', 'test-url')
+    expect(approvalUrl$.value()).toBe('test-url')
 
     // trigger a submitForm event when the form is submitted
-    // fb.on('submitForm', jest.fn())
-    // formSubmit$
-
-    // expect(fb.events['submitForm'][0]).toHaveBeenCalled()
+    fb.on('submitForm', jest.fn())
+    formSubmit$.next()
+    expect(fb.events['submitForm'][0]).toHaveBeenCalled()
 
     // inject content and submit the form when the transaction was created
-    // fb.emit('transactionCreated', { id: '123' })
-    // expect(formNapper.inject).toHaveBeenCalledWith(
-    //   `gr4vy_transaction_id`,
-    //   '123'
-    // )
-    // expect(formNapper.submit).toHaveBeenCalled()
+    fb.emit('transactionCreated', { id: 'transaction-id' })
+    expect(transactionCreated$.value()).toBe('transaction-id')
 
     // subscribe to these events and pass them straight to the `onEvent` handler
-    // fb.emit('formUpdate', {})
-    // expect(f).toHaveBeenCalledWith('formUpdate', {})
+    fb.emit('formUpdate', {})
+    expect(validConfig.onEvent).toHaveBeenCalledWith('formUpdate', {})
 
-    // fb.emit('transactionCreated', { id: '123' })
-    // expect(validConfig.onEvent).toHaveBeenCalledWith('transactionCreated', {
-    //   id: '123',
-    // })
-    // fb.emit('apiError', {})
-    // expect(validConfig.onEvent).toHaveBeenCalledWith('apiError', {})
-  })
+    fb.emit('transactionCreated', { id: '123' })
+    expect(validConfig.onEvent).toHaveBeenCalledWith('transactionCreated', {
+      id: '123',
+    })
 
-  test('should work without a form', () => {
-    // const frame = document.createElement('iframe')
-    // createEmitter({ framebus, config: validConfig })
-    // const fb = (Framebus as any).getInstances()[1]
-    // fb.emit('transactionCreated', { id: '123' })
+    fb.emit('apiError', {})
+    expect(validConfig.onEvent).toHaveBeenCalledWith('apiError', {})
   })
 })

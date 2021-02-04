@@ -80,3 +80,27 @@ export const setup = (config: Config): void => {
   createFrameController(frame, iframeUrl)
   config.element.appendChild(frame)
 }
+
+// describe('createFramebus()', () => {
+//   test('should return a new framebus object', () => {
+//     const framebus = createFramebus(validConfig)
+//     expect(framebus.origin).toBe('http://127.0.0.1:8080')
+//     expect(framebus.channel).toBe(validConfig.channel)
+//   })
+// })
+
+// expect(formNapper.inject).toHaveBeenCalledWith(
+//   `gr4vy_transaction_id`,
+//   '123'
+// )
+// expect(formNapper.submit).toHaveBeenCalled()
+
+/**
+test('should work without a form', () => {
+  const frame = document.createElement('iframe')
+  createEmitter({ framebus, config: validConfig })
+  const fb = (Framebus as any).getInstances()[1]
+  fb.emit('transactionCreated', { id: '123' })
+})
+
+*/

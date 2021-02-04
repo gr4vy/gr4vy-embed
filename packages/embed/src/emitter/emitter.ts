@@ -1,6 +1,5 @@
 import Framebus from 'framebus'
 import {
-  approvalNotRequired$,
   approvalRequired$,
   approvalUrl$,
   transactionCreated$,
@@ -29,21 +28,15 @@ export const createEmitter = ({
   const emit = loggedFramebusEmit(framebus, debug)
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
 
-  on('approvalRequired', ({ icon, method }) =>
-    approvalRequired$.next({ icon, method })
-  )
-  on('approvalNotRequired', () => {
-    approvalNotRequired$.next()
-  })
+  on('approvalRequired', () => approvalRequired$.next(true))
+  on('approvalNotRequired', () => approvalRequired$.next(false))
   on('approvalUrl', (url) => approvalUrl$.next(url))
   on('frameReady', () => emit('updateOptions', config))
   on('resize', (data) => frameHeight$.next(data.frame.height))
-  on('optionsLoaded', () => optionsLoaded$.next())
+  on('optionsLoaded', () => optionsLoaded$.next(true))
   on('transactionCreated', ({ id }) => transactionCreated$.next(id))
 
-  formSubmit$.subscribe(() => {
-    emit('submitForm')
-  })
+  formSubmit$.subscribe(() => emit('submitForm'))
 
   // subscribe to events that are exposed to the onEvent handler passed in by
   // the developer
