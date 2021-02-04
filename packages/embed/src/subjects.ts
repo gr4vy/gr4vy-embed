@@ -10,6 +10,7 @@ export const optionsLoaded$ = createSubject<boolean>(false)
 export const transactionCreated$ = createSubject<string>()
 export const formSubmit$ = createSubject()
 
+// Initial events
 formSubmit$.subscribe(() => {
   if (approvalRequired$.value()) {
     approvalStarted$.next()

@@ -1,4 +1,7 @@
-import { createFrameController, getFrameUrl } from '../frame'
+import { frameHeight$, optionsLoaded$ } from '../subjects'
+import { createFrameController, getFrameUrl } from './frame'
+
+jest.mock('../utils/create-subject')
 
 describe('createFrameController', () => {
   test('should initialize a new iframe', () => {
@@ -7,14 +10,46 @@ describe('createFrameController', () => {
     createFrameController(frameElement, iframeUrl)
 
     expect(frameElement.getAttribute('src')).toEqual('http://localhost:8000/')
+    expect(frameElement.getAttribute('title')).toEqual(
+      'Secure payment frame - Gr4vy'
+    )
     expect(frameElement.getAttribute('style')).toEqual(
       'visibility: hidden; display: none; width: 100%; height: 0px; border: 0px; overflow: hidden;'
     )
     expect(frameElement.getAttribute('frameBorder')).toEqual('0')
     expect(frameElement.getAttribute('scrolling')).toEqual('no')
-    expect(frameElement.getAttribute('title')).toEqual(
-      'Secure payment frame - Gr4vy'
-    )
+  })
+
+  test('should change frame height when visible', () => {
+    const iframeUrl = new URL('http://localhost:8000')
+    const frameElement = document.createElement('iframe')
+    createFrameController(frameElement, iframeUrl)
+
+    frameElement.style.visibility = 'unset'
+    expect(frameElement.style.height).toBe('0px')
+    frameHeight$.next(50)
+    expect(frameElement.style.height).toBe('50px')
+  })
+
+  test('should not change frame height when hidden', () => {
+    const iframeUrl = new URL('http://localhost:8000')
+    const frameElement = document.createElement('iframe')
+    createFrameController(frameElement, iframeUrl)
+
+    frameElement.style.visibility = 'hidden'
+    expect(frameElement.style.height).toBe('0px')
+    frameHeight$.next(50)
+    expect(frameElement.style.height).toBe('0px')
+  })
+
+  test('should show the iframe when options loaded', () => {
+    const iframeUrl = new URL('http://localhost:8000')
+    const frameElement = document.createElement('iframe')
+    createFrameController(frameElement, iframeUrl)
+
+    optionsLoaded$.next(true)
+    expect(frameElement.style.visibility).toBe('unset')
+    expect(frameElement.style.display).toBe('unset')
   })
 })
 

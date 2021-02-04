@@ -4,31 +4,29 @@ export const createFrameController = (
   frame: HTMLIFrameElement,
   iframeUrl: URL
 ) => {
-  const _frame = frame
-
   // default style
-  _frame.src = iframeUrl.toString()
-  _frame.title = 'Secure payment frame - Gr4vy'
-  _frame.style.visibility = 'hidden'
-  _frame.style.display = 'none'
-  _frame.style.width = '100%'
-  _frame.style.height = '0px'
-  _frame.style.border = '0'
-  _frame.style.overflow = 'hidden'
+  frame.src = iframeUrl.toString()
+  frame.title = 'Secure payment frame - Gr4vy'
+  frame.style.visibility = 'hidden'
+  frame.style.display = 'none'
+  frame.style.width = '100%'
+  frame.style.height = '0px'
+  frame.style.border = '0'
+  frame.style.overflow = 'hidden'
 
   // deprecated fields
-  _frame.setAttribute('frameBorder', '0')
-  _frame.setAttribute('scrolling', 'no')
+  frame.setAttribute('frameBorder', '0')
+  frame.setAttribute('scrolling', 'no')
 
   frameHeight$.subscribe((height) => {
-    if (_frame.style.visibility === 'unset') {
-      _frame.style.height = `${height}px`
+    if (frame.style.visibility === 'unset') {
+      frame.style.height = `${height}px`
     }
   })
 
   optionsLoaded$.subscribe(() => {
-    _frame.style.visibility = 'unset'
-    _frame.style.display = 'unset'
+    frame.style.visibility = 'unset'
+    frame.style.display = 'unset'
   })
 }
 

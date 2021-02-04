@@ -1,4 +1,4 @@
-export const createSubject = <T>(initialValue?: T) => {
+export const createSubject = <T = void>(initialValue?: T) => {
   let value = initialValue
   const subscribers = []
   return {
@@ -10,7 +10,7 @@ export const createSubject = <T>(initialValue?: T) => {
         },
       }
     },
-    next: (nextValue?: T) => {
+    next: (nextValue: T) => {
       value = nextValue
       subscribers.forEach((callbackFn) => callbackFn(value))
     },
