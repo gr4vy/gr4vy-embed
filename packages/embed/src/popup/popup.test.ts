@@ -37,18 +37,18 @@ describe('registerSubscriptions', () => {
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
     approvalStarted$.next()
     expect(openPopup).toHaveBeenCalled()
-    expect(popup.get()).toEqual(mockPopup)
+    expect(popup.current).toEqual(mockPopup)
   })
 
   it('redirects popup when an approval url is available', () => {
     const mockPopup = jest.fn() as any
-    popup.set(mockPopup)
+    popup.current = mockPopup
     approvalUrl$.next('test-url')
     expect(redirectPopup).toHaveBeenCalledWith(mockPopup, 'test-url')
   })
 
   test('checks to redirect popup when an approval url is available', () => {
-    popup.set(null)
+    popup.current = null
     approvalUrl$.next('test-url')
   })
 
@@ -56,13 +56,13 @@ describe('registerSubscriptions', () => {
     const mockPopup = {
       close: jest.fn(),
     }
-    popup.set(mockPopup)
+    popup.current = mockPopup
     approvalCompleted$.next()
     expect(mockPopup.close).toHaveBeenCalled()
   })
 
   test('checks to close popup when approval is complete', () => {
-    popup.set(null)
+    popup.current = null
     approvalCompleted$.next()
   })
 
