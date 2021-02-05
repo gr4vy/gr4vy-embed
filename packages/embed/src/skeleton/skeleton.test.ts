@@ -9,7 +9,7 @@ describe('createSkeletonController', () => {
       remove: jest.fn(),
     } as any
     createSkeletonController(mockElement)
-    optionsLoaded$.next()
+    optionsLoaded$.next(true)
     expect(mockElement.remove).toHaveBeenCalled()
   })
 })
