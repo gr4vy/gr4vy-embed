@@ -10,6 +10,15 @@
   backdrop-filter: blur(2px);
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gr4vy__overlay__notice {
+  color: white;
+  font-family: 'Lato';
+  font-size: 1rem;
 }
 
 .gr4vy__overlay--hidden {
@@ -18,4 +27,35 @@
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.2s linear, max-height 0s linear;
   transition-delay: 0s, 0.2s;
+  overflow: hidden;
+}
+
+.white {
+  color: white;
+}
+
+.gr4vy__overlay__link {
+  font-weight: normal;
+  font-family: 'Lato';
+  text-decoration: underline;
+  font-weight: normal;
+  color: white;
+  display: block;
+  cursor: pointer;
+}
+
+.space-y-8 > * + * {
+  margin-top: 32px;
+}
+
+.space-y-2 > * + * {
+  margin-top: 8px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-bold {
+  font-weight: bold;
 }

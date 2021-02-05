@@ -16,18 +16,13 @@ export const popupFeatures = (
 }
 
 export const waitForValue = (accessor, value, callback) => {
-  let retry = 0
   const interval = setInterval(() => {
-    const valuesMatch = value === accessor()
-    if (retry > 5 || valuesMatch) {
+    if (value === accessor()) {
       clearInterval(interval)
-    }
-    if (valuesMatch) {
       callback()
-    } else {
-      retry = retry + 1
     }
   }, 10)
+  return () => clearInterval(interval)
 }
 
 export const openPopup = (
@@ -37,10 +32,11 @@ export const openPopup = (
 ) => {
   const popup = open('', 'loading', features)
   popup.document.write(html)
-  popup.addEventListener('unload', () => {
-    waitForValue(() => popup.closed, true, onClose)
-  })
-  return popup
+  const stopCallback = waitForValue(() => popup.closed, true, onClose)
+  return {
+    popup,
+    stopCallback,
+  }
 }
 
 export const redirectPopup = (popup: WindowProxy, url: string) => {

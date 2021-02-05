@@ -25,8 +25,9 @@ describe('waitForValue', () => {
 
   it('should not call the callback if the value does not match', () => {
     const onClose = jest.fn()
-    waitForValue(() => true, false, onClose)
+    const stop = waitForValue(() => true, false, onClose)
     jest.runOnlyPendingTimers()
+    stop()
     expect(onClose).not.toHaveBeenCalled()
   })
 })
@@ -37,18 +38,14 @@ describe('openPopup', () => {
       document: {
         write: jest.fn(),
       },
-      addEventListener: jest.fn(),
     }
     global.open = jest.fn().mockReturnValue(mockPopup)
     const onClose = jest.fn()
     const popup = openPopup('width=10,height=10', '<html>', onClose)
     expect(global.open).toHaveBeenCalledTimes(1)
     expect(mockPopup.document.write).toHaveBeenCalledWith('<html>')
-    expect(mockPopup.addEventListener).toHaveBeenCalledWith(
-      'unload',
-      expect.any(Function)
-    )
-    expect(popup).toBe(mockPopup)
+    expect(popup.popup).toBe(mockPopup)
+    expect(popup.stopCallback).toBeDefined()
   })
 
   it('should register a callback on close', () => {
@@ -62,9 +59,6 @@ describe('openPopup', () => {
     global.open = jest.fn().mockReturnValue(mockPopup)
     const onClose = jest.fn()
     openPopup('width=10,height=10', '<html>', onClose)
-    const onClockCallback = mockPopup.addEventListener.mock.calls[0][1]
-
-    onClockCallback()
     jest.runOnlyPendingTimers()
     expect(onClose).not.toHaveBeenCalled()
 

@@ -3,12 +3,15 @@ import {
   approvalCompleted$,
   approvalStarted$,
   approvalCancelled$,
+  approvalLost$,
 } from '../subjects'
 import { mutableRef } from '../utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 
-export const registerSubscriptions = (popup = mutableRef<Window>()) => {
+export const registerSubscriptions = (
+  popup = mutableRef<{ popup: Window; stopCallback: () => void }>()
+) => {
   approvalStarted$.subscribe(() => {
     popup.current = openPopup(
       popupFeatures(500, 589, screen.width, screen.height),
@@ -19,11 +22,27 @@ export const registerSubscriptions = (popup = mutableRef<Window>()) => {
 
   approvalUrl$.subscribe((url) => {
     if (popup.current) {
-      redirectPopup(popup.current, url)
+      redirectPopup(popup.current.popup, url)
     }
   })
 
+  approvalLost$.subscribe(() => {
+    popup.current.stopCallback()
+    popup.current.popup.close()
+    approvalStarted$.next()
+
+    // Check if the approval url already exists
+    const previousApprovalUrl = approvalUrl$.value()
+    if (previousApprovalUrl) {
+      approvalUrl$.next(previousApprovalUrl)
+    }
+  })
+
+  approvalCancelled$.subscribe(() => {
+    popup.current?.popup.close()
+  })
+
   approvalCompleted$.subscribe(() => {
-    popup.current?.close()
+    popup.current?.popup.close()
   })
 }

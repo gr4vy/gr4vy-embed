@@ -3,6 +3,7 @@ import {
   approvalCompleted$,
   approvalStarted$,
   approvalCancelled$,
+  approvalLost$,
 } from '../subjects'
 import { mutableRef } from '../utils'
 import { registerSubscriptions } from './popup'
@@ -10,9 +11,10 @@ import { openPopup, redirectPopup } from './redirect-popup'
 
 jest.mock('../utils/create-subject')
 jest.mock('./redirect-popup')
+jest.useFakeTimers()
 
 describe('registerSubscriptions', () => {
-  let popup
+  const popup = mutableRef<{ popup: Window; stopCallback: () => void }>()
 
   beforeEach(() => {
     // reset mocks
@@ -23,12 +25,12 @@ describe('registerSubscriptions', () => {
       approvalStarted$,
       approvalUrl$,
       approvalCompleted$,
-      // approvalCancelled$,
+      approvalLost$,
     ]
     subjects.map((subject$: any) => subject$.reset())
 
     // setup
-    popup = mutableRef<Window>()
+    popup.current = null
     registerSubscriptions(popup)
   })
 
@@ -40,11 +42,14 @@ describe('registerSubscriptions', () => {
     expect(popup.current).toEqual(mockPopup)
   })
 
-  it('redirects popup when an approval url is available', () => {
-    const mockPopup = jest.fn() as any
+  test('redirects popup when an approval url is available', () => {
+    const mockPopup = {
+      popup: jest.fn(),
+      stopCallback: jest.fn(),
+    } as any
     popup.current = mockPopup
     approvalUrl$.next('test-url')
-    expect(redirectPopup).toHaveBeenCalledWith(mockPopup, 'test-url')
+    expect(redirectPopup).toHaveBeenCalledWith(mockPopup.popup, 'test-url')
   })
 
   test('checks to redirect popup when an approval url is available', () => {
@@ -54,11 +59,14 @@ describe('registerSubscriptions', () => {
 
   test('closes popup when approval is complete', () => {
     const mockPopup = {
-      close: jest.fn(),
-    }
+      popup: {
+        close: jest.fn(),
+      },
+      stopCallback: jest.fn(),
+    } as any
     popup.current = mockPopup
     approvalCompleted$.next()
-    expect(mockPopup.close).toHaveBeenCalled()
+    expect(mockPopup.popup.close).toHaveBeenCalled()
   })
 
   test('checks to close popup when approval is complete', () => {
@@ -67,7 +75,12 @@ describe('registerSubscriptions', () => {
   })
 
   test('cancels approval when popup is closed', (done) => {
-    const mockPopup = jest.fn()
+    const mockPopup = {
+      popup: {
+        close: jest.fn(),
+      },
+      stopCallback: jest.fn(),
+    }
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
     approvalStarted$.next()
     const closeCallback = (openPopup as jest.Mock).mock.calls[0][2]
@@ -75,5 +88,47 @@ describe('registerSubscriptions', () => {
       done()
     })
     closeCallback()
+  })
+
+  test('restarts approval when lost', () => {
+    // clear all subscribers to isolate
+    ;(approvalUrl$ as any).reset()
+    ;(approvalStarted$ as any).reset()
+
+    approvalUrl$.next('test-url')
+    const mockPopup = {
+      popup: {
+        close: jest.fn(),
+      },
+      stopCallback: jest.fn(),
+    } as any
+    popup.current = mockPopup
+    let hasApprovalStarted = false
+    let hasApprovalUrlBeenReplayed = false
+    approvalStarted$.subscribe(() => (hasApprovalStarted = true))
+    approvalUrl$.subscribe(() => (hasApprovalUrlBeenReplayed = true))
+    approvalLost$.next()
+    expect(mockPopup.stopCallback).toHaveBeenCalled()
+    expect(mockPopup.popup.close).toHaveBeenCalled()
+    expect(hasApprovalStarted).toBeTruthy()
+    expect(hasApprovalUrlBeenReplayed).toBeTruthy()
+  })
+
+  test('restarts approval without an approval url', () => {
+    // clear all subscribers to isolate
+    ;(approvalUrl$ as any).reset()
+    ;(approvalStarted$ as any).reset()
+    approvalUrl$.next(null)
+    const mockPopup = {
+      popup: {
+        close: jest.fn(),
+      },
+      stopCallback: jest.fn(),
+    } as any
+    popup.current = mockPopup
+    let hasApprovalUrlBeenReplayed = false
+    approvalUrl$.subscribe(() => (hasApprovalUrlBeenReplayed = true))
+    approvalLost$.next()
+    expect(hasApprovalUrlBeenReplayed).toBeFalsy()
   })
 })
