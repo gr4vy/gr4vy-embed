@@ -1,38 +1,35 @@
-import { initFramebus } from './emitter'
-import { initFormNapper } from './form'
-import { InternalConfig } from './types'
+import { frameHeight$, optionsLoaded$ } from '../subjects'
 
-// Creates the iframe, attaches to any <form> on the page, and initializes the
-// framebus connection
-export const setupFrame = (config: InternalConfig) => {
-  const frame = initFrame(config)
-  const formNapper = initFormNapper(config)
-
-  initFramebus({ formNapper, frame, config })
-  config.element.appendChild(frame)
-}
-
-// Initialize the frame but do not attach it to the page yet
-export const initFrame = ({ iframeUrl }: { iframeUrl: URL }): HTMLElement => {
-  const frame = document.createElement('iframe')
+export const createFrameController = (
+  frame: HTMLIFrameElement,
+  iframeUrl: URL
+) => {
+  // default style
   frame.src = iframeUrl.toString()
   frame.title = 'Secure payment frame - Gr4vy'
-
-  // add the default style of the frame
   frame.style.visibility = 'hidden'
+  frame.style.display = 'none'
   frame.style.width = '100%'
   frame.style.height = '0px'
   frame.style.border = '0'
   frame.style.overflow = 'hidden'
 
-  // deprecated fields set for backwards compatibility
+  // deprecated fields
   frame.setAttribute('frameBorder', '0')
   frame.setAttribute('scrolling', 'no')
 
-  return frame
+  frameHeight$.subscribe((height) => {
+    if (frame.style.visibility === 'unset') {
+      frame.style.height = `${height}px`
+    }
+  })
+
+  optionsLoaded$.subscribe(() => {
+    frame.style.visibility = 'unset'
+    frame.style.display = 'unset'
+  })
 }
 
-// Converts a iframeHost to a full URL with a scheme
 export const getFrameUrl = ({
   channel,
   config: { iframeHost },

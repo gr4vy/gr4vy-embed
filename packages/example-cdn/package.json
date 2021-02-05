@@ -13,6 +13,6 @@
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
-    "@gr4vy/embed-cdn": "^0.0.33"
+    "@gr4vy/embed": "^0.0.33"
   }
 }

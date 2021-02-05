@@ -15,10 +15,10 @@
   "scripts": {
     "clean": "rm -rf lib *.tgz",
     "prebuild": "yarn clean",
-    "build": "tsc",
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "tsc && webpack --config webpack.prod.js",
     "prepack": "yarn build",
     "lint": "eslint src/ --ext ts",
-    "dev": "tsc --watch",
     "test": "jest --colors"
   },
   "files": [
