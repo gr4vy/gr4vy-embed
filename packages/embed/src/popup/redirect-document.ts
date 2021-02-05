@@ -8,7 +8,7 @@ export const redirectDocument = `
       html, body {
         margin: 0;
         padding: 0;
-        font-family: 'Lato', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
         text-align: center;
       }
       .gr4vy__status {

@@ -9,7 +9,6 @@ import { Skeleton, createSkeletonController } from './skeleton'
 import { Config, InternalConfig } from './types'
 import { pick, generateChannelId } from './utils'
 import { validate } from './validation'
-import './styles.css'
 
 const internalConfigKeys = [
   'amount',
