@@ -4,7 +4,7 @@ import { createEmitter } from './emitter'
 import { createFormController, FormNapperInstance } from './form'
 import { createFrameController, getFrameUrl } from './frame'
 import { createOverlayController } from './overlay'
-import './popup'
+import { registerSubscriptions } from './popup'
 import { Skeleton, createSkeletonController } from './skeleton'
 import { Config, InternalConfig } from './types'
 import { pick, generateChannelId } from './utils'
@@ -58,26 +58,21 @@ export const setup = (config: Config): void => {
     createFormController(formNapper)
   }
 
-  // Overlay
+  // Popup + Overlay (Authorizations)
   const overlayElement = document.createElement('div')
   document.body.append(overlayElement)
   createOverlayController(overlayElement)
+  registerSubscriptions()
 
-  /**
-   * Create a framebus to communicate with the frame
-   */
+  // Framebus + Emitter (Communicate with iFrame via messaging)
   const framebus = Framebus.target({
     channel,
     origin: `${iframeUrl.protocol}//${iframeUrl.host}`,
   })
-
-  // Attach events
   const internalConfig = pick<InternalConfig>(config, internalConfigKeys)
   createEmitter({ config: internalConfig, framebus })
 
-  /**
-   * Create the iFrame
-   */
+  // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')
   createFrameController(frame, iframeUrl)
   config.element.appendChild(frame)

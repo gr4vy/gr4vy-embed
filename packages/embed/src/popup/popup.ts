@@ -4,11 +4,11 @@ import {
   approvalStarted$,
   approvalCancelled$,
 } from '../subjects'
-import { mutableRef, MutableRef } from '../utils'
+import { mutableRef } from '../utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 
-export const registerSubscriptions = (popup: MutableRef<Window>) => {
+export const registerSubscriptions = (popup = mutableRef<Window>()) => {
   approvalStarted$.subscribe(() => {
     popup.current = openPopup(
       popupFeatures(500, 589, screen.width, screen.height),
@@ -27,7 +27,3 @@ export const registerSubscriptions = (popup: MutableRef<Window>) => {
     popup.current?.close()
   })
 }
-
-const popup = mutableRef<Window>()
-
-registerSubscriptions(popup)
