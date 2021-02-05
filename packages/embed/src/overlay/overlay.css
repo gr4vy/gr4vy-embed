@@ -15,10 +15,20 @@
   align-items: center;
 }
 
-.gr4vy__overlay__notice {
+.gr4vy__overlay__container {
   color: white;
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
   font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.gr4vy__overlay__container > * + * {
+  margin-top: 32px;
+}
+
+.gr4vy__overlay__notice > * + * {
+  margin-top: 8px;
 }
 
 .gr4vy__overlay--hidden {
@@ -30,10 +40,6 @@
   overflow: hidden;
 }
 
-.white {
-  color: white;
-}
-
 .gr4vy__overlay__link {
   font-weight: normal;
   font-family: 'Lato';
@@ -42,20 +48,4 @@
   color: white;
   display: block;
   cursor: pointer;
-}
-
-.space-y-8 > * + * {
-  margin-top: 32px;
-}
-
-.space-y-2 > * + * {
-  margin-top: 8px;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.font-bold {
-  font-weight: bold;
 }

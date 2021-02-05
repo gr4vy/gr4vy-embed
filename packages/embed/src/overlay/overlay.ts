@@ -25,7 +25,7 @@ export const Overlay = (element: HTMLDivElement): Overlay => {
   Prompt.textContent = overlayPrompt
 
   const Notice = document.createElement('div')
-  Notice.className = 'space-y-2'
+  Notice.className = 'gr4vy__overlay__notice '
   Notice.appendChild(Title)
   Notice.appendChild(Prompt)
 
@@ -40,8 +40,7 @@ export const Overlay = (element: HTMLDivElement): Overlay => {
   CancelLink.addEventListener('click', () => approvalCancelled$.next())
 
   const Container = document.createElement('div')
-  Container.className =
-    'sans-serif space-y-8 text-center font-bold gr4vy__overlay__notice'
+  Container.className = 'gr4vy__overlay__container'
   Container.appendChild(Notice)
   Container.appendChild(Link)
   Container.appendChild(CancelLink)
