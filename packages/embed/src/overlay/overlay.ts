@@ -4,7 +4,6 @@ import {
   approvalCancelled$,
   approvalLost$,
 } from '../subjects'
-import './overlay.css'
 
 export type Overlay = {
   hide: () => void
@@ -58,6 +57,7 @@ export const Overlay = (element: HTMLDivElement): Overlay => {
 }
 
 export const createOverlayController = (element: HTMLDivElement) => {
+  require('./overlay.css')
   const _element = Overlay(element)
   approvalStarted$.subscribe(_element.show)
   approvalCompleted$.subscribe(_element.hide)

@@ -1,5 +1,4 @@
 import { optionsLoaded$ } from '../subjects'
-import './skeleton.css'
 
 export const Skeleton = () => {
   const skeleton = document.createElement('div')
@@ -20,5 +19,6 @@ export const Skeleton = () => {
 }
 
 export const createSkeletonController = (element: HTMLDivElement) => {
+  require('./skeleton.css')
   optionsLoaded$.subscribe(() => element.remove())
 }
