@@ -3,6 +3,7 @@ import {
   approvalCompleted$,
   approvalCancelled$,
   approvalLost$,
+  transactionFailed$,
 } from '../subjects'
 
 export type Overlay = {
@@ -14,7 +15,7 @@ const overlayTitle = `Your payment has continued in a new secure window.`
 const overlayPrompt = `Can not see the new window?`
 const overlayLink = `Re-open window`
 
-export const Overlay = (element: HTMLDivElement): Overlay => {
+export const createOverlay = (element: HTMLDivElement): Overlay => {
   element.className = `gr4vy__overlay gr4vy__overlay--hidden`
 
   const Title = document.createElement('div')
@@ -56,10 +57,10 @@ export const Overlay = (element: HTMLDivElement): Overlay => {
   }
 }
 
-export const createOverlayController = (element: HTMLDivElement) => {
+export const createOverlayController = (element: Overlay) => {
   require('./overlay.css')
-  const _element = Overlay(element)
-  approvalStarted$.subscribe(_element.show)
-  approvalCompleted$.subscribe(_element.hide)
-  approvalCancelled$.subscribe(_element.hide)
+  approvalStarted$.subscribe(element.show)
+  approvalCompleted$.subscribe(element.hide)
+  approvalCancelled$.subscribe(element.hide)
+  transactionFailed$.subscribe(element.hide)
 }

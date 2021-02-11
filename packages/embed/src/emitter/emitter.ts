@@ -4,8 +4,10 @@ import {
   approvalUrl$,
   transactionCreated$,
   frameHeight$,
+  approvalCancelled$,
   optionsLoaded$,
   formSubmit$,
+  transactionFailed$,
 } from '../subjects'
 import { InternalConfig } from '../types'
 import { log } from './logger'
@@ -35,8 +37,10 @@ export const createEmitter = ({
   on('resize', (data) => frameHeight$.next(data.frame.height))
   on('optionsLoaded', () => optionsLoaded$.next(true))
   on('transactionCreated', ({ id }) => transactionCreated$.next(id))
+  on('transactionFailed', (...ars) => transactionFailed$.next(...ars))
 
   formSubmit$.subscribe(() => emit('submitForm'))
+  approvalCancelled$.subscribe(() => emit('approvalCancelled'))
 
   // subscribe to events that are exposed to the onEvent handler passed in by
   // the developer

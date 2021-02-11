@@ -3,6 +3,7 @@ import {
   approvalCompleted$,
   approvalStarted$,
   approvalCancelled$,
+  transactionFailed$,
   approvalLost$,
 } from '../subjects'
 import { mutableRef } from '../utils'
@@ -43,6 +44,11 @@ export const registerSubscriptions = (
   })
 
   approvalCompleted$.subscribe(() => {
+    popup.current?.popup.close()
+  })
+
+  transactionFailed$.subscribe(() => {
+    popup.current?.stopCallback()
     popup.current?.popup.close()
   })
 }

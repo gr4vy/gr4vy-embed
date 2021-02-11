@@ -3,7 +3,7 @@ import Framebus from 'framebus'
 import { createEmitter } from './emitter'
 import { createFormController, FormNapperInstance } from './form'
 import { createFrameController, getFrameUrl } from './frame'
-import { createOverlayController } from './overlay'
+import { createOverlayController, createOverlay } from './overlay'
 import { registerSubscriptions } from './popup'
 import { Skeleton, createSkeletonController } from './skeleton'
 import { Config, InternalConfig } from './types'
@@ -61,7 +61,7 @@ export const setup = (config: Config): void => {
   // Popup + Overlay (Authorizations)
   const overlayElement = document.createElement('div')
   document.body.append(overlayElement)
-  createOverlayController(overlayElement)
+  createOverlayController(createOverlay(overlayElement))
   registerSubscriptions()
 
   // Framebus + Emitter (Communicate with iFrame via messaging)
