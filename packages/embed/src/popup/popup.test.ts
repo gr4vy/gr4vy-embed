@@ -4,6 +4,7 @@ import {
   approvalStarted$,
   approvalCancelled$,
   approvalLost$,
+  transactionFailed$,
 } from '../subjects'
 import { mutableRef } from '../utils'
 import { registerSubscriptions } from './popup'
@@ -74,6 +75,24 @@ describe('registerSubscriptions', () => {
     approvalCompleted$.next()
   })
 
+  test('closes popup when transaction has failed', () => {
+    const mockPopup = {
+      popup: {
+        close: jest.fn(),
+      },
+      stopCallback: jest.fn(),
+    } as any
+    popup.current = mockPopup
+    transactionFailed$.next()
+    expect(mockPopup.stopCallback).toHaveBeenCalled()
+    expect(mockPopup.popup.close).toHaveBeenCalled()
+  })
+
+  test('checks to close popup when transaction has failed', () => {
+    popup.current = null
+    transactionFailed$.next()
+  })
+
   test('cancels approval when popup is closed', (done) => {
     const mockPopup = {
       popup: {
@@ -88,6 +107,11 @@ describe('registerSubscriptions', () => {
       done()
     })
     closeCallback()
+  })
+
+  test('checks to close popup when approval is cancelled', () => {
+    popup.current = null
+    approvalCancelled$.next()
   })
 
   test('restarts approval when lost', () => {
