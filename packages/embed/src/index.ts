@@ -6,24 +6,9 @@ import { createFrameController, getFrameUrl } from './frame'
 import { createOverlayController, createOverlay } from './overlay'
 import { registerSubscriptions } from './popup'
 import { Skeleton, createSkeletonController } from './skeleton'
-import { Config, InternalConfig } from './types'
-import { pick, generateChannelId } from './utils'
+import { Config } from './types'
+import { generateChannelId } from './utils'
 import { validate } from './validation'
-
-const internalConfigKeys = [
-  'amount',
-  'channel',
-  'currency',
-  'intent',
-  'apiHost',
-  'bearerToken',
-  'showButton',
-  'debug',
-  'externalIdentifier',
-  'preferResponse',
-  'buyerId',
-  'buyerExternalIdentifier',
-]
 
 /**
  * Setup function for the Embed integration.
@@ -69,8 +54,7 @@ export const setup = (config: Config): void => {
     channel,
     origin: `${iframeUrl.protocol}//${iframeUrl.host}`,
   })
-  const internalConfig = pick<InternalConfig>(config, internalConfigKeys)
-  createEmitter({ config: internalConfig, framebus })
+  createEmitter({ config, framebus })
 
   // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')

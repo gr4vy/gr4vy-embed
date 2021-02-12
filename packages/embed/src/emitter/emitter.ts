@@ -9,8 +9,23 @@ import {
   formSubmit$,
   transactionFailed$,
 } from '../subjects'
-import { InternalConfig } from '../types'
+import { Config } from '../types'
+import { pick } from '../utils'
 import { log } from './logger'
+
+export const optionKeys = [
+  'amount',
+  'currency',
+  'intent',
+  'apiHost',
+  'bearerToken',
+  'showButton',
+  'debug',
+  'externalIdentifier',
+  'preferResponse',
+  'buyerId',
+  'buyerExternalIdentifier',
+]
 
 /**
  * Initializes the framebus connection to the nested frame.
@@ -19,7 +34,7 @@ export const createEmitter = ({
   config,
   framebus,
 }: {
-  config: InternalConfig
+  config: Config
   framebus: Framebus
 }): void => {
   // initialize framebus and create curried functions for
@@ -29,11 +44,12 @@ export const createEmitter = ({
   const on = loggedFramebusOn(framebus, debug)
   const emit = loggedFramebusEmit(framebus, debug)
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
+  const options = pick<Config>(config, optionKeys)
 
   on('approvalRequired', () => approvalRequired$.next(true))
   on('approvalNotRequired', () => approvalRequired$.next(false))
   on('approvalUrl', (url) => approvalUrl$.next(url))
-  on('frameReady', () => emit('updateOptions', config))
+  on('frameReady', () => emit('updateOptions', options))
   on('resize', (data) => frameHeight$.next(data.frame.height))
   on('optionsLoaded', () => optionsLoaded$.next(true))
   on('transactionCreated', ({ id }) => transactionCreated$.next(id))

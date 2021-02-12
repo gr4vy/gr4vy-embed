@@ -7,13 +7,14 @@ import {
   approvalRequired$,
   approvalUrl$,
 } from '../subjects'
+import { pick } from '../utils'
 import {
   loggedFramebusOn,
   loggedFramebusEmit,
   loggedFramebusSubscribe,
   createEmitter,
+  optionKeys,
 } from './emitter'
-
 let validConfig
 
 jest.mock('../utils/create-subject')
@@ -141,7 +142,9 @@ describe('createEmitter', () => {
     // trigger update options when the frame is ready
     fb.on('updateOptions', jest.fn())
     fb.emit('frameReady')
-    expect(fb.events['updateOptions'][0]).toHaveBeenCalledWith(validConfig)
+    expect(fb.events['updateOptions'][0]).toHaveBeenCalledWith(
+      pick(validConfig, optionKeys)
+    )
 
     // tigger an iframe resize when the iframe content resized
     fb.emit('resize', { frame: { height: 123 } })
