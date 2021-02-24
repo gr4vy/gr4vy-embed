@@ -34,6 +34,7 @@ describe('validate()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
+      environment: 'development',
     })
     expect(valid).toEqual(true)
   })

@@ -24,6 +24,8 @@ const currencyOptions = [`USD`, `GBP`, `EUR`]
 
 const intentOptions = [`capture`, `approve`, `auhtorize`]
 
+const environmentOptions = ['development', 'production', 'staging']
+
 export const Default = () => (
   <Gr4vyEmbed
     amount={number(`Amount`, 1299, {}, `Public`)}
@@ -33,6 +35,9 @@ export const Default = () => (
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}
     bearerToken={text(`JWT token`, `1234567`, `Public`)}
     showButton={boolean(`Enable submit button`, true, `Public`)}
+    environment={
+      select(`Environment`, environmentOptions, 'development', `Public`) as any
+    }
     debug
     preferResponse={select(
       `Prefered server response`,

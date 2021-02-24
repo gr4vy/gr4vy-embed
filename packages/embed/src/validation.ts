@@ -323,4 +323,12 @@ export const validate = (options: Config) =>
     message: 'must be a string',
     required: false,
     callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'environment',
+    value: options.environment,
+    type: 'string',
+    message: 'must be "development", "staging" or "production"',
+    required: true,
+    callback: options.onEvent,
   })
