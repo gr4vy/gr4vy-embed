@@ -30,7 +30,6 @@ describe('setup()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
-      environment: 'development',
     })
     expect(createFormController).toHaveBeenCalled()
   })
@@ -45,7 +44,6 @@ describe('setup()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
-      environment: 'development',
     })
     expect(createFormController).toHaveBeenCalled()
   })
@@ -60,7 +58,6 @@ describe('setup()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
-      environment: 'development',
     }
     ;(validate as jest.Mock).mockReturnValue(false)
 
@@ -79,7 +76,6 @@ describe('setup()', () => {
       iframeHost: `127.0.0.1:8080`,
       apiHost: `127.0.0.1:3100`,
       bearerToken: `123456`,
-      environment: 'development',
     })
     expect(createFormController).not.toHaveBeenCalled()
   })

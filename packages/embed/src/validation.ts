@@ -329,6 +329,6 @@ export const validate = (options: Config) =>
     value: options.environment,
     type: 'string',
     message: 'must be "development", "staging" or "production"',
-    required: true,
+    required: false,
     callback: options.onEvent,
   })

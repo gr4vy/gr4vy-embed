@@ -14,5 +14,5 @@ export type Config = {
   preferResponse?: string // a development option that allows sending a `Prefer` header to force a certain API response from dev servers
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
-  environment: 'development' | 'staging' | 'production'
+  environment?: 'development' | 'staging' | 'production'
 }
