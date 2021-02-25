@@ -18,6 +18,7 @@ const options: Props & { channel: string } = {
   amount: 200,
   currency: 'GBP',
   onEvent: jest.fn(),
+  environment: 'development',
 }
 
 test(`should default to be not loaded`, () => {
@@ -32,5 +33,6 @@ test(`should default to be not loaded`, () => {
     element: expect.any(HTMLDivElement),
     iframeHost: 'localhost:8080',
     onEvent: expect.any(Function),
+    environment: 'development',
   })
 })

@@ -1,4 +1,5 @@
 import { createFormController } from './form'
+import { Config } from './types'
 import { validate } from './validation'
 import { setup } from './'
 
@@ -48,7 +49,7 @@ describe('setup()', () => {
   })
 
   test('it should exit when invalid config is given', () => {
-    const invalidConfig = {
+    const invalidConfig: Config = {
       element: `#app`,
       form: `#form`,
       // incorrect amount

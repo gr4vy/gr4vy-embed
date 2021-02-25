@@ -45,5 +45,7 @@ setup({
   showButton: false,
   debug: true,
   onEvent: log,
-  externalIdentifier: `user-123`,
+  externalIdentifier: `transaction-123`,
+  buyerExternalIdentifier: 'buyer-123',
+  environment: 'development',
 })
