@@ -31,6 +31,7 @@ beforeEach(() => {
     bearerToken: `123456`,
     channel: 'asdasdasdasdasdasd',
     onEvent: jest.fn(),
+    store: 'ask',
   }
 })
 

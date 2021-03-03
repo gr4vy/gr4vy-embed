@@ -166,6 +166,33 @@ export const validateIntent = ({
   return false
 }
 
+export const validateStore = ({
+  argument,
+  value,
+  message,
+  required = true,
+  callback,
+}: {
+  argument: string
+  value: any
+  message: string
+  required?: boolean
+  callback?: (name: string, event: { message: string }) => void
+}): boolean => {
+  const valid = [true, false, 'ask'].includes(value)
+
+  if (canSkipValidation({ required, value }) || valid) {
+    return true
+  }
+
+  emitArgumentError({
+    argument,
+    message: `${value} ${message}`,
+    callback,
+  })
+  return false
+}
+
 // Validates a type
 export const validateType = ({
   argument,
@@ -331,4 +358,10 @@ export const validate = (options: Config) =>
     message: 'must be "development", "staging" or "production"',
     required: false,
     callback: options.onEvent,
+  }) &&
+  validateStore({
+    argument: 'store',
+    value: options.store,
+    message: 'must be true, false or "ask"',
+    required: false,
   })

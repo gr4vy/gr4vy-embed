@@ -26,6 +26,7 @@ export const optionKeys = [
   'buyerId',
   'buyerExternalIdentifier',
   'environment',
+  'store',
 ]
 
 /**

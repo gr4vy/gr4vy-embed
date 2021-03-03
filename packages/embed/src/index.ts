@@ -22,6 +22,12 @@ export const setup = (config: Config): void => {
     return
   }
 
+  // set defaults
+  config = {
+    store: 'ask',
+    ...config,
+  }
+
   // set up the additional config
   if (!(config.element instanceof Element)) {
     config.element = document.querySelector(config.element) as HTMLElement

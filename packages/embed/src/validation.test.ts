@@ -8,6 +8,7 @@ import {
   validateIntent,
   validate,
   emitArgumentError,
+  validateStore,
 } from './validation'
 
 let errorSpy
@@ -458,6 +459,26 @@ describe('validateIntent()', () => {
       message: '123 must be a valid intent',
     }
     const valid = validateIntent(options)
+    expect(valid).toEqual(false)
+    expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateStore', () => {
+  test('should return false if store is not valid', () => {
+    const options = {
+      argument: 'store',
+      message: 'must be true, false or "ask"',
+      value: 123,
+      callback: jest.fn(),
+    }
+    const error = {
+      argument: 'store',
+      code: 'argumentError',
+      message: '123 must be true, false or "ask"',
+    }
+    const valid = validateStore(options)
     expect(valid).toEqual(false)
     expect(options.callback).toHaveBeenCalledWith('argumentError', error)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
