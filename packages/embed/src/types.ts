@@ -15,4 +15,5 @@ export type Config = {
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
   environment?: 'development' | 'staging' | 'production'
+  store?: 'ask' | boolean
 }

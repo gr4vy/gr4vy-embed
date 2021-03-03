@@ -12,6 +12,7 @@ ReactDOM.render(
     bearerToken="123456"
     showButton
     debug
+    store="ask"
     onEvent={console.log}
   />,
   document.querySelector('#app')
