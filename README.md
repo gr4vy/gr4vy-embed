@@ -6,8 +6,8 @@ Quickly embed Gr4vy in your Node app to store card details,
 authorize payments, and capture a transaction. Gr4vy Embed provides a few
 different ways to integrate.
 
-* Use [`@gr4vy/embed`](./packages/embed) in a non-React application.
-* Use [`@gr4vy/embed-react`](./packages/embed-react) in a React application.
+- Use [`@gr4vy/embed`](./packages/embed) in a non-React application.
+- Use [`@gr4vy/embed-react`](./packages/embed-react) in a React application.
 
 ## Development
 
@@ -37,7 +37,6 @@ yarn dev
 ```
 
 This will open a development preview of Gr4vy Embed and the React component.
-
 
 > **Note:** By default `yarn dev` will open on http://localhost:8081/ yet you
 > will not see anything. The reason for this is that this page expect the iframe to be

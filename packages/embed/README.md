@@ -68,7 +68,7 @@ The options for this integration are as follows.
 | `buyerExternalIdentifier` | `null`      | An optional external ID for a Gr4vy buyer. The transaction will automatically be associated to a buyer with that external ID. If no buyer with this external ID exists then it will be ignored. This option is ignored if the `buyerId` is provided. |
 | `store`                   | `ask`       | `'ask'`, `true`, `false` - Explicitly store the payment method or ask the buyer, this is used when a buyerId or buyerExternalIdentifier is provided.                                                                                                 |
 | `country`                 | `null`      | **Required** A valid `ISO 3166` country code.                                                                                                                                                                                                        |
-| `gr4vyId`                 | `null`      | Gr4vy instance, e.g. `acme` that will set the apiHost to `api.<gr4vyId>.gr4vy.app` and `iframeHost` to `embed.<gr4vyId>.gr4vy.app`.                                                                                                                  |
+| `gr4vyId`                 | `null`      | Gr4vy ID automatically sets the `apiHost` to `api.<gr4vyId>.gr4vy.app` and `iframeHost` to `embed.<gr4vyId>.gr4vy.app`.                                                                                                                              |
 
 ### Events
 
