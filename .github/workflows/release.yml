@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install
+        run: |
+          yarn config set workspaces-experimental true
+          yarn install --frozen-lockfile
+
+      - name: Bootstrap
+        run: yarn bootstrap
+
+      - name: Build
+        run: yarn build
+
+      - name: Publish
+        run: yarn release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
