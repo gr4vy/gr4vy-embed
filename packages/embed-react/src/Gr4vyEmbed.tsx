@@ -1,14 +1,16 @@
 import { setup } from '@gr4vy/embed'
+import { SetupConfig } from '@gr4vy/embed/lib/types'
 import React, { useRef, useEffect } from 'react'
-import { Props } from './types'
 
-const Gr4vyEmbed = (props: Props) => {
+export type Gr4vyEmbedProps = Omit<SetupConfig, 'element'>
+
+const Gr4vyEmbed = (props: Gr4vyEmbedProps) => {
   const ref = useRef()
 
   useEffect(() => {
     if (ref.current) {
       setup({
-        ...props,
+        ...(props as any),
         element: ref.current,
       })
     }

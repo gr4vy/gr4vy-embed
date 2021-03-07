@@ -293,8 +293,8 @@ export const validate = (options: Config) =>
     callback: options.onEvent,
   }) &&
   validateType({
-    argument: 'bearerToken',
-    value: options.bearerToken,
+    argument: 'token',
+    value: options.token,
     type: 'string',
     message: 'must be a string',
     callback: options.onEvent,
@@ -364,4 +364,12 @@ export const validate = (options: Config) =>
     value: options.store,
     message: 'must be true, false or "ask"',
     required: false,
+  }) &&
+  validateType({
+    argument: 'country',
+    value: options.country,
+    type: 'string',
+    message: 'must be a string ISO country code',
+    required: true,
+    callback: options.onEvent,
   })

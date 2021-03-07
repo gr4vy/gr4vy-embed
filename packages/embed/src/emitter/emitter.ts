@@ -18,7 +18,7 @@ export const optionKeys = [
   'currency',
   'intent',
   'apiHost',
-  'bearerToken',
+  'token',
   'showButton',
   'debug',
   'externalIdentifier',
@@ -27,6 +27,7 @@ export const optionKeys = [
   'buyerExternalIdentifier',
   'environment',
   'store',
+  'country',
 ]
 
 /**

@@ -41,11 +41,12 @@ setup({
   currency: `USD`,
   iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
   apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
-  bearerToken: `123456`,
+  token: `123456`,
   showButton: false,
   debug: true,
   onEvent: log,
   externalIdentifier: `transaction-123`,
   buyerExternalIdentifier: 'buyer-123',
   environment: 'development',
+  country: 'US',
 })
