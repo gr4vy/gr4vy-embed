@@ -1,8 +1,6 @@
-name: Release
+name: Release Patch
 
-on:
-  workflow_dispatch:
-    branches: [main]
+on: workflow_dispatch
 
 jobs:
   test:
@@ -16,6 +14,9 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
+
+      - name: Setup git user
+        uses: fregante/setup-git-user@v1
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -34,6 +35,6 @@ jobs:
         run: yarn build
 
       - name: Publish
-        run: yarn release
+        run: yarn release --yes patch
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
