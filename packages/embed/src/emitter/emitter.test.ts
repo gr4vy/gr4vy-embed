@@ -28,7 +28,7 @@ beforeEach(() => {
     iframeHost: `127.0.0.1:8080`,
     iframeUrl: new URL(`http://127.0.0.1:8080`),
     apiHost: `127.0.0.1:3100`,
-    bearerToken: `123456`,
+    token: `123456`,
     channel: 'asdasdasdasdasdasd',
     onEvent: jest.fn(),
     store: 'ask',

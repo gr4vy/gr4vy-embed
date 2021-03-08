@@ -33,8 +33,10 @@ export const Default = () => (
     currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
     apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
     iframeHost={text(`iFrame host`, `127.0.0.1:8080`, `Public`)}
-    bearerToken={text(`JWT token`, `1234567`, `Public`)}
+    token={text(`JWT token`, `1234567`, `Public`)}
     showButton={boolean(`Enable submit button`, true, `Public`)}
+    country="US"
+    gr4vyId="45"
     environment={
       select(`Environment`, environmentOptions, 'development', `Public`) as any
     }

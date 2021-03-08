@@ -6,7 +6,7 @@ import { createFrameController, getFrameUrl } from './frame'
 import { createOverlayController, createOverlay } from './overlay'
 import { registerSubscriptions } from './popup'
 import { Skeleton, createSkeletonController } from './skeleton'
-import { Config } from './types'
+import { SetupConfig, Config } from './types'
 import { generateChannelId } from './utils'
 import { validate } from './validation'
 
@@ -16,16 +16,18 @@ import { validate } from './validation'
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-export const setup = (config: Config): void => {
+export function setup(setupConfig: SetupConfig): void {
+  const { gr4vyId, ...rest } = setupConfig
+  const config: Config = {
+    store: 'ask',
+    apiHost: gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
+    iframeHost: gr4vyId ? `embed.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
+    ...rest,
+  }
+
   // exit early if the config is not valid
   if (!validate(config)) {
     return
-  }
-
-  // set defaults
-  config = {
-    store: 'ask',
-    ...config,
   }
 
   // set up the additional config
