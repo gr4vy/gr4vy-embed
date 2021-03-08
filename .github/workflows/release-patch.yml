@@ -31,9 +31,6 @@ jobs:
       - name: Bootstrap
         run: yarn bootstrap
 
-      - name: Build
-        run: yarn build
-
       - name: Publish
         run: yarn release --yes patch
         env:
