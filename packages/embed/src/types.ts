@@ -122,5 +122,9 @@ export type ThemeOptions = {
      * Dark mode will add white to a base hue instead of black.
      */
     darkMode?: boolean
+    /**
+     * Display an inline list of options, aligned without bounding boxes.
+     */
+    inline?: boolean
   }
 }
