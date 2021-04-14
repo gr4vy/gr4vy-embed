@@ -45,8 +45,11 @@ setup({
   showButton: false,
   debug: true,
   onEvent: log,
-  externalIdentifier: `transaction-123`,
-  buyerExternalIdentifier: 'buyer-123',
+  theme: {
+    fonts: {
+      body: 'google:Lato',
+    },
+  },
   environment: 'development',
   country: 'US',
 })

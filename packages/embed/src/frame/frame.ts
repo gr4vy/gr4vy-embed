@@ -1,4 +1,5 @@
 import { frameHeight$, optionsLoaded$ } from '../subjects'
+import { Config } from '../types'
 
 export const createFrameController = (
   frame: HTMLIFrameElement,
@@ -32,10 +33,10 @@ export const createFrameController = (
 
 export const getFrameUrl = ({
   channel,
-  config: { iframeHost },
+  config: { iframeHost, theme },
 }: {
   channel: string
-  config: { iframeHost: string }
+  config: Pick<Config, 'theme' | 'iframeHost'>
 }): URL => {
   // default to a https host
   const url = new URL(`https://${iframeHost}`)
@@ -48,5 +49,11 @@ export const getFrameUrl = ({
   const parentHost = `${document.location.protocol}//${document.location.host}`
   url.searchParams.set(`parentHost`, parentHost)
   url.searchParams.set(`channel`, channel)
+
+  // add the font for preloading
+  if (theme?.fonts?.body) {
+    url.searchParams.set(`font`, encodeURIComponent(theme.fonts.body))
+  }
+
   return url
 }
