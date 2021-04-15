@@ -75,4 +75,22 @@ describe('getFrameUrl()', () => {
       'https://cdn.gr4vy.merchant.com/?parentHost=http%3A%2F%2Flocalhost&channel=123456'
     )
   })
+
+  test('should include a font if defined in the theme', () => {
+    const frameUrl = getFrameUrl({
+      channel: '123456',
+      config: {
+        iframeHost: 'cdn.gr4vy.merchant.com',
+        theme: {
+          fonts: {
+            body: 'Lato',
+          },
+        },
+      },
+    })
+    expect(frameUrl).toBeInstanceOf(URL)
+    expect(frameUrl.toString()).toEqual(
+      'https://cdn.gr4vy.merchant.com/?parentHost=http%3A%2F%2Flocalhost&channel=123456&font=Lato'
+    )
+  })
 })

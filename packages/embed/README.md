@@ -69,6 +69,21 @@ The options for this integration are as follows.
 | `store`                   | `ask`       | `'ask'`, `true`, `false` - Explicitly store the payment method or ask the buyer, this is used when a buyerId or buyerExternalIdentifier is provided.                                                                                                 |
 | `country`                 | `null`      | **Required** A valid `ISO 3166` country code.                                                                                                                                                                                                        |
 | `gr4vyId`                 | `null`      | Gr4vy ID automatically sets the `apiHost` to `api.<gr4vyId>.gr4vy.app` and `iframeHost` to `embed.<gr4vyId>.gr4vy.app`.                                                                                                                              |
+| `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
+
+### Theming
+
+Theming currently supports setting a custom font. This includes system fonts and Google fonts (with a `google:` prefix)
+
+```js
+{
+  fonts: {
+    body: 'google:Lato' // Fonts will automatically be loaded from Google
+  }
+}
+```
+
+This feature will benefit from browser caching if your page loads the same font from the Google CDN.
 
 ### Events
 
