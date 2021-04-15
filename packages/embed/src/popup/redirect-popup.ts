@@ -7,11 +7,10 @@ export type RedirectPopup = {
 export const popupFeatures = (
   width: number,
   height: number,
-  screenWidth: number,
-  screenHeight: number
+  _window: Window = window
 ) => {
-  const left = screenWidth / 2 - width / 2
-  const top = screenHeight / 2 - height / 2
+  const left = _window.innerWidth / 2 - width / 2 + _window.screenLeft
+  const top = _window.innerHeight / 2 - height / 2 + _window.screenTop
   return `width=${width},height=${height},top=${top},left=${left}`
 }
 

@@ -9,8 +9,14 @@ jest.useFakeTimers()
 
 describe('popupFeatures', () => {
   it('should configure a centered popup feature string', () => {
-    expect(popupFeatures(500, 589, 1000, 800)).toEqual(
-      'width=500,height=589,top=105.5,left=250'
+    const mockWindow: Partial<Window> = {
+      innerHeight: 800,
+      innerWidth: 1000,
+      screenLeft: 20,
+      screenTop: 40,
+    }
+    expect(popupFeatures(500, 589, mockWindow as Window)).toEqual(
+      'width=500,height=589,top=145.5,left=270'
     )
   })
 })
