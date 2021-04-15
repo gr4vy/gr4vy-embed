@@ -83,7 +83,7 @@ Theming currently supports setting a custom font. This includes system fonts and
 }
 ```
 
-The appropriate CSP headers will be set for Google fonts, this should also be retrieve from cache if the parent page has loaded the same font.
+This feature will benefit from browser caching if your page loads the same font from the Google CDN.
 
 ### Events
 
