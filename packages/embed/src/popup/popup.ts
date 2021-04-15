@@ -14,10 +14,8 @@ export const registerSubscriptions = (
   popup = mutableRef<{ popup: Window; stopCallback: () => void }>()
 ) => {
   approvalStarted$.subscribe(() => {
-    popup.current = openPopup(
-      popupFeatures(500, 589, screen.width, screen.height),
-      redirectDocument,
-      () => approvalCancelled$.next()
+    popup.current = openPopup(popupFeatures(500, 589), redirectDocument, () =>
+      approvalCancelled$.next()
     )
   })
 
