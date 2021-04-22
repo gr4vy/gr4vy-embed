@@ -49,6 +49,19 @@ setup({
     fonts: {
       body: 'google:Lato',
     },
+    colors: {
+      primary: 'blue',
+      danger: 'red',
+      dangerBackground: 'pink',
+      focus: 'orange',
+    },
+    radii: {
+      input: 'subtle',
+      container: 'subtle',
+    },
+    ui: {
+      gapBetweenOptions: true,
+    },
   },
   environment: 'development',
   country: 'US',

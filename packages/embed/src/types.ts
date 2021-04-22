@@ -75,7 +75,7 @@ export type ThemeOptions = {
     pageBackground?: string
     inputBorder?: string
     inputText?: string
-    inputBackgroud?: string
+    inputBackground?: string
     /**
      * Info is used for loading bars or displaying information.
      */
