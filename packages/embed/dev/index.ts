@@ -59,9 +59,6 @@ setup({
       input: 'subtle',
       container: 'subtle',
     },
-    ui: {
-      gapBetweenOptions: true,
-    },
   },
   environment: 'development',
   country: 'US',
