@@ -30,8 +30,6 @@ type BorderWidth = 'none' | 'thin' | 'thick' // maps to 0, 1, 2
 
 type Radii = 'none' | 'subtle' | 'rounded' // maps to 0, 2, 4
 
-type FontSize = 'small' | 'medium' | 'large' // maps to 0.875rem, 1rem, 1.125rem
-
 export type ThemeOptions = {
   fonts?: {
     /**
@@ -81,11 +79,13 @@ export type ThemeOptions = {
      */
     info?: string
     infoBackground?: string
+    infoText?: string
     /**
      * Danger is used for error messages and destructive actions
      */
     danger?: string
     dangerBackground?: string
+    dangerText?: string
     /**
      * Focus ring around interactive elements
      */
@@ -100,31 +100,5 @@ export type ThemeOptions = {
      * Bounding boxes that are not inputs.
      */
     container?: Radii
-  }
-  fontSize?: {
-    /**
-     * Base size of all fonts (relative to the user/browser default)
-     * Screens less than the small screen breakpoint will automatically
-     * reduce their font size.
-     */
-    body?: FontSize
-  }
-  ui?: {
-    /**
-     * Prevents the loading bar from being displayed
-     */
-    loadingStatusBar?: boolean
-    /**
-     * Spaces options apart from each other
-     */
-    gapBetweenOptions?: boolean
-    /**
-     * Dark mode will add white to a base hue instead of black.
-     */
-    darkMode?: boolean
-    /**
-     * Display an inline list of options, aligned without bounding boxes.
-     */
-    inline?: boolean
   }
 }
