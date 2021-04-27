@@ -28,6 +28,7 @@ export const optionKeys = [
   'environment',
   'store',
   'country',
+  'theme',
 ]
 
 /**
