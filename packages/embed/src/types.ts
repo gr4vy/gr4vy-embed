@@ -46,10 +46,6 @@ export type ThemeOptions = {
      * Inputs, Radios and Checkbox borders
      */
     input?: Omit<BorderWidth, 'none'>
-    /**
-     * Focus ring around interactive elements
-     */
-    focus?: Omit<BorderWidth, 'none'>
   }
   colors?: {
     /**
@@ -100,5 +96,11 @@ export type ThemeOptions = {
      * Bounding boxes that are not inputs.
      */
     container?: Radii
+  }
+  shadows?: {
+    /**
+     * Focus ring around interactive elements
+     */
+    focusRing?: string
   }
 }
