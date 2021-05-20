@@ -14,6 +14,7 @@ ReactDOM.render(
     debug
     country="US"
     onEvent={console.log}
+    locale="en"
   />,
   document.querySelector('#app')
 )

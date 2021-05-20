@@ -29,6 +29,7 @@ export const optionKeys = [
   'store',
   'country',
   'theme',
+  'locale',
 ]
 
 /**
@@ -44,7 +45,6 @@ export const createEmitter = ({
   // initialize framebus and create curried functions for
   // listening and emitting events over framebus
   const { debug, onEvent } = config
-  // const framebus = createFramebus(config)
   const on = loggedFramebusOn(framebus, debug)
   const emit = loggedFramebusEmit(framebus, debug)
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
