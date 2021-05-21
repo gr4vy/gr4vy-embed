@@ -70,6 +70,7 @@ The options for this integration are as follows.
 | `country`                 | `null`      | **Required** A valid `ISO 3166` country code.                                                                                                                                                                                                        |
 | `gr4vyId`                 | `null`      | Gr4vy ID automatically sets the `apiHost` to `api.<gr4vyId>.gr4vy.app` and `iframeHost` to `embed.<gr4vyId>.gr4vy.app`.                                                                                                                              |
 | `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
+| `locale`                  | `en`        | An optional locale, this consists of a `ISO 639 Language Code` followed by an optional `ISO 3166 Country Code`, e.g. `en`, `en-gb` or `pt-br`.                                                                                                       |
 
 ### Theming
 
