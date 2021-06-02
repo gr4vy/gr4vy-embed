@@ -1,0 +1,12 @@
+dist
+lib
+yarn-error.log
+*.tgz
+coverage
+package-lock.json
+node_modules
+types
+*.js.map
+packages/*/src/**/*.js
+.env
+.npmrc

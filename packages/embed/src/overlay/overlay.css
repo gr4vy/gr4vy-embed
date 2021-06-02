@@ -1,0 +1,51 @@
+.gr4vy__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100vh;
+  z-index: 100;
+  transition: background-color 0.2s linear, max-height 0s linear;
+  backdrop-filter: blur(2px);
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gr4vy__overlay__container {
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.gr4vy__overlay__container > * + * {
+  margin-top: 32px;
+}
+
+.gr4vy__overlay__notice > * + * {
+  margin-top: 8px;
+}
+
+.gr4vy__overlay--hidden {
+  max-height: 0;
+  backdrop-filter: unset;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.2s linear, max-height 0s linear;
+  transition-delay: 0s, 0.2s;
+  overflow: hidden;
+}
+
+.gr4vy__overlay__link {
+  font-weight: normal;
+  text-decoration: underline;
+  font-weight: normal;
+  color: white;
+  display: block;
+  cursor: pointer;
+}

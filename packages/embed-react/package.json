@@ -1,0 +1,39 @@
+{
+  "name": "@gr4vy/embed-react",
+  "version": "0.0.44",
+  "description": "Embed a credit card form in your React app and store the card details, authorize the card, and capture a transaction.",
+  "main": "lib/index",
+  "types": "lib/index",
+  "author": "Gr4vy <code@gr4vy.com>",
+  "license": "MIT",
+  "repository": "github:gr4vy/embed",
+  "homepage": "https://gr4vy.com",
+  "scripts": {
+    "clean": "rm -rf lib *.tgz",
+    "dev": "webpack serve --config webpack.dev.js",
+    "prebuild": "yarn clean",
+    "build": "tsc",
+    "lint": "eslint src dev --ext ts,tsx",
+    "prepack": "yarn build",
+    "storybook": "start-storybook",
+    "test": "jest --colors"
+  },
+  "files": [
+    "lib",
+    "LICENSE",
+    "README",
+    "CHANGELOG.md"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@gr4vy/embed": "^0.0.44"
+  },
+  "devDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
+}

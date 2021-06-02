@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gr4vy - Embed</title>
+    <!-- In a normal situation this would be loaded from a CDN  -->
+    <script src="../embed-cdn/lib/gr4vy-embed.js"></script>
+  </head>
+  <body>
+    <form id="cardform">
+      <div class="container"></div>
+      <input type="submit" value="Pay" />
+    </form>
+
+    <script>
+      gr4vy.setup({
+        element: '.container',
+        form: '#cardform',
+        amount: 1299,
+        currency: 'USD',
+        country: 'US',
+        gr4vyId: 'demo',
+        token: '123456',
+      })
+    </script>
+  </body>
+</html>
