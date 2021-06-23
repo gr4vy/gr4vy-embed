@@ -1,4 +1,5 @@
 import { setup } from '../src'
+import { Config } from '../src/types'
 
 /**
  * Simple entry point for the dev server. This is loaded when
@@ -33,7 +34,14 @@ form.appendChild(input)
 
 document.body.appendChild(form)
 
+const env = process.env.ENVIRONMENT
+  ? {
+      environment: process.env.ENVIRONMENT as Config['environment'],
+    }
+  : {}
+
 setup({
+  ...env,
   element: `#root`,
   form: `#form`,
   intent: 'capture',
@@ -41,7 +49,7 @@ setup({
   currency: `USD`,
   iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
   apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
-  token: `123456`,
+  token: process.env.TOKEN ?? `123456`,
   showButton: false,
   debug: true,
   onEvent: log,
@@ -60,6 +68,5 @@ setup({
       container: 'subtle',
     },
   },
-  environment: 'development',
   country: 'US',
 })
