@@ -1,6 +1,6 @@
 {
   "name": "@gr4vy/embed-react",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Embed a credit card form in your React app and store the card details, authorize the card, and capture a transaction.",
   "main": "lib/index",
   "types": "lib/index",
@@ -29,7 +29,7 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@gr4vy/embed": "^1.1.0"
+    "@gr4vy/embed": "^1.2.0"
   },
   "devDependencies": {
     "react": "^17.0.1",
