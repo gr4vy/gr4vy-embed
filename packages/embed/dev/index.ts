@@ -39,6 +39,7 @@ setup({
   intent: 'capture',
   amount: 1299,
   currency: `USD`,
+  buyerExternalIdentifier: 'user-001',
   iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
   apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
   token: process.env.TOKEN ?? `123456`,
@@ -62,4 +63,5 @@ setup({
   },
   environment: 'development',
   country: 'US',
+  display: 'all',
 })
