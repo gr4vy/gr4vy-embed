@@ -20,6 +20,7 @@ export function setup(setupConfig: SetupConfig): void {
   const { gr4vyId, ...rest } = setupConfig
   const config: Config = {
     store: 'ask',
+    display: 'all',
     apiHost: gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
     iframeHost: gr4vyId ? `embed.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
     ...rest,

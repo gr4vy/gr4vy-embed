@@ -372,4 +372,11 @@ export const validate = (options: Config) =>
     message: 'must be a string ISO country code',
     required: true,
     callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'display',
+    value: options.display,
+    type: 'string',
+    message: 'must be "storedOnly", "addOnly" or "all"',
+    required: false,
   })

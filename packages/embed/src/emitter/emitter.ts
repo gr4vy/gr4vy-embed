@@ -30,6 +30,7 @@ export const optionKeys = [
   'country',
   'theme',
   'locale',
+  'display',
 ]
 
 /**

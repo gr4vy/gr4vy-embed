@@ -87,6 +87,7 @@ describe('setup()', () => {
       token: `123456`,
       country: 'US',
       store: 'ask',
+      display: 'all',
     }
     ;(validate as jest.Mock).mockReturnValue(false)
 
