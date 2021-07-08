@@ -95,7 +95,7 @@ export const validateNumber = ({
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
   const number = Number(value)
-  const valid = number > 0 && number <= 999999
+  const valid = number >= 0 && number <= 999999
 
   if (canSkipValidation({ required, value }) || valid) {
     return true
@@ -324,7 +324,7 @@ export const validate = (options: Config) =>
   validateNumber({
     argument: 'amount',
     value: options.amount,
-    message: 'must be valid, positive number',
+    message: 'must be valid non-negative number',
     callback: options.onEvent,
   }) &&
   validateType({
