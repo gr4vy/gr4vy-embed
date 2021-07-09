@@ -20,6 +20,13 @@ export type Config = {
   theme?: ThemeOptions // Theming options
   locale?: string //  < ISO 639 Language Code > - < ISO 3166 Country Code (optional) >
   display?: 'storedOnly' | 'addOnly' | 'all'
+  onComplete?: (transaction: Transaction) => void
+}
+
+export type Transaction = {
+  id: string
+  status: string
+  paymentMethod?: { id?: string }
 }
 
 export type SetupConfig = Omit<Config, 'iframeHost' | 'apiHost'> & {

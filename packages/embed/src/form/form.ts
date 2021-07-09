@@ -6,13 +6,28 @@ export type FormNapperInstance = {
   submit: () => void
 }
 
-export const createFormController = (form: FormNapperInstance) => {
+export const createFormController = (
+  form: FormNapperInstance,
+  onComplete?: CallableFunction
+) => {
   form.hijack(() => {
     formSubmit$.next()
   })
 
-  transactionCreated$.subscribe((transactionId) => {
-    form.inject(`gr4vy_transaction_id`, transactionId)
-    form.submit()
+  transactionCreated$.subscribe((transaction) => {
+    form.inject(`gr4vy_transaction_id`, transaction.id)
+    form.inject(`gr4vy_transaction_status`, transaction.status)
+
+    // include payment method id if available
+    if (transaction?.paymentMethod?.id) {
+      form.inject(
+        `gr4vy_transaction_payment_method_id`,
+        transaction.paymentMethod.id
+      )
+    }
+
+    return typeof onComplete === 'function'
+      ? onComplete(transaction)
+      : form.submit()
   })
 }

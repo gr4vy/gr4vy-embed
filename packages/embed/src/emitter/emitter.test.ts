@@ -172,7 +172,7 @@ describe('createEmitter', () => {
 
     // inject content and submit the form when the transaction was created
     fb.emit('transactionCreated', { id: 'transaction-id' })
-    expect(transactionCreated$.value()).toBe('transaction-id')
+    expect(transactionCreated$.value()).toStrictEqual({ id: 'transaction-id' })
 
     // subscribe to these events and pass them straight to the `onEvent` handler
     fb.emit('formUpdate', {})

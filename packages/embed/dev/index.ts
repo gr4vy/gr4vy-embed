@@ -31,7 +31,10 @@ root.style.width = '500px'
 form.appendChild(root)
 form.appendChild(input)
 
+const result = document.createElement(`div`)
+
 document.body.appendChild(form)
+document.body.appendChild(result)
 
 setup({
   element: `#root`,
@@ -61,7 +64,15 @@ setup({
       container: 'subtle',
     },
   },
-  environment: 'development',
+  environment: 'production',
   country: 'US',
   display: 'all',
+  // overrides form submission
+  onComplete: (transaction) => {
+    result.innerHTML = `
+      <p>Transaction ID: ${transaction.id}</p>
+      <p>Status: ${transaction.status}</p>
+      <p>Payment Method ID: ${transaction.paymentMethod.id}</p>
+      `
+  },
 })

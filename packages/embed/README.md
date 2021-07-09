@@ -76,6 +76,7 @@ The options for this integration are as follows.
 | `store`                   | `ask`       | `'ask'`, `true`, `false` - Explicitly store the payment method or ask the buyer, this is used when a buyerId or buyerExternalIdentifier is provided.                                                                                                 |
 | `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
 | `token`                   | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
+| `onComplete`              | `null`      | Callback with a completed transaction object. (Form submission must be handled manually)                                                                                                                                                             |
 
 ### Theming
 
@@ -155,6 +156,20 @@ Returned when the form encounters an API error.
   "message": "No valid API authentication found",
   "details": []
 }
+```
+
+### Custom Form Submission
+
+Embed will automatically submit the payment form with hidden inputs, this can be prevented using the `onComplete` callback.
+
+```ts
+setup({
+  ...,
+  onComplete: (transaction) => {
+    // Handle custom form submission
+  }
+})
+
 ```
 
 ## License

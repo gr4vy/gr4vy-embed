@@ -17,7 +17,7 @@ import { validate } from './validation'
  * to append the form to, and a list of valid options for the form.
  */
 export function setup(setupConfig: SetupConfig): void {
-  const { gr4vyId, ...rest } = setupConfig
+  const { gr4vyId, onComplete, ...rest } = setupConfig
   const config: Config = {
     store: 'ask',
     display: 'all',
@@ -49,7 +49,7 @@ export function setup(setupConfig: SetupConfig): void {
   // Form - Optional
   if (config.form) {
     const formNapper = new FormNapper(config.form) as FormNapperInstance
-    createFormController(formNapper)
+    createFormController(formNapper, onComplete)
   }
 
   // Popup + Overlay (Authorizations)
