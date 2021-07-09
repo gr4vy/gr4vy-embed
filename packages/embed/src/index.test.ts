@@ -96,18 +96,4 @@ describe('setup()', () => {
     expect(validate).toHaveBeenCalledWith(invalidConfig)
     expect(createFormController).not.toHaveBeenCalled()
   })
-
-  test('skip form setup if not set in config', () => {
-    ;(validate as jest.Mock).mockReturnValue(true)
-    setup({
-      element: document.querySelector('#app'),
-      amount: 1299,
-      currency: `USD`,
-      iframeHost: `127.0.0.1:8080`,
-      apiHost: `127.0.0.1:3100`,
-      token: `123456`,
-      country: 'US',
-    })
-    expect(createFormController).not.toHaveBeenCalled()
-  })
 })

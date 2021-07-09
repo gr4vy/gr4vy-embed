@@ -29,7 +29,7 @@ describe('createFormController', () => {
   describe('onTransactionCreated', () => {
     it('should inject the transaction id', () => {
       createFormController(formNapperMock)
-      transactionCreated$.next('123')
+      transactionCreated$.next({ id: '123', status: 'captured' })
       expect(formNapperMock.inject).toHaveBeenCalledWith(
         'gr4vy_transaction_id',
         '123'
@@ -38,7 +38,7 @@ describe('createFormController', () => {
 
     it('should submit the form', () => {
       createFormController(formNapperMock)
-      transactionCreated$.next('123')
+      transactionCreated$.next({ id: '123', status: 'captured' })
       expect(formNapperMock.submit).toHaveBeenCalled()
     })
   })

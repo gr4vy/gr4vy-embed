@@ -57,7 +57,9 @@ export const createEmitter = ({
   on('frameReady', () => emit('updateOptions', options))
   on('resize', (data) => frameHeight$.next(data.frame.height))
   on('optionsLoaded', () => optionsLoaded$.next(true))
-  on('transactionCreated', ({ id }) => transactionCreated$.next(id))
+  on('transactionCreated', (transaction) =>
+    transactionCreated$.next(transaction)
+  )
   on('transactionFailed', (...ars) => transactionFailed$.next(...ars))
 
   formSubmit$.subscribe(() => emit('submitForm'))

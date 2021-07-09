@@ -39,7 +39,7 @@ test('should complete approval on transaction complete', () => {
   approvalRequired$.next(true)
   let result = false
   const approvalCompleted = approvalCompleted$.subscribe(() => (result = true))
-  transactionCreated$.next('test-transaction-id')
+  transactionCreated$.next({ id: 'test-transaction-id', status: 'captured' })
   approvalCompleted.unsubscribe()
   expect(result).toBe(true)
 })
@@ -48,7 +48,7 @@ test('should skip complete approval if not required on transaction complete', ()
   approvalRequired$.next(false)
   let result = false
   const approvalCompleted = approvalCompleted$.subscribe(() => (result = true))
-  transactionCreated$.next('test-transaction-id')
+  transactionCreated$.next({ id: 'test-transaction-id', status: 'captured' })
   approvalCompleted.unsubscribe()
   expect(result).toBe(false)
 })

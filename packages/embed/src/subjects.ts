@@ -9,7 +9,11 @@ export const approvalCompleted$ = createSubject()
 export const frameHeight$ = createSubject<number>(0)
 export const optionsLoaded$ = createSubject<boolean>(false)
 export const formSubmit$ = createSubject()
-export const transactionCreated$ = createSubject<string>()
+export const transactionCreated$ = createSubject<{
+  id: string
+  status: string
+  paymentMethod?: { id?: string }
+}>()
 export const transactionFailed$ = createSubject()
 
 // Initial events
