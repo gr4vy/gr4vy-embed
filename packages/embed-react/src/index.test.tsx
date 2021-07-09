@@ -9,6 +9,7 @@ import React from 'react'
 import Gr4vyEmbed, { Gr4vyEmbedProps } from './Gr4vyEmbed'
 
 const options: Gr4vyEmbedProps & { channel: string } = {
+  form: '#form',
   intent: 'capture',
   iframeHost: `localhost:8080`,
   apiHost: `localhost:3100`,
@@ -30,6 +31,7 @@ test(`should default to be not loaded`, () => {
     intent: 'capture',
     channel: 'mychannel',
     currency: 'GBP',
+    form: '#form',
     element: expect.any(HTMLDivElement),
     iframeHost: 'localhost:8080',
     onEvent: expect.any(Function),
