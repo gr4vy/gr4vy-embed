@@ -1,8 +1,6 @@
 import { createSubjectManager } from '../subjects'
 import { createSkeletonController } from './skeleton'
 
-jest.mock('../utils/create-subject')
-
 describe('createSkeletonController', () => {
   it('should be removed when options have laoded', () => {
     const mockElement = {

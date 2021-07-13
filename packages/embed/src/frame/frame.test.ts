@@ -1,8 +1,6 @@
 import { createSubjectManager, SubjectManager } from '../subjects'
 import { createFrameController, getFrameUrl } from './frame'
 
-jest.mock('../utils/create-subject')
-
 describe('createFrameController', () => {
   let subject: SubjectManager
 

@@ -10,8 +10,6 @@ import {
 } from './emitter'
 let validConfig, subject
 
-jest.mock('../utils/create-subject')
-
 beforeEach(() => {
   validConfig = {
     element: document.createElement('div') as HTMLElement,

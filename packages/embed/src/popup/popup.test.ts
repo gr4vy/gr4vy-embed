@@ -3,7 +3,6 @@ import { mutableRef } from '../utils'
 import { createPopupController } from './popup'
 import { openPopup, redirectPopup } from './redirect-popup'
 
-jest.mock('../utils/create-subject')
 jest.mock('./redirect-popup')
 jest.useFakeTimers()
 
@@ -102,10 +101,6 @@ describe('registerSubscriptions', () => {
   })
 
   test('restarts approval when lost', () => {
-    // clear all subscribers to isolate
-    ;(subject.approvalUrl$ as any).reset()
-    ;(subject.approvalStarted$ as any).reset()
-
     subject.approvalUrl$.next('test-url')
     const mockPopup = {
       popup: {
@@ -126,9 +121,6 @@ describe('registerSubscriptions', () => {
   })
 
   test('restarts approval without an approval url', () => {
-    // clear all subscribers to isolate
-    ;(subject.approvalUrl$ as any).reset()
-    ;(subject.approvalStarted$ as any).reset()
     subject.approvalUrl$.next(null)
     const mockPopup = {
       popup: {

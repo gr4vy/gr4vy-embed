@@ -1,7 +1,5 @@
 import { createSubjectManager, SubjectManager } from './subjects'
 
-jest.mock('./utils/create-subject')
-
 describe('createSubjectManager', () => {
   let subject: SubjectManager
 
