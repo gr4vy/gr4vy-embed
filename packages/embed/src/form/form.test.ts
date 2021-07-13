@@ -1,45 +1,44 @@
-import { transactionCreated$, formSubmit$ } from '../subjects'
-import { createFormController, FormNapperInstance } from './form'
+import { createSubjectManager, SubjectManager } from '../subjects'
+import { createFormController } from './form'
 
 describe('createFormController', () => {
-  let formNapperMock: FormNapperInstance
+  let form: HTMLFormElement, subject: SubjectManager
 
   beforeEach(() => {
-    formNapperMock = {
-      hijack: jest.fn(),
-      inject: jest.fn(),
-      submit: jest.fn(),
-    }
+    form = document.createElement('form')
+    const submit = document.createElement('input')
+    submit.type = 'submit'
+    form.id = 'test'
+    form.appendChild(submit)
+    document.body.append(form)
+    subject = createSubjectManager()
   })
 
-  it('should hijack the form', () => {
-    createFormController(formNapperMock)
-    expect(formNapperMock.hijack).toHaveBeenCalled()
-  })
-
-  it('should call notify formSubmit$', (done) => {
-    formSubmit$.subscribe(() => {
+  it('should hijack the form and notify formSubmit$', (done) => {
+    createFormController(form, null, subject)
+    subject.formSubmit$.subscribe(() => {
       done()
     })
-    createFormController(formNapperMock)
-    const callback = (formNapperMock.hijack as jest.Mock).mock.calls[0][0]
-    callback()
+    form.submit()
   })
 
   describe('onTransactionCreated', () => {
     it('should inject the transaction id', () => {
-      createFormController(formNapperMock)
-      transactionCreated$.next({ id: '123', status: 'captured' })
-      expect(formNapperMock.inject).toHaveBeenCalledWith(
-        'gr4vy_transaction_id',
-        '123'
-      )
+      createFormController(form, null, subject)
+      subject.transactionCreated$.next({ id: '123', status: 'captured' })
+      expect(
+        (document.getElementsByName(
+          'gr4vy_transaction_id'
+        )[0] as HTMLInputElement).value
+      ).toBe('123')
     })
 
-    it('should submit the form', () => {
-      createFormController(formNapperMock)
-      transactionCreated$.next({ id: '123', status: 'captured' })
-      expect(formNapperMock.submit).toHaveBeenCalled()
+    it('should submit the form', (done) => {
+      form.onsubmit = () => {
+        done()
+      }
+      createFormController(form, null, subject)
+      subject.transactionCreated$.next({ id: '123', status: 'captured' })
     })
   })
 })

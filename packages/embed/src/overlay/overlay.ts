@@ -1,21 +1,14 @@
-import {
-  approvalStarted$,
-  approvalCompleted$,
-  approvalCancelled$,
-  approvalLost$,
-  transactionFailed$,
-} from '../subjects'
-
-export type Overlay = {
-  hide: () => void
-  show: () => void
-}
+import { SubjectManager } from '../subjects'
+import './overlay.css'
 
 const overlayTitle = `Your payment has continued in a new secure window.`
 const overlayPrompt = `Can not see the new window?`
 const overlayLink = `Re-open window`
 
-export const createOverlay = (element: HTMLDivElement): Overlay => {
+export const createOverlayController = (
+  element: HTMLDivElement,
+  subject: SubjectManager
+) => {
   element.className = `gr4vy__overlay gr4vy__overlay--hidden`
 
   const Title = document.createElement('div')
@@ -32,12 +25,12 @@ export const createOverlay = (element: HTMLDivElement): Overlay => {
   const Link = document.createElement('div')
   Link.className = 'gr4vy__overlay__link'
   Link.textContent = overlayLink
-  Link.addEventListener('click', () => approvalLost$.next())
+  Link.addEventListener('click', () => subject.approvalLost$.next())
 
   const CancelLink = document.createElement('div')
   CancelLink.className = 'gr4vy__overlay__link'
   CancelLink.textContent = `Cancel`
-  CancelLink.addEventListener('click', () => approvalCancelled$.next())
+  CancelLink.addEventListener('click', () => subject.approvalCancelled$.next())
 
   const Container = document.createElement('div')
   Container.className = 'gr4vy__overlay__container'
@@ -47,20 +40,15 @@ export const createOverlay = (element: HTMLDivElement): Overlay => {
 
   element.appendChild(Container)
 
-  return {
-    hide: () => {
-      element.className = 'gr4vy__overlay gr4vy__overlay--hidden'
-    },
-    show: () => {
-      element.className = 'gr4vy__overlay'
-    },
+  const hide = () => {
+    element.className = 'gr4vy__overlay gr4vy__overlay--hidden'
   }
-}
+  const show = () => {
+    element.className = 'gr4vy__overlay'
+  }
 
-export const createOverlayController = (element: Overlay) => {
-  require('./overlay.css')
-  approvalStarted$.subscribe(element.show)
-  approvalCompleted$.subscribe(element.hide)
-  approvalCancelled$.subscribe(element.hide)
-  transactionFailed$.subscribe(element.hide)
+  subject.approvalStarted$.subscribe(show)
+  subject.approvalCompleted$.subscribe(hide)
+  subject.approvalCancelled$.subscribe(hide)
+  subject.transactionFailed$.subscribe(hide)
 }

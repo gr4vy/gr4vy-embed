@@ -1,9 +1,10 @@
-import { frameHeight$, optionsLoaded$ } from '../subjects'
+import { SubjectManager } from '../subjects'
 import { Config } from '../types'
 
 export const createFrameController = (
   frame: HTMLIFrameElement,
-  iframeUrl: URL
+  iframeUrl: URL,
+  subject: SubjectManager
 ) => {
   // default style
   frame.src = iframeUrl.toString()
@@ -19,13 +20,13 @@ export const createFrameController = (
   frame.setAttribute('frameBorder', '0')
   frame.setAttribute('scrolling', 'no')
 
-  frameHeight$.subscribe((height) => {
+  subject.frameHeight$.subscribe((height) => {
     if (frame.style.visibility === 'unset') {
       frame.style.height = `${height}px`
     }
   })
 
-  optionsLoaded$.subscribe(() => {
+  subject.optionsLoaded$.subscribe(() => {
     frame.style.visibility = 'unset'
     frame.style.display = 'unset'
   })
