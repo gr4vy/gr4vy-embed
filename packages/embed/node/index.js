@@ -1,1 +1,0 @@
-const { setup } = require('../lib')
