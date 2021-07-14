@@ -1,12 +1,5 @@
 import Framebus from 'framebus'
-import {
-  frameHeight$,
-  optionsLoaded$,
-  formSubmit$,
-  transactionCreated$,
-  approvalRequired$,
-  approvalUrl$,
-} from '../subjects'
+import { createSubjectManager } from '../subjects'
 import { pick } from '../utils'
 import {
   loggedFramebusOn,
@@ -15,9 +8,7 @@ import {
   createEmitter,
   optionKeys,
 } from './emitter'
-let validConfig
-
-jest.mock('../utils/create-subject')
+let validConfig, subject
 
 beforeEach(() => {
   validConfig = {
@@ -33,6 +24,7 @@ beforeEach(() => {
     onEvent: jest.fn(),
     store: 'ask',
   }
+  subject = createSubjectManager()
 })
 
 let framebus
@@ -129,7 +121,7 @@ describe('createEmitter', () => {
     })
 
     // init framebus
-    createEmitter({ framebus, config: validConfig })
+    createEmitter({ framebus, config: validConfig }, subject)
 
     // make sure all the expected events are regustered
     const fb = (Framebus as any).getInstances()[1]
@@ -149,30 +141,32 @@ describe('createEmitter', () => {
 
     // tigger an iframe resize when the iframe content resized
     fb.emit('resize', { frame: { height: 123 } })
-    expect(frameHeight$.value()).toBe(123)
+    expect(subject.frameHeight$.value()).toBe(123)
 
     // update the config to set the form as loaded and show the UI
     fb.emit('optionsLoaded')
-    expect(optionsLoaded$.value()).toBe(true)
+    expect(subject.optionsLoaded$.value()).toBe(true)
 
     // approvals
     fb.emit('approvalRequired')
-    expect(approvalRequired$.value()).toBe(true)
+    expect(subject.approvalRequired$.value()).toBe(true)
 
     fb.emit('approvalNotRequired')
-    expect(approvalRequired$.value()).toBe(false)
+    expect(subject.approvalRequired$.value()).toBe(false)
 
     fb.emit('approvalUrl', 'test-url')
-    expect(approvalUrl$.value()).toBe('test-url')
+    expect(subject.approvalUrl$.value()).toBe('test-url')
 
     // trigger a submitForm event when the form is submitted
     fb.on('submitForm', jest.fn())
-    formSubmit$.next()
+    subject.formSubmit$.next()
     expect(fb.events['submitForm'][0]).toHaveBeenCalled()
 
     // inject content and submit the form when the transaction was created
     fb.emit('transactionCreated', { id: 'transaction-id' })
-    expect(transactionCreated$.value()).toStrictEqual({ id: 'transaction-id' })
+    expect(subject.transactionCreated$.value()).toStrictEqual({
+      id: 'transaction-id',
+    })
 
     // subscribe to these events and pass them straight to the `onEvent` handler
     fb.emit('formUpdate', {})

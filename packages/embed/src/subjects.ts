@@ -1,30 +1,37 @@
 import { createSubject } from './utils/create-subject'
 
-export const approvalRequired$ = createSubject<boolean>()
-export const approvalUrl$ = createSubject<string>()
-export const approvalStarted$ = createSubject()
-export const approvalCancelled$ = createSubject()
-export const approvalLost$ = createSubject()
-export const approvalCompleted$ = createSubject()
-export const frameHeight$ = createSubject<number>(0)
-export const optionsLoaded$ = createSubject<boolean>(false)
-export const formSubmit$ = createSubject()
-export const transactionCreated$ = createSubject<{
-  id: string
-  status: string
-  paymentMethod?: { id?: string }
-}>()
-export const transactionFailed$ = createSubject()
-
-// Initial events
-formSubmit$.subscribe(() => {
-  if (approvalRequired$.value()) {
-    approvalStarted$.next()
+export const createSubjectManager = () => {
+  const subjects = {
+    approvalRequired$: createSubject<boolean>(),
+    approvalUrl$: createSubject<string>(),
+    approvalStarted$: createSubject(),
+    approvalCancelled$: createSubject(),
+    approvalLost$: createSubject(),
+    approvalCompleted$: createSubject(),
+    frameHeight$: createSubject<number>(0),
+    optionsLoaded$: createSubject<boolean>(false),
+    formSubmit$: createSubject(),
+    transactionCreated$: createSubject<{
+      id: string
+      status: string
+      paymentMethod?: { id?: string }
+    }>(),
+    transactionFailed$: createSubject(),
   }
-})
 
-transactionCreated$.subscribe(() => {
-  if (approvalRequired$.value()) {
-    approvalCompleted$.next()
-  }
-})
+  subjects.formSubmit$.subscribe(() => {
+    if (subjects.approvalRequired$.value()) {
+      subjects.approvalStarted$.next()
+    }
+  })
+
+  subjects.transactionCreated$.subscribe(() => {
+    if (subjects.approvalRequired$.value()) {
+      subjects.approvalCompleted$.next()
+    }
+  })
+
+  return subjects
+}
+
+export type SubjectManager = ReturnType<typeof createSubjectManager>

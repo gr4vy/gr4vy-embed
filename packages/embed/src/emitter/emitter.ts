@@ -1,14 +1,5 @@
 import Framebus from 'framebus'
-import {
-  approvalRequired$,
-  approvalUrl$,
-  transactionCreated$,
-  frameHeight$,
-  approvalCancelled$,
-  optionsLoaded$,
-  formSubmit$,
-  transactionFailed$,
-} from '../subjects'
+import { SubjectManager } from '../subjects'
 import { Config } from '../types'
 import { pick } from '../utils'
 import { log } from './logger'
@@ -36,13 +27,16 @@ export const optionKeys = [
 /**
  * Initializes the framebus connection to the nested frame.
  */
-export const createEmitter = ({
-  config,
-  framebus,
-}: {
-  config: Config
-  framebus: Framebus
-}): void => {
+export const createEmitter = (
+  {
+    config,
+    framebus,
+  }: {
+    config: Config
+    framebus: Framebus
+  },
+  subject: SubjectManager
+): void => {
   // initialize framebus and create curried functions for
   // listening and emitting events over framebus
   const { debug, onEvent } = config
@@ -51,19 +45,19 @@ export const createEmitter = ({
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
   const options = pick<Config>(config, optionKeys)
 
-  on('approvalRequired', () => approvalRequired$.next(true))
-  on('approvalNotRequired', () => approvalRequired$.next(false))
-  on('approvalUrl', (url) => approvalUrl$.next(url))
+  on('approvalRequired', () => subject.approvalRequired$.next(true))
+  on('approvalNotRequired', () => subject.approvalRequired$.next(false))
+  on('approvalUrl', (url) => subject.approvalUrl$.next(url))
   on('frameReady', () => emit('updateOptions', options))
-  on('resize', (data) => frameHeight$.next(data.frame.height))
-  on('optionsLoaded', () => optionsLoaded$.next(true))
+  on('resize', (data) => subject.frameHeight$.next(data.frame.height))
+  on('optionsLoaded', () => subject.optionsLoaded$.next(true))
   on('transactionCreated', (transaction) =>
-    transactionCreated$.next(transaction)
+    subject.transactionCreated$.next(transaction)
   )
-  on('transactionFailed', (...ars) => transactionFailed$.next(...ars))
+  on('transactionFailed', (...ars) => subject.transactionFailed$.next(...ars))
 
-  formSubmit$.subscribe(() => emit('submitForm'))
-  approvalCancelled$.subscribe(() => emit('approvalCancelled'))
+  subject.formSubmit$.subscribe(() => emit('submitForm'))
+  subject.approvalCancelled$.subscribe(() => emit('approvalCancelled'))
 
   // subscribe to events that are exposed to the onEvent handler passed in by
   // the developer

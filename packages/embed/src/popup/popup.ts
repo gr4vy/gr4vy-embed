@@ -1,51 +1,45 @@
-import {
-  approvalUrl$,
-  approvalCompleted$,
-  approvalStarted$,
-  approvalCancelled$,
-  transactionFailed$,
-  approvalLost$,
-} from '../subjects'
+import { SubjectManager } from '../subjects'
 import { mutableRef } from '../utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 
-export const registerSubscriptions = (
-  popup = mutableRef<{ popup: Window; stopCallback: () => void }>()
+export const createPopupController = (
+  popup = mutableRef<{ popup: Window; stopCallback: () => void }>(),
+  subject: SubjectManager
 ) => {
-  approvalStarted$.subscribe(() => {
+  subject.approvalStarted$.subscribe(() => {
     popup.current = openPopup(popupFeatures(500, 589), redirectDocument, () =>
-      approvalCancelled$.next()
+      subject.approvalCancelled$.next()
     )
   })
 
-  approvalUrl$.subscribe((url) => {
+  subject.approvalUrl$.subscribe((url) => {
     if (popup.current) {
       redirectPopup(popup.current.popup, url)
     }
   })
 
-  approvalLost$.subscribe(() => {
+  subject.approvalLost$.subscribe(() => {
     popup.current.stopCallback()
     popup.current.popup.close()
-    approvalStarted$.next()
+    subject.approvalStarted$.next()
 
     // Check if the approval url already exists
-    const previousApprovalUrl = approvalUrl$.value()
+    const previousApprovalUrl = subject.approvalUrl$.value()
     if (previousApprovalUrl) {
-      approvalUrl$.next(previousApprovalUrl)
+      subject.approvalUrl$.next(previousApprovalUrl)
     }
   })
 
-  approvalCancelled$.subscribe(() => {
+  subject.approvalCancelled$.subscribe(() => {
     popup.current?.popup.close()
   })
 
-  approvalCompleted$.subscribe(() => {
+  subject.approvalCompleted$.subscribe(() => {
     popup.current?.popup.close()
   })
 
-  transactionFailed$.subscribe(() => {
+  subject.transactionFailed$.subscribe(() => {
     popup.current?.stopCallback()
     popup.current?.popup.close()
   })

@@ -1,13 +1,13 @@
-import FormNapper from 'form-napper'
 import Framebus from 'framebus'
 import { createEmitter } from './emitter'
-import { createFormController, FormNapperInstance } from './form'
+import { createFormController } from './form'
 import { createFrameController, getFrameUrl } from './frame'
-import { createOverlayController, createOverlay } from './overlay'
-import { registerSubscriptions } from './popup'
-import { Skeleton, createSkeletonController } from './skeleton'
+import { createOverlayController } from './overlay'
+import { createPopupController } from './popup'
+import { createSkeletonController } from './skeleton'
+import { createSubjectManager } from './subjects'
 import { SetupConfig, Config } from './types'
-import { generateChannelId } from './utils'
+import { generateChannelId, mutableRef } from './utils'
 import { validate } from './validation'
 
 /**
@@ -22,7 +22,7 @@ export function setup(setupConfig: SetupConfig): void {
     store: 'ask',
     display: 'all',
     apiHost: gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
-    iframeHost: gr4vyId ? `embed.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
+    iframeHost: gr4vyId ? `embed.${gr4vyId}.gr4vy.app` : setupConfig.iframeHost,
     ...rest,
   }
 
@@ -40,33 +40,46 @@ export function setup(setupConfig: SetupConfig): void {
   }
   const channel: string = generateChannelId()
   const iframeUrl: URL = getFrameUrl({ channel, config })
+  const subjectManager = createSubjectManager()
 
-  // Skeleton Loader
-  const loader = Skeleton()
-  config.element.appendChild(loader)
-  createSkeletonController(loader)
-
-  // Form - Optional
-  if (config.form) {
-    const formNapper = new FormNapper(config.form) as FormNapperInstance
-    createFormController(formNapper, onComplete)
+  // Remove existing elements from the DOM
+  if (config.element.hasChildNodes()) {
+    while (config.element.firstChild) {
+      config.element.removeChild(config.element.lastChild)
+    }
   }
 
-  // Popup + Overlay (Authorizations)
-  const overlayElement = document.createElement('div')
-  document.body.append(overlayElement)
-  createOverlayController(createOverlay(overlayElement))
-  registerSubscriptions()
+  // Loader
+  const loader = document.createElement('div')
+  createSkeletonController(loader, subjectManager)
+
+  // Overlay
+  const overlay = document.createElement('div')
+  createOverlayController(overlay, subjectManager)
+
+  // Form
+  createFormController(
+    config.form as HTMLFormElement,
+    onComplete,
+    subjectManager
+  )
+
+  createPopupController(
+    mutableRef<{ popup: Window; stopCallback: () => void }>(),
+    subjectManager
+  )
 
   // Framebus + Emitter (Communicate with iFrame via messaging)
   const framebus = Framebus.target({
     channel,
     origin: `${iframeUrl.protocol}//${iframeUrl.host}`,
   })
-  createEmitter({ config, framebus })
+  createEmitter({ config, framebus }, subjectManager)
 
   // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')
-  createFrameController(frame, iframeUrl)
-  config.element.appendChild(frame)
+  createFrameController(frame, iframeUrl, subjectManager)
+
+  // Attach elements to the DOM
+  config.element.append(overlay, loader, frame)
 }

@@ -1,13 +1,17 @@
-import { frameHeight$, optionsLoaded$ } from '../subjects'
+import { createSubjectManager, SubjectManager } from '../subjects'
 import { createFrameController, getFrameUrl } from './frame'
 
-jest.mock('../utils/create-subject')
-
 describe('createFrameController', () => {
+  let subject: SubjectManager
+
+  beforeEach(() => {
+    subject = createSubjectManager()
+  })
+
   test('should initialize a new iframe', () => {
     const iframeUrl = new URL('http://localhost:8000')
     const frameElement = document.createElement('iframe')
-    createFrameController(frameElement, iframeUrl)
+    createFrameController(frameElement, iframeUrl, subject)
 
     expect(frameElement.getAttribute('src')).toEqual('http://localhost:8000/')
     expect(frameElement.getAttribute('title')).toEqual(
@@ -23,31 +27,31 @@ describe('createFrameController', () => {
   test('should change frame height when visible', () => {
     const iframeUrl = new URL('http://localhost:8000')
     const frameElement = document.createElement('iframe')
-    createFrameController(frameElement, iframeUrl)
+    createFrameController(frameElement, iframeUrl, subject)
 
     frameElement.style.visibility = 'unset'
     expect(frameElement.style.height).toBe('0px')
-    frameHeight$.next(50)
+    subject.frameHeight$.next(50)
     expect(frameElement.style.height).toBe('50px')
   })
 
   test('should not change frame height when hidden', () => {
     const iframeUrl = new URL('http://localhost:8000')
     const frameElement = document.createElement('iframe')
-    createFrameController(frameElement, iframeUrl)
+    createFrameController(frameElement, iframeUrl, subject)
 
     frameElement.style.visibility = 'hidden'
     expect(frameElement.style.height).toBe('0px')
-    frameHeight$.next(50)
+    subject.frameHeight$.next(50)
     expect(frameElement.style.height).toBe('0px')
   })
 
   test('should show the iframe when options loaded', () => {
     const iframeUrl = new URL('http://localhost:8000')
     const frameElement = document.createElement('iframe')
-    createFrameController(frameElement, iframeUrl)
+    createFrameController(frameElement, iframeUrl, subject)
 
-    optionsLoaded$.next(true)
+    subject.optionsLoaded$.next(true)
     expect(frameElement.style.visibility).toBe('unset')
     expect(frameElement.style.display).toBe('unset')
   })
