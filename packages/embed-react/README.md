@@ -72,6 +72,8 @@ The options for this integration are as follows.
 | `store`                   | `ask`       | `'ask'`, `true`, `false` - Explicitly store the payment method or ask the buyer, this is used when a buyerId or buyerExternalIdentifier is provided.                                                                                                 |
 | `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
 | `token`                   | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
+| `onComplete`              | `null`      | Callback with a transaction object. (Form submission must be handled manually)                                                                                                                                                                       |
+| `display`                 | `all`       | `all`, `addOnly`, `storedOnly` - Filters the payment methods to show only stored methods or only new payment methods manually)                                                                                                                       |
 
 ### Events
 
@@ -137,6 +139,21 @@ Returned when the form encounters an API error.
   "message": "No valid API authentication found",
   "details": []
 }
+```
+
+### Custom Form Submission
+
+Embed will automatically submit the payment form with hidden inputs, this can be prevented using the `onComplete` callback.
+
+```tsx
+<Gr4vyEmbed
+  amount={1299}
+  currency='USD'
+  onEvent={(name, data) => {...}}
+  onComplete={(transaction) => {
+    // Handle custom form submission
+  }}
+/>
 ```
 
 ## License

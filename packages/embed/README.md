@@ -76,7 +76,8 @@ The options for this integration are as follows.
 | `store`                   | `ask`       | `'ask'`, `true`, `false` - Explicitly store the payment method or ask the buyer, this is used when a buyerId or buyerExternalIdentifier is provided.                                                                                                 |
 | `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
 | `token`                   | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
-| `onComplete`              | `null`      | Callback with a completed transaction object. (Form submission must be handled manually)                                                                                                                                                             |
+| `onComplete`              | `null`      | Callback with a transaction object. (Form submission must be handled manually)                                                                                                                                                                       |
+| `display`                 | `all`       | `all`, `addOnly`, `storedOnly` - Filters the payment methods to show only stored methods or only new payment methods manually)                                                                                                                       |
 
 ### Theming
 
