@@ -1,14 +1,20 @@
 import { SubjectManager } from '../subjects'
-import './overlay.css'
 
 const overlayTitle = `Your payment has continued in a new secure window.`
 const overlayPrompt = `Can not see the new window?`
 const overlayLink = `Re-open window`
 
+let isFirstLoad = true
+
 export const createOverlayController = (
   element: HTMLDivElement,
   subject: SubjectManager
 ) => {
+  if (isFirstLoad) {
+    require('./overlay.css')
+    isFirstLoad = false
+  }
+
   element.className = `gr4vy__overlay gr4vy__overlay--hidden`
 
   const Title = document.createElement('div')
