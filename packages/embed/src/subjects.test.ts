@@ -6,14 +6,14 @@ describe('createSubjectManager', () => {
   beforeEach(() => {
     subject = createSubjectManager()
     subject.formSubmit$.subscribe(() => {
-      if (subject.approvalRequired$.value()) {
+      if (subject.mode$.value()) {
         subject.approvalStarted$.next()
       }
     })
   })
 
   test('should start approval if required on form submit', () => {
-    subject.approvalRequired$.next(true)
+    subject.mode$.next({})
     let result = false
     const approvalStarted = subject.approvalStarted$.subscribe(() => {
       result = true
@@ -24,7 +24,7 @@ describe('createSubjectManager', () => {
   })
 
   test('should skip approval if not required on form submit', () => {
-    subject.approvalRequired$.next(false)
+    subject.mode$.next({})
     let result = false
     const approvalStarted = subject.approvalStarted$.subscribe(() => {
       result = true
@@ -34,7 +34,12 @@ describe('createSubjectManager', () => {
   })
 
   test('should complete approval on transaction complete', () => {
-    subject.approvalRequired$.next(true)
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+    })
     let result = false
     const approvalCompleted = subject.approvalCompleted$.subscribe(
       () => (result = true)
@@ -48,7 +53,7 @@ describe('createSubjectManager', () => {
   })
 
   test('should skip complete approval if not required on transaction complete', () => {
-    subject.approvalRequired$.next(false)
+    subject.mode$.next({})
     let result = false
     const approvalCompleted = subject.approvalCompleted$.subscribe(
       () => (result = true)

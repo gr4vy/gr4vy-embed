@@ -24,6 +24,12 @@ describe('registerSubscriptions', () => {
   test('opens a popup when a transaction requires approval', () => {
     const mockPopup = jest.fn()
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+    })
     subject.approvalStarted$.next()
     expect(openPopup).toHaveBeenCalled()
     expect(popup.current).toEqual(mockPopup)
@@ -86,6 +92,15 @@ describe('registerSubscriptions', () => {
       },
       stopCallback: jest.fn(),
     }
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+      overlay: {
+        title: 'Test',
+      },
+    })
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
     subject.approvalStarted$.next()
     const closeCallback = (openPopup as jest.Mock).mock.calls[0][2]
@@ -102,6 +117,15 @@ describe('registerSubscriptions', () => {
 
   test('restarts approval when lost', () => {
     subject.approvalUrl$.next('test-url')
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+      overlay: {
+        title: 'Test',
+      },
+    })
     const mockPopup = {
       popup: {
         close: jest.fn(),
@@ -122,6 +146,15 @@ describe('registerSubscriptions', () => {
 
   test('restarts approval without an approval url', () => {
     subject.approvalUrl$.next(null)
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+      overlay: {
+        title: 'Test',
+      },
+    })
     const mockPopup = {
       popup: {
         close: jest.fn(),

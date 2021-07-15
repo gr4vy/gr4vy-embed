@@ -45,8 +45,7 @@ export const createEmitter = (
   const subscribe = loggedFramebusSubscribe(framebus, debug, onEvent)
   const options = pick<Config>(config, optionKeys)
 
-  on('approvalRequired', () => subject.approvalRequired$.next(true))
-  on('approvalNotRequired', () => subject.approvalRequired$.next(false))
+  on('modeUpdated', (config) => subject.mode$.next(config))
   on('approvalUrl', (url) => subject.approvalUrl$.next(url))
   on('frameReady', () => emit('updateOptions', options))
   on('resize', (data) => subject.frameHeight$.next(data.frame.height))
