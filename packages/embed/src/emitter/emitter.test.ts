@@ -148,11 +148,21 @@ describe('createEmitter', () => {
     expect(subject.optionsLoaded$.value()).toBe(true)
 
     // approvals
-    fb.emit('approvalRequired')
-    expect(subject.approvalRequired$.value()).toBe(true)
+    fb.emit('modeUpdated', {})
+    expect(subject.mode$.value()).toStrictEqual({})
 
-    fb.emit('approvalNotRequired')
-    expect(subject.approvalRequired$.value()).toBe(false)
+    fb.emit('modeUpdated', {
+      popup: {
+        title: 'test',
+        message: 'test message',
+      },
+    })
+    expect(subject.mode$.value()).toStrictEqual({
+      popup: {
+        title: 'test',
+        message: 'test message',
+      },
+    })
 
     fb.emit('approvalUrl', 'test-url')
     expect(subject.approvalUrl$.value()).toBe('test-url')

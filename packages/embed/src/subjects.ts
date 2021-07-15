@@ -2,7 +2,18 @@ import { createSubject } from './utils/create-subject'
 
 export const createSubjectManager = () => {
   const subjects = {
-    approvalRequired$: createSubject<boolean>(),
+    mode$: createSubject<{
+      popup?: {
+        message: string
+        title: string
+      }
+      overlay?: {
+        message
+        title
+        cancel
+        link
+      }
+    }>(),
     approvalUrl$: createSubject<string>(),
     approvalStarted$: createSubject(),
     approvalCancelled$: createSubject(),
@@ -20,13 +31,13 @@ export const createSubjectManager = () => {
   }
 
   subjects.formSubmit$.subscribe(() => {
-    if (subjects.approvalRequired$.value()) {
+    if (subjects.mode$.value()?.popup) {
       subjects.approvalStarted$.next()
     }
   })
 
   subjects.transactionCreated$.subscribe(() => {
-    if (subjects.approvalRequired$.value()) {
+    if (subjects.mode$.value()?.popup) {
       subjects.approvalCompleted$.next()
     }
   })

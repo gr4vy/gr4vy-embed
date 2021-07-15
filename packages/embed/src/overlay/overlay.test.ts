@@ -11,6 +11,14 @@ describe('createOverlayController', () => {
   test('it should show the overlay when a popup is opened', () => {
     const overlay = document.createElement('div')
     overlay.className = 'gr4vy__overlay gr4vy__overlay--hidden'
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+      },
+      overlay: {
+        title: 'Test',
+      },
+    })
     createOverlayController(overlay, subject)
     subject.approvalStarted$.next()
     expect(overlay.className).toEqual('gr4vy__overlay')

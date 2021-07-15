@@ -8,8 +8,10 @@ export const createPopupController = (
   subject: SubjectManager
 ) => {
   subject.approvalStarted$.subscribe(() => {
-    popup.current = openPopup(popupFeatures(500, 589), redirectDocument, () =>
-      subject.approvalCancelled$.next()
+    popup.current = openPopup(
+      popupFeatures(500, 589),
+      redirectDocument(subject.mode$.value().popup),
+      () => subject.approvalCancelled$.next()
     )
   })
 
