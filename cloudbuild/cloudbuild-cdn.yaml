@@ -1,0 +1,91 @@
+steps:
+  - id: 'restore cache'
+    name: gcr.io/gr4vy-admin/restore_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}',
+        '--key=node_modules-$( checksum yarn.lock )',
+        '--key_fallback=node_modules-',
+      ]
+
+  - id: 'yarn install'
+    name: node:${_NODE_VERSION}-alpine
+    entrypoint: yarn
+    args: ['install']
+
+  - id: 'scan with trivy'
+    name: 'aquasec/trivy:latest'
+    args: ['fs', '.']
+    env:
+      - 'TRIVY_EXIT_CODE=0'
+      - 'TRIVY_NO_PROGRESS=true'
+      - 'TRIVY_IGNORE_UNFIXED=true'
+
+  - id: 'yarn bootstrap'
+    name: node:${_NODE_VERSION}-alpine
+    entrypoint: yarn
+    args: ['bootstrap']
+
+  - id: 'yarn build'
+    name: node:${_NODE_VERSION}-alpine
+    entrypoint: yarn
+    args: ['build']
+
+  - id: 'push to storage bucket'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    entrypoint: gsutil
+    args:
+      [
+        '-m',
+        'cp',
+        '-r',
+        '-Z',
+        './packages/embed-cdn/lib/gr4vy-embed.js',
+        'gs://$_ARTIFACT_STORAGE_BUCKET/$COMMIT_SHA/embed.latest.js',
+      ]
+
+  - id: 'remove cache-control metadata'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    entrypoint: gsutil
+    args:
+      [
+        '-m',
+        'setmeta',
+        '-h',
+        'Cache-Control',
+        'gs://$_ARTIFACT_STORAGE_BUCKET/$COMMIT_SHA/**',
+      ]
+
+  - id: 'Set cache-control on assets'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    entrypoint: gsutil
+    args:
+      [
+        '-m',
+        'setmeta',
+        '-h',
+        'Cache-Control: public, max-age=31536000',
+        'gs://$_ARTIFACT_STORAGE_BUCKET/$COMMIT_SHA/**/*.js',
+      ]
+
+  - id: 'save cache'
+    waitFor: ['yarn build']
+    name: gcr.io/gr4vy-admin/save_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}/',
+        '--key=node_modules-$( checksum yarn.lock )',
+        '--path=node_modules',
+        '--no-clobber',
+      ]
+
+substitutions:
+  _NODE_VERSION: '14'
+  _ARTIFACT_STORAGE_BUCKET: ''
+  _CACHE_BUCKET: 'embed-cdn-build-cache-storage'
+
+options:
+  dynamic_substitutions: true
+  substitution_option: 'ALLOW_LOOSE'
+
+timeout: 900s
