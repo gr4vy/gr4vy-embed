@@ -1,6 +1,6 @@
 steps:
   - id: 'restore cache'
-    name: gcr.io/gr4vy-admin/restore_cache
+    name: gcr.io/${PROJECT_ID}/restore_cache
     args:
       [
         '--bucket=gs://${_CACHE_BUCKET}',
@@ -70,7 +70,7 @@ steps:
 
   - id: 'save cache'
     waitFor: ['yarn build']
-    name: gcr.io/gr4vy-admin/save_cache
+    name: gcr.io/${PROJECT_ID}/save_cache
     args:
       [
         '--bucket=gs://${_CACHE_BUCKET}/',
@@ -82,7 +82,7 @@ steps:
 substitutions:
   _NODE_VERSION: '14'
   _ARTIFACT_STORAGE_BUCKET: ''
-  _CACHE_BUCKET: 'embed-cdn-build-cache-storage'
+  _CACHE_BUCKET: ''
 
 options:
   dynamic_substitutions: true
