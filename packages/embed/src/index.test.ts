@@ -1,5 +1,5 @@
 import { createFormController } from './form'
-import { Config } from './types'
+import { SetupConfig } from './types'
 import { validate } from './validation'
 import { setup } from './'
 
@@ -76,7 +76,7 @@ describe('setup()', () => {
   })
 
   test('it should exit when invalid config is given', () => {
-    const invalidConfig: Config = {
+    const invalidConfig: SetupConfig = {
       element: `#app`,
       form: `#form`,
       // incorrect amount
@@ -93,7 +93,11 @@ describe('setup()', () => {
 
     setup(invalidConfig)
 
-    expect(validate).toHaveBeenCalledWith(invalidConfig)
+    expect(validate).toHaveBeenCalledWith({
+      ...invalidConfig,
+      apiUrl: 'http://127.0.0.1:3100',
+      iframeUrl: 'http://127.0.0.1:8080',
+    })
     expect(createFormController).not.toHaveBeenCalled()
   })
 })

@@ -1,14 +1,25 @@
 import Framebus from 'framebus'
 import { createEmitter } from './emitter'
 import { createFormController } from './form'
-import { createFrameController, getFrameUrl } from './frame'
+import { createFrameController } from './frame'
 import { createOverlayController } from './overlay'
 import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
 import { SetupConfig, Config } from './types'
-import { generateChannelId, mutableRef } from './utils'
+import {
+  appendUrlParams,
+  generateChannelId,
+  hostToUrl,
+  mutableRef,
+} from './utils'
 import { validate } from './validation'
+
+// Map of cleanup callbacks
+const cleanup = new Map<string, () => void>()
+
+// Stores of count of unique embed instances
+let embedId = 0
 
 /**
  * Setup function for the Embed integration.
@@ -18,11 +29,20 @@ import { validate } from './validation'
  */
 export function setup(setupConfig: SetupConfig): void {
   const { gr4vyId, onComplete, ...rest } = setupConfig
+
+  const channel = generateChannelId()
+  const iframeHost = gr4vyId
+    ? `embed.${gr4vyId}.gr4vy.app`
+    : setupConfig.iframeHost
+  const apiHost = gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost
+
   const config: Config = {
     store: 'ask',
     display: 'all',
-    apiHost: gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost,
-    iframeHost: gr4vyId ? `embed.${gr4vyId}.gr4vy.app` : setupConfig.iframeHost,
+    apiHost,
+    apiUrl: hostToUrl(apiHost),
+    iframeHost,
+    iframeUrl: hostToUrl(iframeHost),
     ...rest,
   }
 
@@ -38,16 +58,27 @@ export function setup(setupConfig: SetupConfig): void {
   if (config.form && !(config.form instanceof Element)) {
     config.form = document.querySelector(config.form) as HTMLFormElement
   }
-  const channel: string = generateChannelId()
-  const iframeUrl: URL = getFrameUrl({ channel, config })
+
   const subjectManager = createSubjectManager()
 
-  // Remove existing elements from the DOM
+  const existingEmbedId = (config.element as HTMLElement).dataset.embedId
+
+  // Cleanup existing element
   if (config.element.hasChildNodes()) {
     while (config.element.firstChild) {
       config.element.removeChild(config.element.lastChild)
     }
   }
+
+  // Cleanup existing events
+  if (cleanup.has(existingEmbedId)) {
+    const cleanupFn = cleanup.get(existingEmbedId)
+    cleanupFn()
+  }
+
+  // Attach a unique ID
+  embedId = embedId + 1
+  ;(config.element as HTMLElement).dataset.embedId = embedId.toString()
 
   // Loader
   const loader = document.createElement('div')
@@ -72,14 +103,39 @@ export function setup(setupConfig: SetupConfig): void {
   // Framebus + Emitter (Communicate with iFrame via messaging)
   const framebus = Framebus.target({
     channel,
-    origin: `${iframeUrl.protocol}//${iframeUrl.host}`,
+    origin: config.iframeUrl,
   })
   createEmitter({ config, framebus }, subjectManager)
 
   // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')
-  createFrameController(frame, iframeUrl, subjectManager)
+  createFrameController(
+    frame,
+    appendUrlParams(config.iframeUrl, {
+      parentUrl: `${document.location.protocol}//${document.location.host}`,
+      font: setupConfig.theme?.fonts?.body
+        ? encodeURIComponent(setupConfig.theme.fonts.body)
+        : undefined,
+      channel,
+    }),
+    subjectManager
+  )
 
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
+
+  const messageHandler = ({ origin, data: message }) => {
+    // Trust API postMessages
+    if (origin !== config.apiUrl) return
+
+    framebus.emit(message.type, message.data)
+  }
+
+  // Pass-through api postMessage callbacks
+  window.addEventListener('message', messageHandler)
+
+  // Cleanup
+  cleanup.set(embedId.toString(), () => {
+    window.removeEventListener('message', messageHandler)
+  })
 }

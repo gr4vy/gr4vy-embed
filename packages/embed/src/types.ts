@@ -16,6 +16,8 @@ export type Config = {
   store?: 'ask' | boolean
   country: string
   iframeHost: string
+  iframeUrl: string
+  apiUrl: string
   apiHost: string
   theme?: ThemeOptions // Theming options
   locale?: string //  < ISO 639 Language Code > - < ISO 3166 Country Code (optional) >
@@ -29,7 +31,10 @@ export type Transaction = {
   paymentMethod?: { id?: string }
 }
 
-export type SetupConfig = Omit<Config, 'iframeHost' | 'apiHost'> & {
+export type SetupConfig = Omit<
+  Config,
+  'iframeHost' | 'apiHost' | 'apiUrl' | 'iframeUrl'
+> & {
   gr4vyId?: string
   iframeHost?: string
   apiHost?: string
