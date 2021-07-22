@@ -1,4 +1,5 @@
 import Framebus from 'framebus'
+import { createConfig } from './create-config'
 import { createEmitter } from './emitter'
 import { createFormController } from './form'
 import { createFrameController } from './frame'
@@ -6,13 +7,8 @@ import { createOverlayController } from './overlay'
 import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
-import { SetupConfig, Config } from './types'
-import {
-  appendUrlParams,
-  generateChannelId,
-  hostToUrl,
-  mutableRef,
-} from './utils'
+import { SetupConfig } from './types'
+import { mutableRef } from './utils'
 import { validate } from './validation'
 
 // Map of cleanup callbacks
@@ -28,40 +24,16 @@ let embedId = 0
  * to append the form to, and a list of valid options for the form.
  */
 export function setup(setupConfig: SetupConfig): void {
-  const { gr4vyId, onComplete, ...rest } = setupConfig
-
-  const channel = generateChannelId()
-  const iframeHost = gr4vyId
-    ? `embed.${gr4vyId}.gr4vy.app`
-    : setupConfig.iframeHost
-  const apiHost = gr4vyId ? `api.${gr4vyId}.gr4vy.app` : setupConfig.apiHost
-
-  const config: Config = {
-    store: 'ask',
-    display: 'all',
-    apiHost,
-    apiUrl: hostToUrl(apiHost),
-    iframeHost,
-    iframeUrl: hostToUrl(iframeHost),
-    ...rest,
-  }
-
   // exit early if the config is not valid
-  if (!validate(config)) {
+  if (!validate(setupConfig)) {
     return
   }
 
-  // set up the additional config
-  if (!(config.element instanceof Element)) {
-    config.element = document.querySelector(config.element) as HTMLElement
-  }
-  if (config.form && !(config.form instanceof Element)) {
-    config.form = document.querySelector(config.form) as HTMLFormElement
-  }
+  const config = createConfig(setupConfig)
 
   const subjectManager = createSubjectManager()
 
-  const existingEmbedId = (config.element as HTMLElement).dataset.embedId
+  const existingEmbedId = config.element.dataset.embedId
 
   // Cleanup existing element
   if (config.element.hasChildNodes()) {
@@ -78,7 +50,7 @@ export function setup(setupConfig: SetupConfig): void {
 
   // Attach a unique ID
   embedId = embedId + 1
-  ;(config.element as HTMLElement).dataset.embedId = embedId.toString()
+  config.element.dataset.embedId = embedId.toString()
 
   // Loader
   const loader = document.createElement('div')
@@ -91,7 +63,7 @@ export function setup(setupConfig: SetupConfig): void {
   // Form
   createFormController(
     config.form as HTMLFormElement,
-    onComplete,
+    config.onComplete,
     subjectManager
   )
 
@@ -102,24 +74,14 @@ export function setup(setupConfig: SetupConfig): void {
 
   // Framebus + Emitter (Communicate with iFrame via messaging)
   const framebus = Framebus.target({
-    channel,
     origin: config.iframeUrl,
+    channel: config.channel,
   })
   createEmitter({ config, framebus }, subjectManager)
 
   // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')
-  createFrameController(
-    frame,
-    appendUrlParams(config.iframeUrl, {
-      parentUrl: `${document.location.protocol}//${document.location.host}`,
-      font: setupConfig.theme?.fonts?.body
-        ? encodeURIComponent(setupConfig.theme.fonts.body)
-        : undefined,
-      channel,
-    }),
-    subjectManager
-  )
+  createFrameController(frame, config.iframeSrc, subjectManager)
 
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)

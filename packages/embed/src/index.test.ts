@@ -35,31 +35,6 @@ describe('setup()', () => {
     expect(createFormController).toHaveBeenCalled()
   })
 
-  it('should set the apiHost/iframeHost if the gr4vyId is provided', () => {
-    ;(validate as jest.Mock).mockReturnValue(true)
-    setup({
-      amount: 1299,
-      currency: `USD`,
-      gr4vyId: 'acme',
-      token: `123456`,
-      country: 'US',
-      element: `#app`,
-      form: `#form`,
-      store: 'ask',
-    })
-    expect(validate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        apiHost: 'api.acme.gr4vy.app',
-        iframeHost: 'embed.acme.gr4vy.app',
-      })
-    )
-    expect(validate).not.toHaveBeenCalledWith(
-      expect.objectContaining({
-        gr4vyId: 'acme',
-      })
-    )
-  })
-
   it('it should also work with HTML elements directly', () => {
     ;(validate as jest.Mock).mockReturnValue(true)
     setup({
@@ -93,11 +68,7 @@ describe('setup()', () => {
 
     setup(invalidConfig)
 
-    expect(validate).toHaveBeenCalledWith({
-      ...invalidConfig,
-      apiUrl: 'http://127.0.0.1:3100',
-      iframeUrl: 'http://127.0.0.1:8080',
-    })
+    expect(validate).toHaveBeenCalledWith(invalidConfig)
     expect(createFormController).not.toHaveBeenCalled()
   })
 })

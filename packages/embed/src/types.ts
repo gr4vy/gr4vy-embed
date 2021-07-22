@@ -1,6 +1,6 @@
 export type Config = {
-  element: string | HTMLElement | Element // The element to insert the integration at
-  form: string | HTMLElement | Element // The form to bind the integration to
+  element: HTMLElement // The element to insert the integration at
+  form: Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
   intent?: 'authorize' | 'capture' | 'approve' // Defines the intent of this API call. This determines the desired initial state of the transaction.
   currency: string // Currency to charge the amount in
@@ -23,6 +23,8 @@ export type Config = {
   locale?: string //  < ISO 639 Language Code > - < ISO 3166 Country Code (optional) >
   display?: 'storedOnly' | 'addOnly' | 'all'
   onComplete?: (transaction: Transaction) => void
+  channel: string
+  iframeSrc: string
 }
 
 export type Transaction = {
@@ -33,11 +35,20 @@ export type Transaction = {
 
 export type SetupConfig = Omit<
   Config,
-  'iframeHost' | 'apiHost' | 'apiUrl' | 'iframeUrl'
+  | 'iframeHost'
+  | 'apiHost'
+  | 'apiUrl'
+  | 'iframeUrl'
+  | 'channel'
+  | 'element'
+  | 'form'
+  | 'iframeSrc'
 > & {
   gr4vyId?: string
   iframeHost?: string
   apiHost?: string
+  element: string | HTMLElement | Element
+  form: string | HTMLElement | Element
 }
 
 type BorderWidth = 'none' | 'thin' | 'thick' // maps to 0, 1, 2
