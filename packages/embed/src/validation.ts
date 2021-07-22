@@ -257,16 +257,26 @@ export const validate = (options: SetupConfig) =>
     message: 'must be a valid HTML form element',
     callback: options.onEvent,
   }) &&
+  validateType({
+    argument: 'gr4vyId',
+    value: options.gr4vyId,
+    required: !options.iframeHost && !options.apiHost,
+    type: 'string',
+    message: 'must be a valid gr4vyId or iframeHost/apiHost',
+    callback: options.onEvent,
+  }) &&
   validateHost({
     argument: 'iframeHost',
     value: options.iframeHost,
+    required: !options.gr4vyId,
     message: 'must be a valid hostname with an optional :port',
     callback: options.onEvent,
   }) &&
   validateHost({
     argument: 'apiHost',
-    value: options.iframeHost,
+    value: options.apiHost,
     message: 'must be a valid hostname with an optional :port',
+    required: !options.gr4vyId,
     callback: options.onEvent,
   }) &&
   validateIntent({
