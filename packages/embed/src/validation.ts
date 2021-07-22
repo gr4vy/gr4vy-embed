@@ -1,4 +1,4 @@
-import { Config } from './types'
+import { SetupConfig } from './types'
 
 // checks if a value needs validation to pass
 export const canSkipValidation = ({
@@ -243,7 +243,7 @@ export const emitArgumentError = ({
 }
 
 // Validates all Config
-export const validate = (options: Config) =>
+export const validate = (options: SetupConfig) =>
   validateHTMLElement({
     argument: 'element',
     value: options.element,

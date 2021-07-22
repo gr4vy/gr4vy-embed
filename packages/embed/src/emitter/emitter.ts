@@ -22,6 +22,7 @@ export const optionKeys = [
   'theme',
   'locale',
   'display',
+  'apiUrl',
 ]
 
 /**
