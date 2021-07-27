@@ -19,6 +19,7 @@
   "auto": {
     "onlyPublishWithReleaseLabel": true,
     "plugins": [
+      "npm",
       "released"
     ]
   },
