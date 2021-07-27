@@ -17,7 +17,11 @@
     "storybook": "lerna run storybook --parallel"
   },
   "auto": {
-    "onlyPublishWithReleaseLabel": true
+    "onlyPublishWithReleaseLabel": true,
+    "plugins": [
+      "npm",
+      "released"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
