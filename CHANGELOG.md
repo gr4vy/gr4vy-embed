@@ -1,3 +1,15 @@
+# v1.3.7 (Tue Jul 27 2021)
+
+#### 🐛 Bug Fix
+
+- Release [#17](https://github.com/gr4vy/gr4vy-embed/pull/17) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.3.6 (Tue Jul 27 2021)
 
 #### 🐛 Bug Fix
