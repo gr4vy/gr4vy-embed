@@ -11,8 +11,11 @@
     "test": "lerna run test --stream",
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
-    "release": "lerna publish",
+    "release": "auto shipit",
     "storybook": "lerna run storybook --parallel"
+  },
+  "auto": {
+    "onlyPublishWithReleaseLabel": true
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -33,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "auto": "^10.30.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
