@@ -129,3 +129,57 @@ export type ThemeOptions = {
     focusRing?: string
   }
 }
+
+export type Message = { channel: string; data?: unknown } & (
+  | {
+      type: 'modeUpdated'
+      data: {
+        popup?: {
+          message: string
+          title: string
+        }
+        overlay?: {
+          message
+          title
+          cancel
+          link
+        }
+      }
+    }
+  | {
+      type: 'approvalUrl'
+      data: string
+    }
+  | {
+      type: 'optionsLoaded'
+    }
+  | {
+      type: 'transactionCreated'
+      data: {
+        id: string
+        status: string
+        paymentMethod?: { id?: string }
+      }
+    }
+  | {
+      type: 'frameReady'
+    }
+  | {
+      type: 'transactionFailed'
+      data: any
+    }
+  | {
+      type: 'resize'
+      data: any
+    }
+  | {
+      type: 'updateOptions'
+      data: any
+    }
+  | {
+      type: 'approvalCancelled'
+    }
+  | {
+      type: 'submitForm'
+    }
+)

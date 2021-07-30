@@ -1080,11 +1080,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@braintree/uuid@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@braintree/uuid/-/uuid-0.1.0.tgz#ab9355015a7fb0e25cf3c2ff9cd32ece8ea304b0"
-  integrity sha512-YvZJdlNcK5EnR+7M8AjgEAf4Qx696+FOSYlPfy5ePn80vODtVAUU0FxHnzKZC0og1VbDNQDDiwhthR65D4Na0g==
-
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -7763,13 +7758,6 @@ fragment-cache@^0.2.1:
   integrity sha1-QpD60n8T6Jvn8zeZxrxaCr//DRk=
   dependencies:
     map-cache "^0.2.2"
-
-framebus@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/framebus/-/framebus-5.0.0.tgz#12cc44e18c3916701f49c58715ea4c219823b93c"
-  integrity sha512-UJZhlBzSg3vhcuiOoJVDlhcWHABfR8goZ7Nkc4DwVOkCoflrcnHTGfxFqPQSb48aXv5XiMTk/dEs5+fZj30QFw==
-  dependencies:
-    "@braintree/uuid" "^0.1.0"
 
 fresh@0.5.2:
   version "0.5.2"

@@ -29,8 +29,7 @@
     "CHANGELOG.md"
   ],
   "dependencies": {
-    "form-napper": "^2.0.0",
-    "framebus": "^5.0.0"
+    "form-napper": "^2.0.0"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
