@@ -1,15 +1,40 @@
-import Framebus from 'framebus'
 import { createConfig } from './create-config'
-import { createEmitter } from './emitter'
 import { createFormController } from './form'
 import { createFrameController } from './frame'
 import { createOverlayController } from './overlay'
 import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
-import { SetupConfig } from './types'
-import { mutableRef } from './utils'
+import { SetupConfig, Config, Message } from './types'
+import {
+  mutableRef,
+  pick,
+  log,
+  createMessageHandler,
+  createDispatch,
+} from './utils'
 import { validate } from './validation'
+
+export const optionKeys = [
+  'amount',
+  'currency',
+  'intent',
+  'apiHost',
+  'token',
+  'showButton',
+  'debug',
+  'externalIdentifier',
+  'preferResponse',
+  'buyerId',
+  'buyerExternalIdentifier',
+  'environment',
+  'store',
+  'country',
+  'theme',
+  'locale',
+  'display',
+  'apiUrl',
+]
 
 // Map of cleanup callbacks
 const cleanup = new Map<string, () => void>()
@@ -72,13 +97,6 @@ export function setup(setupConfig: SetupConfig): void {
     subjectManager
   )
 
-  // Framebus + Emitter (Communicate with iFrame via messaging)
-  const framebus = Framebus.target({
-    origin: config.iframeUrl,
-    channel: config.channel,
-  })
-  createEmitter({ config, framebus }, subjectManager)
-
   // Iframe - Load Gr4vy SPA/Attach to page
   const frame = document.createElement('iframe')
   createFrameController(frame, config.iframeSrc, subjectManager)
@@ -86,18 +104,64 @@ export function setup(setupConfig: SetupConfig): void {
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
 
-  const messageHandler = ({ origin, data: message }) => {
-    // Trust API postMessages
-    if (origin !== config.apiUrl) return
-
-    framebus.emit(message.type, message.data)
+  const messageEvents: Partial<
+    Record<Message['type'], (data: Message['data']) => void>
+  > = {
+    modeUpdated: subjectManager.mode$.next,
+    approvalUrl: subjectManager.approvalUrl$.next,
+    resize: (data) => subjectManager.frameHeight$.next(data?.frame?.height),
+    optionsLoaded: subjectManager.optionsLoaded$.next,
+    transactionCreated: subjectManager.transactionCreated$.next,
+    transactionFailed: subjectManager.transactionFailed$.next,
+    frameReady: () =>
+      dispatch({
+        type: 'updateOptions',
+        data: pick<Config>(config, optionKeys),
+      }),
   }
 
-  // Pass-through api postMessage callbacks
+  const dispatch = createDispatch(
+    config.iframeUrl,
+    config.channel,
+    frame.contentWindow,
+    (message) => log(`Page emits`, message, config.debug)
+  )
+
+  const messageHandler = createMessageHandler<Message>(
+    config.iframeUrl,
+    config.channel,
+    (message) => {
+      log(`Page received`, message, config.debug)
+      if (
+        ['formUpdate', 'transactionCreated', 'apiError'].includes(message.type)
+      ) {
+        config.onEvent?.(message.type, message.data)
+      }
+      if (messageEvents[message.type]) {
+        messageEvents[message.type](message.data)
+      }
+    }
+  )
+
+  const apiMessageHandler = createMessageHandler(
+    config.apiUrl,
+    config.channel,
+    (message) => {
+      frame.contentWindow.postMessage(message, config.iframeUrl)
+    }
+  )
+
+  subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
+  subjectManager.approvalCancelled$.subscribe(() =>
+    dispatch({ type: 'approvalCancelled' })
+  )
+
   window.addEventListener('message', messageHandler)
+  window.addEventListener('message', apiMessageHandler)
 
   // Cleanup
   cleanup.set(embedId.toString(), () => {
     window.removeEventListener('message', messageHandler)
+    window.removeEventListener('message', apiMessageHandler)
   })
 }
