@@ -125,3 +125,23 @@ jobs:
           yarn bootstrap
           yarn build
           yarn release
+
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    strategy:
+      matrix:
+        node-version:
+          - 14.x
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          exit-code: 1
