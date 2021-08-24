@@ -1,3 +1,29 @@
+# v1.3.9 (Tue Aug 24 2021)
+
+#### 🐛 Bug Fix
+
+- Update dependencies [#24](https://github.com/gr4vy/gr4vy-embed/pull/24) ([@douglaseggleton](https://github.com/douglaseggleton))
+- Add Trivy GitHub action job [#21](https://github.com/gr4vy/gr4vy-embed/pull/21) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- Add .trivyignore file [#20](https://github.com/gr4vy/gr4vy-embed/pull/20) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed-react`
+  - Upgrade dependencies [#23](https://github.com/gr4vy/gr4vy-embed/pull/23) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 📝 Documentation
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - Remove approve intent from documentation [#19](https://github.com/gr4vy/gr4vy-embed/pull/19) ([@alibeylan](https://github.com/alibeylan))
+
+#### Authors: 3
+
+- Alicia Beylan ([@alibeylan](https://github.com/alibeylan))
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.3.8 (Mon Aug 02 2021)
 
 #### 🐛 Bug Fix

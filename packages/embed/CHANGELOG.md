@@ -1,3 +1,15 @@
+# v1.3.9 (Tue Aug 24 2021)
+
+#### 📝 Documentation
+
+- Remove approve intent from documentation [#19](https://github.com/gr4vy/gr4vy-embed/pull/19) ([@alibeylan](https://github.com/alibeylan))
+
+#### Authors: 1
+
+- Alicia Beylan ([@alibeylan](https://github.com/alibeylan))
+
+---
+
 # v1.3.8 (Mon Aug 02 2021)
 
 #### 🐛 Bug Fix
