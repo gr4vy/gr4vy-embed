@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
       - name: Cache node modules
         uses: actions/cache@v1
