@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 5
 
     strategy:
       matrix:
@@ -35,7 +35,7 @@ jobs:
       - name: Lint the content
         run: |
           yarn config set workspaces-experimental true
-          yarn install --frozen-lockfile
+          yarn install --frozen-lockfile --network-timeout 100000
           yarn bootstrap
           yarn build
           yarn lint
