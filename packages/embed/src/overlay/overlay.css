@@ -7,7 +7,7 @@
   max-height: 100vh;
   z-index: 100;
   transition: background-color 0.2s linear, max-height 0s linear;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(3px);
   bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
@@ -48,4 +48,37 @@
   color: white;
   display: block;
   cursor: pointer;
+}
+
+.gr4vy__frame {
+  height: 100vh;
+  width: 100vw;
+}
+
+@media screen and (min-width: 500px) and (min-height: 350px) {
+  .gr4vy__frame {
+    height: 250px;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 500px) and (min-height: 490px) {
+  .gr4vy__frame {
+    height: 390px;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 700px) and (min-height: 500px) {
+  .gr4vy__frame {
+    height: 400px;
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 700px) and (min-height: 600px) {
+  .gr4vy__frame {
+    height: 500px;
+    width: 600px;
+  }
 }

@@ -1,4 +1,4 @@
-import { createMessageHandler } from './create-message-handler'
+import { createMessageHandler, filterByType } from './create-message-handler'
 
 test('it should call the callback if channel/origin match', () => {
   const callback = jest.fn()
@@ -15,4 +15,13 @@ test('it should call the callback if channel/origin match', () => {
     data: message,
   } as MessageEvent)
   expect(callback).not.toHaveBeenCalled()
+})
+
+test('filter by message type', () => {
+  const callback = jest.fn()
+  const filterMessage = filterByType(['foo'], callback)
+  filterMessage({ type: 'bar' })
+  expect(callback).not.toHaveBeenCalled()
+  filterMessage({ type: 'foo' })
+  expect(callback).toHaveBeenCalled()
 })

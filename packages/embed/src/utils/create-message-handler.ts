@@ -9,3 +9,12 @@ export const createMessageHandler = <T extends Message>(
     callback(message.data)
   }
 }
+
+export const filterByType = (
+  types: Array<string>,
+  callback: (message: Message) => void
+) => (message) => {
+  if (types.includes(message.type)) {
+    callback(message)
+  }
+}

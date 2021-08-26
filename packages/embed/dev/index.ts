@@ -26,7 +26,7 @@ input.setAttribute(`value`, `Submit`)
 // add a root element, as React throws warnings when directly attached to the body
 const root = document.createElement(`div`)
 root.setAttribute(`id`, `root`)
-root.style.width = '500px'
+root.style.maxWidth = '500px'
 
 form.appendChild(root)
 form.appendChild(input)

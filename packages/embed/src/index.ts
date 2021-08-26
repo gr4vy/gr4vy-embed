@@ -12,6 +12,8 @@ import {
   log,
   createMessageHandler,
   createDispatch,
+  removeChildren,
+  filterByType,
 } from './utils'
 import { validate } from './validation'
 
@@ -61,11 +63,7 @@ export function setup(setupConfig: SetupConfig): void {
   const existingEmbedId = config.element.dataset.embedId
 
   // Cleanup existing element
-  if (config.element.hasChildNodes()) {
-    while (config.element.firstChild) {
-      config.element.removeChild(config.element.lastChild)
-    }
-  }
+  removeChildren(config.element)
 
   // Cleanup existing events
   if (cleanup.has(existingEmbedId)) {
@@ -151,6 +149,14 @@ export function setup(setupConfig: SetupConfig): void {
     }
   )
 
+  const approvalMessageHandler = createMessageHandler(
+    config.iframeUrl,
+    config.channel,
+    filterByType(['approvalErrored', 'transactionUpdated'], (message) =>
+      frame.contentWindow.postMessage(message, config.iframeUrl)
+    )
+  )
+
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
   subjectManager.approvalCancelled$.subscribe(() =>
     dispatch({ type: 'approvalCancelled' })
@@ -158,10 +164,12 @@ export function setup(setupConfig: SetupConfig): void {
 
   window.addEventListener('message', messageHandler)
   window.addEventListener('message', apiMessageHandler)
+  window.addEventListener('message', approvalMessageHandler)
 
   // Cleanup
   cleanup.set(embedId.toString(), () => {
     window.removeEventListener('message', messageHandler)
     window.removeEventListener('message', apiMessageHandler)
+    window.removeEventListener('message', approvalMessageHandler)
   })
 }
