@@ -21,7 +21,7 @@ describe('createOverlayController', () => {
     })
     createOverlayController(overlay, subject)
     subject.approvalStarted$.next()
-    expect(overlay.className).toEqual('gr4vy__overlay')
+    expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
   })
 
   test('it should hide the overlay when a popup is closed', () => {
@@ -45,6 +45,6 @@ describe('createOverlayController', () => {
     overlay.className = 'gr4vy__overlay gr4vy__overlay--hidden'
     createOverlayController(overlay, subject)
     subject.approvalUrl$.next('https://approval.gr4vy.com')
-    expect(overlay.className).toEqual('gr4vy__overlay')
+    expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
   })
 })
