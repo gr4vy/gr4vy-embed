@@ -7,12 +7,15 @@
   max-height: 100vh;
   z-index: 100;
   transition: background-color 0.2s linear, max-height 0s linear;
-  backdrop-filter: blur(3px);
-  bottom: 0;
   background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.gr4vy__overlay--visible {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
 .gr4vy__overlay__container {

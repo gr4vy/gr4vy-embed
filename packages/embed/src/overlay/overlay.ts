@@ -42,7 +42,7 @@ export const createOverlayController = (
   }
 
   const show = () => {
-    element.className = 'gr4vy__overlay'
+    element.className = 'gr4vy__overlay gr4vy__overlay--visible'
   }
 
   const setMessage = ({ title, link, message, cancel }) => {
