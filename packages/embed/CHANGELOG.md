@@ -1,3 +1,15 @@
+# v1.3.10 (Fri Aug 27 2021)
+
+#### 🐛 Bug Fix
+
+- feat: add ui support for three d secure [#22](https://github.com/gr4vy/gr4vy-embed/pull/22) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.3.9 (Tue Aug 24 2021)
 
 #### 📝 Documentation
