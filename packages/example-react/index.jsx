@@ -10,7 +10,6 @@ ReactDOM.render(
     iframeHost="127.0.0.1:8080"
     apiHost="127.0.0.1:3100"
     token="123456"
-    showButton
     debug
     store="ask"
     onEvent={console.log}

@@ -1,10 +1,4 @@
-import {
-  withKnobs,
-  boolean,
-  text,
-  select,
-  number,
-} from '@storybook/addon-knobs'
+import { withKnobs, text, select, number } from '@storybook/addon-knobs'
 import React, { useEffect, useRef, useState } from 'react'
 import Gr4vyEmbed from './'
 
@@ -46,7 +40,6 @@ export const Default = () => {
           apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
           iframeHost={text(`iFrame host`, `127.0.0.1:8082`, `Public`)}
           token={text(`JWT token`, `1234567`, `Public`)}
-          showButton={boolean(`Enable submit button`, true, `Public`)}
           country="US"
           environment={
             select(

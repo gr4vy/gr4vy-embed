@@ -5,7 +5,6 @@ export type Config = {
   intent?: 'authorize' | 'capture' | 'approve' // Defines the intent of this API call. This determines the desired initial state of the transaction.
   currency: string // Currency to charge the amount in
   token: string // the JWT access token used to authenticate the API
-  showButton?: boolean // wether to show a submit button in the embedded frame
   debug?: boolean // wether to output any debug messages.
   onEvent?: (eventName: string, data: any) => void // a callback function that's used to subscribe to events
   externalIdentifier?: string // an optional external identifier

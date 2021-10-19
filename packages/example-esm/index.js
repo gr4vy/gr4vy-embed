@@ -9,7 +9,6 @@ setup({
   iframeHost: '127.0.0.1:8080',
   apiHost: '127.0.0.1:3100',
   token: '123456',
-  showButton: false,
   debug: true,
   onEvent: console.log,
   externalIdentifier: 'user-123',

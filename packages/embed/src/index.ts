@@ -23,7 +23,6 @@ export const optionKeys = [
   'intent',
   'apiHost',
   'token',
-  'showButton',
   'debug',
   'externalIdentifier',
   'preferResponse',
