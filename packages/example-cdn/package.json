@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "example-cdn",
-  "version": "1.3.10",
+  "version": "1.4.0",
   "description": "Example project that shows how to use @gr4vy/embed-cdn",
   "main": "lib/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
@@ -13,6 +13,6 @@
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
-    "@gr4vy/embed": "^1.3.10"
+    "@gr4vy/embed": "^1.4.0"
   }
 }
