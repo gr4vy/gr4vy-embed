@@ -1,3 +1,17 @@
+# v1.4.0 (Tue Oct 19 2021)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - Remove mentions of unsupported `showButton` prop (TA-277) [#28](https://github.com/gr4vy/gr4vy-embed/pull/28) ([@cbetta](https://github.com/cbetta) [@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.3.10 (Fri Aug 27 2021)
 
 #### 🐛 Bug Fix
