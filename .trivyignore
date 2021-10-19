@@ -1,2 +1,8 @@
 # List of vulnerability IDs to be ignored by Trivy.
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
+
+# Storybook - Dev Dependency
+CVE-2021-3807
+CVE-2021-23436
+CVE-2021-3757
+CVE-2021-23440

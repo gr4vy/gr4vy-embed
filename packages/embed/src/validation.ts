@@ -287,14 +287,6 @@ export const validate = (options: SetupConfig) =>
     callback: options.onEvent,
   }) &&
   validateType({
-    argument: 'showButton',
-    value: options.showButton,
-    type: 'boolean',
-    message: 'must be a boolean',
-    required: false,
-    callback: options.onEvent,
-  }) &&
-  validateType({
     argument: 'onEvent',
     value: options.onEvent,
     type: 'function',
