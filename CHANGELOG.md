@@ -1,3 +1,16 @@
+# v1.4.1 (Wed Oct 20 2021)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: add event paymentMethodSelected [#29](https://github.com/gr4vy/gr4vy-embed/pull/29) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.4.0 (Tue Oct 19 2021)
 
 #### 🚀 Enhancement
