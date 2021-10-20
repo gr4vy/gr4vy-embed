@@ -130,7 +130,12 @@ export function setup(setupConfig: SetupConfig): void {
     (message) => {
       log(`Page received`, message, config.debug)
       if (
-        ['formUpdate', 'transactionCreated', 'apiError'].includes(message.type)
+        [
+          'formUpdate',
+          'transactionCreated',
+          'apiError',
+          'paymentMethodSelected',
+        ].includes(message.type)
       ) {
         config.onEvent?.(message.type, message.data)
       }
