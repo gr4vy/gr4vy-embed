@@ -76,7 +76,7 @@ The options for this integration are as follows.
 | `theme`                   | `null`      | Theme customisation options (See Theming)                                                                                                                                                                                                            |
 | `token`                   | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                        |
 | `onComplete`              | `null`      | Callback with a transaction object. (Form submission must be handled manually)                                                                                                                                                                       |
-| `display`                 | `all`       | `all`, `addOnly`, `storedOnly`, `supportsTokenization` - Filters the payment methods to show only stored methods or only new payment methods manually)                                                                                               |
+| `display`                 | `all`       | `all`, `addOnly`, `storedOnly`, `supportsTokenization` - Filters the payment methods to show stored methods only, new payment methods only or methods that support tokenization.                                                                     |
 
 ### Theming
 
