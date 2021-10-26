@@ -1,3 +1,15 @@
+# v1.4.2 (Tue Oct 26 2021)
+
+#### 🐛 Bug Fix
+
+- Add support for supportsTokenization display value [#30](https://github.com/gr4vy/gr4vy-embed/pull/30) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.4.0 (Tue Oct 19 2021)
 
 #### 🚀 Enhancement
