@@ -379,6 +379,6 @@ export const validate = (options: SetupConfig) =>
     argument: 'display',
     value: options.display,
     type: 'string',
-    message: 'must be "storedOnly", "addOnly" or "all"',
+    message: 'must be "storedOnly", "addOnly", "supportsTokenization" or "all"',
     required: false,
   })
