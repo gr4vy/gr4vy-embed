@@ -7,7 +7,7 @@ describe('createSkeletonController', () => {
       remove: jest.fn(),
     } as any
     const subject = createSubjectManager()
-    createSkeletonController(mockElement, subject)
+    createSkeletonController(mockElement, subject, undefined)
     subject.optionsLoaded$.next(true)
     expect(mockElement.remove).toHaveBeenCalled()
   })
