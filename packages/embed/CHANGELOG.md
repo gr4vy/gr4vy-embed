@@ -1,3 +1,15 @@
+# v1.4.3 (Thu Oct 28 2021)
+
+#### 🐛 Bug Fix
+
+- Fix skeleton styles to respect theme values [#32](https://github.com/gr4vy/gr4vy-embed/pull/32) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.4.2 (Tue Oct 26 2021)
 
 #### 🐛 Bug Fix
