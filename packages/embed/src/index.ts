@@ -76,7 +76,7 @@ export function setup(setupConfig: SetupConfig): void {
 
   // Loader
   const loader = document.createElement('div')
-  createSkeletonController(loader, subjectManager)
+  createSkeletonController(loader, subjectManager, config.theme)
 
   // Overlay
   const overlay = document.createElement('div')
