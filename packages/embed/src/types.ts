@@ -81,6 +81,7 @@ export type ThemeOptions = {
      */
     text?: string
     subtleText?: string
+    labelText?: string
     /**
      * Bounding boxes that are not input elements
      */
