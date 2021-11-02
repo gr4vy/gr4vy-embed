@@ -1,3 +1,15 @@
+# v1.4.4 (Tue Nov 02 2021)
+
+#### 🐛 Bug Fix
+
+- fix: update theme type with missing label text [#33](https://github.com/gr4vy/gr4vy-embed/pull/33) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.4.3 (Thu Oct 28 2021)
 
 #### 🐛 Bug Fix
