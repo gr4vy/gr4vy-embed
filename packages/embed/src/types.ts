@@ -181,4 +181,19 @@ export type Message = { channel: string; data?: unknown } & (
   | {
       type: 'submitForm'
     }
+  | {
+      type: 'appleAbortSession'
+    }
+  | {
+      type: 'appleCompletePayment'
+      data: boolean
+    }
+  | {
+      type: 'completeMerchantValidation'
+      data: any
+    }
+  | {
+      type: 'startAppleSession'
+      data: ApplePayJS.ApplePayPaymentRequest
+    }
 )
