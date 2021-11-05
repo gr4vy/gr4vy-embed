@@ -1,3 +1,16 @@
+# v1.5.0 (Fri Nov 05 2021)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - Add support for Apple Pay [#34](https://github.com/gr4vy/gr4vy-embed/pull/34) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.4.4 (Tue Nov 02 2021)
 
 #### 🐛 Bug Fix
