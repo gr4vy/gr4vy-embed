@@ -21,9 +21,9 @@ beforeEach(() => {
 })
 
 test('should start a session with version 3 and session data', () => {
-  createApplePayController(mockSubjectManager)
+  createApplePayController(mockSubjectManager, 3)
 
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   expect(
     (window.ApplePaySession as unknown) as jest.Mock
@@ -35,7 +35,7 @@ test('should emit an error if session fails to create', (done) => {
   window.ApplePaySession = (() => {
     throw new Error('Test error')
   }) as any
-  createApplePayController(mockSubjectManager)
+  createApplePayController(mockSubjectManager, 3)
 
   // assert
   const subscription = mockSubjectManager.appleSessionError$.subscribe(() => {
@@ -44,12 +44,12 @@ test('should emit an error if session fails to create', (done) => {
   })
 
   // act
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 })
 
 test('should register an onvalidatemerchant callback', (done) => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   // assert
   const subscription = mockSubjectManager.appleValidateMerchant$.subscribe(
@@ -65,8 +65,8 @@ test('should register an onvalidatemerchant callback', (done) => {
 })
 
 test('should register an onpaymentauthorized callback', (done) => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   // assert
   const subscription = mockSubjectManager.applePayAuthorized$.subscribe(
@@ -82,10 +82,10 @@ test('should register an onpaymentauthorized callback', (done) => {
 })
 
 test('should complete merchant validation', () => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
-  mockSubjectManager.completeMerchantValidation$.next('test-data')
+  mockSubjectManager.appleCompleteMerchantValidation$.next('test-data')
 
   expect(mockAppleSession.completeMerchantValidation).toHaveBeenCalledWith(
     'test-data'
@@ -93,8 +93,8 @@ test('should complete merchant validation', () => {
 })
 
 test('should complete a successful payment', () => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   mockSubjectManager.appleCompletePayment$.next(true)
 
@@ -102,8 +102,8 @@ test('should complete a successful payment', () => {
 })
 
 test('should complete a failed payment', () => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   mockSubjectManager.appleCompletePayment$.next(false)
 
@@ -111,8 +111,8 @@ test('should complete a failed payment', () => {
 })
 
 test('should abort an applepay session', () => {
-  createApplePayController(mockSubjectManager)
-  mockSubjectManager.startAppleSession$.next({ foo: 'bar' } as any)
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   mockSubjectManager.appleAbortSession$.next()
 

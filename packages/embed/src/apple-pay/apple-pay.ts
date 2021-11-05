@@ -10,19 +10,20 @@ export const createApplePayController = (
   subjectManager: Pick<
     SubjectManager,
     | 'appleAbortSession$'
-    | 'startAppleSession$'
+    | 'appleStartSession$'
     | 'appleValidateMerchant$'
     | 'applePayAuthorized$'
-    | 'completeMerchantValidation$'
+    | 'appleCompleteMerchantValidation$'
     | 'appleCompletePayment$'
     | 'appleSessionError$'
-  >
+  >,
+  version: 3 | 4 | 5
 ) => {
   let session: ApplePaySession // only a single session at a time
 
-  subjectManager.startAppleSession$.subscribe((data) => {
+  subjectManager.appleStartSession$.subscribe((data) => {
     try {
-      session = new ApplePaySession(3, data)
+      session = new ApplePaySession(version, data)
 
       // handle merchant validation
       session.onvalidatemerchant = (event) => {
@@ -42,7 +43,7 @@ export const createApplePayController = (
   })
 
   // handle payment completion
-  subjectManager.completeMerchantValidation$.subscribe((data) => {
+  subjectManager.appleCompleteMerchantValidation$.subscribe((data) => {
     session.completeMerchantValidation(data)
   })
 

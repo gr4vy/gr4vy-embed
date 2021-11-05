@@ -109,7 +109,7 @@ export function setup(setupConfig: SetupConfig): void {
     : 0
 
   if (supportedApplePayVersion) {
-    createApplePayController(subjectManager)
+    createApplePayController(subjectManager, supportedApplePayVersion)
   }
 
   // Attach elements to the DOM
@@ -124,8 +124,9 @@ export function setup(setupConfig: SetupConfig): void {
     optionsLoaded: subjectManager.optionsLoaded$.next,
     transactionCreated: subjectManager.transactionCreated$.next,
     transactionFailed: subjectManager.transactionFailed$.next,
-    startAppleSession: subjectManager.startAppleSession$.next,
-    completeMerchantValidation: subjectManager.completeMerchantValidation$.next,
+    appleStartSession: subjectManager.appleStartSession$.next,
+    appleCompleteMerchantValidation:
+      subjectManager.appleCompleteMerchantValidation$.next,
     appleCompletePayment: subjectManager.appleCompletePayment$.next,
     appleAbortSession: subjectManager.appleAbortSession$.next,
     frameReady: () =>

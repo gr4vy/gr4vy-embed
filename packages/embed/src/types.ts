@@ -189,11 +189,11 @@ export type Message = { channel: string; data?: unknown } & (
       data: boolean
     }
   | {
-      type: 'completeMerchantValidation'
+      type: 'appleCompleteMerchantValidation'
       data: any
     }
   | {
-      type: 'startAppleSession'
+      type: 'appleStartSession'
       data: ApplePayJS.ApplePayPaymentRequest
     }
 )
