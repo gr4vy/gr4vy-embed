@@ -28,6 +28,13 @@ export const createSubjectManager = () => {
       paymentMethod?: { id?: string }
     }>(),
     transactionFailed$: createSubject(),
+    appleStartSession$: createSubject<ApplePayJS.ApplePayPaymentRequest>(),
+    appleValidateMerchant$: createSubject<string>(),
+    appleCompleteMerchantValidation$: createSubject<any>(),
+    applePayAuthorized$: createSubject<ApplePayJS.ApplePayPaymentToken>(),
+    appleCompletePayment$: createSubject<boolean>(),
+    appleAbortSession$: createSubject(),
+    appleSessionError$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {

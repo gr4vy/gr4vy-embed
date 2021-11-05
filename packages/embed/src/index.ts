@@ -1,3 +1,8 @@
+import {
+  createApplePayController,
+  browserSupportsApplePay,
+  detectSupportedVersion,
+} from './apple-pay'
 import { createConfig } from './create-config'
 import { createFormController } from './form'
 import { createFrameController } from './frame'
@@ -98,6 +103,15 @@ export function setup(setupConfig: SetupConfig): void {
   const frame = document.createElement('iframe')
   createFrameController(frame, config.iframeSrc, subjectManager)
 
+  // Apple Pay
+  const supportedApplePayVersion = browserSupportsApplePay()
+    ? detectSupportedVersion()
+    : 0
+
+  if (supportedApplePayVersion) {
+    createApplePayController(subjectManager, supportedApplePayVersion)
+  }
+
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
 
@@ -110,10 +124,18 @@ export function setup(setupConfig: SetupConfig): void {
     optionsLoaded: subjectManager.optionsLoaded$.next,
     transactionCreated: subjectManager.transactionCreated$.next,
     transactionFailed: subjectManager.transactionFailed$.next,
+    appleStartSession: subjectManager.appleStartSession$.next,
+    appleCompleteMerchantValidation:
+      subjectManager.appleCompleteMerchantValidation$.next,
+    appleCompletePayment: subjectManager.appleCompletePayment$.next,
+    appleAbortSession: subjectManager.appleAbortSession$.next,
     frameReady: () =>
       dispatch({
         type: 'updateOptions',
-        data: pick<Config>(config, optionKeys),
+        data: {
+          ...pick<Config>(config, optionKeys),
+          supportedApplePayVersion,
+        },
       }),
   }
 
@@ -164,6 +186,12 @@ export function setup(setupConfig: SetupConfig): void {
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
   subjectManager.approvalCancelled$.subscribe(() =>
     dispatch({ type: 'approvalCancelled' })
+  )
+  subjectManager.applePayAuthorized$.subscribe((token) =>
+    dispatch({ type: 'applePayAuthorized', data: token })
+  )
+  subjectManager.appleValidateMerchant$.subscribe((validationUrl) =>
+    dispatch({ type: 'appleValidateMerchant', data: validationUrl })
   )
 
   window.addEventListener('message', messageHandler)
