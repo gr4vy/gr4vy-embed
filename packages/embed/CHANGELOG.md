@@ -1,3 +1,23 @@
+# v1.5.1 (Mon Nov 08 2021)
+
+### Release Notes
+
+#### Resolves issues cancelling Apple Pay ([#35](https://github.com/gr4vy/gr4vy-embed/pull/35))
+
+Dismissing Apple Pay previously left the checkout in a pending state when the user dismissed the payment sheet. This also resolves the issue of the transaction being completed before the payment sheet has closed.
+
+---
+
+#### 🐛 Bug Fix
+
+- Resolves issues cancelling Apple Pay [#35](https://github.com/gr4vy/gr4vy-embed/pull/35) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.5.0 (Fri Nov 05 2021)
 
 #### 🚀 Enhancement
