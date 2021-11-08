@@ -16,6 +16,8 @@ export const createApplePayController = (
     | 'appleCompleteMerchantValidation$'
     | 'appleCompletePayment$'
     | 'appleSessionError$'
+    | 'appleCancelSession$'
+    | 'appleCompleteSession$'
   >,
   version: 3 | 4 | 5
 ) => {
@@ -33,6 +35,11 @@ export const createApplePayController = (
       // handle payment authorization
       session.onpaymentauthorized = (event) => {
         subjectManager.applePayAuthorized$.next(event.payment.token)
+      }
+
+      // cancel the apple pay session
+      session.oncancel = () => {
+        subjectManager.appleCancelSession$.next()
       }
 
       // start the session
@@ -58,5 +65,6 @@ export const createApplePayController = (
     } else {
       session.completePayment(ApplePaySession.STATUS_FAILURE)
     }
+    subjectManager.appleCompleteSession$.next()
   })
 }

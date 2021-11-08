@@ -35,6 +35,8 @@ export const createSubjectManager = () => {
     appleCompletePayment$: createSubject<boolean>(),
     appleAbortSession$: createSubject(),
     appleSessionError$: createSubject(),
+    appleCancelSession$: createSubject(),
+    appleCompleteSession$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {

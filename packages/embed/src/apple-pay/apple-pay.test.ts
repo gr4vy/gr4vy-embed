@@ -11,6 +11,7 @@ beforeEach(() => {
     completeMerchantValidation: jest.fn(),
     completePayment: jest.fn(),
     abort: jest.fn(),
+    oncancel: jest.fn(),
   }
   window.ApplePaySession = (jest
     .fn()
@@ -81,6 +82,20 @@ test('should register an onpaymentauthorized callback', (done) => {
   mockAppleSession.onpaymentauthorized({ payment: { token: 'token-123' } })
 })
 
+test('should register an oncancel callback', (done) => {
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
+
+  // assert
+  const subscription = mockSubjectManager.appleCancelSession$.subscribe(() => {
+    subscription.unsubscribe()
+    done()
+  })
+
+  // act
+  mockAppleSession.oncancel()
+})
+
 test('should complete merchant validation', () => {
   createApplePayController(mockSubjectManager, 3)
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
@@ -92,22 +107,32 @@ test('should complete merchant validation', () => {
   )
 })
 
-test('should complete a successful payment', () => {
+test('should complete a successful payment', (done) => {
   createApplePayController(mockSubjectManager, 3)
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
-  mockSubjectManager.appleCompletePayment$.next(true)
+  // assert
+  mockSubjectManager.appleCompleteSession$.subscribe(() => {
+    expect(mockAppleSession.completePayment).toHaveBeenCalledWith(1)
+    done()
+  })
 
-  expect(mockAppleSession.completePayment).toHaveBeenCalledWith(1)
+  // act
+  mockSubjectManager.appleCompletePayment$.next(true)
 })
 
-test('should complete a failed payment', () => {
+test('should complete a failed payment', (done) => {
   createApplePayController(mockSubjectManager, 3)
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
-  mockSubjectManager.appleCompletePayment$.next(false)
+  // assert
+  mockSubjectManager.appleCompleteSession$.subscribe(() => {
+    expect(mockAppleSession.completePayment).toHaveBeenCalledWith(0)
+    done()
+  })
 
-  expect(mockAppleSession.completePayment).toHaveBeenCalledWith(0)
+  // act
+  mockSubjectManager.appleCompletePayment$.next(false)
 })
 
 test('should abort an applepay session', () => {
