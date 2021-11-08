@@ -199,6 +199,9 @@ export function setup(setupConfig: SetupConfig): void {
   subjectManager.appleSessionError$.subscribe(() =>
     dispatch({ type: 'appleSessionError' })
   )
+  subjectManager.appleCompleteSession$.subscribe(() =>
+    dispatch({ type: 'appleCompleteSession' })
+  )
 
   window.addEventListener('message', messageHandler)
   window.addEventListener('message', apiMessageHandler)
