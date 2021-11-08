@@ -193,6 +193,12 @@ export function setup(setupConfig: SetupConfig): void {
   subjectManager.appleValidateMerchant$.subscribe((validationUrl) =>
     dispatch({ type: 'appleValidateMerchant', data: validationUrl })
   )
+  subjectManager.appleCancelSession$.subscribe(() =>
+    dispatch({ type: 'appleCancelSession' })
+  )
+  subjectManager.appleSessionError$.subscribe(() =>
+    dispatch({ type: 'appleSessionError' })
+  )
 
   window.addEventListener('message', messageHandler)
   window.addEventListener('message', apiMessageHandler)
