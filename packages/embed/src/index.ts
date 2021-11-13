@@ -40,6 +40,7 @@ export const optionKeys = [
   'locale',
   'display',
   'apiUrl',
+  'cartItems',
 ]
 
 // Map of cleanup callbacks

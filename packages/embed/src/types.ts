@@ -24,12 +24,36 @@ export type Config = {
   onComplete?: (transaction: Transaction) => void
   channel: string
   iframeSrc: string
+  cartItems?: CartItem[]
 }
 
 export type Transaction = {
   id: string
   status: string
   paymentMethod?: { id?: string }
+}
+
+export type CartItem = {
+  name: string
+  quantity: number
+  total_amount: number
+  currency: string
+  external_identifier?: string
+  unit_amount?: number
+  discount_amount?: number
+  sku?: string
+  product_url?: string
+  image_url?: string
+  categories?: string[]
+  product_type?:
+    | 'physical'
+    | 'discount'
+    | 'shipping_fee'
+    | 'sales_tax'
+    | 'digital'
+    | 'gift_card'
+    | 'store_credit'
+    | 'surcharge'
 }
 
 export type SetupConfig = Omit<
