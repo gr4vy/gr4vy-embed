@@ -1,3 +1,16 @@
+# v1.5.3 (Mon Nov 15 2021)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - fix: update async tests [#38](https://github.com/gr4vy/gr4vy-embed/pull/38) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v1.5.2 (Mon Nov 08 2021)
 
 #### 🐛 Bug Fix
