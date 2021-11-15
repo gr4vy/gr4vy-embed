@@ -25,6 +25,7 @@ describe('createFrameController', () => {
   })
 
   test('should change frame height when visible', () => {
+    jest.useFakeTimers()
     const iframeUrl = 'http://localhost:8000'
     const frameElement = document.createElement('iframe')
     createFrameController(frameElement, iframeUrl, subject)
@@ -32,7 +33,12 @@ describe('createFrameController', () => {
     frameElement.style.visibility = 'unset'
     expect(frameElement.style.height).toBe('0px')
     subject.frameHeight$.next(50)
+
+    jest.runAllTimers()
+
     expect(frameElement.style.height).toBe('50px')
+
+    jest.useRealTimers()
   })
 
   test('should not change frame height when hidden', () => {
@@ -47,12 +53,19 @@ describe('createFrameController', () => {
   })
 
   test('should show the iframe when options loaded', () => {
+    jest.useFakeTimers()
+
     const iframeUrl = 'http://localhost:8000'
     const frameElement = document.createElement('iframe')
     createFrameController(frameElement, iframeUrl, subject)
 
     subject.optionsLoaded$.next(true)
+
+    jest.runAllTimers()
+
     expect(frameElement.style.visibility).toBe('unset')
     expect(frameElement.style.display).toBe('unset')
+
+    jest.useRealTimers()
   })
 })

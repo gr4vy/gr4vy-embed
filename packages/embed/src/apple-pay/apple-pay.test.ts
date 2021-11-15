@@ -1,6 +1,8 @@
 import { createSubjectManager } from '../subjects'
 import { createApplePayController } from './apple-pay'
 
+jest.useFakeTimers()
+
 let mockAppleSession, mockSubjectManager
 
 beforeEach(() => {
@@ -26,6 +28,8 @@ test('should start a session with version 3 and session data', () => {
 
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
+  jest.runAllTimers()
+
   expect(
     (window.ApplePaySession as unknown) as jest.Mock
   ).toHaveBeenCalledWith(3, { foo: 'bar' })
@@ -44,8 +48,12 @@ test('should emit an error if session fails to create', (done) => {
     done()
   })
 
+  jest.runAllTimers()
+
   // act
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
+
+  jest.runAllTimers()
 })
 
 test('should register an onvalidatemerchant callback', (done) => {
@@ -61,8 +69,11 @@ test('should register an onvalidatemerchant callback', (done) => {
     }
   )
 
+  jest.runAllTimers()
+
   // act
   mockAppleSession.onvalidatemerchant({ validationURL: 'test-url' })
+  jest.runAllTimers()
 })
 
 test('should register an onpaymentauthorized callback', (done) => {
@@ -78,8 +89,11 @@ test('should register an onpaymentauthorized callback', (done) => {
     }
   )
 
+  jest.runAllTimers()
+
   // act
   mockAppleSession.onpaymentauthorized({ payment: { token: 'token-123' } })
+  jest.runAllTimers()
 })
 
 test('should register an oncancel callback', (done) => {
@@ -92,8 +106,12 @@ test('should register an oncancel callback', (done) => {
     done()
   })
 
+  jest.runAllTimers()
+
   // act
   mockAppleSession.oncancel()
+
+  jest.runAllTimers()
 })
 
 test('should complete merchant validation', () => {
@@ -102,37 +120,32 @@ test('should complete merchant validation', () => {
 
   mockSubjectManager.appleCompleteMerchantValidation$.next('test-data')
 
+  jest.runAllTimers()
+
   expect(mockAppleSession.completeMerchantValidation).toHaveBeenCalledWith(
     'test-data'
   )
 })
 
-test('should complete a successful payment', (done) => {
+test('should complete a successful payment', () => {
   createApplePayController(mockSubjectManager, 3)
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
-  // assert
-  mockSubjectManager.appleCompleteSession$.subscribe(() => {
-    expect(mockAppleSession.completePayment).toHaveBeenCalledWith(1)
-    done()
-  })
-
-  // act
   mockSubjectManager.appleCompletePayment$.next(true)
+
+  jest.runAllTimers()
+
+  expect(mockAppleSession.completePayment).toHaveBeenCalledWith(1)
 })
 
-test('should complete a failed payment', (done) => {
+test('should complete a failed payment', () => {
   createApplePayController(mockSubjectManager, 3)
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
-  // assert
-  mockSubjectManager.appleCompleteSession$.subscribe(() => {
-    expect(mockAppleSession.completePayment).toHaveBeenCalledWith(0)
-    done()
-  })
-
-  // act
   mockSubjectManager.appleCompletePayment$.next(false)
+
+  jest.runAllTimers()
+  expect(mockAppleSession.completePayment).toHaveBeenCalledWith(0)
 })
 
 test('should abort an applepay session', () => {
@@ -140,6 +153,8 @@ test('should abort an applepay session', () => {
   mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
 
   mockSubjectManager.appleAbortSession$.next()
+
+  jest.runAllTimers()
 
   expect(mockAppleSession.abort).toHaveBeenCalledWith()
 })

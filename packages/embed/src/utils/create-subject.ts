@@ -13,7 +13,9 @@ export const createSubject = <T = void>(initialValue?: T) => {
     next: (nextValue: T) => {
       value = nextValue
       // setTimeout will ensure events are called async
-      subscribers.forEach((callbackFn) => setTimeout(callbackFn(value), 0))
+      subscribers.forEach((callbackFn) =>
+        setTimeout(() => callbackFn(value), 0)
+      )
     },
     value: () => {
       return value
