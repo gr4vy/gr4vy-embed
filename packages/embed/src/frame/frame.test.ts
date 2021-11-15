@@ -1,6 +1,8 @@
 import { createSubjectManager, SubjectManager } from '../subjects'
 import { createFrameController } from './frame'
 
+jest.useFakeTimers()
+
 describe('createFrameController', () => {
   let subject: SubjectManager
 
@@ -32,6 +34,9 @@ describe('createFrameController', () => {
     frameElement.style.visibility = 'unset'
     expect(frameElement.style.height).toBe('0px')
     subject.frameHeight$.next(50)
+
+    jest.runAllTimers()
+
     expect(frameElement.style.height).toBe('50px')
   })
 
@@ -52,6 +57,9 @@ describe('createFrameController', () => {
     createFrameController(frameElement, iframeUrl, subject)
 
     subject.optionsLoaded$.next(true)
+
+    jest.runAllTimers()
+
     expect(frameElement.style.visibility).toBe('unset')
     expect(frameElement.style.display).toBe('unset')
   })

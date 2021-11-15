@@ -4,6 +4,8 @@ import { createPopupController } from './popup'
 import { openPopup, redirectPopup } from './redirect-popup'
 
 jest.mock('./redirect-popup')
+
+// use .runAllTimers to flush the task queue to execute callbacks
 jest.useFakeTimers()
 
 describe('registerSubscriptions', () => {
@@ -23,6 +25,7 @@ describe('registerSubscriptions', () => {
 
   test('opens a popup when a transaction requires approval', () => {
     const mockPopup = jest.fn()
+
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
     subject.mode$.next({
       popup: {
@@ -31,6 +34,9 @@ describe('registerSubscriptions', () => {
       },
     })
     subject.approvalStarted$.next()
+
+    jest.runAllTimers()
+
     expect(openPopup).toHaveBeenCalled()
     expect(popup.current).toEqual(mockPopup)
   })
@@ -42,6 +48,9 @@ describe('registerSubscriptions', () => {
     } as any
     popup.current = mockPopup
     subject.approvalUrl$.next('test-url')
+
+    jest.runAllTimers()
+
     expect(redirectPopup).toHaveBeenCalledWith(mockPopup.popup, 'test-url')
   })
 
@@ -59,6 +68,9 @@ describe('registerSubscriptions', () => {
     } as any
     popup.current = mockPopup
     subject.approvalCompleted$.next()
+
+    jest.runAllTimers()
+
     expect(mockPopup.popup.close).toHaveBeenCalled()
   })
 
@@ -76,6 +88,9 @@ describe('registerSubscriptions', () => {
     } as any
     popup.current = mockPopup
     subject.transactionFailed$.next()
+
+    jest.runAllTimers()
+
     expect(mockPopup.stopCallback).toHaveBeenCalled()
     expect(mockPopup.popup.close).toHaveBeenCalled()
   })
@@ -103,11 +118,17 @@ describe('registerSubscriptions', () => {
     })
     ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
     subject.approvalStarted$.next()
+
+    jest.runAllTimers()
+
     const closeCallback = (openPopup as jest.Mock).mock.calls[0][2]
     subject.approvalCancelled$.subscribe(() => {
       done()
     })
+
     closeCallback()
+
+    jest.runAllTimers()
   })
 
   test('checks to close popup when approval is cancelled', () => {
@@ -138,6 +159,9 @@ describe('registerSubscriptions', () => {
     subject.approvalStarted$.subscribe(() => (hasApprovalStarted = true))
     subject.approvalUrl$.subscribe(() => (hasApprovalUrlBeenReplayed = true))
     subject.approvalLost$.next()
+
+    jest.runAllTimers()
+
     expect(mockPopup.stopCallback).toHaveBeenCalled()
     expect(mockPopup.popup.close).toHaveBeenCalled()
     expect(hasApprovalStarted).toBeTruthy()
