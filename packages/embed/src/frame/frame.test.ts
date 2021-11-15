@@ -1,6 +1,8 @@
 import { createSubjectManager, SubjectManager } from '../subjects'
 import { createFrameController } from './frame'
 
+jest.useFakeTimers()
+
 describe('createFrameController', () => {
   let subject: SubjectManager
 
@@ -25,7 +27,6 @@ describe('createFrameController', () => {
   })
 
   test('should change frame height when visible', () => {
-    jest.useFakeTimers()
     const iframeUrl = 'http://localhost:8000'
     const frameElement = document.createElement('iframe')
     createFrameController(frameElement, iframeUrl, subject)
@@ -37,8 +38,6 @@ describe('createFrameController', () => {
     jest.runAllTimers()
 
     expect(frameElement.style.height).toBe('50px')
-
-    jest.useRealTimers()
   })
 
   test('should not change frame height when hidden', () => {
@@ -53,8 +52,6 @@ describe('createFrameController', () => {
   })
 
   test('should show the iframe when options loaded', () => {
-    jest.useFakeTimers()
-
     const iframeUrl = 'http://localhost:8000'
     const frameElement = document.createElement('iframe')
     createFrameController(frameElement, iframeUrl, subject)
@@ -65,7 +62,5 @@ describe('createFrameController', () => {
 
     expect(frameElement.style.visibility).toBe('unset')
     expect(frameElement.style.display).toBe('unset')
-
-    jest.useRealTimers()
   })
 })

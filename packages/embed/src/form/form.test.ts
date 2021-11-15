@@ -23,8 +23,15 @@ describe('createFormController', () => {
   })
 
   describe('onTransactionCreated', () => {
-    it('should inject the transaction id', () => {
+    beforeEach(() => {
       jest.useFakeTimers()
+    })
+
+    afterEach(() => {
+      jest.useRealTimers()
+    })
+
+    it('should inject the transaction id', () => {
       createFormController(form, null, subject)
       subject.transactionCreated$.next({ id: '123', status: 'captured' })
 
@@ -35,18 +42,15 @@ describe('createFormController', () => {
           'gr4vy_transaction_id'
         )[0] as HTMLInputElement).value
       ).toBe('123')
-      jest.useRealTimers()
     })
 
     it('should submit the form', (done) => {
-      jest.useFakeTimers()
       form.onsubmit = () => {
         done()
       }
       createFormController(form, null, subject)
       subject.transactionCreated$.next({ id: '123', status: 'captured' })
       jest.runAllTimers()
-      jest.useRealTimers()
     })
   })
 })
