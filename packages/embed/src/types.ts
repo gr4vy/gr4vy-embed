@@ -41,6 +41,7 @@ export type CartItem = {
   external_identifier?: string
   unit_amount?: number
   discount_amount?: number
+  tax_amount?: number
   sku?: string
   product_url?: string
   image_url?: string
