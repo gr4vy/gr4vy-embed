@@ -36,17 +36,17 @@ export type Transaction = {
 export type CartItem = {
   name: string
   quantity: number
-  total_amount: number
+  totalAmount: number
   currency: string
-  external_identifier?: string
-  unit_amount?: number
-  discount_amount?: number
-  tax_amount?: number
+  externalIdentifier?: string
+  unitAmount?: number
+  discountAmount?: number
+  taxAmount?: number
   sku?: string
-  product_url?: string
-  image_url?: string
+  productUrl?: string
+  imageUrl?: string
   categories?: string[]
-  product_type?:
+  productType?:
     | 'physical'
     | 'discount'
     | 'shipping_fee'
