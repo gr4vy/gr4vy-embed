@@ -3,7 +3,7 @@ import { hostToUrl, appendUrlParams } from './utils'
 import { generateChannelId } from './utils/generate-channel-id'
 
 export const createConfig = (setupConfig: SetupConfig) => {
-  const { gr4vyId, ...rest } = setupConfig
+  const { gr4vyId, environment, ...rest } = setupConfig
 
   const channel = generateChannelId()
   const iframeHost = gr4vyId
