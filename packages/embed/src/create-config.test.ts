@@ -72,6 +72,18 @@ test('should set url values based on a gr4vy id', () => {
   })
 })
 
+test('should prefix URLs if for the sandbox environment', () => {
+  expect(
+    createConfig({ ...setupConfig, environment: 'sandbox' })
+  ).toMatchObject({
+    apiHost: `api.sandbox.test.gr4vy.app`,
+    apiUrl: `https://api.sandbox.test.gr4vy.app`,
+    iframeHost: `embed.sandbox.test.gr4vy.app`,
+    iframeUrl: `https://embed.sandbox.test.gr4vy.app`,
+    iframeSrc: `https://embed.sandbox.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
+  })
+})
+
 test('should default store to "ask"', () => {
   expect(createConfig(setupConfig)).toMatchObject({
     store: 'ask',
