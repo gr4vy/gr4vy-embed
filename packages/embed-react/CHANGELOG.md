@@ -1,3 +1,23 @@
+# v2.0.0 (Thu Nov 18 2021)
+
+### Release Notes
+
+#### Change environment usage to point at different URLs ([#39](https://github.com/gr4vy/gr4vy-embed/pull/39))
+
+The `environment` property can now only be set to either `production` or `sandbox`. The `sandbox` value is a new value that replaces both the `development` and 'staging` values that were previously used. The `environment` variable will now be used to connect to the right Gr4vy instance.
+
+---
+
+#### 💥 Breaking Change
+
+- Change environment usage to point at different URLs [#39](https://github.com/gr4vy/gr4vy-embed/pull/39) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v1.4.2 (Tue Oct 26 2021)
 
 #### 🐛 Bug Fix
