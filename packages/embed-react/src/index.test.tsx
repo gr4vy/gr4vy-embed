@@ -18,7 +18,7 @@ const options: Gr4vyEmbedProps & { channel: string } = {
   amount: 200,
   currency: 'GBP',
   onEvent: jest.fn(),
-  environment: 'development',
+  environment: 'sandbox',
   country: 'US',
 }
 
@@ -35,7 +35,7 @@ test(`should default to be not loaded`, () => {
     element: expect.any(HTMLDivElement),
     iframeHost: 'localhost:8080',
     onEvent: expect.any(Function),
-    environment: 'development',
+    environment: 'sandbox',
     country: 'US',
   })
 })

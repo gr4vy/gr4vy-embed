@@ -18,7 +18,7 @@ const currencyOptions = [`USD`, `GBP`, `EUR`]
 
 const intentOptions = [`capture`, `approve`, `auhtorize`]
 
-const environmentOptions = ['development', 'production', 'staging']
+const environmentOptions = ['production', 'sandbox']
 
 export const Default = () => {
   const form = useRef<HTMLFormElement>()
@@ -45,7 +45,7 @@ export const Default = () => {
             select(
               `Environment`,
               environmentOptions,
-              'development',
+              'sandbox',
               `Public`
             ) as any
           }

@@ -44,7 +44,7 @@ instance and the details for the transaction.
 </body>
 ```
 
-> **Note**: Replace `[GR4VY_ID]` and `[TOKEN]` with the ID of your environment
+> **Note**: Replace `[GR4VY_ID]` and `[TOKEN]` with the ID of your instance
 > and JWT access token. See any of our [server-side
 > SDKs](https://github.com/gr4vy?q=sdk) for more details.
 
