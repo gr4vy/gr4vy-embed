@@ -8,7 +8,6 @@ export type Config = {
   debug?: boolean // wether to output any debug messages.
   onEvent?: (eventName: string, data: any) => void // a callback function that's used to subscribe to events
   externalIdentifier?: string // an optional external identifier
-  preferResponse?: string // a development option that allows sending a `Prefer` header to force a certain API response from dev servers
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
   environment?: 'production' | 'sandbox'
