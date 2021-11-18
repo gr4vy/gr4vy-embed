@@ -7,13 +7,6 @@ export default {
   decorators: [withKnobs],
 }
 
-const responseOptions = {
-  '': ``,
-  '202 - Request accepted': `prefer: code=202, example=Request accepted`,
-  '400 - Incorrect JSON': `prefer: code=400, example=Incorrect JSON`,
-  '401 - Unauthorized request': `prefer: code=401, example=An unauthorized request`,
-}
-
 const currencyOptions = [`USD`, `GBP`, `EUR`]
 
 const intentOptions = [`capture`, `approve`, `auhtorize`]
@@ -50,12 +43,6 @@ export const Default = () => {
             ) as any
           }
           debug
-          preferResponse={select(
-            `Prefered server response`,
-            responseOptions,
-            ``,
-            `Development`
-          )}
         />
       )}
     </>
