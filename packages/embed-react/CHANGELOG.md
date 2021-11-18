@@ -1,3 +1,15 @@
+# v2.1.0 (Thu Nov 18 2021)
+
+#### 🚀 Enhancement
+
+- refactor: remove prefer response [#40](https://github.com/gr4vy/gr4vy-embed/pull/40) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.0.0 (Thu Nov 18 2021)
 
 ### Release Notes
