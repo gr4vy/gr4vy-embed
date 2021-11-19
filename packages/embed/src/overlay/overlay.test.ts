@@ -1,6 +1,8 @@
 import { createSubjectManager } from '../subjects'
 import { createOverlayController } from './overlay'
 
+jest.useFakeTimers()
+
 describe('createOverlayController', () => {
   let subject
 
@@ -21,6 +23,9 @@ describe('createOverlayController', () => {
     })
     createOverlayController(overlay, subject)
     subject.approvalStarted$.next()
+
+    jest.runAllTimers()
+
     expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
   })
 
@@ -45,6 +50,9 @@ describe('createOverlayController', () => {
     overlay.className = 'gr4vy__overlay gr4vy__overlay--hidden'
     createOverlayController(overlay, subject)
     subject.approvalUrl$.next('https://approval.gr4vy.com')
+
+    jest.runAllTimers()
+
     expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
   })
 })

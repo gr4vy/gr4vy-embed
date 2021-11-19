@@ -1,6 +1,8 @@
 import { createSubjectManager } from '../subjects'
 import { createSkeletonController } from './skeleton'
 
+jest.useFakeTimers()
+
 describe('createSkeletonController', () => {
   it('should be removed when options have laoded', () => {
     const mockElement = {
@@ -9,6 +11,9 @@ describe('createSkeletonController', () => {
     const subject = createSubjectManager()
     createSkeletonController(mockElement, subject, undefined)
     subject.optionsLoaded$.next(true)
+
+    jest.runAllTimers()
+
     expect(mockElement.remove).toHaveBeenCalled()
   })
 })

@@ -30,7 +30,6 @@ export const optionKeys = [
   'token',
   'debug',
   'externalIdentifier',
-  'preferResponse',
   'buyerId',
   'buyerExternalIdentifier',
   'environment',

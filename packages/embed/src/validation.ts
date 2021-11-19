@@ -302,14 +302,6 @@ export const validate = (options: SetupConfig) =>
     callback: options.onEvent,
   }) &&
   validateType({
-    argument: 'preferResponse',
-    value: options.preferResponse,
-    type: 'string',
-    message: 'must be a string',
-    required: false,
-    callback: options.onEvent,
-  }) &&
-  validateType({
     argument: 'externalIdentifier',
     value: options.externalIdentifier,
     type: 'string',
@@ -357,7 +349,7 @@ export const validate = (options: SetupConfig) =>
     argument: 'environment',
     value: options.environment,
     type: 'string',
-    message: 'must be "development", "staging" or "production"',
+    message: 'must be "production" or "sandbox"',
     required: false,
     callback: options.onEvent,
   }) &&

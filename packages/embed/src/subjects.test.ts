@@ -12,15 +12,17 @@ describe('createSubjectManager', () => {
     })
   })
 
-  test('should start approval if required on form submit', () => {
+  test('should start approval if required on form submit', (done) => {
     subject.mode$.next({})
-    let result = false
+
+    // assert
     const approvalStarted = subject.approvalStarted$.subscribe(() => {
-      result = true
+      approvalStarted.unsubscribe()
+      done()
     })
+
+    // act
     subject.formSubmit$.next()
-    approvalStarted.unsubscribe()
-    expect(result).toBe(true)
   })
 
   test('should skip approval if not required on form submit', () => {
@@ -33,23 +35,25 @@ describe('createSubjectManager', () => {
     expect(result).toBe(false)
   })
 
-  test('should complete approval on transaction complete', () => {
+  test('should complete approval on transaction complete', (done) => {
     subject.mode$.next({
       popup: {
         title: 'Test',
         message: 'Test Message',
       },
     })
-    let result = false
-    const approvalCompleted = subject.approvalCompleted$.subscribe(
-      () => (result = true)
-    )
+
+    // assert
+    const approvalCompleted = subject.approvalCompleted$.subscribe(() => {
+      approvalCompleted.unsubscribe()
+      done()
+    })
+
+    // act
     subject.transactionCreated$.next({
       id: 'test-transaction-id',
       status: 'captured',
     })
-    approvalCompleted.unsubscribe()
-    expect(result).toBe(true)
   })
 
   test('should skip complete approval if not required on transaction complete', () => {
