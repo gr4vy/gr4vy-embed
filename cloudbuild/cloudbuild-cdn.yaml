@@ -79,10 +79,54 @@ steps:
         '--no-clobber',
       ]
 
+  - id: 'deploy to spider-sandbox'
+    name: 'curlimages/curl:latest'
+    entrypoint: ash
+    secretEnv:
+      - GITHUB_TOKEN
+    args:
+      - '-c'
+      - |
+        if [ "${BRANCH_NAME}" = "main" ]; then
+          echo "Triggering deploy of main branch to spider-sandbox..."
+          curl \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $$GITHUB_TOKEN" \
+            -d '{"ref":"main","environment":"spider-sandbox","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
+            https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
+        else
+          echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-sandbox."
+        fi;
+
+  - id: 'deploy to spider-production'
+    name: 'curlimages/curl:latest'
+    entrypoint: ash
+    secretEnv:
+      - GITHUB_TOKEN
+    args:
+      - '-c'
+      - |
+        if [ "${BRANCH_NAME}" = "main" ]; then
+          echo "Triggering deploy of main branch to spider-production..."
+          curl \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $$GITHUB_TOKEN" \
+            -d '{"ref":"main","environment":"spider-production","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
+            https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
+        else
+          echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-production."
+        fi;
+
 substitutions:
   _NODE_VERSION: '14'
   _ARTIFACT_STORAGE_BUCKET: ''
   _CACHE_BUCKET: ''
+  _GITHUB_TOKEN_LOCATION: ''
+
+availableSecrets:
+  secretManager:
+    - versionName: ${_GITHUB_TOKEN_LOCATION}
+      env: 'GITHUB_TOKEN'
 
 options:
   dynamic_substitutions: true
