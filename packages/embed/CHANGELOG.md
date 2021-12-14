@@ -1,3 +1,15 @@
+# v2.3.0 (Tue Dec 14 2021)
+
+#### 🚀 Enhancement
+
+- feat: add metadata support [#44](https://github.com/gr4vy/gr4vy-embed/pull/44) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.2.0 (Tue Dec 14 2021)
 
 #### 🚀 Enhancement
