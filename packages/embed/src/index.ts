@@ -39,6 +39,7 @@ export const optionKeys = [
   'locale',
   'display',
   'apiUrl',
+  'customOptions',
 ]
 
 // Map of cleanup callbacks
@@ -90,7 +91,8 @@ export function setup(setupConfig: SetupConfig): void {
   createFormController(
     config.form as HTMLFormElement,
     config.onComplete,
-    subjectManager
+    subjectManager,
+    config.onCustomSubmit
   )
 
   createPopupController(
@@ -136,6 +138,7 @@ export function setup(setupConfig: SetupConfig): void {
           supportedApplePayVersion,
         },
       }),
+    paymentMethodSelected: subjectManager.selectedOption$.next,
   }
 
   const dispatch = createDispatch(

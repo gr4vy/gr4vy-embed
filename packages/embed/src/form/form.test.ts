@@ -15,7 +15,7 @@ describe('createFormController', () => {
   })
 
   it('should hijack the form and notify formSubmit$', (done) => {
-    createFormController(form, null, subject)
+    createFormController(form, null, subject, null)
     subject.formSubmit$.subscribe(() => {
       done()
     })
@@ -32,7 +32,7 @@ describe('createFormController', () => {
     })
 
     it('should inject the transaction id', () => {
-      createFormController(form, null, subject)
+      createFormController(form, null, subject, null)
       subject.transactionCreated$.next({ id: '123', status: 'captured' })
 
       jest.runAllTimers()
@@ -48,7 +48,7 @@ describe('createFormController', () => {
       form.onsubmit = () => {
         done()
       }
-      createFormController(form, null, subject)
+      createFormController(form, null, subject, null)
       subject.transactionCreated$.next({ id: '123', status: 'captured' })
       jest.runAllTimers()
     })

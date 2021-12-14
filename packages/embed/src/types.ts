@@ -23,6 +23,15 @@ export type Config = {
   onComplete?: (transaction: Transaction) => void
   channel: string
   iframeSrc: string
+  customOptions?: Array<CustomOption>
+  onCustomSubmit?: ({ method }) => void
+}
+
+export type CustomOption = {
+  method: string
+  label: string
+  description: string
+  iconUrl: string
 }
 
 export type Transaction = {
@@ -195,5 +204,12 @@ export type Message = { channel: string; data?: unknown } & (
   | {
       type: 'appleStartSession'
       data: ApplePayJS.ApplePayPaymentRequest
+    }
+  | {
+      type: 'paymentMethodSelected'
+      data: {
+        method: string
+        mode?: string
+      }
     }
 )
