@@ -40,6 +40,7 @@ export const optionKeys = [
   'display',
   'apiUrl',
   'customOptions',
+  'metadata',
 ]
 
 // Map of cleanup callbacks

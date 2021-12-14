@@ -25,6 +25,7 @@ export type Config = {
   iframeSrc: string
   customOptions?: Array<CustomOption>
   onCustomSubmit?: ({ method }) => void
+  metadata?: Record<string, string>
 }
 
 export type CustomOption = {

@@ -66,6 +66,9 @@ setup({
   environment: 'production',
   country: 'US',
   display: 'all',
+  metadata: {
+    foo: 'bar',
+  },
   // overrides form submission
   onComplete: (transaction) => {
     result.innerHTML = `

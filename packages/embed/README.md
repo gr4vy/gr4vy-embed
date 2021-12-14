@@ -79,6 +79,7 @@ The options for this integration are as follows.
 | `display`                 | `all`       | `all`, `addOnly`, `storedOnly`, `supportsTokenization` - Filters the payment methods to show stored methods only, new payment methods only or methods that support tokenization.                                                                                                    |
 | `customOptions`           | `null`      | List of custom options. e.g. `[{ label: 'Giftcard', method: 'giftcard', description: 'You will be asked for a giftcard code.', iconUrl: 'data:image/svg+xml,...'}]`                                                                                                                 |
 | `onCustomSubmit`          | `null`      | Callback when a custom payment option is selected and the form submitted.                                                                                                                                                                                                           |
+| `metadata`                | `Object`    | An optional object of key/values for transaction metadata. All values should be a string.                                                                                                                                                                                           |
 
 ### Theming
 
