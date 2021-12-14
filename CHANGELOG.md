@@ -1,3 +1,21 @@
+# v2.2.0 (Tue Dec 14 2021)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add custom options [#43](https://github.com/gr4vy/gr4vy-embed/pull/43) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### ⚠️ Pushed to `main`
+
+- Auto-deploy to spider [skip-ci] ([@andrewmackett](https://github.com/andrewmackett))
+
+#### Authors: 2
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.1.0 (Thu Nov 18 2021)
 
 #### 🚀 Enhancement

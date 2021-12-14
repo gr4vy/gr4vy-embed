@@ -1,3 +1,15 @@
+# v2.2.0 (Tue Dec 14 2021)
+
+#### 🚀 Enhancement
+
+- feat: add custom options [#43](https://github.com/gr4vy/gr4vy-embed/pull/43) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.1.0 (Thu Nov 18 2021)
 
 #### 🚀 Enhancement
