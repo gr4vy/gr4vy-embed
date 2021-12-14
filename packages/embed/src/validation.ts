@@ -373,4 +373,11 @@ export const validate = (options: SetupConfig) =>
     type: 'string',
     message: 'must be "storedOnly", "addOnly", "supportsTokenization" or "all"',
     required: false,
+  }) &&
+  validateType({
+    argument: 'metadata',
+    value: options.metadata,
+    type: 'object',
+    message: 'must be an object',
+    required: false,
   })
