@@ -53,7 +53,7 @@ let embedId = 0
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-export function setup(setupConfig: SetupConfig): void {
+export function setup(setupConfig: SetupConfig) {
   // exit early if the config is not valid
   if (!validate(setupConfig)) {
     return
@@ -212,4 +212,10 @@ export function setup(setupConfig: SetupConfig): void {
     window.removeEventListener('message', apiMessageHandler)
     window.removeEventListener('message', approvalMessageHandler)
   })
+
+  return {
+    deselect: () => {
+      dispatch({ type: 'deselectPaymentOption' })
+    },
+  }
 }

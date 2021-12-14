@@ -172,6 +172,24 @@ setup({
 
 ```
 
+## Deselecting Payment Options
+
+> :warning: This is not recommended behaviour.
+
+Payment options can be deselected by calling `deselect` on the instance of Embed. To obtain access to this, you will need to pass a ref. This is not standard behaviour for radio options, so should be avoided. There is also no guarantee that the option will have an effect. (e.g. payment options have not loaded).
+
+```ts
+const embed = setup({
+  element: '.container',
+  ...,
+  onEvent: (name, data) => {
+    if (name == 'paymentMethodSelected') {
+      embed.deselect()
+    }
+  }
+})
+```
+
 ## License
 
 This project is provided as-is under the [MIT license](LICENSE).

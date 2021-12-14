@@ -155,6 +155,36 @@ Embed will automatically submit the payment form with hidden inputs, this can be
 />
 ```
 
+## Deselecting Options
+
+> :warning: This is not recommended behaviour.
+
+Payment options can be deselected by calling `deselect` on the instance of Embed. To obtain access to this, you will need to pass a ref. This is not standard behaviour for radio options, so should be avoided. There is also no guarantee that the option will have an effect. (e.g. payment options have not loaded).
+
+```tsx
+const embedRef = useRef<Gr4vyEmbedInstance>()
+
+const MyComponent = () => {
+  const [isSelected, setSelected] = useState(false)
+
+  return <>
+    <Gr4vyEmbed
+      ref={embedRef}
+      amount={1299}
+      currency="USD"
+      onEvent={({ type }) => {
+        if (type === 'paymentMethodSelected') {
+          isSelected(true)
+        }
+      }}
+    />
+  )
+}
+
+// deselect options
+embedRef.deselect()
+```
+
 ## License
 
 This project is provided as-is under the [MIT license](LICENSE).

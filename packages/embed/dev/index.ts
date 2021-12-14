@@ -36,7 +36,7 @@ const result = document.createElement(`div`)
 document.body.appendChild(form)
 document.body.appendChild(result)
 
-setup({
+const embed = setup({
   element: `#root`,
   form: `#form`,
   intent: 'capture',
@@ -75,3 +75,8 @@ setup({
       `
   },
 })
+
+const deselect = document.createElement('button')
+deselect.textContent = `Deselect Payment Option`
+deselect.onclick = embed.deselect
+document.body.appendChild(deselect)
