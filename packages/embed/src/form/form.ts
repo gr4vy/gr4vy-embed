@@ -14,7 +14,8 @@ let instanceCount = 0
 export const createFormController = (
   form: HTMLFormElement,
   onComplete: CallableFunction,
-  subject: SubjectManager
+  subject: SubjectManager,
+  onCustomSubmit: CallableFunction
 ) => {
   // Check if currently managed by form napper
   if (parseInt(form.dataset.formNapperId) > 0) {
@@ -33,7 +34,11 @@ export const createFormController = (
   instances.set(instanceCount.toString(), formNapperInstance)
 
   formNapperInstance.hijack(() => {
-    subject.formSubmit$.next()
+    if (subject.selectedOption$.value()?.mode === 'custom') {
+      onCustomSubmit({ method: subject.selectedOption$.value().method })
+    } else {
+      subject.formSubmit$.next()
+    }
   })
 
   subject.transactionCreated$.subscribe((transaction) => {

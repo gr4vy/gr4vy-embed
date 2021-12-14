@@ -77,6 +77,8 @@ The options for this integration are as follows.
 | `token`                   | `null`      | **Required** - The server-side generated JWT token used to authenticate any of the API calls.                                                                                                                                                                                       |
 | `onComplete`              | `null`      | Callback with a transaction object. (Form submission must be handled manually)                                                                                                                                                                                                      |
 | `display`                 | `all`       | `all`, `addOnly`, `storedOnly`, `supportsTokenization` - Filters the payment methods to show stored methods only, new payment methods only or methods that support tokenization.                                                                                                    |
+| `customOptions`           | `null`      | List of custom options. e.g. `[{ label: 'Giftcard', method: 'giftcard', description: 'You will be asked for a giftcard code.', iconUrl: 'data:image/svg+xml,...'}]`                                                                                                                 |
+| `onCustomSubmit`          | `null`      | Callback when a custom payment option is selected and the form submitted.                                                                                                                                                                                                           |
 
 ### Theming
 
@@ -170,6 +172,29 @@ setup({
   }
 })
 
+```
+
+## Custom Options
+
+Embed will render custom payment options if you need to integrate with existing checkouts. This will not trigger any processing by
+embed and instead you will need to handle the form submission.
+
+```ts
+setup({
+  // Provide a list of custom options
+  customOptions: [
+    {
+      label: 'Giftcard',
+      method: 'giftcard', // This should be a unique identifier for your custom option
+      description: 'You will be asked to enter a giftcard',
+      iconUrl: `data:image/svg+xml,...`, // This should be a data:image/svg+xml url
+    }
+  ],
+  // Handle the submit for a custom option
+  onCustomSubmit: ({ method: 'giftcard' }) => {
+    console.log(`Paid by ${method}`);
+  }
+})
 ```
 
 ## License

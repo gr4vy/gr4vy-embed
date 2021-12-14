@@ -37,6 +37,10 @@ export const createSubjectManager = () => {
     appleSessionError$: createSubject(),
     appleCancelSession$: createSubject(),
     appleCompleteSession$: createSubject(),
+    selectedOption$: createSubject<{
+      mode?: string
+      method: string
+    }>(),
   }
 
   subjects.formSubmit$.subscribe(() => {
