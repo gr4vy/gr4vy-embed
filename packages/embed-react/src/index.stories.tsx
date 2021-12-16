@@ -9,13 +9,16 @@ export default {
 
 const currencyOptions = [`USD`, `GBP`, `EUR`]
 
-const intentOptions = [`capture`, `approve`, `auhtorize`]
+const intentOptions = [`capture`, `approve`]
 
 const environmentOptions = ['production', 'sandbox']
 
-export const Default = () => {
+const Template = ({ showRenderControls = false }) => {
   const form = useRef<HTMLFormElement>()
   const [formReady, setFormReady] = useState(false)
+  const [amount, setAmount] = useState(number(`Amount`, 1299, {}, `Public`))
+  const [count, setCount] = useState(1)
+  const [color, setColor] = useState('green')
 
   useEffect(() => {
     setFormReady(true)
@@ -23,17 +26,38 @@ export const Default = () => {
 
   return (
     <>
+      {showRenderControls && (
+        <>
+          <button onClick={() => setAmount(amount + 1)}>Increase amount</button>
+          <button onClick={() => setCount(count + 1)}>Increase count</button>
+          <button
+            onClick={() =>
+              setColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+            }
+          >
+            Update theme color
+          </button>
+          <p>Amount: {amount} (Rerender)</p>
+          <p>Count: {count}</p>
+          <p>Color: {color} (Rerender)</p>
+        </>
+      )}
       <form ref={form} />
       {formReady && (
         <Gr4vyEmbed
           form={form.current}
-          amount={number(`Amount`, 1299, {}, `Public`)}
+          amount={amount}
           intent={select(`Intent`, intentOptions, 'capture', `Public`) as any}
           currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
           apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
           iframeHost={text(`iFrame host`, `127.0.0.1:8082`, `Public`)}
           token={text(`JWT token`, `1234567`, `Public`)}
           country="US"
+          theme={{
+            colors: {
+              primary: color,
+            },
+          }}
           environment={
             select(
               `Environment`,
@@ -47,4 +71,12 @@ export const Default = () => {
       )}
     </>
   )
+}
+
+export const Default = () => <Template />
+
+export const RenderTest = () => <Template showRenderControls={true} />
+
+RenderTest.parameters = {
+  storyshots: { disable: true },
 }

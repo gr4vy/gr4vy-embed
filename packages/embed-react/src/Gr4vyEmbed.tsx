@@ -1,10 +1,11 @@
 import { setup } from '@gr4vy/embed'
 import { SetupConfig } from '@gr4vy/embed/lib/types'
-import React, { useRef, useEffect } from 'react'
+import isEqual from 'lodash.isequal'
+import React, { useRef, useEffect, memo } from 'react'
 
 export type Gr4vyEmbedProps = Omit<SetupConfig, 'element'>
 
-const Gr4vyEmbed = (props: Gr4vyEmbedProps) => {
+const Gr4vyEmbed = memo((props: Gr4vyEmbedProps) => {
   const ref = useRef()
 
   useEffect(() => {
@@ -14,10 +15,10 @@ const Gr4vyEmbed = (props: Gr4vyEmbedProps) => {
         element: ref.current,
       })
     }
-  }, [ref])
+  }, [ref, props])
 
   return <div ref={ref} />
-}
+}, isEqual)
 
 Gr4vyEmbed.displayName = 'Gr4vyEmbed'
 
