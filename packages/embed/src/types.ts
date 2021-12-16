@@ -1,6 +1,6 @@
 export type Config = {
   element: HTMLElement // The element to insert the integration at
-  form: Element // The form to bind the integration to
+  form?: Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
   intent?: 'authorize' | 'capture' | 'approve' // Defines the intent of this API call. This determines the desired initial state of the transaction.
   currency: string // Currency to charge the amount in
@@ -214,3 +214,7 @@ export type Message = { channel: string; data?: unknown } & (
       }
     }
 )
+
+export type EmbedInstance = {
+  submit: () => void
+}

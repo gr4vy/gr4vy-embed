@@ -3,8 +3,22 @@ import { SetupConfig } from './types'
 import { validate } from './validation'
 import { setup } from './'
 
+const formSubmit$ = { next: jest.fn(), subscribe: jest.fn() }
+
 jest.mock('./form')
 jest.mock('./validation')
+jest.mock('./subjects')
+jest.mock('./subjects', () => {
+  return {
+    createSubjectManager: () => {
+      const { createSubjectManager } = jest.requireActual<any>('./subjects')
+      return {
+        ...createSubjectManager(),
+        formSubmit$,
+      }
+    },
+  }
+})
 
 jest.spyOn(document, 'querySelector').mockImplementation((query) => {
   if (query === '#app') {
@@ -70,5 +84,25 @@ describe('setup()', () => {
 
     expect(validate).toHaveBeenCalledWith(invalidConfig)
     expect(createFormController).not.toHaveBeenCalled()
+  })
+
+  it('it should return an instance with a submit method', () => {
+    ;(validate as jest.Mock).mockReturnValue(true)
+    const embed = setup({
+      element: `#app`,
+      form: `#form`,
+      amount: 1299,
+      currency: `USD`,
+      iframeHost: `127.0.0.1:8080`,
+      apiHost: `127.0.0.1:3100`,
+      token: `123456`,
+      country: 'US',
+    })
+
+    expect(formSubmit$.next).not.toHaveBeenCalled()
+
+    embed.submit()
+
+    expect(formSubmit$.next).toHaveBeenCalled()
   })
 })

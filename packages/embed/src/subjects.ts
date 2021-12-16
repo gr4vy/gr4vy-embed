@@ -22,6 +22,7 @@ export const createSubjectManager = () => {
     frameHeight$: createSubject<number>(0),
     optionsLoaded$: createSubject<boolean>(false),
     formSubmit$: createSubject(),
+    submit$: createSubject(),
     transactionCreated$: createSubject<{
       id: string
       status: string

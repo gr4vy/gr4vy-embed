@@ -1,6 +1,6 @@
 import { withKnobs, text, select, number } from '@storybook/addon-knobs'
 import React, { useEffect, useRef, useState } from 'react'
-import Gr4vyEmbed from './'
+import Gr4vyEmbed, { EmbedInstance } from './'
 
 export default {
   title: `Embed React`,
@@ -78,5 +78,32 @@ export const Default = () => <Template />
 export const RenderTest = () => <Template showRenderControls={true} />
 
 RenderTest.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithoutForm = () => {
+  const embed = useRef<EmbedInstance>()
+  return (
+    <>
+      <button onClick={() => embed.current.submit()}>Submit</button>
+      <Gr4vyEmbed
+        ref={embed}
+        amount={number(`Amount`, 1299, {}, `Public`)}
+        intent={select(`Intent`, intentOptions, 'capture', `Public`) as any}
+        currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
+        apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
+        iframeHost={text(`iFrame host`, `127.0.0.1:8082`, `Public`)}
+        token={text(`JWT token`, `1234567`, `Public`)}
+        country="US"
+        environment={
+          select(`Environment`, environmentOptions, 'sandbox', `Public`) as any
+        }
+        debug
+      />
+    </>
+  )
+}
+
+WithoutForm.parameters = {
   storyshots: { disable: true },
 }
