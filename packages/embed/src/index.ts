@@ -10,7 +10,8 @@ import { createOverlayController } from './overlay'
 import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
-import { SetupConfig, Config, Message } from './types'
+import { createSubmitController } from './submit'
+import { SetupConfig, Config, Message, EmbedInstance } from './types'
 import {
   mutableRef,
   pick,
@@ -55,7 +56,7 @@ let embedId = 0
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-export function setup(setupConfig: SetupConfig): void {
+export function setup(setupConfig: SetupConfig): EmbedInstance {
   // exit early if the config is not valid
   if (!validate(setupConfig)) {
     return
@@ -88,13 +89,21 @@ export function setup(setupConfig: SetupConfig): void {
   const overlay = document.createElement('div')
   createOverlayController(overlay, subjectManager)
 
-  // Form
-  createFormController(
-    config.form as HTMLFormElement,
-    config.onComplete,
-    subjectManager,
-    config.onCustomSubmit
-  )
+  // Submit Transaction
+  if (config.form) {
+    createFormController(
+      config.form as HTMLFormElement,
+      config.onComplete,
+      subjectManager,
+      config.onCustomSubmit
+    )
+  } else {
+    createSubmitController(
+      config.onComplete,
+      subjectManager,
+      config.onCustomSubmit
+    )
+  }
 
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
@@ -216,4 +225,10 @@ export function setup(setupConfig: SetupConfig): void {
     window.removeEventListener('message', apiMessageHandler)
     window.removeEventListener('message', approvalMessageHandler)
   })
+
+  return {
+    submit: () => {
+      subjectManager.formSubmit$.next()
+    },
+  }
 }

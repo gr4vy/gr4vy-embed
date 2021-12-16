@@ -175,6 +175,20 @@ setup({
 
 ```
 
+### Submission without a Form
+
+Embed does not require a form to be present, you can call `submit` directly. You should implement `onComplete` if you are choosing this option.
+
+```tsx
+import { setup } from '@gr4vy/embed';
+
+const embed = setup({
+  ...
+})
+
+embed.submit()
+```
+
 ## Custom Options
 
 Embed will render custom payment options if you need to integrate with existing checkouts. This will not trigger any processing by

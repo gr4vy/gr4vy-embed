@@ -158,10 +158,30 @@ Embed will automatically submit the payment form with hidden inputs, this can be
 />
 ```
 
+### Submission without a Form
+
+Embed does not require a form to be present, in order to access the `EmbedInstance` directly you can pass a ref. You should implement `onComplete` if you are choosing this option.
+
+```tsx
+import Gr4vyEmbed, { EmbedInstance } from '@gr4vy/embed-react';
+import { useRef } from 'react';
+
+const MyComponent = () => {
+  const embed = useRef<EmbedInstance>();
+
+  return <div>
+    <Gr4vyEmbed ref={embed} {...}/>
+    <button onClick={() => embed.current.submit()}>
+  </div>
+
+}
+
+```
+
 ## Custom Options
 
 Embed will render custom payment options if you need to integrate with existing checkouts. This will not trigger any processing by
-embed and instead you will need to handle the form submission.
+embed and instead you will need to handle the form submission. You should implement `onComplete` if you are choosing this option.
 
 ```tsx
 <Gr4vyEmbed
