@@ -1,3 +1,23 @@
+# v2.4.0 (Thu Dec 16 2021)
+
+### Release Notes
+
+#### feat: support for optional form ([#46](https://github.com/gr4vy/gr4vy-embed/pull/46))
+
+Form is no longer a required prop, but `onComplete` should be used. This allows a merchant to have more control over how their own form is submitted.
+
+---
+
+#### 🚀 Enhancement
+
+- feat: support for optional form [#46](https://github.com/gr4vy/gr4vy-embed/pull/46) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.3.0 (Tue Dec 14 2021)
 
 #### 🚀 Enhancement
