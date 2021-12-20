@@ -26,6 +26,7 @@ export type Config = {
   customOptions?: Array<CustomOption>
   onCustomSubmit?: ({ method }) => void
   metadata?: Record<string, string>
+  paymentSource?: 'installment' | 'recurring'
 }
 
 export type CustomOption = {

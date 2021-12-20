@@ -42,6 +42,7 @@ export const optionKeys = [
   'apiUrl',
   'customOptions',
   'metadata',
+  'paymentSource',
 ]
 
 // Map of cleanup callbacks

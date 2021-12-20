@@ -80,6 +80,7 @@ The options for this integration are as follows.
 | `customOptions`           | `null`      | List of custom options. e.g. `[{ label: 'Giftcard', method: 'giftcard', description: 'You will be asked for a giftcard code.', iconUrl: 'data:image/svg+xml,...'}]`                                                                                                                 |
 | `onCustomSubmit`          | `null`      | Callback when a custom payment option is selected and the form submitted.                                                                                                                                                                                                           |
 | `metadata`                | `Object`    | An optional object of key/values for transaction metadata. All values should be a string.                                                                                                                                                                                           |
+| `paymentSource`           | `null`      | `installment`, `recurring` - An optional paymentSource, if this is not provided the source will be implied from `store`.                                                                                                                                                            |
 
 ### Theming
 
