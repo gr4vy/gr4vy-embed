@@ -104,6 +104,8 @@ export type ThemeOptions = {
     inputBorder?: string
     inputText?: string
     inputBackground?: string
+    inputRadioBorder?: string
+    inputRadioBorderChecked?: string
     /**
      * Info is used for loading bars or displaying information.
      */
