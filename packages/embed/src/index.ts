@@ -170,6 +170,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
           'transactionCreated',
           'apiError',
           'paymentMethodSelected',
+          'transactionCancelled',
         ].includes(message.type)
       ) {
         config.onEvent?.(message.type, message.data)
