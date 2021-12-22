@@ -32,8 +32,8 @@ export type Config = {
 export type CustomOption = {
   method: string
   label: string
-  description: string
-  iconUrl: string
+  description?: string
+  iconUrl?: string
 }
 
 export type Transaction = {
