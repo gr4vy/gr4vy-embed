@@ -1,3 +1,23 @@
+# v2.5.0 (Wed Dec 22 2021)
+
+### Release Notes
+
+#### Add support for transactionCancelled event ([#49](https://github.com/gr4vy/gr4vy-embed/pull/49))
+
+Adds support for `transactionCancelled` event. This event occurs when a buyer explicitly cancels a transaction. This could be before/or after the transaction is created. This is currently not supported for cancelling transactions during 3-D Secure.
+
+---
+
+#### 🚀 Enhancement
+
+- Add support for transactionCancelled event [#49](https://github.com/gr4vy/gr4vy-embed/pull/49) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.4.0 (Thu Dec 16 2021)
 
 ### Release Notes

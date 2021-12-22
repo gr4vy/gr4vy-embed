@@ -1,3 +1,37 @@
+# v2.5.0 (Wed Dec 22 2021)
+
+### Release Notes
+
+#### Add support for transactionCancelled event ([#49](https://github.com/gr4vy/gr4vy-embed/pull/49))
+
+Adds support for `transactionCancelled` event. This event occurs when a buyer explicitly cancels a transaction. This could be before/or after the transaction is created. This is currently not supported for cancelling transactions during 3-D Secure.
+
+#### Add support for payment source ([#48](https://github.com/gr4vy/gr4vy-embed/pull/48))
+
+Adds support for `paymentSource` to indicate to the underlying PSP the nature of a transaction/payment. This will override the `store` parameter (it will be set to `true` if paymentSource is set) and also for `display` to `supportsTokenization`. The `paymentSource` can be set to either `installment` or `recurring`.
+
+#### Radio input theme support ([#47](https://github.com/gr4vy/gr4vy-embed/pull/47))
+
+Adds support for theming radio inputs using `inputRadioBorder` and `inputRadioBorderChecked`, if these are not defined the previous default values will be used (no visual breaking changes).
+
+---
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - Remove required description, iconUrl props for custom options [#50](https://github.com/gr4vy/gr4vy-embed/pull/50) ([@douglaseggleton](https://github.com/douglaseggleton))
+  - Add support for payment source [#48](https://github.com/gr4vy/gr4vy-embed/pull/48) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+  - Radio input theme support [#47](https://github.com/gr4vy/gr4vy-embed/pull/47) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - Add support for transactionCancelled event [#49](https://github.com/gr4vy/gr4vy-embed/pull/49) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.4.0 (Thu Dec 16 2021)
 
 ### Release Notes
