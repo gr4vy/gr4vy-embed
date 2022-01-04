@@ -43,6 +43,7 @@ export const optionKeys = [
   'customOptions',
   'metadata',
   'paymentSource',
+  'cartItems',
 ]
 
 // Map of cleanup callbacks
