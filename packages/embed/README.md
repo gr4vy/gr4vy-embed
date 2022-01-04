@@ -82,6 +82,7 @@ The options for this integration are as follows.
 | `metadata`                | `Object`    | An optional object of key/values for transaction metadata. All values should be a string.                                                                                                                                                                                                                                                 |
 | `paymentSource`           | `null`      | `installment`, `recurring` - Can be used to signal that Embed is used to capture the first transaction for a subscription or an installment. When used, `store` is implied to be `true` and `display` is implied to be `supportsTokenization`. This means that payment options that do not support tokenization are automatically hidden. |
 | `cartItems`               | `Array`     | An optional array of cart item objects, each object must define a `name`, `quantity`, and `unitAmount`.                                                                                                                                                                                                                                   |
+| `statementDescriptor`     | `Object`    | An optional object for setting the statement descriptor details.                                                                                                                                                                                                                                                                          |
 
 ### Theming
 

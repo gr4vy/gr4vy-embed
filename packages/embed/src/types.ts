@@ -28,6 +28,7 @@ export type Config = {
   metadata?: Record<string, string>
   paymentSource?: 'installment' | 'recurring'
   cartItems?: Array<CartItem>
+  statementDescriptor?: Record<string, string>
 }
 
 export type CustomOption = {
