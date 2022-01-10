@@ -6,3 +6,10 @@ CVE-2021-3807
 CVE-2021-23436
 CVE-2021-3757
 CVE-2021-23440
+
+# postcss - Dev Dependency (Storybook)
+CVE-2021-23382
+
+# node-forge - Dev Dependency (Webpack dev server)
+GHSA-5rrq-pxf6-6jx5
+GHSA-gf8q-jrpm-jvxq
