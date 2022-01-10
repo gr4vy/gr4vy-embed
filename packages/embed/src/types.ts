@@ -164,6 +164,11 @@ export type Message = { channel: string; data?: unknown } & (
     }
   | {
       type: 'optionsLoaded'
+      data: Array<{
+        id?: string
+        method: string
+        mode?: string
+      }>
     }
   | {
       type: 'transactionCreated'

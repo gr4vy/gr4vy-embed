@@ -106,6 +106,23 @@ Returned when the initial input (`element`, `options`) are incorrectly formatted
 }
 ```
 
+#### `optionsLoaded`
+
+Returned when options are loaded. Stored options include the `id` and `method`, other options will include the `mode` and `method`.
+
+```json
+[
+  {
+    "id": "...",
+    "method": "card"
+  },
+  {
+    "method": "card",
+    "mode": "card"
+  }
+]
+```
+
 #### `formUpdate`
 
 Returned when the form updates. Currently this only informs the developer if the form
