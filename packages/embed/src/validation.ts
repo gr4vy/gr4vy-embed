@@ -380,4 +380,11 @@ export const validate = (options: SetupConfig) =>
     type: 'object',
     message: 'must be an object',
     required: false,
+  }) &&
+  validateType({
+    argument: 'cartItems',
+    value: options.cartItems,
+    type: 'object',
+    message: 'must be an array',
+    required: false,
   })
