@@ -168,6 +168,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
         [
           'formUpdate',
           'transactionCreated',
+          'transactionFailed',
           'apiError',
           'paymentMethodSelected',
           'transactionCancelled',

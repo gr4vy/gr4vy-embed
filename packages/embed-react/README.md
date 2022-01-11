@@ -159,6 +159,19 @@ and should not be conflated with transaction being declined or an error occuring
 }
 ```
 
+#### `transactionFailed`
+
+Returned when an api call fails to create a transaction.
+
+```json
+{
+  "type": "error",
+  "code": "unauthorized",
+  "status": 401,
+  "message": "No valid API authentication found"
+}
+```
+
 #### `apiError`
 
 Returned when the form encounters an API error.
