@@ -1,3 +1,20 @@
+# v2.5.1 (Mon Jan 10 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Skeleton loader updated to fill the entire width of its container [#53](https://github.com/gr4vy/gr4vy-embed/pull/53) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### 🏠 Internal
+
+- fix: add postcss to trivyignore [#54](https://github.com/gr4vy/gr4vy-embed/pull/54) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### Authors: 1
+
+- [@thomas-gr4vy](https://github.com/thomas-gr4vy)
+
+---
+
 # v2.5.0 (Wed Dec 22 2021)
 
 ### Release Notes

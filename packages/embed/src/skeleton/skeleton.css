@@ -28,7 +28,7 @@
 }
 
 .gr4vy__skeleton__block {
-  width: 50%;
+  flex-grow: 1;
   height: 16px;
   background-image: linear-gradient(
     90deg,
