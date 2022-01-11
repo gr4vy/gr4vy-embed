@@ -180,7 +180,7 @@ and should not be conflated with transaction being declined or an error occuring
 
 #### `transactionFailed`
 
-Returned when an api call fails to create a transaction.
+Returned when an api call fails to create a transaction, this would only be raised for a status code of 4xx or 5xx.
 
 ```json
 {
