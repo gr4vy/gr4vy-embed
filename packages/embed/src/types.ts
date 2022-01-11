@@ -27,6 +27,7 @@ export type Config = {
   onCustomSubmit?: ({ method }) => void
   metadata?: Record<string, string>
   paymentSource?: 'installment' | 'recurring'
+  cartItems?: Array<CartItem>
 }
 
 export type CustomOption = {
@@ -225,4 +226,26 @@ export type Message = { channel: string; data?: unknown } & (
 
 export type EmbedInstance = {
   submit: () => void
+}
+
+export type CartItem = {
+  name: string
+  quantity: number
+  unitAmount: number
+  discountAmount?: number
+  taxAmount?: number
+  externalIdentifier?: string
+  sku?: string
+  productUrl?: string
+  imageUrl?: string
+  categories?: string[]
+  productType?:
+    | 'physical'
+    | 'discount'
+    | 'shipping_fee'
+    | 'sales_tax'
+    | 'digital'
+    | 'gift_card'
+    | 'store_credit'
+    | 'surcharge'
 }
