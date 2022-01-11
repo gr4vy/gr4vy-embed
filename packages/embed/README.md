@@ -112,7 +112,7 @@ setup({
 
 Currently, we Gr4vy Embed emits the following events.
 
-#### `agumentError`
+#### `argumentError`
 
 Returned when the initial input (`element`, `options`) are incorrectly formatted or missing.
 
@@ -122,6 +122,24 @@ Returned when the initial input (`element`, `options`) are incorrectly formatted
   "option": "currency",
   "message": "must be a valid number"
 }
+```
+
+#### `optionsLoaded`
+
+Returned when options are loaded. Stored options include the `id`.
+
+```json
+[
+  {
+    "id": "...",
+    "method": "card",
+    "mode": "card"
+  },
+  {
+    "method": "card",
+    "mode": "card"
+  }
+]
 ```
 
 #### `formUpdate`
