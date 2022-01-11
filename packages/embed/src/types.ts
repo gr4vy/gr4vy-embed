@@ -167,7 +167,7 @@ export type Message = { channel: string; data?: unknown } & (
       data: Array<{
         id?: string
         method: string
-        mode?: string
+        mode: string
       }>
     }
   | {

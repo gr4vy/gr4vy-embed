@@ -108,13 +108,14 @@ Returned when the initial input (`element`, `options`) are incorrectly formatted
 
 #### `optionsLoaded`
 
-Returned when options are loaded. Stored options include the `id` and `method`, other options will include the `mode` and `method`.
+Returned when options are loaded. Stored options include the `id`.
 
 ```json
 [
   {
     "id": "...",
-    "method": "card"
+    "method": "card",
+    "mode": "card"
   },
   {
     "method": "card",
