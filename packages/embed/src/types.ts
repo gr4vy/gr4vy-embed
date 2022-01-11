@@ -180,6 +180,15 @@ export type Message = { channel: string; data?: unknown } & (
       }
     }
   | {
+      type: 'transactionFailed'
+      data: {
+        code: number
+        message?: string
+        status?: string
+        type?: string
+      }
+    }
+  | {
       type: 'frameReady'
     }
   | {

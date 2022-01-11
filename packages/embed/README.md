@@ -156,7 +156,9 @@ is valid.
 
 #### `transactionCreated`
 
-Returns a full transaction object when the transaction was successfully created.
+Returns a full transaction object when Gr4vy accepted the transaction,
+regardless of its status. Be aware that this can be a pending or declined
+transaction. To track API failures please use the `transactionFailed` event.
 
 ```json
 {
@@ -175,6 +177,26 @@ and should not be conflated with transaction being declined or an error occuring
 ```json
 {
   "type": "transactionCancelled"
+}
+```
+
+#### `transactionFailed`
+
+Returned when an API call fails to create a transaction due to a client or
+server error. In other words, this event is raised when incorrect data (like an
+invalid JWT) is passed to the Gr4vy API and a HTTP status code in the `4XX` or
+`5XX` range is returned.
+
+To catch failed or declined transactions due to
+downstream issues with the payment service, please subscribe to the
+`transactionCreated` event.
+
+```json
+{
+  "type": "error",
+  "code": "unauthorized",
+  "status": 401,
+  "message": "No valid API authentication found"
 }
 ```
 
