@@ -1,3 +1,15 @@
+# v2.6.1 (Wed Jan 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix: update cart items typo in readme [#57](https://github.com/gr4vy/gr4vy-embed/pull/57) ([@gryevns](https://github.com/gryevns))
+
+#### Authors: 1
+
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.6.0 (Tue Jan 11 2022)
 
 #### 🚀 Enhancement
