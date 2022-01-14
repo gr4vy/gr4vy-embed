@@ -264,6 +264,6 @@ export type StatementDescriptor = {
   name?: string
   description?: string
   city?: string
-  phone?: string
+  phone_number?: string
   url?: string
 }
