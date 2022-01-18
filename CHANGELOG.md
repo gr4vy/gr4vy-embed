@@ -1,3 +1,33 @@
+# v2.7.0 (Tue Jan 18 2022)
+
+### Release Notes
+
+#### Add support for custom transaction statement descriptors ([#52](https://github.com/gr4vy/gr4vy-embed/pull/52))
+
+Allows for the pass through of a statement descriptor object. The statement descriptor is the text to be shown on the buyer's statements.
+
+---
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - Add support for custom transaction statement descriptors [#52](https://github.com/gr4vy/gr4vy-embed/pull/52) ([@gryevns](https://github.com/gryevns))
+
+#### 🐛 Bug Fix
+
+- chore: CVE-2022-0155 [#58](https://github.com/gr4vy/gr4vy-embed/pull/58) ([@gryevns](https://github.com/gryevns))
+
+#### 📝 Documentation
+
+- Updated contribution guidelines [#60](https://github.com/gr4vy/gr4vy-embed/pull/60) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.6.1 (Wed Jan 12 2022)
 
 #### 🐛 Bug Fix
