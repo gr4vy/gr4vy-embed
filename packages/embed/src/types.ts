@@ -28,6 +28,7 @@ export type Config = {
   metadata?: Record<string, string>
   paymentSource?: 'installment' | 'recurring'
   cartItems?: Array<CartItem>
+  statementDescriptor?: StatementDescriptor
 }
 
 export type CustomOption = {
@@ -257,4 +258,12 @@ export type CartItem = {
     | 'gift_card'
     | 'store_credit'
     | 'surcharge'
+}
+
+export type StatementDescriptor = {
+  name?: string
+  description?: string
+  city?: string
+  phoneNumber?: string
+  url?: string
 }
