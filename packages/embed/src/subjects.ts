@@ -45,13 +45,13 @@ export const createSubjectManager = () => {
   }
 
   subjects.formSubmit$.subscribe(() => {
-    if (subjects.mode$.value()?.popup) {
+    if (subjects.mode$.value()?.popup || subjects.mode$.value()?.overlay) {
       subjects.approvalStarted$.next()
     }
   })
 
   subjects.transactionCreated$.subscribe(() => {
-    if (subjects.mode$.value()?.popup) {
+    if (subjects.mode$.value()?.popup || subjects.mode$.value()?.overlay) {
       subjects.approvalCompleted$.next()
     }
   })

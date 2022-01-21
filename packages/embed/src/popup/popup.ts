@@ -8,11 +8,13 @@ export const createPopupController = (
   subject: SubjectManager
 ) => {
   subject.approvalStarted$.subscribe(() => {
-    popup.current = openPopup(
-      popupFeatures(500, 589),
-      redirectDocument(subject.mode$.value().popup),
-      () => subject.approvalCancelled$.next()
-    )
+    if (subject.mode$.value()?.popup) {
+      popup.current = openPopup(
+        popupFeatures(500, 589),
+        redirectDocument(subject.mode$.value().popup),
+        () => subject.approvalCancelled$.next()
+      )
+    }
   })
 
   subject.approvalUrl$.subscribe((url) => {
@@ -22,14 +24,16 @@ export const createPopupController = (
   })
 
   subject.approvalLost$.subscribe(() => {
-    popup.current.stopCallback()
-    popup.current.popup.close()
-    subject.approvalStarted$.next()
+    if (popup.current) {
+      popup.current.stopCallback()
+      popup.current.popup.close()
+      subject.approvalStarted$.next()
 
-    // Check if the approval url already exists
-    const previousApprovalUrl = subject.approvalUrl$.value()
-    if (previousApprovalUrl) {
-      subject.approvalUrl$.next(previousApprovalUrl)
+      // Check if the approval url already exists
+      const previousApprovalUrl = subject.approvalUrl$.value()
+      if (previousApprovalUrl) {
+        subject.approvalUrl$.next(previousApprovalUrl)
+      }
     }
   })
 
