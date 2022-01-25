@@ -77,7 +77,10 @@ export const createOverlayController = (
 
   // assume an approval url with pre-defined overlay is an iframe
   subject.approvalUrl$.subscribe((url) => {
-    if (!subject.mode$.value()?.overlay) {
+    if (
+      !subject.mode$.value()?.overlay ||
+      (subject.mode$.value()?.overlay && !subject.mode$.value()?.popup)
+    ) {
       setFrame(url)
       show()
     }
