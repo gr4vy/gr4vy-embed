@@ -13,3 +13,7 @@ CVE-2021-23382
 # node-forge - Dev Dependency (Webpack dev server)
 GHSA-5rrq-pxf6-6jx5
 GHSA-gf8q-jrpm-jvxq
+CVE-2022-0122
+
+# node-fetch - Dev Dependency
+CVE-2022-0235
