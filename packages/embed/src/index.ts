@@ -149,6 +149,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
         data: {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
+          supportedGooglePayVersion: 1,
         },
       }),
     paymentMethodSelected: subjectManager.selectedOption$.next,
