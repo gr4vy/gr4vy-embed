@@ -74,6 +74,7 @@ export const createOverlayController = (
   subject.approvalCompleted$.subscribe(hide)
   subject.approvalCancelled$.subscribe(hide)
   subject.transactionFailed$.subscribe(hide)
+  subject.transactionCancelled$.subscribe(hide)
 
   // assume an approval url with pre-defined overlay is an iframe
   subject.approvalUrl$.subscribe((url) => {

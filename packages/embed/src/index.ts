@@ -138,6 +138,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     optionsLoaded: subjectManager.optionsLoaded$.next,
     transactionCreated: subjectManager.transactionCreated$.next,
     transactionFailed: subjectManager.transactionFailed$.next,
+    transactionCancelled: subjectManager.transactionCancelled$.next,
     appleStartSession: subjectManager.appleStartSession$.next,
     appleCompleteMerchantValidation:
       subjectManager.appleCompleteMerchantValidation$.next,
