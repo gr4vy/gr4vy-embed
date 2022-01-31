@@ -76,12 +76,9 @@ export const createOverlayController = (
   subject.transactionFailed$.subscribe(hide)
   subject.transactionCancelled$.subscribe(hide)
 
-  // assume an approval url with pre-defined overlay is an iframe
+  // assume an approval url with pre-defined popup (not overlay) is an iframe
   subject.approvalUrl$.subscribe((url) => {
-    if (
-      !subject.mode$.value()?.overlay ||
-      (subject.mode$.value()?.overlay && !subject.mode$.value()?.popup)
-    ) {
+    if (!subject.mode$.value()?.popup) {
       setFrame(url)
       show()
     }
