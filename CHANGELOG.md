@@ -1,3 +1,16 @@
+# v2.7.1 (Wed Jan 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Amount validation updated to match API maximum (99999999) [#63](https://github.com/gr4vy/gr4vy-embed/pull/63) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.7.0 (Tue Jan 18 2022)
 
 ### Release Notes

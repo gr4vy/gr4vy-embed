@@ -288,13 +288,18 @@ describe('validateNumber()', () => {
   })
 
   test('should return false if the number is too large', () => {
-    const options = {
+    const maxResult = validateNumber({
       ...defaultOptions,
-      value: 10000000,
+      value: 99999999,
       callback: jest.fn(),
-    }
-    const valid = validateNumber(options)
-    expect(valid).toEqual(false)
+    })
+    expect(maxResult).toEqual(true)
+    const aboveMaxResult = validateNumber({
+      ...defaultOptions,
+      value: 100000000,
+      callback: jest.fn(),
+    })
+    expect(aboveMaxResult).toEqual(false)
   })
 
   test('should return true if the number is a number as a string', () => {
