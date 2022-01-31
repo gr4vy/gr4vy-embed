@@ -87,5 +87,11 @@ export const createOverlayController = (
     }
   })
 
+  subject.showOverlay$.subscribe(() => {
+    const { overlay } = subject.mode$.value()
+    setMessage(overlay)
+    show()
+  })
+
   subject.transactionCreated$.subscribe(hide)
 }

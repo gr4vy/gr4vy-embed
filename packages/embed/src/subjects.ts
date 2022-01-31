@@ -43,16 +43,21 @@ export const createSubjectManager = () => {
       mode?: string
       method: string
     }>(),
+    showOverlay$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {
-    if (subjects.mode$.value()?.popup || subjects.mode$.value()?.overlay) {
+    if (subjects.mode$.value()?.popup) {
       subjects.approvalStarted$.next()
+    }
+
+    if (subjects.mode$.value()?.overlay) {
+      subjects.showOverlay$.next()
     }
   })
 
   subjects.transactionCreated$.subscribe(() => {
-    if (subjects.mode$.value()?.popup || subjects.mode$.value()?.overlay) {
+    if (subjects.mode$.value()?.popup) {
       subjects.approvalCompleted$.next()
     }
   })
