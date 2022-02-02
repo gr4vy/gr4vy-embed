@@ -19,6 +19,9 @@ export const createFrameController = (
   frame.setAttribute('frameBorder', '0')
   frame.setAttribute('scrolling', 'no')
 
+  // feature policy (for Google Pay support)
+  frame.setAttribute('allowpaymentrequest', 'true')
+
   subject.frameHeight$.subscribe((height) => {
     if (frame.style.visibility === 'unset') {
       frame.style.height = `${height}px`

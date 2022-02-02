@@ -29,6 +29,7 @@ export const createSubjectManager = () => {
       paymentMethod?: { id?: string }
     }>(),
     transactionFailed$: createSubject(),
+    transactionCancelled$: createSubject(),
     appleStartSession$: createSubject<ApplePayJS.ApplePayPaymentRequest>(),
     appleValidateMerchant$: createSubject<string>(),
     appleCompleteMerchantValidation$: createSubject<any>(),
@@ -42,11 +43,16 @@ export const createSubjectManager = () => {
       mode?: string
       method: string
     }>(),
+    showOverlay$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {
     if (subjects.mode$.value()?.popup) {
       subjects.approvalStarted$.next()
+    }
+
+    if (subjects.mode$.value()?.overlay) {
+      subjects.showOverlay$.next()
     }
   })
 
