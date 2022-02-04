@@ -1,3 +1,15 @@
+# v2.8.0 (Fri Feb 04 2022)
+
+#### 🚀 Enhancement
+
+- Add support for Google Pay [#61](https://github.com/gr4vy/gr4vy-embed/pull/61) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### Authors: 1
+
+- [@thomas-gr4vy](https://github.com/thomas-gr4vy)
+
+---
+
 # v2.7.1 (Wed Jan 26 2022)
 
 #### 🐛 Bug Fix
