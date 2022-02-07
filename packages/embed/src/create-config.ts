@@ -41,5 +41,6 @@ export const createConfig = (setupConfig: SetupConfig) => {
     ...rest,
     element,
     form,
+    environment,
   } as Config
 }
