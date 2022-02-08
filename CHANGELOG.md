@@ -1,3 +1,16 @@
+# v2.8.1 (Tue Feb 08 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Pass through environment option to Embed UI [#64](https://github.com/gr4vy/gr4vy-embed/pull/64) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### Authors: 1
+
+- [@thomas-gr4vy](https://github.com/thomas-gr4vy)
+
+---
+
 # v2.8.0 (Fri Feb 04 2022)
 
 #### 🚀 Enhancement
