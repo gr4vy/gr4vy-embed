@@ -139,11 +139,15 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     transactionCreated: subjectManager.transactionCreated$.next,
     transactionFailed: subjectManager.transactionFailed$.next,
     transactionCancelled: subjectManager.transactionCancelled$.next,
+    showOverlay: subjectManager.showOverlay$.next,
+    hideOverlay: subjectManager.hideOverlay$.next,
     appleStartSession: subjectManager.appleStartSession$.next,
     appleCompleteMerchantValidation:
       subjectManager.appleCompleteMerchantValidation$.next,
     appleCompletePayment: subjectManager.appleCompletePayment$.next,
     appleAbortSession: subjectManager.appleAbortSession$.next,
+    googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
+    googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
     frameReady: () =>
       dispatch({
         type: 'updateOptions',

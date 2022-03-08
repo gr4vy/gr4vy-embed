@@ -39,21 +39,28 @@ export const createSubjectManager = () => {
     appleSessionError$: createSubject(),
     appleCancelSession$: createSubject(),
     appleCompleteSession$: createSubject(),
+    googlePaySessionStarted$: createSubject(),
+    googlePaySessionCompleted$: createSubject(),
     selectedOption$: createSubject<{
       mode?: string
       method: string
     }>(),
     showOverlay$: createSubject(),
+    hideOverlay$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {
     if (subjects.mode$.value()?.popup) {
       subjects.approvalStarted$.next()
     }
+  })
 
-    if (subjects.mode$.value()?.overlay) {
-      subjects.showOverlay$.next()
-    }
+  subjects.googlePaySessionStarted$.subscribe(() => {
+    subjects.showOverlay$.next()
+  })
+
+  subjects.googlePaySessionCompleted$.subscribe(() => {
+    subjects.hideOverlay$.next()
   })
 
   subjects.transactionCreated$.subscribe(() => {

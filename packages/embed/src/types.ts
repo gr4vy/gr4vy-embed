@@ -211,6 +211,12 @@ export type Message = { channel: string; data?: unknown } & (
       type: 'approvalCancelled'
     }
   | {
+      type: 'showOverlay'
+    }
+  | {
+      type: 'hideOverlay'
+    }
+  | {
       type: 'submitForm'
     }
   | {
@@ -234,6 +240,12 @@ export type Message = { channel: string; data?: unknown } & (
         method: string
         mode?: string
       }
+    }
+  | {
+      type: 'googlePaySessionStarted'
+    }
+  | {
+      type: 'googlePaySessionCompleted'
     }
 )
 
