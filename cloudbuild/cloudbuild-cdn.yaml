@@ -92,7 +92,7 @@ steps:
           curl \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $$GITHUB_TOKEN" \
-            -d '{"ref":"main","environment":"spider-sandbox","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
+            -d '{"ref":"${COMMIT_SHA}","environment":"spider-sandbox","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
             https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
         else
           echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-sandbox."
@@ -111,7 +111,7 @@ steps:
           curl \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token $$GITHUB_TOKEN" \
-            -d '{"ref":"main","environment":"spider-production","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
+            -d '{"ref":"${COMMIT_SHA}","environment":"spider-production","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
             https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
         else
           echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-production."
