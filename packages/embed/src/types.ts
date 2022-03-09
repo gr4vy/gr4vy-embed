@@ -211,12 +211,6 @@ export type Message = { channel: string; data?: unknown } & (
       type: 'approvalCancelled'
     }
   | {
-      type: 'showOverlay'
-    }
-  | {
-      type: 'hideOverlay'
-    }
-  | {
       type: 'submitForm'
     }
   | {
