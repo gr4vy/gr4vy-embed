@@ -1,3 +1,16 @@
+# v2.8.2 (Wed Mar 09 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Show the loading state for Google Pay [#69](https://github.com/gr4vy/gr4vy-embed/pull/69) ([@tculigGr4vy](https://github.com/tculigGr4vy))
+
+#### Authors: 1
+
+- Tihomir ([@tculigGr4vy](https://github.com/tculigGr4vy))
+
+---
+
 # v2.8.1 (Tue Feb 08 2022)
 
 #### 🐛 Bug Fix
