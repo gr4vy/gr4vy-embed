@@ -235,6 +235,12 @@ export type Message = { channel: string; data?: unknown } & (
         mode?: string
       }
     }
+  | {
+      type: 'googlePaySessionStarted'
+    }
+  | {
+      type: 'googlePaySessionCompleted'
+    }
 )
 
 export type EmbedInstance = {

@@ -90,5 +90,7 @@ export const createOverlayController = (
     show()
   })
 
+  subject.hideOverlay$.subscribe(hide)
+
   subject.transactionCreated$.subscribe(hide)
 }

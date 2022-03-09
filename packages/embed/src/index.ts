@@ -144,6 +144,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
       subjectManager.appleCompleteMerchantValidation$.next,
     appleCompletePayment: subjectManager.appleCompletePayment$.next,
     appleAbortSession: subjectManager.appleAbortSession$.next,
+    googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
+    googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
     frameReady: () =>
       dispatch({
         type: 'updateOptions',
