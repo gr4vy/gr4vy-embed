@@ -20,7 +20,7 @@ steps:
       - pipefail
       - '-c'
       - |-
-        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP --path='/*' --async --project $PROJECT_ID
+        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP --path='/*' --async --project $PROJECT_ID || true
 
         if [ ${_GR4VY_ENV} = "production" ]; then
           gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host='cdn.${_GR4VY_ID}.gr4vy.app' --path='/*' --async --project $PROJECT_ID || true
