@@ -20,19 +20,17 @@ steps:
       - pipefail
       - '-c'
       - |-
-        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP --path='/*' --async --project $PROJECT_ID || true
-
         if [ ${_GR4VY_ENV} = "production" ]; then
-          gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host='cdn.${_GR4VY_ID}.gr4vy.app' --path='/*' --async --project $PROJECT_ID || true
+          $$HOST_DOMAIN=${_GR4VY_ID}.gr4vy.app
         else
-          gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host='cdn.${_GR4VY_ENV}.${_GR4VY_ID}.gr4vy.app' --path='/*' --async --project $PROJECT_ID || true
+          $$HOST_DOMAIN=${_GR4VY_ENV}.${_GR4VY_ID}.gr4vy.app
         fi
+        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/*' --async --project $PROJECT_ID
 
 substitutions:
   _GR4VY_ID: ${PROJECT_ID%-*}
   _GR4VY_ENV: 'sandbox'
   _ARTIFACT_STORAGE_BUCKET: embed-cdn-${_GR4VY_ENV}-${_GR4VY_ID}-gr4vy-app
-  _URL_MAP: embed-cdn-${_GR4VY_ENV}-${_GR4VY_ID}-gr4vy-app-url-map
   _URL_MAP_SHARED: ${_GR4VY_ID}-${_GR4VY_ENV}-url-map
 
 options:
