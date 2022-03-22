@@ -28,6 +28,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     display: 'all',
     apiHost,
     apiUrl: hostToUrl(apiHost),
+    gr4vyId,
     iframeHost,
     iframeUrl,
     iframeSrc: appendUrlParams(iframeUrl, {
