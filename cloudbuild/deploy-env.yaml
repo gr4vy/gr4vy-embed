@@ -21,9 +21,9 @@ steps:
       - '-c'
       - |-
         if [ ${_GR4VY_ENV} = "production" ]; then
-          $$HOST_DOMAIN=${_GR4VY_ID}.gr4vy.app
+          HOST_DOMAIN=${_GR4VY_ID}.gr4vy.app
         else
-          $$HOST_DOMAIN=${_GR4VY_ENV}.${_GR4VY_ID}.gr4vy.app
+          HOST_DOMAIN=${_GR4VY_ENV}.${_GR4VY_ID}.gr4vy.app
         fi
         gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/*' --async --project $PROJECT_ID
 
