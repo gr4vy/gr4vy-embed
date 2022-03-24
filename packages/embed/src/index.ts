@@ -28,6 +28,7 @@ export const optionKeys = [
   'currency',
   'intent',
   'apiHost',
+  'gr4vyId',
   'token',
   'debug',
   'externalIdentifier',

@@ -59,6 +59,8 @@ test('default configuration', () => {
     iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
     store: 'ask',
     token: '123',
+    environment: undefined,
+    gr4vyId: 'test',
   })
 })
 
