@@ -8,4 +8,13 @@ describe('pick', () => {
     }
     expect(pick(options, ['foo'])).toEqual({ foo: 'bar' })
   })
+
+  test(`should not include keys with nullish values`, () => {
+    const options = {
+      foo: 'bar',
+      bar: undefined,
+      baz: null,
+    }
+    expect(pick(options, ['foo', 'bar', 'baz'])).toEqual({ foo: 'bar' })
+  })
 })
