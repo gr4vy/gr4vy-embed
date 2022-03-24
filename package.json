@@ -81,6 +81,7 @@
     "json-schema": "0.4.0",
     "ansi-html": ">=0.0.8",
     "follow-redirects": ">=1.14.8",
-    "url-parse": ">=1.5.9"
+    "url-parse": ">=1.5.9",
+    "minimist": "^1.2.6"
   }
 }
