@@ -20,6 +20,7 @@ import {
   createDispatch,
   removeChildren,
   filterByType,
+  poll,
 } from './utils'
 import { validate } from './validation'
 
@@ -129,6 +130,9 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
 
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
+
+  // Set up polling to check if the iframe source was loaded correctly.
+  poll({ url: config.iframeSrc, data: config }, 3000)
 
   const messageEvents: Partial<
     Record<Message['type'], (data: Message['data']) => void>
