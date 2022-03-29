@@ -3,3 +3,8 @@ const { Crypto } = require('@peculiar/webcrypto')
 
 global.crypto = new Crypto()
 global.msCrypto = new Crypto()
+global.console = {
+  log: jest.fn(),
+  warn: jest.fn(),
+  error: jest.fn(),
+}
