@@ -6,7 +6,7 @@ type Config = {
 
 export const poll = (
   { url, data, errorPrefix }: Config,
-  delay: number,
+  delay = 3000,
   retries = 2
 ) =>
   new Promise((resolve, reject) => {
@@ -26,7 +26,7 @@ export const poll = (
         }, delay)
       })
   }).catch((err) => {
-    const message = `${errorPrefix}
+    const message = `${errorPrefix ?? ''}
 => ${err}`
-    console.warn(message, data)
+    console.warn(message, data || {})
   })
