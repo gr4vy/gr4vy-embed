@@ -1,9 +1,14 @@
 type Config = {
   url: string
   data?: {}
+  errorPrefix?: string
 }
 
-export const poll = ({ url, data }: Config, delay: number, retries = 2) =>
+export const poll = (
+  { url, data, errorPrefix }: Config,
+  delay: number,
+  retries = 2
+) =>
   new Promise((resolve, reject) => {
     fetch(url, { mode: 'no-cors' })
       .then((response) => {
@@ -17,10 +22,11 @@ export const poll = ({ url, data }: Config, delay: number, retries = 2) =>
         // Poll again after {delay} milliseconds
         reject(`${err} - retrying in ${delay} milliseconds`)
         return setTimeout(() => {
-          poll({ url, data }, delay, retries - 1)
+          poll({ url, data, errorPrefix }, delay, retries - 1)
         }, delay)
       })
   }).catch((err) => {
-    const message = `Loading Embed UI failed: ${err}`
+    const message = `${errorPrefix}
+=> ${err}`
     console.warn(message, data)
   })

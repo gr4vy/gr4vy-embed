@@ -132,7 +132,15 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   config.element.append(overlay, loader, frame)
 
   // Set up polling to check if the iframe source was loaded correctly.
-  poll({ url: config.iframeSrc, data: config }, 3000)
+  poll(
+    {
+      url: config.iframeSrc,
+      data: config,
+      errorPrefix:
+        'Loading Embed UI failed, please check that the gr4vyId and environment values are correct.',
+    },
+    3000
+  )
 
   const messageEvents: Partial<
     Record<Message['type'], (data: Message['data']) => void>
