@@ -20,7 +20,6 @@ import {
   createDispatch,
   removeChildren,
   filterByType,
-  poll,
 } from './utils'
 import { validate } from './validation'
 
@@ -131,13 +130,13 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
 
-  // Set up polling to check if the iframe source was loaded correctly.
-  poll({
-    url: config.iframeSrc,
-    data: config,
-    errorPrefix:
-      'Loading Embed UI failed, please check that the gr4vyId and environment values are correct.',
-  })
+  // If the iframe failed to load or it took too much time, log a warning.
+  // This won't be displayed if the timer is cleared in frameReady.
+  const frameLoadWarn = setTimeout(() => {
+    console.warn(
+      'Loading Embed UI failed or took too long. Please check that the `gr4vyId` and `environment` values are correct.'
+    )
+  }, 3000)
 
   const messageEvents: Partial<
     Record<Message['type'], (data: Message['data']) => void>
@@ -156,15 +155,17 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     appleAbortSession: subjectManager.appleAbortSession$.next,
     googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
     googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
-    frameReady: () =>
-      dispatch({
+    frameReady: () => {
+      clearTimeout(frameLoadWarn)
+      return dispatch({
         type: 'updateOptions',
         data: {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
           supportedGooglePayVersion: 1,
         },
-      }),
+      })
+    },
     paymentMethodSelected: subjectManager.selectedOption$.next,
   }
 
