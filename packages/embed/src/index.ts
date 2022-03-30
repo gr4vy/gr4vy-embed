@@ -16,6 +16,7 @@ import {
   mutableRef,
   pick,
   log,
+  warn,
   createMessageHandler,
   createDispatch,
   removeChildren,
@@ -133,8 +134,10 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   // If the iframe failed to load or it took too much time, log a warning.
   // This won't be displayed if the timer is cleared in frameReady.
   const frameLoadWarn = setTimeout(() => {
-    console.warn(
-      'Loading Embed UI failed or took too long. Please check that the `gr4vyId` and `environment` values are correct.'
+    warn(
+      'Loading Embed UI failed or took too long. Please check that the `gr4vyId` and `environment` values are correct.',
+      setupConfig,
+      { debug: true }
     )
   }, 3000)
 
@@ -173,14 +176,14 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     config.iframeUrl,
     config.channel,
     frame.contentWindow,
-    (message) => log(`Page emits`, message, config.debug)
+    (message) => log(`Page emits`, message, { debug: config.debug })
   )
 
   const messageHandler = createMessageHandler<Message>(
     config.iframeUrl,
     config.channel,
     (message) => {
-      log(`Page received`, message, config.debug)
+      log(`Page received`, message, { debug: config.debug })
       if (
         [
           'formUpdate',
