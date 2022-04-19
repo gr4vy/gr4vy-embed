@@ -1,4 +1,4 @@
-export const hostToUrl = (host: string, secure: boolean = true): string => {
+export const hostToUrl = (host: string, secure = true): string => {
   // default to a https host
   const url = new URL(`https://${host}`)
 
