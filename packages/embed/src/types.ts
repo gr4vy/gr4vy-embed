@@ -29,6 +29,7 @@ export type Config = {
   paymentSource?: 'installment' | 'recurring'
   cartItems?: Array<CartItem>
   statementDescriptor?: StatementDescriptor
+  secure?: boolean
 }
 
 export type CustomOption = {
@@ -60,6 +61,7 @@ export type SetupConfig = Omit<
   apiHost?: string
   element: string | HTMLElement | Element
   form: string | HTMLElement | Element
+  secure?: boolean
 }
 
 type BorderWidth = 'none' | 'thin' | 'thick' // maps to 0, 1, 2
