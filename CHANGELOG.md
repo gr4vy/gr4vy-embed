@@ -1,3 +1,38 @@
+# v2.9.0 (Fri Apr 01 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - task: add logging for when the gr4vyId is incorrect [#74](https://github.com/gr4vy/gr4vy-embed/pull/74) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- Deployment -  invalidate cache on shared lb only [#71](https://github.com/gr4vy/gr4vy-embed/pull/71) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### ⚠️ Pushed to `main`
+
+- fix deploy-env.yaml variable assignment ([@andrewmackett](https://github.com/andrewmackett))
+- invalidate cache for new gr4vy instances ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- Deploy during shared LB migration [PE-128] [#70](https://github.com/gr4vy/gr4vy-embed/pull/70) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - feat: explicitly log authentication errors as warnings [#72](https://github.com/gr4vy/gr4vy-embed/pull/72) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 📝 Documentation
+
+- `@gr4vy/embed`
+  - Reference environment var [#75](https://github.com/gr4vy/gr4vy-embed/pull/75) ([@steve-gr4vy](https://github.com/steve-gr4vy))
+
+#### Authors: 3
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- Steve Nester ([@steve-gr4vy](https://github.com/steve-gr4vy))
+
+---
+
 # v2.8.2 (Wed Mar 09 2022)
 
 #### 🐛 Bug Fix
