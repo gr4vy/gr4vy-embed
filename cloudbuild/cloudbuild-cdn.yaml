@@ -79,42 +79,55 @@ steps:
         '--no-clobber',
       ]
 
-  - id: 'deploy to spider-sandbox'
-    name: 'curlimages/curl:latest'
-    entrypoint: ash
+  - id: verify github checks completed successfully
+    name: 'gcr.io/${PROJECT_ID}/github-checks:1.0'
+    args:
+      - '--repo=${REPO_NAME}'
+      - '--ref=${COMMIT_SHA}'
+      - '--ignore=${TRIGGER_NAME} (${PROJECT_ID})'
+    secretEnv:
+      - GITHUB_TOKEN
+
+  - id: 'deploy to sandbox environments'
+    name: 'docker:20.10.5'
+    entrypoint: 'ash'
     secretEnv:
       - GITHUB_TOKEN
     args:
       - '-c'
       - |
+        # backslash-escape any non-delimiter whitespace and all other characters that
+        # have special meaning to the shell, e.g. globs, parenthesis, ampersands, etc.
+        INSTANCES='${_GR4VY_INSTANCES}'
+
         if [ "${BRANCH_NAME}" = "main" ]; then
-          echo "Triggering deploy of main branch to spider-sandbox..."
-          curl \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token $$GITHUB_TOKEN" \
-            -d '{"ref":"${COMMIT_SHA}","environment":"spider-sandbox","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
-            https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
+          for instance in $${INSTANCES}; do
+            echo "Triggering deploy of main branch to $${instance}-sandbox..."
+            docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest --id $${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+          done
         else
-          echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-sandbox."
+          echo "This is the ${BRANCH_NAME} branch. Not deploying to sandbox environments."
         fi;
 
-  - id: 'deploy to spider-production'
-    name: 'curlimages/curl:latest'
-    entrypoint: ash
+  - id: 'deploy to production environments'
+    name: 'docker:20.10.5'
+    entrypoint: 'ash'
     secretEnv:
       - GITHUB_TOKEN
     args:
       - '-c'
       - |
+        # backslash-escape any non-delimiter whitespace and all other characters that
+        # have special meaning to the shell, e.g. globs, parenthesis, ampersands, etc.
+        INSTANCES='${_GR4VY_INSTANCES}'
+
         if [ "${BRANCH_NAME}" = "main" ]; then
-          echo "Triggering deploy of main branch to spider-production..."
-          curl \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token $$GITHUB_TOKEN" \
-            -d '{"ref":"${COMMIT_SHA}","environment":"spider-production","auto_merge":false,"required_contexts":[],"payload":{"substitutions":{"region":"us-central1"},"config_path":"cloudbuild/deploy-env.yaml"}}' \
-            https://api.github.com/repos/gr4vy/${REPO_NAME}/deployments
+          for instance in $${INSTANCES}; do
+            echo "Triggering deploy of main branch to $${instance}-production..."
+            docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest --id $${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+          done
         else
-          echo "This is the ${BRANCH_NAME} branch. Not deploying to spider-production."
+          echo "This is the ${BRANCH_NAME} branch. Not deploying to production environments."
         fi;
 
 substitutions:
@@ -122,6 +135,7 @@ substitutions:
   _ARTIFACT_STORAGE_BUCKET: ''
   _CACHE_BUCKET: ''
   _GITHUB_TOKEN_LOCATION: ''
+  _GR4VY_INSTANCES: ''
 
 availableSecrets:
   secretManager:
