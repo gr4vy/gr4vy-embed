@@ -200,8 +200,9 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   const approvalMessageHandler = createMessageHandler(
     config.iframeUrl,
     config.channel,
-    filterByType(['approvalErrored', 'transactionUpdated'], (message) =>
-      frame.contentWindow.postMessage(message, config.iframeUrl)
+    filterByType(
+      ['approvalErrored', 'transactionUpdated', 'approvalCancelled'],
+      (message) => frame.contentWindow.postMessage(message, config.iframeUrl)
     )
   )
 
