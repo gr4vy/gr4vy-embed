@@ -56,6 +56,7 @@
 .gr4vy__frame {
   height: 100vh;
   width: 100vw;
+  background-color: white;
 }
 
 @media screen and (min-width: 500px) and (min-height: 350px) {

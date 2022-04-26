@@ -29,6 +29,7 @@ export type Config = {
   paymentSource?: 'installment' | 'recurring'
   cartItems?: Array<CartItem>
   statementDescriptor?: StatementDescriptor
+  forcePopups?: boolean
 }
 
 export type CustomOption = {

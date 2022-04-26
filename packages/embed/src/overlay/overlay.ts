@@ -62,6 +62,7 @@ export const createOverlayController = (
         frameborder="0"
         class="gr4vy__frame"
         allowtransparency="true"
+        sandbox="allow-scripts allow-same-origin allow-forms"
       ></iframe>
     `
   }
