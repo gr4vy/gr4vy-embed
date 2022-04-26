@@ -47,7 +47,7 @@ export const optionKeys = [
   'paymentSource',
   'cartItems',
   'statementDescriptor',
-  'forcePopups'
+  'forcePopups',
 ]
 
 // Map of cleanup callbacks
