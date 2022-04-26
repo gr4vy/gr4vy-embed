@@ -1,7 +1,26 @@
-export const log = (key: string, object: any, debug: boolean) => {
+type Options = {
+  debug?: boolean
+  level?: 'log' | 'warn'
+}
+
+const defaultOptions: Options = {
+  debug: false,
+  level: 'log',
+}
+
+export const log = (
+  key: string,
+  object: any,
+  options: Options = defaultOptions
+) => {
+  const { debug, level } = { ...defaultOptions, ...options }
   // ignore if debugging is disabled
   if (!debug) {
     return
   }
-  console.log(`Gr4vy - ${key}`, object)
+  console[level](`Gr4vy - ${key}`, object)
+}
+
+export const warn = (key: string, object: any, options: Options) => {
+  log(key, object, { ...options, level: 'warn' })
 }

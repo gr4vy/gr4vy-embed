@@ -1,3 +1,24 @@
+# v2.9.0 (Fri Apr 01 2022)
+
+#### 🚀 Enhancement
+
+- task: add logging for when the gr4vyId is incorrect [#74](https://github.com/gr4vy/gr4vy-embed/pull/74) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- feat: explicitly log authentication errors as warnings [#72](https://github.com/gr4vy/gr4vy-embed/pull/72) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 📝 Documentation
+
+- Reference environment var [#75](https://github.com/gr4vy/gr4vy-embed/pull/75) ([@steve-gr4vy](https://github.com/steve-gr4vy))
+
+#### Authors: 2
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- Steve Nester ([@steve-gr4vy](https://github.com/steve-gr4vy))
+
+---
+
 # v2.8.2 (Wed Mar 09 2022)
 
 #### 🐛 Bug Fix

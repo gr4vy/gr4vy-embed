@@ -16,6 +16,7 @@ import {
   mutableRef,
   pick,
   log,
+  warn,
   createMessageHandler,
   createDispatch,
   removeChildren,
@@ -28,6 +29,7 @@ export const optionKeys = [
   'currency',
   'intent',
   'apiHost',
+  'gr4vyId',
   'token',
   'debug',
   'externalIdentifier',
@@ -129,6 +131,16 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
 
+  // If the iframe failed to load or it took too much time, log a warning.
+  // This won't be displayed if the timer is cleared in frameReady.
+  const frameLoadWarn = setTimeout(() => {
+    warn(
+      'Loading Embed UI failed or took too long. Please check that the `gr4vyId` and `environment` values are correct.',
+      setupConfig,
+      { debug: true }
+    )
+  }, 3000)
+
   const messageEvents: Partial<
     Record<Message['type'], (data: Message['data']) => void>
   > = {
@@ -146,15 +158,17 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     appleAbortSession: subjectManager.appleAbortSession$.next,
     googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
     googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
-    frameReady: () =>
-      dispatch({
+    frameReady: () => {
+      clearTimeout(frameLoadWarn)
+      return dispatch({
         type: 'updateOptions',
         data: {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
           supportedGooglePayVersion: 1,
         },
-      }),
+      })
+    },
     paymentMethodSelected: subjectManager.selectedOption$.next,
   }
 
@@ -162,14 +176,14 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     config.iframeUrl,
     config.channel,
     frame.contentWindow,
-    (message) => log(`Page emits`, message, config.debug)
+    (message) => log(`Page emits`, message, { debug: config.debug })
   )
 
   const messageHandler = createMessageHandler<Message>(
     config.iframeUrl,
     config.channel,
     (message) => {
-      log(`Page received`, message, config.debug)
+      log(`Page received`, message, { debug: config.debug })
       if (
         [
           'formUpdate',
