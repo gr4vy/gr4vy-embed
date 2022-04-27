@@ -1,3 +1,18 @@
+# v2.9.1 (Wed Apr 27 2022)
+
+#### 🐛 Bug Fix
+
+- chore: upgrade async 2.6.4 [#77](https://github.com/gr4vy/gr4vy-embed/pull/77) ([@gryevns](https://github.com/gryevns))
+- `@gr4vy/embed`
+  - fix: pass-through approval cancelled event [#79](https://github.com/gr4vy/gr4vy-embed/pull/79) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.9.0 (Fri Apr 01 2022)
 
 #### 🚀 Enhancement
