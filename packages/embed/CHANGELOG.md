@@ -1,3 +1,15 @@
+# v2.9.1 (Wed Apr 27 2022)
+
+#### 🐛 Bug Fix
+
+- fix: pass-through approval cancelled event [#79](https://github.com/gr4vy/gr4vy-embed/pull/79) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.9.0 (Fri Apr 01 2022)
 
 #### 🚀 Enhancement
