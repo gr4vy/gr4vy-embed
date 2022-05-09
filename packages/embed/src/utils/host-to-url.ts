@@ -1,9 +1,8 @@
-export const hostToUrl = (host: string): string => {
+export const hostToUrl = (host: string, secure = true): string => {
   // default to a https host
   const url = new URL(`https://${host}`)
 
-  // switch the scheme to http only for localhost
-  if ([`localhost`, `127.0.0.1`].includes(url.hostname)) {
+  if (!secure) {
     url.protocol = `http`
   }
 
