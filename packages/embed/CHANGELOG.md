@@ -1,3 +1,23 @@
+# v2.10.0 (Mon May 09 2022)
+
+### Release Notes
+
+#### chore: local development via http ([#76](https://github.com/gr4vy/gr4vy-embed/pull/76))
+
+Updates handling of `iframeHost` and `apiHost` so that both use `https` by default. If you wish to use `http` instead you should pass a new prop `secure={false}` to embed.
+
+---
+
+#### 🚀 Enhancement
+
+- chore: local development via http [#76](https://github.com/gr4vy/gr4vy-embed/pull/76) ([@gryevns](https://github.com/gryevns))
+
+#### Authors: 1
+
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.9.1 (Wed Apr 27 2022)
 
 #### 🐛 Bug Fix
