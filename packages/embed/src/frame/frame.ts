@@ -22,6 +22,9 @@ export const createFrameController = (
   // feature policy (for Google Pay support)
   frame.setAttribute('allowpaymentrequest', 'true')
 
+  // security
+  frame.setAttribute('sandbox', 'allow-forms allow-same-origin allow-scripts')
+
   subject.frameHeight$.subscribe((height) => {
     if (frame.style.visibility === 'unset') {
       frame.style.height = `${height}px`
