@@ -13,7 +13,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
   const apiHost = gr4vyId
     ? `api.${environmentPrefix}${gr4vyId}.gr4vy.app`
     : setupConfig.apiHost
-  const iframeUrl = hostToUrl(iframeHost)
+  const iframeUrl = hostToUrl(iframeHost, setupConfig.secure)
 
   const form = !(setupConfig.form instanceof Element)
     ? document.querySelector(setupConfig.form)
@@ -27,7 +27,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     store: 'ask',
     display: 'all',
     apiHost,
-    apiUrl: hostToUrl(apiHost),
+    apiUrl: hostToUrl(apiHost, setupConfig.secure),
     gr4vyId,
     iframeHost,
     iframeUrl,

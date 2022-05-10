@@ -77,4 +77,5 @@ setup({
       <p>Payment Method ID: ${transaction.paymentMethod.id}</p>
       `
   },
+  secure: false,
 })

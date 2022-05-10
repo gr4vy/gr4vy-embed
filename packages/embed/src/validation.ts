@@ -394,4 +394,11 @@ export const validate = (options: SetupConfig) =>
     type: 'object',
     message: 'must be an object',
     required: false,
+  }) &&
+  validateType({
+    argument: 'secure',
+    value: options.secure,
+    type: 'boolean',
+    message: 'must be a boolean',
+    required: false,
   })
