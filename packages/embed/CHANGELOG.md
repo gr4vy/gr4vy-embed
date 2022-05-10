@@ -1,3 +1,15 @@
+# v2.11.0 (Tue May 10 2022)
+
+#### 🚀 Enhancement
+
+- task: add iframe content restrictions [#81](https://github.com/gr4vy/gr4vy-embed/pull/81) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.10.0 (Mon May 09 2022)
 
 ### Release Notes
