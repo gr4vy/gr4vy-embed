@@ -73,7 +73,7 @@ steps:
     name: gcr.io/${PROJECT_ID}/save_cache
     args:
       [
-        '--bucket=gs://${_CACHE_BUCKET}/',
+        '--bucket=gs://${_CACHE_BUCKET}',
         '--key=node_modules-$( checksum yarn.lock )',
         '--path=node_modules',
         '--no-clobber',
