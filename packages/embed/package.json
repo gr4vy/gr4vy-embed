@@ -1,6 +1,6 @@
 {
   "name": "@gr4vy/embed",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "description": "Embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
   "main": "lib/index",
   "types": "lib/index",
