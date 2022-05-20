@@ -14,7 +14,11 @@ describe('pick', () => {
       foo: 'bar',
       bar: undefined,
       baz: null,
+      bop: 0,
     }
-    expect(pick(options, ['foo', 'bar', 'baz'])).toEqual({ foo: 'bar' })
+    expect(pick(options, ['foo', 'bar', 'baz', 'bop'])).toEqual({
+      foo: 'bar',
+      bop: 0,
+    })
   })
 })
