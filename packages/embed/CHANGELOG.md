@@ -1,3 +1,15 @@
+# v2.11.1 (Fri May 20 2022)
+
+#### 🐛 Bug Fix
+
+- Fix pick function [#83](https://github.com/gr4vy/gr4vy-embed/pull/83) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.0 (Tue May 10 2022)
 
 #### 🚀 Enhancement
