@@ -21,6 +21,7 @@ import {
   createDispatch,
   removeChildren,
   filterByType,
+  setVersion,
 } from './utils'
 import { validate } from './validation'
 
@@ -158,7 +159,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     appleAbortSession: subjectManager.appleAbortSession$.next,
     googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
     googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
-    frameReady: () => {
+    frameReady: ({ version }) => {
+      setVersion('embed-ui', version || '-')
       clearTimeout(frameLoadWarn)
       return dispatch({
         type: 'updateOptions',
@@ -243,12 +245,14 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   window.addEventListener('message', messageHandler)
   window.addEventListener('message', apiMessageHandler)
   window.addEventListener('message', approvalMessageHandler)
+  setVersion('embed')
 
   // Cleanup
   cleanup.set(embedId.toString(), () => {
     window.removeEventListener('message', messageHandler)
     window.removeEventListener('message', apiMessageHandler)
     window.removeEventListener('message', approvalMessageHandler)
+    delete window.gr4vy
   })
 
   return {
