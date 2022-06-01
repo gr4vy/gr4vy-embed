@@ -20,3 +20,6 @@ CVE-2022-24773
 
 # node-fetch - Dev Dependency
 CVE-2022-0235
+
+# eventsource - Dev Dependency (Webpack dev server)
+CVE-2022-1650 
