@@ -4,4 +4,4 @@ const { Crypto } = require('@peculiar/webcrypto')
 global.crypto = new Crypto()
 global.msCrypto = new Crypto()
 
-PACKAGE_VERSION = require('./package.json').version
+PACKAGE_VERSION = JSON.stringify(process.env.npm_package_version)

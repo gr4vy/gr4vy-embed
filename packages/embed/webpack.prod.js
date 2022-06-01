@@ -40,7 +40,7 @@ module.exports = {
   entry: path.resolve('./src'),
   plugins: [
     new DefinePlugin({
-      PACKAGE_VERSION: `'${require('./package.json').version}'`,
+      PACKAGE_VERSION: JSON.stringify(process.env.npm_package_version),
     }),
   ],
 }
