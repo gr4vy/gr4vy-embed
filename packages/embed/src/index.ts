@@ -159,8 +159,10 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     appleAbortSession: subjectManager.appleAbortSession$.next,
     googlePaySessionStarted: subjectManager.googlePaySessionStarted$.next,
     googlePaySessionCompleted: subjectManager.googlePaySessionCompleted$.next,
-    frameReady: ({ version }) => {
-      setVersion('embed-ui', version || '-')
+    frameReady: ({ version } = {}) => {
+      if (version) {
+        setVersion('embed-ui', version)
+      }
       clearTimeout(frameLoadWarn)
       return dispatch({
         type: 'updateOptions',
