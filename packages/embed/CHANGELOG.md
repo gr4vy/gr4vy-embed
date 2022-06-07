@@ -1,3 +1,15 @@
+# v2.11.2 (Tue Jun 07 2022)
+
+#### 🏠 Internal
+
+- task: Make it easier to understand loaded Embed/Embed UI [#84](https://github.com/gr4vy/gr4vy-embed/pull/84) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.1 (Fri May 20 2022)
 
 #### 🐛 Bug Fix
