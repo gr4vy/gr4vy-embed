@@ -1,3 +1,16 @@
+# v2.11.3 (Tue Jun 07 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Fix window.gr4vy.version declaration [#86](https://github.com/gr4vy/gr4vy-embed/pull/86) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.2 (Tue Jun 07 2022)
 
 #### 🏠 Internal
