@@ -3,6 +3,9 @@ import { mutableRef } from '../utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 
+const DEFAULT_POPUP_WIDTH = 500
+const DEFAULT_POPUP_HEIGHT = 589
+
 export const createPopupController = (
   popup = mutableRef<{ popup: Window; stopCallback: () => void }>(),
   subject: SubjectManager
@@ -10,7 +13,10 @@ export const createPopupController = (
   subject.approvalStarted$.subscribe(() => {
     if (subject.mode$.value()?.popup) {
       popup.current = openPopup(
-        popupFeatures(500, 589),
+        popupFeatures(
+          subject.mode$.value().popup.width || DEFAULT_POPUP_WIDTH,
+          subject.mode$.value().popup.height || DEFAULT_POPUP_HEIGHT
+        ),
         redirectDocument(subject.mode$.value().popup),
         () => subject.approvalCancelled$.next()
       )

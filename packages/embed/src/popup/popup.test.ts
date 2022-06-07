@@ -1,7 +1,7 @@
 import { createSubjectManager } from '../subjects'
 import { mutableRef } from '../utils'
 import { createPopupController } from './popup'
-import { openPopup, redirectPopup } from './redirect-popup'
+import { openPopup, redirectPopup, popupFeatures } from './redirect-popup'
 
 jest.mock('./redirect-popup')
 
@@ -15,12 +15,16 @@ describe('registerSubscriptions', () => {
   beforeEach(() => {
     // reset mocks
     ;(openPopup as jest.Mock).mockReset()
+    ;(popupFeatures as jest.Mock).mockReset()
 
     subject = createSubjectManager()
 
     // setup
     popup.current = null
     createPopupController(popup, subject)
+    ;(popupFeatures as jest.Mock).mockImplementation(
+      (width, height) => `width=${width},height=${height}`
+    )
   })
 
   test('opens a popup when a transaction requires approval', () => {
@@ -38,6 +42,48 @@ describe('registerSubscriptions', () => {
     jest.runAllTimers()
 
     expect(openPopup).toHaveBeenCalled()
+    expect(popup.current).toEqual(mockPopup)
+  })
+
+  test('opens a popup with custom dimensions', () => {
+    const mockPopup = jest.fn()
+
+    ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+        height: 34,
+        width: 52,
+      },
+    })
+    subject.approvalStarted$.next()
+
+    jest.runAllTimers()
+
+    expect((openPopup as jest.Mock).mock.calls[0][0]).toEqual(
+      'width=52,height=34'
+    )
+    expect(popup.current).toEqual(mockPopup)
+  })
+
+  test('opens a popup with default dimensions', () => {
+    const mockPopup = jest.fn()
+
+    ;(openPopup as jest.Mock).mockReturnValue(mockPopup)
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+    })
+    subject.approvalStarted$.next()
+
+    jest.runAllTimers()
+
+    expect((openPopup as jest.Mock).mock.calls[0][0]).toEqual(
+      'width=500,height=589'
+    )
     expect(popup.current).toEqual(mockPopup)
   })
 
