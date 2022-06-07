@@ -1,3 +1,16 @@
+# v2.11.4 (Tue Jun 07 2022)
+
+#### 🏠 Internal
+
+- `@gr4vy/embed`
+  - fix: embed version doesn't display anymore [#87](https://github.com/gr4vy/gr4vy-embed/pull/87) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.3 (Tue Jun 07 2022)
 
 #### 🐛 Bug Fix
