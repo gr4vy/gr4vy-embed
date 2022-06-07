@@ -15,5 +15,9 @@ export const setVersion = (pkg: Package, ver = PACKAGE_VERSION) => {
     window.gr4vy = { version: {} }
   }
 
-  window.gr4vy.version = { [pkg]: ver }
+  if (!window.gr4vy.version) {
+    window.gr4vy.version = {}
+  }
+
+  window.gr4vy.version[pkg] = ver
 }
