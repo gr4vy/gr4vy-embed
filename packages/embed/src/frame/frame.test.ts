@@ -25,7 +25,7 @@ describe('createFrameController', () => {
     expect(frameElement.getAttribute('frameBorder')).toEqual('0')
     expect(frameElement.getAttribute('scrolling')).toEqual('no')
     expect(frameElement.getAttribute('sandbox')).toEqual(
-      'allow-forms allow-same-origin allow-scripts'
+      'allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
     )
   })
 
