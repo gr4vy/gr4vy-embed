@@ -11,11 +11,12 @@ export const createPopupController = (
   subject: SubjectManager
 ) => {
   subject.approvalStarted$.subscribe(() => {
-    if (subject.mode$.value()?.popup) {
+    const mode = subject.mode$.value()
+    if (mode?.popup) {
       popup.current = openPopup(
         popupFeatures(
-          subject.mode$.value().popup.width || DEFAULT_POPUP_WIDTH,
-          subject.mode$.value().popup.height || DEFAULT_POPUP_HEIGHT
+          mode.popup?.width || DEFAULT_POPUP_WIDTH,
+          mode.popup?.height || DEFAULT_POPUP_HEIGHT
         ),
         redirectDocument(subject.mode$.value().popup),
         () => subject.approvalCancelled$.next()
