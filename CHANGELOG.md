@@ -1,3 +1,16 @@
+# v2.11.5 (Thu Jun 09 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - Add allow-popups and allow-top-navigation to sandboxed iframe [#89](https://github.com/gr4vy/gr4vy-embed/pull/89) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.4 (Tue Jun 07 2022)
 
 #### 🏠 Internal

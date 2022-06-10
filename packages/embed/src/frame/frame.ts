@@ -23,7 +23,10 @@ export const createFrameController = (
   frame.setAttribute('allowpaymentrequest', 'true')
 
   // security
-  frame.setAttribute('sandbox', 'allow-forms allow-same-origin allow-scripts')
+  frame.setAttribute(
+    'sandbox',
+    'allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
+  )
 
   subject.frameHeight$.subscribe((height) => {
     if (frame.style.visibility === 'unset') {
