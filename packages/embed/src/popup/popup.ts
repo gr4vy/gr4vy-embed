@@ -3,14 +3,21 @@ import { mutableRef } from '../utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 
+const DEFAULT_POPUP_WIDTH = 500
+const DEFAULT_POPUP_HEIGHT = 589
+
 export const createPopupController = (
   popup = mutableRef<{ popup: Window; stopCallback: () => void }>(),
   subject: SubjectManager
 ) => {
   subject.approvalStarted$.subscribe(() => {
-    if (subject.mode$.value()?.popup) {
+    const mode = subject.mode$.value()
+    if (mode?.popup) {
       popup.current = openPopup(
-        popupFeatures(500, 589),
+        popupFeatures(
+          mode.popup?.width || DEFAULT_POPUP_WIDTH,
+          mode.popup?.height || DEFAULT_POPUP_HEIGHT
+        ),
         redirectDocument(subject.mode$.value().popup),
         () => subject.approvalCancelled$.next()
       )

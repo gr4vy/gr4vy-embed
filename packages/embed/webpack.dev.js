@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { DefinePlugin } = require('webpack')
 
 module.exports = {
   mode: 'development',
@@ -48,6 +49,9 @@ module.exports = {
     new Dotenv({ path: '../../.env' }),
     new HtmlWebpackPlugin({
       title: 'Gr4vy - Embed',
+    }),
+    new DefinePlugin({
+      PACKAGE_VERSION: JSON.stringify(process.env.npm_package_version),
     }),
   ],
 }

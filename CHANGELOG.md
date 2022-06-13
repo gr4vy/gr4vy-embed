@@ -1,3 +1,24 @@
+# v2.11.6 (Fri Jun 10 2022)
+
+### Release Notes
+
+#### add approval ui dimensions ([#88](https://github.com/gr4vy/gr4vy-embed/pull/88))
+
+Adds the capability for popup redirects to have a custom size set by individual payment processors.
+
+---
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - add approval ui dimensions [#88](https://github.com/gr4vy/gr4vy-embed/pull/88) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.11.5 (Thu Jun 09 2022)
 
 #### 🐛 Bug Fix
