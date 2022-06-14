@@ -11,7 +11,7 @@ Fixes # (issue)
 - [ ] I have run `yarn lint` to make sure my changes pass all tests
 - [ ] I have run `yarn test` to make sure my changes pass all linters
 - [ ] I have pulled the latest changes from the upstream `main` branch
-- [ ] I have tested both the react and the cnd versions, locally and on spider
+- [ ] I have tested both the react and the CDN versions on local and integration environments
 - [ ] I have added the necessary labels to this PR in case a new release needs to be published after merging into `main` (e.g. `release` and `patch`)
 
 ## Contribution guidelines
