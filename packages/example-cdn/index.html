@@ -14,6 +14,13 @@
     </form>
 
     <script>
+      const href = new URL(document.location.href)
+      let params = {}
+
+      if (href.searchParams.has('options')) {
+        params = JSON.parse(atob(href.searchParams.get('options')))
+      }
+
       gr4vy.setup({
         element: '.container',
         form: '#cardform',
@@ -22,6 +29,7 @@
         country: 'US',
         gr4vyId: 'demo',
         token: '123456',
+        ...params,
       })
     </script>
   </body>
