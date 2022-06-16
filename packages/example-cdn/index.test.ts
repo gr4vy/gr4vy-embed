@@ -69,46 +69,16 @@ test('embed is able to load on the page', async ({ page }) => {
 })
 
 const dataset = [
-  ['country', 'GB', 'GB', null],
-  ['currency', 'SEK', 'SEK', null],
-  [
-    'currency',
-    323,
-    null,
-    'Gr4vy - Error {code: argumentError, argument: currency, message: 323 must be a valid currency format}',
-  ],
-  [
-    'gr4vyId',
-    null,
-    null,
-    'Gr4vy - Error {code: argumentError, argument: gr4vyId, message: null must be a valid gr4vyId or iframeHost/apiHost}',
-  ],
-  [
-    'country',
-    null,
-    null,
-    'Gr4vy - Error {code: argumentError, argument: country, message: null must be a string ISO country code}',
-  ],
-  ['amount', 0, 0, null],
-  ['amount', 100, 100, null],
-  [
-    'amount',
-    -1,
-    null,
-    'Gr4vy - Error {code: argumentError, argument: amount, message: -1 must be valid non-negative number}',
-  ],
-  [
-    'amount',
-    99999999999,
-    null,
-    'Gr4vy - Error {code: argumentError, argument: amount, message: 99999999999 must be valid non-negative number}',
-  ],
+  ['country', 'GB'],
+  ['currency', 'SEK'],
+  ['amount', 0, null],
+  ['amount', 100, null],
 ]
 
-dataset.forEach(([key, value, expected, error]) => {
-  test(`should ${
-    error ? 'raise an error' : `pass '${expected}' to embed ui`
-  } when option '${key}' is '${value}'`, async ({ page }) => {
+dataset.forEach(([key, value]) => {
+  test(`should pass option '${key}' with value '${value}' to embed ui`, async ({
+    page,
+  }) => {
     // arrange
     const errors = []
     page.on('console', async (msg) => {
@@ -124,10 +94,6 @@ dataset.forEach(([key, value, expected, error]) => {
 
     // assert
     const iframe = page.frameLocator('iframe').locator('body')
-    if (!error) {
-      await expect(JSON.parse(await iframe.innerText())[key]).toBe(expected)
-    } else {
-      await expect(errors).toEqual([error])
-    }
+    await expect(JSON.parse(await iframe.innerText())[key]).toBe(value)
   })
 })
