@@ -24,7 +24,7 @@ test('embed is able to load on the page', async ({ page }) => {
            * to start receiving messages.
            */
           window.parent.postMessage(
-            { type: 'frameReady', channel },
+            { type: 'frameReady', channel, data: { version: 123 } },
             parentOrigin
           )
 
