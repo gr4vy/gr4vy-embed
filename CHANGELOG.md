@@ -1,3 +1,26 @@
+# v2.11.7 (Fri Jul 08 2022)
+
+#### 🐛 Bug Fix
+
+- Create PULL_REQUEST_TEMPLATE.md [#91](https://github.com/gr4vy/gr4vy-embed/pull/91) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - add moto as a payment source [#96](https://github.com/gr4vy/gr4vy-embed/pull/96) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- test: add test for embed cdn [#92](https://github.com/gr4vy/gr4vy-embed/pull/92) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🧪 Tests
+
+- test: add tests for checking options are correctly passed to embed ui [#93](https://github.com/gr4vy/gr4vy-embed/pull/93) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.11.6 (Fri Jun 10 2022)
 
 ### Release Notes
