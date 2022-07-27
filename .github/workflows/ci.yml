@@ -47,7 +47,8 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
-          echo "::set-output name=auto-version::$(yarn auto shipit --dry-run --quiet)\n"
+          yarn auto shipit --dry-run
+          echo "::set-output name=auto-version::$(yarn auto shipit --dry-run)\n"
         shell: bash
 
       - name: Result
