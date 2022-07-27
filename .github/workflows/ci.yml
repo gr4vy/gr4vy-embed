@@ -63,7 +63,8 @@ jobs:
           git add VERSION
           git commit -m "Updated version"
           echo ${BRANCH_NAME}
-          git push -f origin HEAD:test/auto-version
+          echo ${GITHUB_HEAD_REF}
+          git push -f origin HEAD:$GITHUB_HEAD_REF
 
   test:
     runs-on: ubuntu-latest
