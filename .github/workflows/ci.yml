@@ -39,6 +39,7 @@ jobs:
           git config user.email "<>"
 
       - name: Get Version
+        id: get_version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
         run: |
@@ -46,7 +47,13 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
+          ::set-output name=yarn-version::$(yarn version)\n
           yarn version
+
+      - name: Result
+        run: |
+          echo 'asd'
+          echo ${{ steps.get_version.outputs.yarn-version }}
 
   test:
     runs-on: ubuntu-latest
