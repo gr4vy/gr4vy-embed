@@ -33,6 +33,11 @@ jobs:
           restore-keys: |
             yarn-deps-${{ hashFiles('yarn.lock') }}
 
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
       - name: Get Version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
