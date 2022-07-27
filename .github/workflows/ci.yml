@@ -46,6 +46,8 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo -n $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) > VERSION
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
           git add VERSION
           git commit -m "Updated VERSION file [skip ci]"
           git push -f origin HEAD:$GITHUB_HEAD_REF
