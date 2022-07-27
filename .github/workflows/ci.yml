@@ -59,6 +59,9 @@ jobs:
           # echo auto-version value ${{ steps.get_version.outputs.auto-version }}
           # echo my-test value ${{ steps.get_version.outputs.my-test }}
           echo -n "${{ steps.get_version.outputs.my-test }}" > VERSION
+          git add VERSION
+          git commit -m "Updated version"
+          git push
 
   test:
     runs-on: ubuntu-latest

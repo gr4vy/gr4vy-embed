@@ -10,4 +10,3 @@ types
 packages/*/src/**/*.js
 .env
 .npmrc
-VERSION
