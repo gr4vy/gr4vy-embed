@@ -42,6 +42,7 @@ jobs:
         id: get_version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
