@@ -44,13 +44,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          echo "::set-output name=auto-version::$(yarn auto shipit -dq)\n"
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
-          yarn auto shipit --dry-run
           yarn auto shipit -dq
-          echo "::set-output name=auto-version::$(yarn auto shipit --dry-run)\n"
         shell: bash
 
       - name: Result
