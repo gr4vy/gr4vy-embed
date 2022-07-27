@@ -7,7 +7,53 @@ on:
     branches: [main]
 
 jobs:
+  version:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    strategy:
+      matrix:
+        node-version:
+          - 14.x
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: yarn-deps-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-deps-${{ hashFiles('yarn.lock') }}
+
+      - name: Get Version
+        id: get_version
+        run: |
+          yarn config set workspaces-experimental true
+          yarn install --frozen-lockfile
+          yarn bootstrap
+
+      - name: Update VERSION file
+        env:
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo -n $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) > VERSION
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add VERSION
+          git commit -m "Updated VERSION file [skip ci]"
+          git push -f origin HEAD:$GITHUB_HEAD_REF
+
   test:
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -127,6 +173,7 @@ jobs:
           yarn release
 
   scan:
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     timeout-minutes: 2
 
