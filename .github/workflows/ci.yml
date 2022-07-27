@@ -61,7 +61,7 @@ jobs:
           echo -n "${{ steps.get_version.outputs.my-test }}" > VERSION
           git add VERSION
           git commit -m "Updated version"
-          git push
+          git push origin HEAD:${GITHUB_REF##*/}
 
   test:
     runs-on: ubuntu-latest
