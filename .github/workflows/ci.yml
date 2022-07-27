@@ -54,8 +54,8 @@ jobs:
           echo "::set-output name=my-test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
         shell: bash
 
+      - uses: nelonoel/branch-name@v1.0.1
       - name: Update version file
-        uses: nelonoel/branch-name@v1.0.1
         run: |
           # echo auto-version value ${{ steps.get_version.outputs.auto-version }}
           # echo my-test value ${{ steps.get_version.outputs.my-test }}
