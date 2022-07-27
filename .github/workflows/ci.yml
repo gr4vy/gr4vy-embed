@@ -54,10 +54,11 @@ jobs:
           echo "::set-output name=my-test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
         shell: bash
 
-      - name: Result
+      - name: Update version file
         run: |
           # echo auto-version value ${{ steps.get_version.outputs.auto-version }}
-          echo my-test value ${{ steps.get_version.outputs.my-test }}
+          # echo my-test value ${{ steps.get_version.outputs.my-test }}
+          echo -n "${{ steps.get_version.outputs.my-test }}" > VERSION
 
   test:
     runs-on: ubuntu-latest
