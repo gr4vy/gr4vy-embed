@@ -49,7 +49,7 @@ jobs:
           yarn bootstrap
           git fetch --tags
           yarn auto shipit --dry-run
-          yarn auto shipit --dq
+          yarn auto shipit -dq
           echo "::set-output name=auto-version::$(yarn auto shipit --dry-run)\n"
         shell: bash
 
