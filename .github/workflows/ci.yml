@@ -55,13 +55,14 @@ jobs:
         shell: bash
 
       - name: Update version file
+        uses: nelonoel/branch-name@v1.0.1
         run: |
           # echo auto-version value ${{ steps.get_version.outputs.auto-version }}
           # echo my-test value ${{ steps.get_version.outputs.my-test }}
           echo -n "${{ steps.get_version.outputs.my-test }}" > VERSION
           git add VERSION
           git commit -m "Updated version"
-          git push origin HEAD:${GITHUB_REF##*/}
+          git push origin HEAD:${BRANCH_NAME}
 
   test:
     runs-on: ubuntu-latest
