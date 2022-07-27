@@ -34,6 +34,8 @@ jobs:
             yarn-deps-${{ hashFiles('yarn.lock') }}
 
       - name: Get Version
+        env:
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
