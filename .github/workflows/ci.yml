@@ -47,7 +47,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
-          echo "::set-output name=auto-version::$(yarn run auto version)\n"
+          echo "::set-output name=auto-version::$(echo 'whaaaa')\n"
 
       - name: Result
         run: |
