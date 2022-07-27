@@ -50,7 +50,7 @@ jobs:
 
       - name: Update version file
         run: |
-          echo -n $(GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) > VERSION
+          echo -n $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) > VERSION
           git add VERSION
           git commit -m "Updated version"
           git push -f origin HEAD:$GITHUB_HEAD_REF
