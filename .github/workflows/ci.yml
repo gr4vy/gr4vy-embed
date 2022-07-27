@@ -48,12 +48,9 @@ jobs:
           yarn bootstrap
           git fetch --tags
           echo "::set-output name=auto-version::$(yarn run auto version)\n"
-          echo "::set-output name=hi::$(echo "hi")\n"
 
       - name: Result
         run: |
-          echo 'asd'
-          echo message: ${{ steps.get_version.outputs.hi }}
           echo something ${{ steps.get_version.outputs.auto-version }} else
 
   test:
