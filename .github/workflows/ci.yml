@@ -62,7 +62,7 @@ jobs:
           echo -n "${{ steps.get_version.outputs.my-test }}" > VERSION
           git add VERSION
           git commit -m "Updated version"
-          git push origin HEAD:${BRANCH_NAME}
+          git push origin HEAD:test/auto-version
 
   test:
     runs-on: ubuntu-latest
