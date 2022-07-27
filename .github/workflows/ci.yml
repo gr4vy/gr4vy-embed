@@ -47,14 +47,14 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
-          echo "::set-output name=yarn-version::$(yarn auto version)\n"
+          echo "::set-output name=auto-version::$(yarn run auto version)\n"
           echo "::set-output name=hi::$(echo "hi")\n"
 
       - name: Result
         run: |
           echo 'asd'
           echo message: ${{ steps.get_version.outputs.hi }}
-          echo something ${{ steps.get_version.outputs.yarn-version }} else
+          echo something ${{ steps.get_version.outputs.auto-version }} else
 
   test:
     runs-on: ubuntu-latest
