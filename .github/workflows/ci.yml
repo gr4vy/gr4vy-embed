@@ -52,7 +52,7 @@ jobs:
 
       - name: Result
         run: |
-          echo something ${{ steps.get_version.outputs.auto-version }} else ${{ steps.get_version.outputs.auto-version.description }} - ${{ steps.get_version.outputs.auto-version }}
+          echo auto-version value ${{ steps.get_version.outputs.auto-version }}
 
   test:
     runs-on: ubuntu-latest
