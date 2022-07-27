@@ -7,135 +7,135 @@ on:
     branches: [main]
 
 jobs:
-  version:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
+  # version:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 2
 
-    strategy:
-      matrix:
-        node-version:
-          - 14.x
+  #   strategy:
+  #     matrix:
+  #       node-version:
+  #         - 14.x
 
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: node_modules
+  #         key: yarn-deps-${{ hashFiles('yarn.lock') }}
+  #         restore-keys: |
+  #           yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: setup git config
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+  #     - name: setup git config
+  #       run: |
+  #         git config user.name "GitHub Actions Bot"
+  #         git config user.email "<>"
 
-      - name: Get Version
-        id: get_version
-        env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-        run: |
-          yarn config set workspaces-experimental true
-          yarn install --frozen-lockfile
-          yarn bootstrap
-          git fetch --tags
-          echo "::set-output name=auto-version::$(yarn run auto version)\n"
-        shell: bash
+  #     - name: Get Version
+  #       id: get_version
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+  #       run: |
+  #         yarn config set workspaces-experimental true
+  #         yarn install --frozen-lockfile
+  #         yarn bootstrap
+  #         git fetch --tags
+  #         echo "::set-output name=auto-version::$(yarn run auto version)\n"
+  #       shell: bash
 
-      - name: Result
-        run: |
-          echo something ${{ steps.get_version.outputs.auto-version }} else ${{ steps.get_version.outputs.auto-version.description }} - ${{ steps.get_version.outputs.auto-version.value }}
+  #     - name: Result
+  #       run: |
+  #         echo something ${{ steps.get_version.outputs.auto-version }} else ${{ steps.get_version.outputs.auto-version.description }} - ${{ steps.get_version.outputs.auto-version.value }}
 
-  test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  # test:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
 
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: node_modules
+  #         key: yarn-deps-${{ hashFiles('yarn.lock') }}
+  #         restore-keys: |
+  #           yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: Lint the content
-        run: |
-          yarn config set workspaces-experimental true
-          yarn install --frozen-lockfile
-          yarn bootstrap
-          yarn build
-          yarn lint
-          yarn test
+  #     - name: Lint the content
+  #       run: |
+  #         yarn config set workspaces-experimental true
+  #         yarn install --frozen-lockfile
+  #         yarn bootstrap
+  #         yarn build
+  #         yarn lint
+  #         yarn test
 
-  cdn:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  # cdn:
+  #   if: github.ref == 'refs/heads/main'
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
 
-    needs:
-      - test
+  #   needs:
+  #     - test
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
 
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Check out the repository
+  #       uses: actions/checkout@v2
 
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     - name: Set up Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: node_modules
+  #         key: yarn-deps-${{ hashFiles('yarn.lock') }}
+  #         restore-keys: |
+  #           yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: Install Node dependencies
-        run: |
-          yarn config set workspaces-experimental true
-          yarn setup
+  #     - name: Install Node dependencies
+  #       run: |
+  #         yarn config set workspaces-experimental true
+  #         yarn setup
 
-      - name: Push compiled content
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: cdn
-          FOLDER: packages/embed-cdn/lib
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Push compiled content
+  #       uses: s0/git-publish-subdir-action@develop
+  #       env:
+  #         REPO: self
+  #         BRANCH: cdn
+  #         FOLDER: packages/embed-cdn/lib
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
     runs-on: ubuntu-latest
 
-    needs:
-      - test
+    # needs:
+    #   - test
 
     strategy:
       matrix:
@@ -173,22 +173,22 @@ jobs:
           yarn build
           yarn release
 
-  scan:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
+  # scan:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 2
 
-    strategy:
-      matrix:
-        node-version:
-          - 14.x
+  #   strategy:
+  #     matrix:
+  #       node-version:
+  #         - 14.x
 
-    steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+  #   steps:
+  #     - name: Check out the repo
+  #       uses: actions/checkout@v2
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'fs'
-          ignore-unfixed: true
-          exit-code: 1
+  #     - name: Run Trivy vulnerability scanner
+  #       uses: aquasecurity/trivy-action@master
+  #       with:
+  #         scan-type: 'fs'
+  #         ignore-unfixed: true
+  #         exit-code: 1
