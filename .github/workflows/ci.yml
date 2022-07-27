@@ -51,11 +51,13 @@ jobs:
           yarn auto shipit -dq
           echo "testing $(yarn auto shipit -dq)"
           echo "::set-output name=auto-version::$(yarn auto shipit -dq)\n"
+          echo "::set-output name=my-test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
         shell: bash
 
       - name: Result
         run: |
           echo auto-version value ${{ steps.get_version.outputs.auto-version }}
+          echo my-test value ${{ steps.get_version.outputs.my-test }}
 
   test:
     runs-on: ubuntu-latest
