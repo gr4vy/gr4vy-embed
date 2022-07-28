@@ -44,12 +44,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           PACKAGE_VERSION: '0.0.1'
-          ANOTHER_TEST: ${{ $(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)) }}
         run: |
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
           echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
-          echo another test: ${{ env.ANOTHER_TEST }}
 
   pickupversion:
     runs-on: ubuntu-latest
@@ -57,6 +55,7 @@ jobs:
 
     steps:
       - run: |
+          echo version: ${{ env.PACKAGE_VERSION }}
           echo variable here: $TEST_VAR
 
   test:
