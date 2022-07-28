@@ -40,20 +40,15 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
 
-      - name: Update VERSION file
+      - name: Set version environment variable
         env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PACKAGE_VERSION: '0.0.1'
         run: |
-          echo -n $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) > VERSION
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-          git add VERSION
-          git commit -m "Updated VERSION file [skip ci]"
-          git push -f origin HEAD:$GITHUB_HEAD_REF
+          echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
+          echo here: ${{ env.PACKAGE_VERSION }}
+          echo test: $TEST_VAR
 
   test:
-    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -173,7 +168,6 @@ jobs:
           yarn release
 
   scan:
-    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
     timeout-minutes: 2
 
