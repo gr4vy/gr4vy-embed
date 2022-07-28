@@ -53,6 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
+    needs:
+      - version
+
     steps:
       - run: |
           echo version: ${{ env.PACKAGE_VERSION }}
