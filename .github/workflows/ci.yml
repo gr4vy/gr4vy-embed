@@ -41,6 +41,7 @@ jobs:
           yarn bootstrap
 
       - name: Set version environment variable
+        id: package_version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           PACKAGE_VERSION: '0.0.1'
@@ -48,6 +49,7 @@ jobs:
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
           echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
+          echo "::set-output name=package-version::$($GITHUB_WORKSPACE/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
 
   pickupversion:
     runs-on: ubuntu-latest
@@ -60,6 +62,7 @@ jobs:
       - run: |
           echo version: ${{ env.PACKAGE_VERSION }}
           echo variable here: $TEST_VAR
+          echo output: ${{ jobs.package_version.outputs.package-version }}
 
   test:
     runs-on: ubuntu-latest
