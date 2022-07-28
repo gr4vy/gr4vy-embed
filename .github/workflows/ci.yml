@@ -17,6 +17,7 @@ jobs:
           - 14.x
 
     outputs:
+      output1: ${{ steps.step1.outputs.test }}
       package-version: ${{ steps.package_version.outputs.package-version }}
 
     steps:
@@ -54,6 +55,11 @@ jobs:
           echo test: $TEST_VAR
           echo "::set-output name=package-version::$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)"
 
+      - name: Test
+        id: step1
+        run: |
+          echo "::set-output name=test::hello"
+
   pickupversion:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -67,6 +73,7 @@ jobs:
           echo variable here: $TEST_VAR
           echo output: ${{ needs.version.outputs.package-version }}
           echo output2: ${{ needs.package_version.outputs.package-version }}
+          echo output1: ${{ needs.version.outputs.output1 }}
 
   test:
     runs-on: ubuntu-latest
