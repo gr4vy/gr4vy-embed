@@ -49,6 +49,7 @@ jobs:
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
           echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
+          $GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq
           echo "::set-output name=package-version::$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)"
 
   pickupversion:
@@ -63,6 +64,7 @@ jobs:
           echo version: ${{ env.PACKAGE_VERSION }}
           echo variable here: $TEST_VAR
           echo output: ${{ needs.version.outputs.package-version }}
+          echo output2: ${{ needs.package_version.outputs.package-version }}
 
   test:
     runs-on: ubuntu-latest
