@@ -44,10 +44,12 @@ jobs:
         id: package_version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          PACKAGE_VERSION: '0.0.1'
         run: |
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
+          echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
-          echo "PACKAGE_VERSION=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))" >> $GITHUB_ENV
+          echo "::set-output name=package-version::$($GITHUB_WORKSPACE/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
 
   pickupversion:
     runs-on: ubuntu-latest
@@ -58,8 +60,9 @@ jobs:
 
     steps:
       - run: |
+          echo version: ${{ env.PACKAGE_VERSION }}
           echo variable here: $TEST_VAR
-          echo package version: ${{ env.PACKAGE_VERSION }}
+          echo output: ${{ needs.version.outputs.package-version }}
 
   test:
     runs-on: ubuntu-latest
