@@ -42,11 +42,14 @@ jobs:
 
       - name: Set version environment variable
         env:
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           PACKAGE_VERSION: '0.0.1'
+          ANOTHER_TEST: ${{ $(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)) }}
         run: |
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
           echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
+          echo another test: ${{ env.ANOTHER_TEST }}
 
   test:
     runs-on: ubuntu-latest
