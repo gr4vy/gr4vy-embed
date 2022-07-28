@@ -18,7 +18,7 @@ jobs:
 
     outputs:
       output1: ${{ steps.step1.outputs.test }}
-      package-version: ${{ steps.package_version.outputs.package-version }}
+      package-version: ${{ steps.version.outputs.test }}
 
     steps:
       - name: Check out the repo
@@ -45,15 +45,12 @@ jobs:
           yarn bootstrap
 
       - name: Set version environment variable
-        id: package_version
+        id: version
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          PACKAGE_VERSION: '0.0.1'
         run: |
-          echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
-          echo here: ${{ env.PACKAGE_VERSION }}
-          echo test: $TEST_VAR
-          echo "::set-output name=package-version::$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)"
+          echo test $(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)
+          echo "::set-output name=test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
 
       - name: Test
         id: step1
