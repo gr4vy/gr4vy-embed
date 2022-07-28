@@ -49,8 +49,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
         run: |
-          yarn auto shipit -dq
-          /home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq
           echo test $(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)
           echo "::set-output name=test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
 
