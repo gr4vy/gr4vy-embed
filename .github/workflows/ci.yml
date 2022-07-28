@@ -49,7 +49,7 @@ jobs:
           echo "TEST_VAR=$(echo $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq))"
           echo here: ${{ env.PACKAGE_VERSION }}
           echo test: $TEST_VAR
-          echo "::set-output name=package-version::$($GITHUB_WORKSPACE/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
+          echo "::set-output name=package-version::$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)"
 
   pickupversion:
     runs-on: ubuntu-latest
