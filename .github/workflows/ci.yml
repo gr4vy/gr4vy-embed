@@ -16,6 +16,9 @@ jobs:
         node-version:
           - 14.x
 
+    outputs:
+      package-version: ${{ steps.package_version.outputs.package-version }}
+
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
