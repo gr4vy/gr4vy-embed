@@ -49,6 +49,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
         run: |
+          yarn auto shipit -dq
+          /home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq
           echo test $(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)
           echo "::set-output name=test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
 
@@ -68,7 +70,7 @@ jobs:
       - run: |
           echo version: ${{ env.PACKAGE_VERSION }}
           echo variable here: $TEST_VAR
-          echo output: ${{ needs.version.outputs.package-version }}
+          echo output: ${{ needs.version.outputs.test }}
           echo output2: ${{ needs.package_version.outputs.package-version }}
           echo output1: ${{ needs.version.outputs.output1 }}
 
