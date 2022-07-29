@@ -51,7 +51,7 @@ module.exports = {
       title: 'Gr4vy - Embed',
     }),
     new DefinePlugin({
-      PACKAGE_VERSION: JSON.stringify(process.env.PACKAGE_VERSION) || '',
+      PACKAGE_VERSION: 'dev',
     }),
   ],
 }
