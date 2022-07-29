@@ -2,6 +2,8 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack')
 
+console.log('HEY', process.env.PACKAGE_VERSION || '')
+
 module.exports = {
   mode: 'production',
   resolve: {
@@ -40,7 +42,7 @@ module.exports = {
   entry: path.resolve('./src'),
   plugins: [
     new DefinePlugin({
-      PACKAGE_VERSION: JSON.stringify(process.env.npm_package_version),
+      PACKAGE_VERSION: JSON.stringify(process.env.PACKAGE_VERSION) || '',
     }),
   ],
 }

@@ -16,10 +16,6 @@ jobs:
         node-version:
           - 14.x
 
-    outputs:
-      output1: ${{ steps.step1.outputs.test }}
-      package-version: ${{ steps.version.outputs.test }}
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -36,41 +32,6 @@ jobs:
           key: yarn-deps-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             yarn-deps-${{ hashFiles('yarn.lock') }}
-
-      - name: Get Version
-        id: get_version
-        run: |
-          yarn config set workspaces-experimental true
-          yarn install --frozen-lockfile
-          yarn bootstrap
-
-      - name: Set version environment variable
-        id: version
-        env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-        run: |
-          echo test $(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)
-          echo "::set-output name=test::$(/home/runner/work/gr4vy-embed/gr4vy-embed/node_modules/.bin/auto shipit -dq)"
-
-      - name: Test
-        id: step1
-        run: |
-          echo "::set-output name=test::hello"
-
-  pickupversion:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    needs:
-      - version
-
-    steps:
-      - run: |
-          echo version: ${{ env.PACKAGE_VERSION }}
-          echo variable here: $TEST_VAR
-          echo output: ${{ needs.version.outputs.test }}
-          echo output2: ${{ needs.package_version.outputs.package-version }}
-          echo output1: ${{ needs.version.outputs.output1 }}
 
   test:
     runs-on: ubuntu-latest
@@ -149,11 +110,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
-    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
+    # if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
     runs-on: ubuntu-latest
 
-    needs:
-      - test
+    # needs:
+    #   - test
 
     strategy:
       matrix:
@@ -164,8 +125,8 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
+      # - name: Prepare repository
+      #   run: git fetch --unshallow --tags
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -188,8 +149,7 @@ jobs:
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
-          yarn build
-          yarn release
+          PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
   scan:
     runs-on: ubuntu-latest
