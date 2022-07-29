@@ -84,11 +84,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
-    # if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
+    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
     runs-on: ubuntu-latest
 
-    # needs:
-    #   - test
+    needs:
+      - test
 
     strategy:
       matrix:
@@ -99,8 +99,8 @@ jobs:
         with:
           token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
-      # - name: Prepare repository
-      #   run: git fetch --unshallow --tags
+      - name: Prepare repository
+        run: git fetch --unshallow --tags
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -124,6 +124,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
+          yarn release
 
   scan:
     runs-on: ubuntu-latest

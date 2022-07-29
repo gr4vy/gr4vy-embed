@@ -14,8 +14,7 @@
     "build": "lerna run build",
     "dev": "lerna run dev --parallel",
     "release": "auto shipit",
-    "storybook": "lerna run storybook --parallel",
-    "postversion": "echo 'asd'"
+    "storybook": "lerna run storybook --parallel"
   },
   "auto": {
     "onlyPublishWithReleaseLabel": true,
