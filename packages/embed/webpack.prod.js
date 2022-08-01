@@ -2,7 +2,7 @@
 const path = require('path')
 const { DefinePlugin } = require('webpack')
 
-const PACKAGE_VERSION = JSON.stringify(process.env.PACKAGE_VERSION)
+const PACKAGE_VERSION = JSON.stringify(process.env.PACKAGE_VERSION || undefined)
 console.log('Building version', PACKAGE_VERSION)
 
 module.exports = {
