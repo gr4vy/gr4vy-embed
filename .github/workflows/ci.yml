@@ -43,12 +43,12 @@ jobs:
           yarn test
 
   cdn:
-    if: github.ref == 'refs/heads/main'
+    # if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
-    needs:
-      - test
+    # needs:
+    #   - test
 
     strategy:
       matrix:
@@ -72,9 +72,14 @@ jobs:
             yarn-deps-${{ hashFiles('yarn.lock') }}
 
       - name: Install Node dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn config set workspaces-experimental true
-          yarn setup
+          yarn clean
+          yarn bootstrap
+          PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
       - name: Push compiled content
         uses: s0/git-publish-subdir-action@develop
