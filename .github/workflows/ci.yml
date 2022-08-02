@@ -89,48 +89,48 @@ jobs:
           FOLDER: packages/embed-cdn/lib
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  release:
-    if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
-    runs-on: ubuntu-latest
+  # release:
+  #   if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
+  #   runs-on: ubuntu-latest
 
-    needs:
-      - test
+  #   needs:
+  #     - test
 
-    strategy:
-      matrix:
-        node-version: [14.x]
+  #   strategy:
+  #     matrix:
+  #       node-version: [14.x]
 
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
+  #     - name: Prepare repository
+  #       run: git fetch --unshallow --tags
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+  #     - name: Use Node.js ${{ matrix.node-version }}
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
 
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: yarn-deps-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-deps-${{ hashFiles('yarn.lock') }}
+  #     - name: Cache node modules
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: node_modules
+  #         key: yarn-deps-${{ hashFiles('yarn.lock') }}
+  #         restore-keys: |
+  #           yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: Create Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          yarn config set workspaces-experimental true
-          yarn install --frozen-lockfile
-          yarn bootstrap
-          PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
-          yarn release
+  #     - name: Create Release
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  #       run: |
+  #         yarn config set workspaces-experimental true
+  #         yarn install --frozen-lockfile
+  #         yarn bootstrap
+  #         PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
+  #         yarn release
 
   scan:
     runs-on: ubuntu-latest
