@@ -79,6 +79,7 @@ jobs:
           yarn config set workspaces-experimental true
           yarn clean
           yarn bootstrap
+          echo test $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq)
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
       - name: Push compiled content
