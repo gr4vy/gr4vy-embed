@@ -1,3 +1,27 @@
+# v2.11.8 (Mon Aug 01 2022)
+
+#### 🐛 Bug Fix
+
+- fix: gr4vy.version referencing the pre-publish version value [#98](https://github.com/gr4vy/gr4vy-embed/pull/98) ([@luca-gr4vy](https://github.com/luca-gr4vy) 101414321+luca-gr4vy@users.noreply.github.com)
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.11.7 (Fri Jul 08 2022)
+
+#### 🐛 Bug Fix
+
+- add moto as a payment source [#96](https://github.com/gr4vy/gr4vy-embed/pull/96) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.11.6 (Fri Jun 10 2022)
 
 ### Release Notes

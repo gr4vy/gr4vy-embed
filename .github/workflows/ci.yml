@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -123,7 +124,7 @@ jobs:
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
-          yarn build
+          PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
           yarn release
 
   scan:

@@ -23,3 +23,6 @@ CVE-2022-0235
 
 # eventsource - Dev Dependency (Webpack dev server)
 CVE-2022-1650 
+
+# terser - Dev Dependency (Webpack)
+CVE-2022-25858

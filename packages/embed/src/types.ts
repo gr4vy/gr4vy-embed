@@ -26,7 +26,7 @@ export type Config = {
   customOptions?: Array<CustomOption>
   onCustomSubmit?: ({ method }) => void
   metadata?: Record<string, string>
-  paymentSource?: 'installment' | 'recurring'
+  paymentSource?: 'installment' | 'moto' | 'recurring'
   cartItems?: Array<CartItem>
   statementDescriptor?: StatementDescriptor
   secure?: boolean

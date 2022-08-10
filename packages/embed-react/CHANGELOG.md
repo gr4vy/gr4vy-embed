@@ -1,3 +1,15 @@
+# v2.11.7 (Fri Jul 08 2022)
+
+#### 🐛 Bug Fix
+
+- add moto as a payment source [#96](https://github.com/gr4vy/gr4vy-embed/pull/96) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.10.0 (Mon May 09 2022)
 
 ### Release Notes
