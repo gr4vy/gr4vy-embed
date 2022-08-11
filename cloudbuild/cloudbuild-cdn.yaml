@@ -101,10 +101,17 @@ steps:
         INSTANCES='${_GR4VY_INSTANCES}'
 
         if [ "${BRANCH_NAME}" = "main" ]; then
+          fail=0
           for instance in $${INSTANCES}; do
             echo "Triggering deploy of main branch to $${instance}-sandbox..."
             docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest --id $${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+            if [ $? -ne 0 ]; then
+              fail=1
+            fi
           done
+          if [ $fail -eq 1 ]; then
+            exit 1
+          fi
         else
           echo "This is the ${BRANCH_NAME} branch. Not deploying to sandbox environments."
         fi;
@@ -122,10 +129,17 @@ steps:
         INSTANCES='${_GR4VY_INSTANCES}'
 
         if [ "${BRANCH_NAME}" = "main" ]; then
+          fail=0
           for instance in $${INSTANCES}; do
             echo "Triggering deploy of main branch to $${instance}-production..."
             docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest --id $${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+            if [ $? -ne 0 ]; then
+              fail=1
+            fi
           done
+          if [ $fail -eq 1 ]; then
+            exit 1
+          fi
         else
           echo "This is the ${BRANCH_NAME} branch. Not deploying to production environments."
         fi;
