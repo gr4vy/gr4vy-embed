@@ -30,6 +30,7 @@ export type Config = {
   cartItems?: Array<CartItem>
   statementDescriptor?: StatementDescriptor
   secure?: boolean
+  requireSecurityCode?: boolean
 }
 
 export type CustomOption = {
