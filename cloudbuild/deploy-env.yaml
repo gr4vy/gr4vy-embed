@@ -1,4 +1,16 @@
 steps:
+  - id: 'Deploy pre-built version (Deprecated)'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    entrypoint: gsutil
+    args:
+      [
+        '-m',
+        'rsync',
+        '-r',
+        'gs://gr4vy-embed-cdn-version-repository/${COMMIT_SHA}',
+        'gs://$_ARTIFACT_STORAGE_BUCKET',
+      ]
+
   - id: 'Deploy pre-built version'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
     entrypoint: gsutil
@@ -9,7 +21,7 @@ steps:
         '-d',
         '-r',
         'gs://gr4vy-embed-cdn-version-repository/${COMMIT_SHA}',
-        'gs://$_ARTIFACT_STORAGE_BUCKET/',
+        'gs://$_ARTIFACT_STORAGE_BUCKET/embed/latest/',
       ]
 
   - id: 'Invalidate CDN cache'
@@ -25,7 +37,8 @@ steps:
         else
           HOST_DOMAIN=${_GR4VY_ENV}.${_GR4VY_ID}.gr4vy.app
         fi
-        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/*' --async --project $PROJECT_ID
+        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/embed/latest/*' --async --project $PROJECT_ID
+        gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/embed.latest.js' --async --project $PROJECT_ID
 
 substitutions:
   _GR4VY_ID: ${PROJECT_ID%-*}
