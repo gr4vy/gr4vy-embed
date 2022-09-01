@@ -1,3 +1,25 @@
+# v2.12.0 (Thu Sep 01 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(security-code): add support for security code for stored card me… [#103](https://github.com/gr4vy/gr4vy-embed/pull/103) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- Fail deployment step if there is an error creating a deployment [PE-262] [#102](https://github.com/gr4vy/gr4vy-embed/pull/102) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- ci(cdn): move embed to subdirectory [#101](https://github.com/gr4vy/gr4vy-embed/pull/101) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.11.8 (Mon Aug 01 2022)
 
 #### 🐛 Bug Fix
