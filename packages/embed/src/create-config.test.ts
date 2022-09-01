@@ -61,6 +61,7 @@ test('default configuration', () => {
     token: '123',
     environment: undefined,
     gr4vyId: 'test',
+    requireSecurityCode: false,
   })
 })
 

@@ -48,6 +48,7 @@ export const optionKeys = [
   'paymentSource',
   'cartItems',
   'statementDescriptor',
+  'requireSecurityCode',
 ]
 
 // Map of cleanup callbacks

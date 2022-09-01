@@ -69,12 +69,13 @@ setup({
   metadata: {
     foo: 'bar',
   },
+  requireSecurityCode: true,
   // overrides form submission
   onComplete: (transaction) => {
     result.innerHTML = `
       <p>Transaction ID: ${transaction.id}</p>
       <p>Status: ${transaction.status}</p>
-      <p>Payment Method ID: ${transaction.paymentMethod.id}</p>
+      <p>Payment Method ID: ${transaction.paymentMethod?.id}</p>
       `
   },
   secure: false,
