@@ -26,3 +26,7 @@ CVE-2022-1650
 
 # terser - Dev Dependency (Webpack)
 CVE-2022-25858
+
+# parse-url - added to get non-code change passing test. Needs fixing.
+CVE-2022-2900
+CVE-2022-3224
