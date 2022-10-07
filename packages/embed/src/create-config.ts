@@ -24,6 +24,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     : setupConfig.element
 
   return {
+    requireSecurityCode: false,
     store: 'ask',
     display: 'all',
     apiHost,

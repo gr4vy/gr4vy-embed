@@ -1,3 +1,15 @@
+# v2.12.0 (Thu Sep 01 2022)
+
+#### 🚀 Enhancement
+
+- feat(security-code): add support for security code for stored card me… [#103](https://github.com/gr4vy/gr4vy-embed/pull/103) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.11.8 (Mon Aug 01 2022)
 
 #### 🐛 Bug Fix
