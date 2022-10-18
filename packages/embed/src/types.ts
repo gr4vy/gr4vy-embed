@@ -244,6 +244,9 @@ export type Message = { channel: string; data?: unknown } & (
   | {
       type: 'googlePaySessionCompleted'
     }
+  | {
+      type: 'scrollTo'
+    }
 )
 
 export type EmbedInstance = {
