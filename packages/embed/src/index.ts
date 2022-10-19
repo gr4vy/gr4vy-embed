@@ -175,6 +175,13 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
       })
     },
     paymentMethodSelected: subjectManager.selectedOption$.next,
+    scrollTo: ({ top }: { top: number }) => {
+      window.scrollTo({
+        top: frame.offsetTop + top,
+        left: 0,
+        behavior: 'smooth',
+      })
+    },
   }
 
   const dispatch = createDispatch(
