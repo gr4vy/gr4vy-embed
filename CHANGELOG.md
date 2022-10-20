@@ -1,3 +1,27 @@
+# v2.13.0 (Thu Oct 20 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - Add scrollTo listener (#105) [#106](https://github.com/gr4vy/gr4vy-embed/pull/106) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- Bump terser from 4.8.0 to 4.8.1 [#97](https://github.com/gr4vy/gr4vy-embed/pull/97) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- Update `deployer` command [#104](https://github.com/gr4vy/gr4vy-embed/pull/104) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.12.0 (Thu Sep 01 2022)
 
 #### 🚀 Enhancement

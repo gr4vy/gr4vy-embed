@@ -1,3 +1,15 @@
+# v2.13.0 (Thu Oct 20 2022)
+
+#### 🚀 Enhancement
+
+- Add scrollTo listener (#105) [#106](https://github.com/gr4vy/gr4vy-embed/pull/106) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.12.0 (Thu Sep 01 2022)
 
 #### 🚀 Enhancement
