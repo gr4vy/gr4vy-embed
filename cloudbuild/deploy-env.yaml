@@ -43,7 +43,7 @@ steps:
 substitutions:
   _GR4VY_ID: ${PROJECT_ID%-*}
   _GR4VY_ENV: 'sandbox'
-  _ARTIFACT_STORAGE_BUCKET: embed-cdn-${_GR4VY_ENV}-${_GR4VY_ID}-gr4vy-app
+  _ARTIFACT_STORAGE_BUCKET: ${PROJECT_ID}-cdn-${_GR4VY_ENV}
   _URL_MAP_SHARED: ${_GR4VY_ID}-${_GR4VY_ENV}-url-map
 
 options:
