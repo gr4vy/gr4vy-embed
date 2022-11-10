@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "example-cjs",
-  "version": "2.13.0",
+  "version": "2.13.1",
   "description": "Example project that shows how to use @gr4vy/embed as an ESM import",
   "main": "lib/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
@@ -13,6 +13,6 @@
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
-    "@gr4vy/embed": "^2.13.0"
+    "@gr4vy/embed": "^2.13.1"
   }
 }
