@@ -36,13 +36,21 @@ export const createOverlayController = (
 
   element.appendChild(Container)
 
+  const beforeUnloadHandler = (event) => {
+    event.preventDefault()
+    subject.approvalCancelled$.next()
+    return (event.returnValue = true)
+  }
+
   const hide = () => {
     element.className = 'gr4vy__overlay gr4vy__overlay--hidden'
     removeChildren(Container)
+    window.removeEventListener('beforeunload', beforeUnloadHandler)
   }
 
   const show = () => {
     element.className = 'gr4vy__overlay gr4vy__overlay--visible'
+    window.addEventListener('beforeunload', beforeUnloadHandler)
   }
 
   const setMessage = ({ title, link, message, cancel }) => {
