@@ -114,7 +114,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
 
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
-    subjectManager
+    subjectManager,
+    config.popupTimeout
   )
 
   // Iframe - Load Gr4vy SPA/Attach to page
