@@ -32,15 +32,7 @@ export const createPopupController = (
 
   subject.approvalLost$.subscribe(() => {
     if (popup.current) {
-      popup.current.stopCallback()
-      popup.current.popup.close()
-      subject.approvalStarted$.next()
-
-      // Check if the approval url already exists
-      const previousApprovalUrl = subject.approvalUrl$.value()
-      if (previousApprovalUrl) {
-        subject.approvalUrl$.next(previousApprovalUrl)
-      }
+      popup.current.popup.focus()
     }
   })
 
