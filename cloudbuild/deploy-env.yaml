@@ -26,34 +26,6 @@ steps:
       ]
     waitFor: ['-']
 
-  # New bucket
-  - id: 'Deploy pre-built version (Deprecated) to new bucket'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-    entrypoint: gsutil
-    args:
-      [
-        '-m',
-        'rsync',
-        '-r',
-        'gs://gr4vy-embed-cdn-version-repository/${COMMIT_SHA}',
-        'gs://$_NEW_ARTIFACT_STORAGE_BUCKET',
-      ]
-    waitFor: ['-']
-
-  - id: 'Deploy pre-built version to new bucket'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
-    entrypoint: gsutil
-    args:
-      [
-        '-m',
-        'rsync',
-        '-d',
-        '-r',
-        'gs://gr4vy-embed-cdn-version-repository/${COMMIT_SHA}',
-        'gs://$_NEW_ARTIFACT_STORAGE_BUCKET/embed/latest/',
-      ]
-    waitFor: ['-']
-
   - id: 'Invalidate CDN cache'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
     entrypoint: bash
@@ -70,18 +42,12 @@ steps:
         gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/embed/latest/*' --async --project $PROJECT_ID
         gcloud compute url-maps invalidate-cdn-cache $_URL_MAP_SHARED --host="cdn.$${HOST_DOMAIN}" --path='/embed.latest.js' --async --project $PROJECT_ID
     waitFor:
-      [
-        'Deploy pre-built version (Deprecated)',
-        'Deploy pre-built version',
-        'Deploy pre-built version (Deprecated) to new bucket',
-        'Deploy pre-built version to new bucket',
-      ]
+      ['Deploy pre-built version (Deprecated)', 'Deploy pre-built version']
 
 substitutions:
   _GR4VY_ID: ${PROJECT_ID%-*}
   _GR4VY_ENV: 'sandbox'
-  _ARTIFACT_STORAGE_BUCKET: embed-cdn-${_GR4VY_ENV}-${_GR4VY_ID}-gr4vy-app
-  _NEW_ARTIFACT_STORAGE_BUCKET: ${PROJECT_ID}-cdn-${_GR4VY_ENV}
+  _ARTIFACT_STORAGE_BUCKET: ${PROJECT_ID}-cdn-${_GR4VY_ENV}
   _URL_MAP_SHARED: ${_GR4VY_ID}-${_GR4VY_ENV}-url-map
 
 options:
