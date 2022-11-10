@@ -1,3 +1,27 @@
+# v2.13.1 (Thu Nov 10 2022)
+
+#### 🐛 Bug Fix
+
+- Bump loader-utils from 1.4.0 to 1.4.1 [#110](https://github.com/gr4vy/gr4vy-embed/pull/110) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed`
+  - feat: refocus redirect popup [#111](https://github.com/gr4vy/gr4vy-embed/pull/111) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- [PE-188] Remove deploy step for old storage bucket [#112](https://github.com/gr4vy/gr4vy-embed/pull/112) ([@andrewmackett](https://github.com/andrewmackett))
+- [PE-188] Additional steps to deploy to new storage bucket [#109](https://github.com/gr4vy/gr4vy-embed/pull/109) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - chore: add gr4vy id as env variable [#107](https://github.com/gr4vy/gr4vy-embed/pull/107) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.13.0 (Thu Oct 20 2022)
 
 #### 🚀 Enhancement
