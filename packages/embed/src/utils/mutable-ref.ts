@@ -1,5 +1,5 @@
 export type MutableRef<T> = {
-  current: T
+  current: T | null
 }
 
 export const mutableRef = <T>(defaultValue?: T): MutableRef<T> => {

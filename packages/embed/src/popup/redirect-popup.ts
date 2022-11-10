@@ -24,14 +24,33 @@ export const waitForValue = (accessor, value, callback) => {
   return () => clearInterval(interval)
 }
 
-export const openPopup = (
-  features: string,
-  html: string,
+interface PopupConfiguration {
+  features: string
+  html: string
+  timeout?: number
   onClose: CallableFunction
-) => {
+  onTimeout?: CallableFunction
+}
+
+export const openPopup = ({
+  features,
+  html,
+  timeout,
+  onClose,
+  onTimeout,
+}: PopupConfiguration) => {
   const popup = open('', 'loading', features)
   popup.document.write(html)
   const stopCallback = waitForValue(() => popup.closed, true, onClose)
+
+  if (timeout) {
+    setTimeout(() => {
+      stopCallback()
+      popup.close()
+      return onTimeout()
+    }, timeout)
+  }
+
   return {
     popup,
     stopCallback,

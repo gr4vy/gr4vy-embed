@@ -31,6 +31,7 @@ export type Config = {
   statementDescriptor?: StatementDescriptor
   secure?: boolean
   requireSecurityCode?: boolean
+  popupTimeout?: number
 }
 
 export type CustomOption = {

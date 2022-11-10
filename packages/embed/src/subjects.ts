@@ -18,7 +18,7 @@ export const createSubjectManager = () => {
     }>(),
     approvalUrl$: createSubject<string>(),
     approvalStarted$: createSubject(),
-    approvalCancelled$: createSubject(),
+    approvalCancelled$: createSubject<'timeout' | 'close' | 'cancel'>(),
     approvalLost$: createSubject(),
     approvalCompleted$: createSubject(),
     frameHeight$: createSubject<number>(0),

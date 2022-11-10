@@ -29,7 +29,9 @@ export const createOverlayController = (
 
   const CancelLink = document.createElement('div')
   CancelLink.className = 'gr4vy__overlay__link'
-  CancelLink.addEventListener('click', () => subject.approvalCancelled$.next())
+  CancelLink.addEventListener('click', () =>
+    subject.approvalCancelled$.next('cancel')
+  )
 
   const Container = document.createElement('div')
   Container.className = 'gr4vy__overlay__container'

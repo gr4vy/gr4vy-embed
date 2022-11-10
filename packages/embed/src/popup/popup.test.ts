@@ -61,7 +61,7 @@ describe('registerSubscriptions', () => {
 
     jest.runAllTimers()
 
-    expect((openPopup as jest.Mock).mock.calls[0][0]).toEqual(
+    expect((openPopup as jest.Mock).mock.calls[0][0].features).toEqual(
       'width=52,height=34'
     )
     expect(popup.current).toEqual(mockPopup)
@@ -81,7 +81,7 @@ describe('registerSubscriptions', () => {
 
     jest.runAllTimers()
 
-    expect((openPopup as jest.Mock).mock.calls[0][0]).toEqual(
+    expect((openPopup as jest.Mock).mock.calls[0][0].features).toEqual(
       'width=500,height=589'
     )
     expect(popup.current).toEqual(mockPopup)
@@ -167,7 +167,7 @@ describe('registerSubscriptions', () => {
 
     jest.runAllTimers()
 
-    const closeCallback = (openPopup as jest.Mock).mock.calls[0][2]
+    const closeCallback = (openPopup as jest.Mock).mock.calls[0][0].onClose
     subject.approvalCancelled$.subscribe(() => {
       done()
     })
@@ -179,7 +179,7 @@ describe('registerSubscriptions', () => {
 
   test('checks to close popup when approval is cancelled', () => {
     popup.current = null
-    subject.approvalCancelled$.next()
+    subject.approvalCancelled$.next('cancel')
   })
 
   test('refocus approval when lost', () => {

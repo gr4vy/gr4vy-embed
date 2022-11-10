@@ -114,7 +114,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
 
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
-    subjectManager
+    subjectManager,
+    config.popupTimeout ? config.popupTimeout * 60 : null
   )
 
   // Iframe - Load Gr4vy SPA/Attach to page
@@ -233,8 +234,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   )
 
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
-  subjectManager.approvalCancelled$.subscribe(() =>
-    dispatch({ type: 'approvalCancelled' })
+  subjectManager.approvalCancelled$.subscribe((data) =>
+    dispatch({ type: 'approvalCancelled', data })
   )
   subjectManager.applePayAuthorized$.subscribe((token) =>
     dispatch({ type: 'applePayAuthorized', data: token })

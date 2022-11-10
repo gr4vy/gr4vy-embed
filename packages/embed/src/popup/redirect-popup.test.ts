@@ -47,7 +47,11 @@ describe('openPopup', () => {
     }
     global.open = jest.fn().mockReturnValue(mockPopup)
     const onClose = jest.fn()
-    const popup = openPopup('width=10,height=10', '<html>', onClose)
+    const popup = openPopup({
+      features: 'width=10,height=10',
+      html: '<html>',
+      onClose,
+    })
     expect(global.open).toHaveBeenCalledTimes(1)
     expect(mockPopup.document.write).toHaveBeenCalledWith('<html>')
     expect(popup.popup).toBe(mockPopup)
@@ -64,7 +68,11 @@ describe('openPopup', () => {
     }
     global.open = jest.fn().mockReturnValue(mockPopup)
     const onClose = jest.fn()
-    openPopup('width=10,height=10', '<html>', onClose)
+    openPopup({
+      features: 'width=10,height=10',
+      html: '<html>',
+      onClose,
+    })
     jest.runOnlyPendingTimers()
     expect(onClose).not.toHaveBeenCalled()
 
