@@ -55,4 +55,28 @@ describe('createOverlayController', () => {
 
     expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
   })
+
+  test('it should close both overlay and popup when a beforeunload event is triggered', () => {
+    let result = false
+    const approvalCancelled = subject.approvalCancelled$.subscribe(
+      () => (result = true)
+    )
+
+    const overlay = document.createElement('div')
+    overlay.className = 'gr4vy__overlay gr4vy__overlay--hidden'
+    createOverlayController(overlay, subject)
+    subject.approvalUrl$.next('https://approval.gr4vy.com')
+
+    jest.runAllTimers()
+
+    expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--visible')
+
+    window.dispatchEvent(new Event('beforeunload'))
+
+    jest.runAllTimers()
+
+    expect(overlay.className).toEqual('gr4vy__overlay gr4vy__overlay--hidden')
+    approvalCancelled.unsubscribe()
+    expect(result).toBe(true)
+  })
 })
