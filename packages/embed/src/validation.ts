@@ -401,4 +401,10 @@ export const validate = (options: SetupConfig) =>
     type: 'boolean',
     message: 'must be a boolean',
     required: false,
+  }) &&
+  validateNumber({
+    argument: 'popupTimeout',
+    value: options.popupTimeout,
+    message: 'must be valid non-negative number',
+    required: false,
   })
