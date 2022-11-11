@@ -1,3 +1,20 @@
+# v2.13.1 (Thu Nov 10 2022)
+
+#### 🐛 Bug Fix
+
+- feat: refocus redirect popup [#111](https://github.com/gr4vy/gr4vy-embed/pull/111) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore: add gr4vy id as env variable [#107](https://github.com/gr4vy/gr4vy-embed/pull/107) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.13.0 (Thu Oct 20 2022)
 
 #### 🚀 Enhancement
