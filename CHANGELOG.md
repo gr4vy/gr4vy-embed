@@ -1,3 +1,16 @@
+# v2.14.0 (Fri Nov 11 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - feat: popup timeout [#115](https://github.com/gr4vy/gr4vy-embed/pull/115) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.13.2 (Fri Nov 11 2022)
 
 #### 🐛 Bug Fix
