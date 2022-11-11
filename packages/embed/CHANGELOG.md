@@ -1,3 +1,15 @@
+# v2.13.2 (Fri Nov 11 2022)
+
+#### 🐛 Bug Fix
+
+- feat: close popup before unload [#113](https://github.com/gr4vy/gr4vy-embed/pull/113) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.13.1 (Thu Nov 10 2022)
 
 #### 🐛 Bug Fix
