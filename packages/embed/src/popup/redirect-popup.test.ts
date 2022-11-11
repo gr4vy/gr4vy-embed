@@ -72,6 +72,37 @@ describe('openPopup', () => {
     jest.runOnlyPendingTimers()
     expect(onClose).toHaveBeenCalled()
   })
+
+  it('should close after a timout', () => {
+    const mockPopup = {
+      document: {
+        write: jest.fn(),
+      },
+      addEventListener: jest.fn(),
+      closed: false,
+      close: jest.fn(),
+    }
+    global.open = jest.fn().mockReturnValue(mockPopup)
+    openPopup('width=10,height=10', '<html>', jest.fn(), 300)
+    expect(mockPopup.close).not.toHaveBeenCalled()
+    jest.advanceTimersByTime(300)
+    expect(mockPopup.close).toHaveBeenCalled()
+  })
+
+  it('should should ignore a timeout if not set', () => {
+    const mockPopup = {
+      document: {
+        write: jest.fn(),
+      },
+      addEventListener: jest.fn(),
+      closed: false,
+      close: jest.fn(),
+    }
+    global.open = jest.fn().mockReturnValue(mockPopup)
+    openPopup('width=10,height=10', '<html>', jest.fn(), undefined)
+    jest.advanceTimersByTime(300)
+    expect(mockPopup.close).not.toHaveBeenCalled()
+  })
 })
 
 describe('redirectPopup', () => {

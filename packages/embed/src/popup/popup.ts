@@ -8,7 +8,8 @@ const DEFAULT_POPUP_HEIGHT = 589
 
 export const createPopupController = (
   popup = mutableRef<{ popup: Window; stopCallback: () => void }>(),
-  subject: SubjectManager
+  subject: SubjectManager,
+  timeout?: number
 ) => {
   subject.approvalStarted$.subscribe(() => {
     const mode = subject.mode$.value()
@@ -19,7 +20,8 @@ export const createPopupController = (
           mode.popup?.height || DEFAULT_POPUP_HEIGHT
         ),
         redirectDocument(subject.mode$.value().popup),
-        () => subject.approvalCancelled$.next()
+        () => subject.approvalCancelled$.next(),
+        timeout
       )
     }
   })
