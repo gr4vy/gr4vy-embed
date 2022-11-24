@@ -1,5 +1,5 @@
-import { SubjectManager } from '../subjects'
-import { mutableRef } from '../utils'
+import { SubjectManager } from 'subjects'
+import { mutableRef } from 'utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
 

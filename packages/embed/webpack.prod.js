@@ -9,6 +9,7 @@ module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [

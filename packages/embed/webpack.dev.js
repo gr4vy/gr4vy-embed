@@ -2,6 +2,7 @@
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
+const path = require('path')
 
 module.exports = {
   mode: 'development',
@@ -11,6 +12,7 @@ module.exports = {
   entry: './dev/index.ts',
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [

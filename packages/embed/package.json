@@ -32,7 +32,8 @@
     "form-napper": "^2.0.0"
   },
   "devDependencies": {
-    "@types/applepayjs": "^3.0.2"
+    "@types/applepayjs": "^3.0.2",
+    "eslint-plugin-import": "^2.26.0"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
