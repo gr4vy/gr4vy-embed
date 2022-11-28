@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -10,6 +11,7 @@ module.exports = {
   entry: './dev/index.tsx',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [
