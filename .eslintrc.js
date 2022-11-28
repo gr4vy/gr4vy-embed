@@ -44,7 +44,20 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/order': [
       'error',
-      { alphabetize: { order: 'asc' }, 'newlines-between': 'never' },
+      {
+        alphabetize: { order: 'asc' },
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        'newlines-between': 'never',
+      },
     ],
     'react/prop-types': 0,
   },
