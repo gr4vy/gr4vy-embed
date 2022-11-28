@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
-const path = require('path')
 
 module.exports = {
   mode: 'development',
