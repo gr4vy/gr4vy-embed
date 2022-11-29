@@ -7,5 +7,8 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts'],
   moduleNameMapper: {
     '\\.(css)$': '<rootDir>/__mocks__/styleMock.ts',
+    'src/(.*)': '<rootDir>/src/$1',
   },
+  moduleDirectories: ['node_modules', 'src'],
+  roots: ['<rootDir>/src'],
 }
