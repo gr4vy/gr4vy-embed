@@ -33,6 +33,8 @@ CVE-2022-3224
 
 # loader-utils - dev dependency
 CVE-2022-37601
+CVE-2022-37599
+CVE-2022-37603
 
 # Minimatch dependancy
 # https://avd.aquasec.com/nvd/2022/cve-2022-3517/
