@@ -1,4 +1,4 @@
-import { createSubjectManager, SubjectManager } from '../subjects'
+import { createSubjectManager, SubjectManager } from 'subjects'
 import { createFrameController } from './frame'
 
 jest.useFakeTimers()

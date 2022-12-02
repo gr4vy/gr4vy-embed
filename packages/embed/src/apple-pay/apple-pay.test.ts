@@ -1,4 +1,4 @@
-import { createSubjectManager } from '../subjects'
+import { createSubjectManager } from 'subjects'
 import { createApplePayController } from './apple-pay'
 
 jest.useFakeTimers()

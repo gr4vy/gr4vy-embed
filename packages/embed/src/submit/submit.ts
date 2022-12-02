@@ -1,4 +1,4 @@
-import { SubjectManager } from '../subjects'
+import { SubjectManager } from 'subjects'
 
 export const createSubmitController = (
   onComplete: CallableFunction,

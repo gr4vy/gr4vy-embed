@@ -1,5 +1,5 @@
-import { SubjectManager } from '../subjects'
-import { removeChildren } from '../utils'
+import { SubjectManager } from 'subjects'
+import { removeChildren } from 'utils'
 
 let isFirstLoad = true
 

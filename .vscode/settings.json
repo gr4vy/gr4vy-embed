@@ -4,5 +4,10 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "eslint.workingDirectories": [
+    { "directory": "./packages/embed", "changeProcessCWD": true },
+    { "directory": "./packages/embed-cdn", "changeProcessCWD": true },
+    { "directory": "./packages/embed-react", "changeProcessCWD": true }
+  ]
 }
