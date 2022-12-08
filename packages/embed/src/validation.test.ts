@@ -40,6 +40,40 @@ describe('validate()', () => {
     })
     expect(valid).toEqual(true)
   })
+
+  test('should validate shipping details', () => {
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return document.createElement('div')
+    })
+
+    const options = {
+      element: `#app`,
+      form: null,
+      amount: 1299,
+      currency: `USD`,
+      iframeHost: `127.0.0.1:8080`,
+      apiHost: `127.0.0.1:3100`,
+      token: `123456`,
+      country: 'US',
+    }
+
+    expect(validate(options)).toBeTruthy()
+    expect(validate({ ...options, shippingDetailsId: '123' })).toBeFalsy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerExternalIdentifier: '123',
+      })
+    ).toBeTruthy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerId: '123',
+      })
+    ).toBeTruthy()
+  })
 })
 
 describe('emitArgumentError()', () => {
