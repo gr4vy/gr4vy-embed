@@ -9,6 +9,7 @@ import {
   validate,
   emitArgumentError,
   validateStore,
+  validateCondition,
 } from './validation'
 
 let errorSpy
@@ -487,6 +488,24 @@ describe('validateStore', () => {
     const valid = validateStore(options)
     expect(valid).toEqual(false)
     expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateCondition', () => {
+  test('should return false if condition is not true', () => {
+    const options = {
+      argument: 'foo',
+      message: 'must be true',
+      condition: false,
+    }
+    const error = {
+      argument: 'foo',
+      code: 'argumentError',
+      message: 'must be true',
+    }
+    const valid = validateCondition(options)
+    expect(valid).toEqual(false)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 })
