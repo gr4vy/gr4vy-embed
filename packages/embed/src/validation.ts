@@ -407,4 +407,11 @@ export const validate = (options: SetupConfig) =>
     value: options.popupTimeout,
     message: 'must be valid non-negative number',
     required: false,
+  }) &&
+  validateType({
+    argument: 'shippingDetailsId',
+    value: options.shippingDetailsId,
+    required: false,
+    type: 'string',
+    message: 'must be a valid uuid',
   })

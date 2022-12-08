@@ -32,6 +32,7 @@ export type Config = {
   secure?: boolean
   requireSecurityCode?: boolean
   popupTimeout?: number
+  shippingDetailsId?: string
 }
 
 export type CustomOption = {
