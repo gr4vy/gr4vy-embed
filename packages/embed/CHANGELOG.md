@@ -1,3 +1,28 @@
+# v2.15.0 (Fri Dec 09 2022)
+
+### Release Notes
+
+#### feat(shipping-details): add support for shipping details id ([#122](https://github.com/gr4vy/gr4vy-embed/pull/122))
+
+Allows merchants to supply an identifier for shipping details. Shipping details must belong to the buyer and will need to be provided via our API ahead of the transaction.
+
+---
+
+#### 🚀 Enhancement
+
+- feat(shipping-details): add support for shipping details id [#122](https://github.com/gr4vy/gr4vy-embed/pull/122) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- chore: absolute imports (embed) [#117](https://github.com/gr4vy/gr4vy-embed/pull/117) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.14.0 (Fri Nov 11 2022)
 
 #### 🚀 Enhancement

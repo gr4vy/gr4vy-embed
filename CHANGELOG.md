@@ -1,3 +1,35 @@
+# v2.15.0 (Fri Dec 09 2022)
+
+### Release Notes
+
+#### feat(shipping-details): add support for shipping details id ([#122](https://github.com/gr4vy/gr4vy-embed/pull/122))
+
+Allows merchants to supply an identifier for shipping details. Shipping details must belong to the buyer and will need to be provided via our API ahead of the transaction.
+
+---
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(shipping-details): add support for shipping details id [#122](https://github.com/gr4vy/gr4vy-embed/pull/122) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- chore: add CVE-2022-37603 and CVE-2022-37599 to trivyignore [#118](https://github.com/gr4vy/gr4vy-embed/pull/118) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore: upgrade dev dependencies [#121](https://github.com/gr4vy/gr4vy-embed/pull/121) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: absolute imports (embed) [#117](https://github.com/gr4vy/gr4vy-embed/pull/117) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.14.0 (Fri Nov 11 2022)
 
 #### 🚀 Enhancement
