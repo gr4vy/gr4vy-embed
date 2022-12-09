@@ -9,6 +9,7 @@ import {
   validate,
   emitArgumentError,
   validateStore,
+  validateCondition,
 } from './validation'
 
 let errorSpy
@@ -38,6 +39,40 @@ describe('validate()', () => {
       country: 'US',
     })
     expect(valid).toEqual(true)
+  })
+
+  test('should validate shipping details', () => {
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return document.createElement('div')
+    })
+
+    const options = {
+      element: `#app`,
+      form: null,
+      amount: 1299,
+      currency: `USD`,
+      iframeHost: `127.0.0.1:8080`,
+      apiHost: `127.0.0.1:3100`,
+      token: `123456`,
+      country: 'US',
+    }
+
+    expect(validate(options)).toBeTruthy()
+    expect(validate({ ...options, shippingDetailsId: '123' })).toBeFalsy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerExternalIdentifier: '123',
+      })
+    ).toBeTruthy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerId: '123',
+      })
+    ).toBeTruthy()
   })
 })
 
@@ -487,6 +522,24 @@ describe('validateStore', () => {
     const valid = validateStore(options)
     expect(valid).toEqual(false)
     expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateCondition', () => {
+  test('should return false if condition is not true', () => {
+    const options = {
+      argument: 'foo',
+      message: 'must be true',
+      condition: false,
+    }
+    const error = {
+      argument: 'foo',
+      code: 'argumentError',
+      message: 'must be true',
+    }
+    const valid = validateCondition(options)
+    expect(valid).toEqual(false)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 })

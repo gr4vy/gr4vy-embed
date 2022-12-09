@@ -49,6 +49,7 @@ export const optionKeys = [
   'cartItems',
   'statementDescriptor',
   'requireSecurityCode',
+  'shippingDetailsId',
 ]
 
 // Map of cleanup callbacks

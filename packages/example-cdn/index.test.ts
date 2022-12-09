@@ -71,8 +71,8 @@ test('embed is able to load on the page', async ({ page }) => {
 const dataset = [
   ['country', 'GB'],
   ['currency', 'SEK'],
-  ['amount', 0, null],
-  ['amount', 100, null],
+  ['amount', 0],
+  ['amount', 100],
 ]
 
 dataset.forEach(([key, value]) => {
@@ -96,4 +96,31 @@ dataset.forEach(([key, value]) => {
     const iframe = page.frameLocator('iframe').locator('body')
     await expect(JSON.parse(await iframe.innerText())[key]).toBe(value)
   })
+})
+
+test(`should pass a buyer id with shipping details id`, async ({ page }) => {
+  // arrange
+  const errors = []
+  page.on('console', async (msg) => {
+    errors.push(msg.text() || msg)
+  })
+
+  // act
+  await page.goto(
+    `/example-cdn?options=${Buffer.from(
+      JSON.stringify({
+        buyerId: '1e8b009c-6d3f-44c5-8668-3c3d0537ce72',
+        shippingDetailsId: '2b39ff28-22c5-4847-a355-e3bcdc3137b7',
+      })
+    ).toString('base64')}`
+  )
+
+  // assert
+  const iframe = page.frameLocator('iframe').locator('body')
+  await expect(JSON.parse(await iframe.innerText())['buyerId']).toBe(
+    '1e8b009c-6d3f-44c5-8668-3c3d0537ce72'
+  )
+  await expect(JSON.parse(await iframe.innerText())['shippingDetailsId']).toBe(
+    '2b39ff28-22c5-4847-a355-e3bcdc3137b7'
+  )
 })
