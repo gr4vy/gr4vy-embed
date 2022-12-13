@@ -1,3 +1,15 @@
+# v2.16.0 (Tue Dec 13 2022)
+
+#### 🚀 Enhancement
+
+- feat(connection-options): add support for connection options [#123](https://github.com/gr4vy/gr4vy-embed/pull/123) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.15.0 (Fri Dec 09 2022)
 
 ### Release Notes
