@@ -128,7 +128,7 @@ test(`should pass a buyer id with shipping details id`, async ({ page }) => {
 test(`should pass a connectionOptions`, async ({ page }) => {
   // arrange
   const errors = []
-  page.on('console', async (msg) => {
+  page.on('console', (msg) => {
     errors.push(msg.text() || msg)
   })
 
