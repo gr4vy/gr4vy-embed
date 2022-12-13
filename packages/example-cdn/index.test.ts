@@ -124,3 +124,28 @@ test(`should pass a buyer id with shipping details id`, async ({ page }) => {
     '2b39ff28-22c5-4847-a355-e3bcdc3137b7'
   )
 })
+
+test(`should pass a connectionOptions`, async ({ page }) => {
+  // arrange
+  const errors = []
+  page.on('console', (msg) => {
+    errors.push(msg.text() || msg)
+  })
+
+  // act
+  await page.goto(
+    `/example-cdn?options=${Buffer.from(
+      JSON.stringify({
+        connectionOptions: { foo: 'bar' },
+      })
+    ).toString('base64')}`
+  )
+
+  // assert
+  const iframe = page.frameLocator('iframe').locator('body')
+  await expect(
+    JSON.parse(await iframe.innerText())['connectionOptions']
+  ).toEqual({
+    foo: 'bar',
+  })
+})

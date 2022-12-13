@@ -33,6 +33,7 @@ export type Config = {
   requireSecurityCode?: boolean
   popupTimeout?: number
   shippingDetailsId?: string
+  connectionOptions?: Record<string, unknown>
 }
 
 export type CustomOption = {

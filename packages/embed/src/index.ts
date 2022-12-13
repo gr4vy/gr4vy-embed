@@ -50,6 +50,7 @@ export const optionKeys = [
   'statementDescriptor',
   'requireSecurityCode',
   'shippingDetailsId',
+  'connectionOptions',
 ]
 
 // Map of cleanup callbacks
