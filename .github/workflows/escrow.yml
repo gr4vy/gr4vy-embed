@@ -1,0 +1,73 @@
+name: 'Software Escrow'
+on:
+  workflow_dispatch:
+  schedule:
+    # 03:00 on every day-of-week from Monday through Friday
+    - cron: '0 3 * * 1-5'
+
+jobs:
+  escrow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get repository name
+        run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
+
+      - name: Create archive in tmp
+        run: tar -cvzf ${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz .
+
+      - name: Symmetric encryption with gpg
+        run: |
+          echo ${{ secrets.ESCROW_GPG_PASSPHRASE }} | gpg \
+            --symmetric \
+            --cipher-algo aes256 \
+            --digest-algo sha256 \
+            --cert-digest-algo sha256 \
+            --compress-algo none -z 0 \
+            --s2k-mode 3 \
+            --s2k-digest-algo sha512 \
+            --s2k-count 65011712 \
+            --quiet --no-greeting \
+            --pinentry-mode loopback \
+            --passphrase-fd 0 \
+            --output ${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz.gpg \
+            ${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz
+
+# A GitHub Action would have been prefered, but all seem to have issues.
+# 
+# dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083 seems to have an issue with using env vars in it's inputs.
+# cpina/github-action-push-to-another-repository@9e487f29582587eeb4837c0552c886bb0644b6b9 removes all existing files from the destiation repo.
+# leigholiver/commit-with-deploy-key@9562ffd1c0965c6d4f264e2555a569bd33ac7d05 seems to have an issue with using env vars in it's inputs.
+# 
+# Very basic solution to get us going:
+      - name: Commit to storage repo
+        run: |
+          # setup the github deploy key
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ESCROW_PRIVATE_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          # setup git
+          git config --global user.email "code@gr4vy.com"
+          git config --global user.name "gr4vy-code"
+          ssh-keyscan -H github.com > ~/.ssh/known_hosts
+          GIT_SSH='ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts'
+
+          # clone the storage repo
+          CLONE_DIR=$(mktemp -d)
+          GIT_SSH_COMMAND=$GIT_SSH git clone git@github.com:gr4vy/software-escrow.git "$CLONE_DIR"
+
+          # copy the new encrypted archive file
+          cp -R "${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz.gpg" "$CLONE_DIR"
+
+          # commit the new file
+          INPUT_COMMIT_MESSAGE="Update from ${{ env.REPOSITORY_NAME }}"
+          cd "$CLONE_DIR"
+          git add .
+          git commit --message "$INPUT_COMMIT_MESSAGE"
+          GIT_SSH_COMMAND=$GIT_SSH git push -u origin main
+
+          echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
