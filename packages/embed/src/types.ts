@@ -34,6 +34,7 @@ export type Config = {
   popupTimeout?: number
   shippingDetailsId?: string
   connectionOptions?: Record<string, unknown>
+  returnUrl?: string
 }
 
 export type CustomOption = {
