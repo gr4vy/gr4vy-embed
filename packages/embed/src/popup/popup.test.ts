@@ -198,6 +198,7 @@ describe('registerSubscriptions', () => {
         close: jest.fn(),
         focus: jest.fn(),
       },
+      stopCallback: jest.fn(),
     } as any
     popup.current = mockPopup
     subject.approvalStarted$.next()
