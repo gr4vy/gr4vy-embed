@@ -22,7 +22,7 @@ CVE-2022-24773
 CVE-2022-0235
 
 # eventsource - Dev Dependency (Webpack dev server)
-CVE-2022-1650 
+CVE-2022-1650
 
 # terser - Dev Dependency (Webpack)
 CVE-2022-25858
@@ -39,3 +39,6 @@ CVE-2022-37603
 # Minimatch dependancy
 # https://avd.aquasec.com/nvd/2022/cve-2022-3517/
 CVE-2022-3517
+
+# json5
+CVE-2022-46175
