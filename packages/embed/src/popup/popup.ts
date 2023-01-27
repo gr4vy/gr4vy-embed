@@ -45,7 +45,12 @@ export const createPopupController = (
         // redirect the full page if popup failed
         subject.hideOverlay$.next()
 
-        setTimeout(() => window.location.replace(url), 0) // ensure this happens after hide overlay removes the beforeunload event
+        /*
+         * .replace() ensures the user will not be able to return to the existing page.
+         * The redirect also needs to occur after the overlay has been hidden,
+         * this will then not be affected by the beforeunload event.
+         */
+        setTimeout(() => window.location.replace(url), 0)
       }
     }
   })
