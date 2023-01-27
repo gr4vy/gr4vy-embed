@@ -35,13 +35,18 @@ export const createPopupController = (
   })
 
   subject.approvalUrl$.subscribe((url) => {
-    if (popup.current) {
-      redirectPopup(popup.current.popup, url)
-    } else {
-      // redirect the full page if popup failed
-      subject.hideOverlay$.next()
+    const mode = subject.mode$.value()
 
-      setTimeout(() => (window.location.href = url), 0) // ensure this happens after hide overlay removes the beforeunload event
+    // redirect behaviour should only be applied to popups
+    if (mode?.popup) {
+      if (popup.current) {
+        redirectPopup(popup.current.popup, url)
+      } else {
+        // redirect the full page if popup failed
+        subject.hideOverlay$.next()
+
+        setTimeout(() => window.location.replace(url), 0) // ensure this happens after hide overlay removes the beforeunload event
+      }
     }
   })
 
