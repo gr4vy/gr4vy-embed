@@ -35,7 +35,7 @@ export type Config = {
   shippingDetailsId?: string
   connectionOptions?: Record<string, unknown>
   fullPageReturnUrl?: string
-  redirectMode?: 'fallback' | 'fullpage'
+  redirectMode?: 'fallback' | 'fullPage'
 }
 
 export type CustomOption = {
