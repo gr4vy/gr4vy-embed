@@ -44,5 +44,6 @@ export const createConfig = (setupConfig: SetupConfig) => {
     element,
     form,
     environment,
+    redirectMode: setupConfig.redirectMode || 'fallback',
   } as Config
 }

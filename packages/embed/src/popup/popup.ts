@@ -1,4 +1,5 @@
 import { SubjectManager } from 'subjects'
+import { Config } from 'types'
 import { mutableRef } from 'utils'
 import { redirectDocument } from './redirect-document'
 import { openPopup, popupFeatures, redirectPopup } from './redirect-popup'
@@ -9,6 +10,7 @@ const DEFAULT_POPUP_HEIGHT = 589
 export const createPopupController = (
   popup = mutableRef<{ popup: Window; stopCallback: () => void }>(),
   subject: SubjectManager,
+  redirectMode: Config['redirectMode'],
   timeout?: number
 ) => {
   subject.approvalStarted$.subscribe(() => {
@@ -21,7 +23,7 @@ export const createPopupController = (
       popup.current = undefined
     }
 
-    if (mode?.popup) {
+    if (mode?.popup && redirectMode === 'fallback') {
       popup.current = openPopup(
         popupFeatures(
           mode.popup?.width || DEFAULT_POPUP_WIDTH,

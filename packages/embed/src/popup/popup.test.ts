@@ -21,7 +21,7 @@ describe('registerSubscriptions', () => {
 
     // setup
     popup.current = null
-    createPopupController(popup, subject)
+    createPopupController(popup, subject, 'fallback')
     ;(popupFeatures as jest.Mock).mockImplementation(
       (width, height) => `width=${width},height=${height}`
     )

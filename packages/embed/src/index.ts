@@ -51,7 +51,7 @@ export const optionKeys = [
   'requireSecurityCode',
   'shippingDetailsId',
   'connectionOptions',
-  'returnUrl',
+  'fullPageReturnUrl',
 ]
 
 // Map of cleanup callbacks
@@ -118,6 +118,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
     subjectManager,
+    config.redirectMode,
     config.popupTimeout
   )
 
