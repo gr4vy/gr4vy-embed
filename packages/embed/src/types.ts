@@ -34,6 +34,8 @@ export type Config = {
   popupTimeout?: number
   shippingDetailsId?: string
   connectionOptions?: Record<string, unknown>
+  fullPageReturnUrl?: string
+  redirectMode?: 'fallback' | 'fullPage'
 }
 
 export type CustomOption = {
