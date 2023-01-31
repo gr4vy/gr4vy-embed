@@ -1,3 +1,16 @@
+# v2.17.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- feat: add support for full page return url [#126](https://github.com/gr4vy/gr4vy-embed/pull/126) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.16.0 (Tue Dec 13 2022)
 
 #### 🚀 Enhancement

@@ -1,3 +1,29 @@
+# v2.17.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for full page return url [#126](https://github.com/gr4vy/gr4vy-embed/pull/126) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### 🐛 Bug Fix
+
+- Add Software Escrow GitHub Action [#124](https://github.com/gr4vy/gr4vy-embed/pull/124) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- chore: add json5 to trivy's ignore list [#128](https://github.com/gr4vy/gr4vy-embed/pull/128) ([@brunodesde1987](https://github.com/brunodesde1987))
+- `@gr4vy/embed-react`
+  - fix: dev mode terminal error [#127](https://github.com/gr4vy/gr4vy-embed/pull/127) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 4
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.16.0 (Tue Dec 13 2022)
 
 #### 🚀 Enhancement
