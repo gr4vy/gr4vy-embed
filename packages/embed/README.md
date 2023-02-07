@@ -92,7 +92,7 @@ The options for this integration are as follows.
 | `connectionOptions`       | `null`       | An optional set of options passed to a connection when processing a transaction (see https://docs.gr4vy.com/reference#operation/authorize-new-transaction)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `fullPageReturnUrl`       | `string`     | An optional return url that the user will be redirected to when embed is being used in in-app browsers or payments completed in popups where the merchant page has been closed (mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `redirectMode`            | `fallback`   | `fallback`, `fullPage` - An optional configuration to change how redirects to payment providers are performed. `fallback` will attempt a popup before redirecting, `fullPage` will always perform a full page redirect rather than using a popup. This can be useful for testing the fallback behaviour where a popup could not be used.                                                                                                                                                                                                                                                                                                                                                                                                              |
-| `onBeforeTransaction`     | `null`       | An optional transaction hook that allows you to set options per transaction request. This should return a promise and can be used for updating the externalIdentifier, metadata and token.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `onBeforeTransaction`     | `null`       | An optional callback hook is called right before a transaction is created. It allows you to change the `metadata` and `externalIdentifier` right before a transaction request. This callback should return a promise.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ### Theming
 
@@ -276,35 +276,36 @@ setup({
 })
 ```
 
-## Updating transaction options
+## Updating transaction metadata and external identifier
 
-Embed will use the options you pass in in all transaction requests. Options can also be set dynamically per transaction request
-using the `onBeforeTransaction` callback.
+By default Embed will use the options you pass when initializing Embed for every transaction request. These options can be dynamically changed for every transaction request using the `onBeforeTransaction` callback. This is useful in case you want to
+create a just-in-time unique ID and assign this to the transaction as either metadata or an external identifier.
 
 ```ts
 setup({
   onBeforeTransaction: async () => {
-    const { token, metadata } = await merchantBackend.getMetadata()
+    const { orderId } = await merchantBackend.getOrderId()
     return {
-      token,
-      metadata,
+      externalIdentifier: orderId,
     }
   },
 })
 ```
 
-If you specify a key that is already set as a default option, you will need to merge the existing options.
+If you specify a key that is already set as a default option then you will need to merge the existing values with your change.
 
 ```ts
 setup({
   onBeforeTransaction: async ({ metadata }) => {
-    return Promise.resolve({
-      token,
+    const { token, orderId } = await merchantBackend.getOrderId()
+
+    return {
+      token, // new token with pinned metadata
       metadata: {
         ...metadata, // merge existing metadata
-        saleDiscount: '10%',
+        orderId,
       },
-    })
+    }
   },
 })
 ```
