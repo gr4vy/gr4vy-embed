@@ -241,9 +241,9 @@ export function setup(setupConfig: SetupConfig) {
 
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
 
-  subjectManager.beforeTransactionPending$.subscribe(async () => {
+  subjectManager.beforeTransactionPending$.subscribe(() => {
     if (config?.onBeforeTransaction) {
-      await config
+      return config
         .onBeforeTransaction(pick(config, ['metadata']))
         .then((transactionOptions = {}) => {
           dispatch({
