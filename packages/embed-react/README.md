@@ -262,39 +262,20 @@ embed and instead you will need to handle the form submission. You should implem
 />
 ```
 
-## Updating transaction options
+## Updating transaction metadata and external identifier
 
-Embed will use the options you pass in in all transaction requests. Options can also be set dynamically per transaction request
-using the `onBeforeTransaction` callback.
+By default Embed will use the options you pass when initializing Embed for every transaction request. These options can be dynamically changed for every transaction request using the `onBeforeTransaction` callback. This is useful in case you want to 
+create a just-in-time unique ID and assign this to the transaction as either metadata or an external identifier. 
 
 ```ts
 setup({
   onBeforeTransaction: async () => {
-    const { token, metadata } = await merchantBackend.getMetadata()
+    const { orderId } = await merchantBackend.getOrderId()
     return {
-      token,
-      metadata,
+      externalIdentifier: orderId
     }
   },
 })
-```
-
-If you specify a key that is already set as a default option, you will need to merge the existing options.
-
-```ts
-setup({
-  onBeforeTransaction: async ({ metadata }) => {
-    return Promise.resolve({
-      token,
-      metadata: {
-        ...metadata, // merge existing metadata
-        saleDiscount: '10%',
-      },
-    })
-  },
-})
-```
-
 ## License
 
 This project is provided as-is under the [MIT license](LICENSE).
