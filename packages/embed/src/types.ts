@@ -36,6 +36,14 @@ export type Config = {
   connectionOptions?: Record<string, unknown>
   fullPageReturnUrl?: string
   redirectMode?: 'fallback' | 'fullPage'
+  onBeforeTransaction?: (options: {
+    metadata?: Record<string, string>
+    externalIdentifier?: string
+  }) => Promise<{
+    metadata?: Record<string, string>
+    externalIdentifier?: string
+    token?: string
+  }>
 }
 
 export type CustomOption = {
@@ -251,6 +259,9 @@ export type Message = { channel: string; data?: unknown } & (
     }
   | {
       type: 'scrollTo'
+    }
+  | {
+      type: 'beforeTransactionPending'
     }
 )
 
