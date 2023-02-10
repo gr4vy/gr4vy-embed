@@ -1,3 +1,27 @@
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- Bump http-cache-semantics from 4.1.0 to 4.1.1 [#130](https://github.com/gr4vy/gr4vy-embed/pull/130) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🏠 Internal
+
+- `@gr4vy/embed-react`
+  - chore: update default api host [#129](https://github.com/gr4vy/gr4vy-embed/pull/129) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.17.0 (Tue Jan 31 2023)
 
 #### 🚀 Enhancement

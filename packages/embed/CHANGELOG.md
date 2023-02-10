@@ -1,3 +1,15 @@
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.17.0 (Tue Jan 31 2023)
 
 #### 🚀 Enhancement

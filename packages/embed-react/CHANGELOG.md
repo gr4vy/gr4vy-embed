@@ -1,3 +1,20 @@
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- chore: update default api host [#129](https://github.com/gr4vy/gr4vy-embed/pull/129) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.17.0 (Tue Jan 31 2023)
 
 #### 🚀 Enhancement
