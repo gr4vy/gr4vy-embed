@@ -176,7 +176,8 @@ export function setup(setupConfig: SetupConfig) {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
           supportedGooglePayVersion: 1,
-          hasBeforeTransaction: Boolean(config.onBeforeTransaction),
+          hasBeforeTransaction:
+            typeof config?.onBeforeTransaction === 'function',
         },
       })
     },
