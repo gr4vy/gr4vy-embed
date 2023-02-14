@@ -441,4 +441,11 @@ export const validate = (options: SetupConfig) =>
       ? !!(options.buyerId || options.buyerExternalIdentifier)
       : true,
     message: 'must be used with a buyerId or buyerExternalId',
+  }) &&
+  validateType({
+    argument: 'hasBeforeTransaction',
+    value: options.onBeforeTransaction,
+    required: false,
+    type: 'function',
+    message: 'must be a valid function that returns a promise',
   })
