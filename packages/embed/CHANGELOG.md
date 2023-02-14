@@ -1,3 +1,15 @@
+# v2.18.1 (Tue Feb 14 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add check for function onBeforeTransaction [#132](https://github.com/gr4vy/gr4vy-embed/pull/132) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.18.0 (Fri Feb 10 2023)
 
 #### 🚀 Enhancement
