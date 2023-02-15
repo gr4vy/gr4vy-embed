@@ -44,6 +44,7 @@ export type Config = {
     externalIdentifier?: string
     token?: string
   }>
+  showDeleteButton?: boolean
 }
 
 export type CustomOption = {

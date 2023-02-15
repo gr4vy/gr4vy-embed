@@ -52,6 +52,7 @@ export const optionKeys = [
   'shippingDetailsId',
   'connectionOptions',
   'fullPageReturnUrl',
+  'showDeleteButton',
 ]
 
 // Map of cleanup callbacks
