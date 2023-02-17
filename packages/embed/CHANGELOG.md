@@ -1,3 +1,15 @@
+# v2.19.0 (Fri Feb 17 2023)
+
+#### 🚀 Enhancement
+
+- feat: add delete payment option prop [#133](https://github.com/gr4vy/gr4vy-embed/pull/133) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.18.1 (Tue Feb 14 2023)
 
 #### 🐛 Bug Fix
