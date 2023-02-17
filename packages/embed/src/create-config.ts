@@ -25,6 +25,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
 
   return {
     requireSecurityCode: false,
+    showDeleteButton: false,
     store: 'ask',
     display: 'all',
     apiHost,

@@ -63,6 +63,7 @@ test('default configuration', () => {
     environment: undefined,
     gr4vyId: 'test',
     requireSecurityCode: false,
+    showDeleteButton: false,
   })
 })
 

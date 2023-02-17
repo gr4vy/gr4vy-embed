@@ -90,4 +90,5 @@ setup({
       `
   },
   secure: false,
+  showDeleteButton: true,
 })
