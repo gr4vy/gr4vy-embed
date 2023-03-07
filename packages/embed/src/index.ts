@@ -53,6 +53,7 @@ export const optionKeys = [
   'connectionOptions',
   'fullPageReturnUrl',
   'showDeleteButton',
+  'requiredFields',
 ]
 
 // Map of cleanup callbacks

@@ -45,6 +45,7 @@ export type Config = {
     token?: string
   }>
   showDeleteButton?: boolean
+  requiredFields?: Array<any>
 }
 
 export type CustomOption = {
