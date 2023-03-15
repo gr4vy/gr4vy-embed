@@ -25,6 +25,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
 
   return {
     requireSecurityCode: false,
+    showDeleteButton: false,
     store: 'ask',
     display: 'all',
     apiHost,
@@ -44,5 +45,6 @@ export const createConfig = (setupConfig: SetupConfig) => {
     element,
     form,
     environment,
+    redirectMode: setupConfig.redirectMode || 'fallback',
   } as Config
 }

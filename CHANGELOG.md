@@ -1,3 +1,124 @@
+# v2.19.0 (Fri Feb 17 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add delete payment option prop [#133](https://github.com/gr4vy/gr4vy-embed/pull/133) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.18.1 (Tue Feb 14 2023)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: add check for function onBeforeTransaction [#132](https://github.com/gr4vy/gr4vy-embed/pull/132) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- Bump http-cache-semantics from 4.1.0 to 4.1.1 [#130](https://github.com/gr4vy/gr4vy-embed/pull/130) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🏠 Internal
+
+- `@gr4vy/embed-react`
+  - chore: update default api host [#129](https://github.com/gr4vy/gr4vy-embed/pull/129) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.17.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for full page return url [#126](https://github.com/gr4vy/gr4vy-embed/pull/126) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### 🐛 Bug Fix
+
+- Add Software Escrow GitHub Action [#124](https://github.com/gr4vy/gr4vy-embed/pull/124) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- chore: add json5 to trivy's ignore list [#128](https://github.com/gr4vy/gr4vy-embed/pull/128) ([@brunodesde1987](https://github.com/brunodesde1987))
+- `@gr4vy/embed-react`
+  - fix: dev mode terminal error [#127](https://github.com/gr4vy/gr4vy-embed/pull/127) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 4
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.16.0 (Tue Dec 13 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(connection-options): add support for connection options [#123](https://github.com/gr4vy/gr4vy-embed/pull/123) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.15.0 (Fri Dec 09 2022)
+
+### Release Notes
+
+#### feat(shipping-details): add support for shipping details id ([#122](https://github.com/gr4vy/gr4vy-embed/pull/122))
+
+Allows merchants to supply an identifier for shipping details. Shipping details must belong to the buyer and will need to be provided via our API ahead of the transaction.
+
+---
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(shipping-details): add support for shipping details id [#122](https://github.com/gr4vy/gr4vy-embed/pull/122) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- chore: add CVE-2022-37603 and CVE-2022-37599 to trivyignore [#118](https://github.com/gr4vy/gr4vy-embed/pull/118) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore: upgrade dev dependencies [#121](https://github.com/gr4vy/gr4vy-embed/pull/121) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: absolute imports (embed) [#117](https://github.com/gr4vy/gr4vy-embed/pull/117) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.14.0 (Fri Nov 11 2022)
 
 #### 🚀 Enhancement

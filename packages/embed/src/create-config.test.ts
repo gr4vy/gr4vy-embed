@@ -56,12 +56,14 @@ test('default configuration', () => {
     form: mockForm,
     iframeHost: 'embed.test.gr4vy.app',
     iframeUrl: `https://embed.test.gr4vy.app`,
+    redirectMode: 'fallback',
     iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
     store: 'ask',
     token: '123',
     environment: undefined,
     gr4vyId: 'test',
     requireSecurityCode: false,
+    showDeleteButton: false,
   })
 })
 

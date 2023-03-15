@@ -1,3 +1,87 @@
+# v2.19.0 (Fri Feb 17 2023)
+
+#### 🚀 Enhancement
+
+- feat: add delete payment option prop [#133](https://github.com/gr4vy/gr4vy-embed/pull/133) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- chore: update default api host [#129](https://github.com/gr4vy/gr4vy-embed/pull/129) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.17.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- feat: add support for full page return url [#126](https://github.com/gr4vy/gr4vy-embed/pull/126) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- fix: dev mode terminal error [#127](https://github.com/gr4vy/gr4vy-embed/pull/127) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 3
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.16.0 (Tue Dec 13 2022)
+
+#### 🚀 Enhancement
+
+- feat(connection-options): add support for connection options [#123](https://github.com/gr4vy/gr4vy-embed/pull/123) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.15.0 (Fri Dec 09 2022)
+
+### Release Notes
+
+#### feat(shipping-details): add support for shipping details id ([#122](https://github.com/gr4vy/gr4vy-embed/pull/122))
+
+Allows merchants to supply an identifier for shipping details. Shipping details must belong to the buyer and will need to be provided via our API ahead of the transaction.
+
+---
+
+#### 🚀 Enhancement
+
+- feat(shipping-details): add support for shipping details id [#122](https://github.com/gr4vy/gr4vy-embed/pull/122) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- chore: absolute imports (embed) [#117](https://github.com/gr4vy/gr4vy-embed/pull/117) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.12.0 (Thu Sep 01 2022)
 
 #### 🚀 Enhancement

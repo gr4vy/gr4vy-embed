@@ -1,5 +1,4 @@
 import { setup } from '@gr4vy/embed'
-import { SetupConfig, EmbedInstance } from '@gr4vy/embed/lib/types'
 import isEqual from 'lodash.isequal'
 import React, {
   useRef,
@@ -8,12 +7,13 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react'
+import type { EmbedInstance, SetupConfig } from '@gr4vy/embed/lib/types'
 
 export type Gr4vyEmbedProps = Omit<SetupConfig, 'element' | 'form'> & {
   form?: SetupConfig['form']
 }
 
-export { EmbedInstance }
+export type { EmbedInstance }
 
 const Gr4vyEmbed = memo(
   forwardRef<EmbedInstance, Gr4vyEmbedProps>((props, instanceRef) => {

@@ -223,6 +223,26 @@ export const validateType = ({
   return false
 }
 
+export const validateCondition = ({
+  argument,
+  message,
+  condition,
+}: {
+  argument: string
+  message: string
+  condition: boolean
+}): boolean => {
+  if (condition) {
+    return true
+  }
+
+  emitArgumentError({
+    argument,
+    message,
+  })
+  return false
+}
+
 // Emites an argument error to the command line and to the `onEvent` handler.
 export const emitArgumentError = ({
   argument,
@@ -407,4 +427,25 @@ export const validate = (options: SetupConfig) =>
     value: options.popupTimeout,
     message: 'must be valid non-negative number',
     required: false,
+  }) &&
+  validateType({
+    argument: 'shippingDetailsId',
+    value: options.shippingDetailsId,
+    required: false,
+    type: 'string',
+    message: 'must be a valid uuid',
+  }) &&
+  validateCondition({
+    argument: 'shippingDetailsId',
+    condition: options.shippingDetailsId
+      ? !!(options.buyerId || options.buyerExternalIdentifier)
+      : true,
+    message: 'must be used with a buyerId or buyerExternalId',
+  }) &&
+  validateType({
+    argument: 'hasBeforeTransaction',
+    value: options.onBeforeTransaction,
+    required: false,
+    type: 'function',
+    message: 'must be a valid function that returns a promise',
   })

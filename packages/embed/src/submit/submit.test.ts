@@ -1,4 +1,4 @@
-import { createSubjectManager, SubjectManager } from '../subjects'
+import { createSubjectManager, SubjectManager } from 'subjects'
 import { createSubmitController } from './submit'
 
 describe('createSubmitController', () => {

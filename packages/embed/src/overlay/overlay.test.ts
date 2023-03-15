@@ -1,4 +1,4 @@
-import { createSubjectManager } from '../subjects'
+import { createSubjectManager } from 'subjects'
 import { createOverlayController } from './overlay'
 
 jest.useFakeTimers()

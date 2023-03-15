@@ -1,4 +1,4 @@
-import { SubjectManager } from '../subjects'
+import { SubjectManager } from 'subjects'
 
 declare global {
   interface Window {

@@ -1,5 +1,5 @@
 import FormNapper from 'form-napper'
-import { SubjectManager } from '../subjects'
+import { SubjectManager } from 'subjects'
 
 export type FormNapperInstance = {
   hijack: (fn: CallableFunction) => void

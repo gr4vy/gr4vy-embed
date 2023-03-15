@@ -81,6 +81,12 @@ The options for this integration are as follows.
 | `statementDescriptor`     | `Object`    | An optional object with information about the purchase to construct the statement information the buyer will see in their bank statement. Please note support for these fields varies across payment service providers and underlying banks, so Gr4vy can only ensure a best effort approach for each supported platform. <br />As an example, most platforms will only support a concatenation of `name` and `description` fields, truncated to a length of 22 characters. <br />The object can contain `name`, `description`, `phoneNumber`, `city` and `url` keys, with string values. `phoneNumber` should be in E164 format. Gr4vy recommends avoiding characters outside the alphanumeric range and the dot (`.`) to ensure wide compatibility. |
 | `secure`                  | `true`      | An optional boolean which forces iframeHost and apiHost to use `https` protocol by default. This is useful for local development using `http` protocol.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `requireSecurityCode`     | `false`     | An optional boolean which forces security code to be prompted for stored card payments.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `shippingDetailsId`       | `null`      | An optional unique identifier of a set of shipping details stored for the buyer.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `connectionOptions`       | `null`      | An optional set of options passed to a connection when processing a transaction (see https://docs.gr4vy.com/reference#operation/authorize-new-transaction)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `fullPageReturnUrl`       | `string`    | An optional return url that the user will be redirected to when Embed is being used in in-app browsers, or when payments are completed in popups where the merchant page has been closed (mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| `redirectMode`            | `fallback`  | `fallback`, `fullPage` - An optional configuration to change how redirects to payment providers are performed. `fallback` will attempt a popup before redirecting, `fullPage` will always perform a full page redirect rather than using a popup. This can be useful for testing the fallback behaviour where a popup could not be used.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `onBeforeTransaction`     | `null`      | An optional callback hook is called right before a transaction is created. It allows you to change the `metadata` and `externalIdentifier` right before a transaction request. This callback should return a promise.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `showDeleteButton`        | `false`     | An optional boolean which controls the display of the delete button on stored payment methods, so that buyers can delete them.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 ### Events
 
@@ -255,6 +261,40 @@ embed and instead you will need to handle the form submission. You should implem
     console.log(`Paid by ${method}`);
   }}
 />
+```
+
+## Updating transaction metadata and external identifier
+
+By default Embed will use the options you pass when initializing Embed for every transaction request. These options can be dynamically changed for every transaction request using the `onBeforeTransaction` callback. This is useful in case you want to
+create a just-in-time unique ID and assign this to the transaction as either metadata or an external identifier.
+
+```ts
+setup({
+  onBeforeTransaction: async () => {
+    const { orderId } = await merchantBackend.getOrderId()
+    return {
+      externalIdentifier: orderId,
+    }
+  },
+})
+```
+
+If you specify a key that is already set as a default option then you will need to merge the existing values with your change.
+
+```ts
+setup({
+  onBeforeTransaction: async ({ metadata }) => {
+    const { token, orderId } = await merchantBackend.getOrderId()
+
+    return {
+      token, // new token with pinned metadata
+      metadata: {
+        ...metadata, // merge existing metadata
+        orderId,
+      },
+    }
+  },
+})
 ```
 
 ## License
