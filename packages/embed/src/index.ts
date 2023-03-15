@@ -11,7 +11,7 @@ import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
 import { createSubmitController } from './submit'
-import { SetupConfig, Config, Message, EmbedInstance } from './types'
+import { SetupConfig, Config, Message } from './types'
 import {
   mutableRef,
   pick,
@@ -51,6 +51,8 @@ export const optionKeys = [
   'requireSecurityCode',
   'shippingDetailsId',
   'connectionOptions',
+  'fullPageReturnUrl',
+  'showDeleteButton',
 ]
 
 // Map of cleanup callbacks
@@ -65,7 +67,7 @@ let embedId = 0
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-export function setup(setupConfig: SetupConfig): EmbedInstance {
+export function setup(setupConfig: SetupConfig) {
   // exit early if the config is not valid
   if (!validate(setupConfig)) {
     return
@@ -117,6 +119,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
     subjectManager,
+    config.redirectMode,
     config.popupTimeout
   )
 
@@ -174,6 +177,8 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
           supportedGooglePayVersion: 1,
+          hasBeforeTransaction:
+            typeof config?.onBeforeTransaction === 'function',
         },
       })
     },
@@ -185,6 +190,7 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
         behavior: 'smooth',
       })
     },
+    beforeTransactionPending: subjectManager.beforeTransactionPending$.next,
   }
 
   const dispatch = createDispatch(
@@ -236,6 +242,29 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   )
 
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
+
+  subjectManager.beforeTransactionPending$.subscribe(() => {
+    if (config?.onBeforeTransaction) {
+      return config
+        .onBeforeTransaction(pick(config, ['metadata']))
+        .then((transactionOptions = {}) => {
+          dispatch({
+            type: 'beforeTransactionDone',
+            data: pick(transactionOptions, [
+              'externalIdentifier',
+              'metadata',
+              'token',
+            ]),
+          })
+        })
+        .catch(() => {
+          dispatch({
+            type: 'beforeTransactionError',
+          })
+        })
+    }
+  })
+
   subjectManager.approvalCancelled$.subscribe(() =>
     dispatch({ type: 'approvalCancelled' })
   )
@@ -274,3 +303,10 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     },
   }
 }
+
+export type DynamicOptions = Pick<
+  SetupConfig,
+  'externalIdentifier' | 'metadata' | 'token'
+>
+
+export type EmbedInstance = ReturnType<typeof setup>
