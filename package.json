@@ -3,7 +3,8 @@
   "repository": "git@github.com:gr4vy/gr4vy-embed.git",
   "author": "gr4vy-code <code@gr4vy.com>",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap",

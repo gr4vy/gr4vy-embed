@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
     timeout: 120 * 1000,
   },
   use: {
-    baseURL: 'http://localhost:9000',
+    baseURL: 'http://localhost:9000/apps/example-cdn',
   },
 }
 export default config

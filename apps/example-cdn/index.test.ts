@@ -55,7 +55,7 @@ test.beforeEach(async ({ page }) => {
 
 test('embed is able to load on the page', async ({ page }) => {
   // act
-  await page.goto('/example-cdn')
+  await page.goto('')
 
   // assert
   const iframe = page.frameLocator('iframe').locator('body')
@@ -87,9 +87,9 @@ dataset.forEach(([key, value]) => {
 
     // act
     await page.goto(
-      `/example-cdn?options=${Buffer.from(
-        JSON.stringify({ [key]: value })
-      ).toString('base64')}`
+      `?options=${Buffer.from(JSON.stringify({ [key]: value })).toString(
+        'base64'
+      )}`
     )
 
     // assert
@@ -107,7 +107,7 @@ test(`should pass a buyer id with shipping details id`, async ({ page }) => {
 
   // act
   await page.goto(
-    `/example-cdn?options=${Buffer.from(
+    `?options=${Buffer.from(
       JSON.stringify({
         buyerId: '1e8b009c-6d3f-44c5-8668-3c3d0537ce72',
         shippingDetailsId: '2b39ff28-22c5-4847-a355-e3bcdc3137b7',
@@ -134,7 +134,7 @@ test(`should pass a connectionOptions`, async ({ page }) => {
 
   // act
   await page.goto(
-    `/example-cdn?options=${Buffer.from(
+    `?options=${Buffer.from(
       JSON.stringify({
         connectionOptions: { foo: 'bar' },
       })
