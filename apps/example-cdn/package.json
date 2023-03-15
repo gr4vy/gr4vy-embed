@@ -9,8 +9,8 @@
   "repository": "github:gr4vy/embed",
   "homepage": "https://gr4vy.com",
   "scripts": {
-    "start": "http-server .. -o -p 9000",
-    "start:ci": "http-server .. -p 9000",
+    "start": "http-server ../.. -o -p 9000",
+    "start:ci": "http-server ../.. -p 9000",
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;",
     "test": "playwright test"
   },
