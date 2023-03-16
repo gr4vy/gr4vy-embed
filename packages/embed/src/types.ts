@@ -39,9 +39,11 @@ export type Config = {
   onBeforeTransaction?: (options: {
     metadata?: Record<string, string>
     externalIdentifier?: string
+    shippingDetailsId?: string
   }) => Promise<{
     metadata?: Record<string, string>
     externalIdentifier?: string
+    shippingDetailsId?: string
     token?: string
   }>
   showDeleteButton?: boolean
