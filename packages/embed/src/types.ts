@@ -266,6 +266,9 @@ export type Message = { channel: string; data?: unknown } & (
   | {
       type: 'beforeTransactionPending'
     }
+  | {
+      type: 'formValidationFailed'
+    }
 )
 
 export type EmbedInstance = {

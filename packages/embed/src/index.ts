@@ -191,6 +191,7 @@ export function setup(setupConfig: SetupConfig) {
       })
     },
     beforeTransactionPending: subjectManager.beforeTransactionPending$.next,
+    formValidationFailed: subjectManager.formValidationFailed$.next,
   }
 
   const dispatch = createDispatch(

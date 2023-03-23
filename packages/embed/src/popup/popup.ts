@@ -75,4 +75,8 @@ export const createPopupController = (
     popup.current?.stopCallback()
     popup.current?.popup.close()
   })
+
+  subject.formValidationFailed$.subscribe(() => {
+    popup.current?.popup.close()
+  })
 }
