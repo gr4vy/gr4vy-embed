@@ -1,3 +1,20 @@
+# v2.21.0 (Fri Mar 24 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - fix: TransactionFailed event triggering when editing billing details [#140](https://github.com/gr4vy/gr4vy-embed/pull/140) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🐛 Bug Fix
+
+- chore(dev-deps): bump html-webpack-plugin from 4.5.0 to 5.5.0 [#139](https://github.com/gr4vy/gr4vy-embed/pull/139) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.20.0 (Thu Mar 16 2023)
 
 #### 🚀 Enhancement
