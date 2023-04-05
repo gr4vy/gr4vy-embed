@@ -73,7 +73,7 @@ jobs:
           restore-keys: |
             yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: Install Node dependencies
+      - name: Create CDN build
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -81,8 +81,7 @@ jobs:
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
-          git fetch --tags
-          echo shipit $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit --dry-run)
+          echo shipit $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -d)
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
 #      - name: Push compiled content
