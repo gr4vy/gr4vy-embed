@@ -82,7 +82,7 @@ jobs:
           yarn install --frozen-lockfile
           yarn bootstrap
           git fetch --tags
-          echo shipit $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -d)
+          echo shipit $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit --dry-run)
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
 #      - name: Push compiled content
