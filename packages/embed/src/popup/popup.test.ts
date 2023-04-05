@@ -1,5 +1,5 @@
-import { createSubjectManager } from '../subjects'
-import { mutableRef } from '../utils'
+import { createSubjectManager } from 'subjects'
+import { mutableRef } from 'utils'
 import { createPopupController } from './popup'
 import { openPopup, redirectPopup, popupFeatures } from './redirect-popup'
 
@@ -21,7 +21,7 @@ describe('registerSubscriptions', () => {
 
     // setup
     popup.current = null
-    createPopupController(popup, subject)
+    createPopupController(popup, subject, 'fallback')
     ;(popupFeatures as jest.Mock).mockImplementation(
       (width, height) => `width=${width},height=${height}`
     )
@@ -93,6 +93,12 @@ describe('registerSubscriptions', () => {
       stopCallback: jest.fn(),
     } as any
     popup.current = mockPopup
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+    })
     subject.approvalUrl$.next('test-url')
 
     jest.runAllTimers()
@@ -103,6 +109,46 @@ describe('registerSubscriptions', () => {
   test('checks to redirect popup when an approval url is available', () => {
     popup.current = null
     subject.approvalUrl$.next('test-url')
+  })
+
+  test('should redirect on approval url when a popup failed to launch', () => {
+    const replace = jest.fn()
+
+    delete window.location
+    ;(window as any).location = { replace }
+
+    popup.current = null
+    subject.mode$.next({
+      popup: {
+        title: 'Test',
+        message: 'Test Message',
+      },
+    })
+    subject.approvalUrl$.next('https://test-url')
+
+    jest.runAllTimers()
+
+    expect(window.location.replace).toHaveBeenCalledWith('https://test-url')
+
+    replace.mockClear()
+  })
+
+  test('should not redirect on approval url when a popup failed to launch', () => {
+    const replace = jest.fn()
+
+    delete window.location
+    ;(window as any).location = { replace }
+
+    popup.current = null
+    // no popup defined - e.g. card
+    subject.mode$.next({})
+    subject.approvalUrl$.next('https://test-url')
+
+    jest.runAllTimers()
+
+    expect(window.location.replace).not.toHaveBeenCalled()
+
+    replace.mockClear()
   })
 
   test('closes popup when approval is complete', () => {
@@ -182,8 +228,8 @@ describe('registerSubscriptions', () => {
     subject.approvalCancelled$.next()
   })
 
-  test('restarts approval when lost', () => {
-    subject.approvalUrl$.next('test-url')
+  test('refocus approval when lost', () => {
+    subject.approvalLost$.next()
     subject.mode$.next({
       popup: {
         title: 'Test',
@@ -196,25 +242,19 @@ describe('registerSubscriptions', () => {
     const mockPopup = {
       popup: {
         close: jest.fn(),
+        focus: jest.fn(),
       },
       stopCallback: jest.fn(),
     } as any
     popup.current = mockPopup
-    let hasApprovalStarted = false
-    let hasApprovalUrlBeenReplayed = false
-    subject.approvalStarted$.subscribe(() => (hasApprovalStarted = true))
-    subject.approvalUrl$.subscribe(() => (hasApprovalUrlBeenReplayed = true))
-    subject.approvalLost$.next()
+    subject.approvalStarted$.next()
 
     jest.runAllTimers()
 
-    expect(mockPopup.stopCallback).toHaveBeenCalled()
-    expect(mockPopup.popup.close).toHaveBeenCalled()
-    expect(hasApprovalStarted).toBeTruthy()
-    expect(hasApprovalUrlBeenReplayed).toBeTruthy()
+    expect(mockPopup.popup.focus).toHaveBeenCalled()
   })
 
-  test('restarts approval without an approval url', () => {
+  test('refocus approval without an approval url', () => {
     subject.approvalUrl$.next(null)
     subject.mode$.next({
       popup: {
@@ -227,7 +267,7 @@ describe('registerSubscriptions', () => {
     })
     const mockPopup = {
       popup: {
-        close: jest.fn(),
+        focus: jest.fn(),
       },
       stopCallback: jest.fn(),
     } as any

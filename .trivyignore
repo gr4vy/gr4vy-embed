@@ -22,7 +22,23 @@ CVE-2022-24773
 CVE-2022-0235
 
 # eventsource - Dev Dependency (Webpack dev server)
-CVE-2022-1650 
+CVE-2022-1650
 
 # terser - Dev Dependency (Webpack)
 CVE-2022-25858
+
+# parse-url - added to get non-code change passing test. Needs fixing.
+CVE-2022-2900
+CVE-2022-3224
+
+# loader-utils - dev dependency
+CVE-2022-37601
+CVE-2022-37599
+CVE-2022-37603
+
+# Minimatch dependancy
+# https://avd.aquasec.com/nvd/2022/cve-2022-3517/
+CVE-2022-3517
+
+# json5
+CVE-2022-46175

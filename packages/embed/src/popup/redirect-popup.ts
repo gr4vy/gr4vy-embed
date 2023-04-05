@@ -27,11 +27,17 @@ export const waitForValue = (accessor, value, callback) => {
 export const openPopup = (
   features: string,
   html: string,
-  onClose: CallableFunction
+  onClose: CallableFunction,
+  timeout?: number
 ) => {
   const popup = open('', 'loading', features)
   popup.document.write(html)
   const stopCallback = waitForValue(() => popup.closed, true, onClose)
+
+  if (timeout) {
+    setTimeout(() => popup.close(), timeout)
+  }
+
   return {
     popup,
     stopCallback,

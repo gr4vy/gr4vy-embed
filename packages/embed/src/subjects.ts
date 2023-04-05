@@ -30,6 +30,7 @@ export const createSubjectManager = () => {
       status: string
       paymentMethod?: { id?: string }
     }>(),
+    beforeTransactionPending$: createSubject(),
     transactionFailed$: createSubject(),
     transactionCancelled$: createSubject(),
     appleStartSession$: createSubject<ApplePayJS.ApplePayPaymentRequest>(),
@@ -49,6 +50,7 @@ export const createSubjectManager = () => {
     }>(),
     showOverlay$: createSubject(),
     hideOverlay$: createSubject(),
+    formValidationFailed$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {

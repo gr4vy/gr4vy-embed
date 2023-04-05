@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
 const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
@@ -11,6 +12,7 @@ module.exports = {
   entry: './dev/index.ts',
   resolve: {
     extensions: ['.ts', '.js'],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   module: {
     rules: [
@@ -51,7 +53,7 @@ module.exports = {
       title: 'Gr4vy - Embed',
     }),
     new DefinePlugin({
-      PACKAGE_VERSION: 'dev',
+      PACKAGE_VERSION: JSON.stringify('dev'),
     }),
   ],
 }

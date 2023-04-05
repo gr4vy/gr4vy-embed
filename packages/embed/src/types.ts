@@ -30,6 +30,23 @@ export type Config = {
   cartItems?: Array<CartItem>
   statementDescriptor?: StatementDescriptor
   secure?: boolean
+  requireSecurityCode?: boolean
+  popupTimeout?: number
+  shippingDetailsId?: string
+  connectionOptions?: Record<string, unknown>
+  fullPageReturnUrl?: string
+  redirectMode?: 'fallback' | 'fullPage'
+  onBeforeTransaction?: (options: {
+    metadata?: Record<string, string>
+    externalIdentifier?: string
+    shippingDetailsId?: string
+  }) => Promise<{
+    metadata?: Record<string, string>
+    externalIdentifier?: string
+    shippingDetailsId?: string
+    token?: string
+  }>
+  showDeleteButton?: boolean
 }
 
 export type CustomOption = {
@@ -242,6 +259,15 @@ export type Message = { channel: string; data?: unknown } & (
     }
   | {
       type: 'googlePaySessionCompleted'
+    }
+  | {
+      type: 'scrollTo'
+    }
+  | {
+      type: 'beforeTransactionPending'
+    }
+  | {
+      type: 'formValidationFailed'
     }
 )
 

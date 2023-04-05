@@ -36,6 +36,18 @@ const result = document.createElement(`div`)
 document.body.appendChild(form)
 document.body.appendChild(result)
 
+// If a host is explicitly set, ignore the gr4vyId
+const instance = {
+  ...(process.env.API_HOST || !process.env.GR4VY_ID
+    ? {
+        iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
+        apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
+      }
+    : {
+        gr4vyId: process.env.GR4VY_ID,
+      }),
+}
+
 setup({
   element: `#root`,
   form: `#form`,
@@ -43,8 +55,7 @@ setup({
   amount: 1299,
   currency: `USD`,
   buyerExternalIdentifier: 'user-001',
-  iframeHost: process.env.IFRAME_HOST ?? '127.0.0.1:8080',
-  apiHost: process.env.API_HOST ?? '127.0.0.1:3100',
+  ...instance,
   token: process.env.TOKEN ?? `123456`,
   debug: true,
   onEvent: log,
@@ -69,13 +80,15 @@ setup({
   metadata: {
     foo: 'bar',
   },
+  requireSecurityCode: true,
   // overrides form submission
   onComplete: (transaction) => {
     result.innerHTML = `
       <p>Transaction ID: ${transaction.id}</p>
       <p>Status: ${transaction.status}</p>
-      <p>Payment Method ID: ${transaction.paymentMethod.id}</p>
+      <p>Payment Method ID: ${transaction.paymentMethod?.id}</p>
       `
   },
   secure: false,
+  showDeleteButton: true,
 })

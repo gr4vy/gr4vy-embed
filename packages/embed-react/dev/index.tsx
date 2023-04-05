@@ -8,7 +8,7 @@ ReactDOM.render(
     amount={1299}
     currency="USD"
     iframeHost={process.env.IFRAME_HOST ?? '127.0.0.1:8080'}
-    apiHost={process.env.API_HOST ?? '127.0.0.1:3000'}
+    apiHost={process.env.API_HOST ?? '127.0.0.1:3100'}
     token="123456"
     debug
     country="US"

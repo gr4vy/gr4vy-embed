@@ -1,3 +1,264 @@
+# v2.21.0 (Fri Mar 24 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - fix: TransactionFailed event triggering when editing billing details [#140](https://github.com/gr4vy/gr4vy-embed/pull/140) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🐛 Bug Fix
+
+- chore(dev-deps): bump html-webpack-plugin from 4.5.0 to 5.5.0 [#139](https://github.com/gr4vy/gr4vy-embed/pull/139) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
+# v2.20.0 (Thu Mar 16 2023)
+
+#### 🚀 Enhancement
+
+- Bump eventsource from 1.0.7 to 1.1.2 [#90](https://github.com/gr4vy/gr4vy-embed/pull/90) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: allow shippingDetailsId to be updated within onBeforeTransaction callback [#138](https://github.com/gr4vy/gr4vy-embed/pull/138) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🐛 Bug Fix
+
+- Bump loader-utils from 1.4.1 to 1.4.2 [#116](https://github.com/gr4vy/gr4vy-embed/pull/116) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@brunodesde1987](https://github.com/brunodesde1987) [@douglaseggleton](https://github.com/douglaseggleton))
+- Bump json5 from 1.0.1 to 1.0.2 [#125](https://github.com/gr4vy/gr4vy-embed/pull/125) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@brunodesde1987](https://github.com/brunodesde1987) [@douglaseggleton](https://github.com/douglaseggleton))
+- chore: upgrade webpack [#137](https://github.com/gr4vy/gr4vy-embed/pull/137) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- refactor: move example apps outside of packages [#136](https://github.com/gr4vy/gr4vy-embed/pull/136) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.19.0 (Fri Feb 17 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add delete payment option prop [#133](https://github.com/gr4vy/gr4vy-embed/pull/133) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.18.1 (Tue Feb 14 2023)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: add check for function onBeforeTransaction [#132](https://github.com/gr4vy/gr4vy-embed/pull/132) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.18.0 (Fri Feb 10 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for onBeforeTransaction [#131](https://github.com/gr4vy/gr4vy-embed/pull/131) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- Bump http-cache-semantics from 4.1.0 to 4.1.1 [#130](https://github.com/gr4vy/gr4vy-embed/pull/130) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🏠 Internal
+
+- `@gr4vy/embed-react`
+  - chore: update default api host [#129](https://github.com/gr4vy/gr4vy-embed/pull/129) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.17.0 (Tue Jan 31 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support for full page return url [#126](https://github.com/gr4vy/gr4vy-embed/pull/126) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### 🐛 Bug Fix
+
+- Add Software Escrow GitHub Action [#124](https://github.com/gr4vy/gr4vy-embed/pull/124) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- chore: add json5 to trivy's ignore list [#128](https://github.com/gr4vy/gr4vy-embed/pull/128) ([@brunodesde1987](https://github.com/brunodesde1987))
+- `@gr4vy/embed-react`
+  - fix: dev mode terminal error [#127](https://github.com/gr4vy/gr4vy-embed/pull/127) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 4
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.16.0 (Tue Dec 13 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(connection-options): add support for connection options [#123](https://github.com/gr4vy/gr4vy-embed/pull/123) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.15.0 (Fri Dec 09 2022)
+
+### Release Notes
+
+#### feat(shipping-details): add support for shipping details id ([#122](https://github.com/gr4vy/gr4vy-embed/pull/122))
+
+Allows merchants to supply an identifier for shipping details. Shipping details must belong to the buyer and will need to be provided via our API ahead of the transaction.
+
+---
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(shipping-details): add support for shipping details id [#122](https://github.com/gr4vy/gr4vy-embed/pull/122) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- chore: add CVE-2022-37603 and CVE-2022-37599 to trivyignore [#118](https://github.com/gr4vy/gr4vy-embed/pull/118) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore: upgrade dev dependencies [#121](https://github.com/gr4vy/gr4vy-embed/pull/121) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: absolute imports (embed) [#117](https://github.com/gr4vy/gr4vy-embed/pull/117) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.14.0 (Fri Nov 11 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - feat: popup timeout [#115](https://github.com/gr4vy/gr4vy-embed/pull/115) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
+# v2.13.2 (Fri Nov 11 2022)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: close popup before unload [#113](https://github.com/gr4vy/gr4vy-embed/pull/113) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.13.1 (Thu Nov 10 2022)
+
+#### 🐛 Bug Fix
+
+- Bump loader-utils from 1.4.0 to 1.4.1 [#110](https://github.com/gr4vy/gr4vy-embed/pull/110) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed`
+  - feat: refocus redirect popup [#111](https://github.com/gr4vy/gr4vy-embed/pull/111) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- [PE-188] Remove deploy step for old storage bucket [#112](https://github.com/gr4vy/gr4vy-embed/pull/112) ([@andrewmackett](https://github.com/andrewmackett))
+- [PE-188] Additional steps to deploy to new storage bucket [#109](https://github.com/gr4vy/gr4vy-embed/pull/109) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - chore: add gr4vy id as env variable [#107](https://github.com/gr4vy/gr4vy-embed/pull/107) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.13.0 (Thu Oct 20 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - Add scrollTo listener (#105) [#106](https://github.com/gr4vy/gr4vy-embed/pull/106) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- Bump terser from 4.8.0 to 4.8.1 [#97](https://github.com/gr4vy/gr4vy-embed/pull/97) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- Update `deployer` command [#104](https://github.com/gr4vy/gr4vy-embed/pull/104) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.12.0 (Thu Sep 01 2022)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(security-code): add support for security code for stored card me… [#103](https://github.com/gr4vy/gr4vy-embed/pull/103) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- Fail deployment step if there is an error creating a deployment [PE-262] [#102](https://github.com/gr4vy/gr4vy-embed/pull/102) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- ci(cdn): move embed to subdirectory [#101](https://github.com/gr4vy/gr4vy-embed/pull/101) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.11.8 (Mon Aug 01 2022)
 
 #### 🐛 Bug Fix

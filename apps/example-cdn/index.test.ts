@@ -55,12 +55,12 @@ test.beforeEach(async ({ page }) => {
 
 test('embed is able to load on the page', async ({ page }) => {
   // act
-  await page.goto('/example-cdn')
+  await page.goto('')
 
   // assert
   const iframe = page.frameLocator('iframe').locator('body')
   await expect(await iframe.innerText()).toBe(
-    '{"amount":1299,"currency":"USD","apiHost":"api.demo.gr4vy.app","gr4vyId":"demo","token":"123456","store":"ask","country":"US","display":"all","apiUrl":"https://api.demo.gr4vy.app","supportedApplePayVersion":0,"supportedGooglePayVersion":1}'
+    '{"amount":1299,"currency":"USD","apiHost":"api.demo.gr4vy.app","gr4vyId":"demo","token":"123456","store":"ask","country":"US","display":"all","apiUrl":"https://api.demo.gr4vy.app","requireSecurityCode":false,"showDeleteButton":false,"supportedApplePayVersion":0,"supportedGooglePayVersion":1,"hasBeforeTransaction":false}'
   )
   await expect(await page.locator('.gr4vy__skeleton')).not.toBeVisible()
   await expect(await (await page.locator('iframe').boundingBox()).height).toBe(
@@ -71,8 +71,8 @@ test('embed is able to load on the page', async ({ page }) => {
 const dataset = [
   ['country', 'GB'],
   ['currency', 'SEK'],
-  ['amount', 0, null],
-  ['amount', 100, null],
+  ['amount', 0],
+  ['amount', 100],
 ]
 
 dataset.forEach(([key, value]) => {
@@ -87,13 +87,65 @@ dataset.forEach(([key, value]) => {
 
     // act
     await page.goto(
-      `/example-cdn?options=${Buffer.from(
-        JSON.stringify({ [key]: value })
-      ).toString('base64')}`
+      `?options=${Buffer.from(JSON.stringify({ [key]: value })).toString(
+        'base64'
+      )}`
     )
 
     // assert
     const iframe = page.frameLocator('iframe').locator('body')
     await expect(JSON.parse(await iframe.innerText())[key]).toBe(value)
+  })
+})
+
+test(`should pass a buyer id with shipping details id`, async ({ page }) => {
+  // arrange
+  const errors = []
+  page.on('console', async (msg) => {
+    errors.push(msg.text() || msg)
+  })
+
+  // act
+  await page.goto(
+    `?options=${Buffer.from(
+      JSON.stringify({
+        buyerId: '1e8b009c-6d3f-44c5-8668-3c3d0537ce72',
+        shippingDetailsId: '2b39ff28-22c5-4847-a355-e3bcdc3137b7',
+      })
+    ).toString('base64')}`
+  )
+
+  // assert
+  const iframe = page.frameLocator('iframe').locator('body')
+  await expect(JSON.parse(await iframe.innerText())['buyerId']).toBe(
+    '1e8b009c-6d3f-44c5-8668-3c3d0537ce72'
+  )
+  await expect(JSON.parse(await iframe.innerText())['shippingDetailsId']).toBe(
+    '2b39ff28-22c5-4847-a355-e3bcdc3137b7'
+  )
+})
+
+test(`should pass a connectionOptions`, async ({ page }) => {
+  // arrange
+  const errors = []
+  page.on('console', (msg) => {
+    errors.push(msg.text() || msg)
+  })
+
+  // act
+  await page.goto(
+    `?options=${Buffer.from(
+      JSON.stringify({
+        connectionOptions: { foo: 'bar' },
+      })
+    ).toString('base64')}`
+  )
+
+  // assert
+  const iframe = page.frameLocator('iframe').locator('body')
+  await expect(
+    JSON.parse(await iframe.innerText())['connectionOptions']
+  ).toEqual({
+    foo: 'bar',
   })
 })

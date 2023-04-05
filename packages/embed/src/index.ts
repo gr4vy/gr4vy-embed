@@ -11,7 +11,7 @@ import { createPopupController } from './popup'
 import { createSkeletonController } from './skeleton'
 import { createSubjectManager } from './subjects'
 import { createSubmitController } from './submit'
-import { SetupConfig, Config, Message, EmbedInstance } from './types'
+import { SetupConfig, Config, Message } from './types'
 import {
   mutableRef,
   pick,
@@ -48,6 +48,11 @@ export const optionKeys = [
   'paymentSource',
   'cartItems',
   'statementDescriptor',
+  'requireSecurityCode',
+  'shippingDetailsId',
+  'connectionOptions',
+  'fullPageReturnUrl',
+  'showDeleteButton',
 ]
 
 // Map of cleanup callbacks
@@ -62,7 +67,7 @@ let embedId = 0
  * Requires a valid querySelector query representing an HTML element
  * to append the form to, and a list of valid options for the form.
  */
-export function setup(setupConfig: SetupConfig): EmbedInstance {
+export function setup(setupConfig: SetupConfig) {
   // exit early if the config is not valid
   if (!validate(setupConfig)) {
     return
@@ -113,7 +118,9 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
 
   createPopupController(
     mutableRef<{ popup: Window; stopCallback: () => void }>(),
-    subjectManager
+    subjectManager,
+    config.redirectMode,
+    config.popupTimeout
   )
 
   // Iframe - Load Gr4vy SPA/Attach to page
@@ -170,10 +177,21 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
           ...pick<Config>(config, optionKeys),
           supportedApplePayVersion,
           supportedGooglePayVersion: 1,
+          hasBeforeTransaction:
+            typeof config?.onBeforeTransaction === 'function',
         },
       })
     },
     paymentMethodSelected: subjectManager.selectedOption$.next,
+    scrollTo: ({ top }: { top: number }) => {
+      window.scrollTo({
+        top: frame.offsetTop + top,
+        left: 0,
+        behavior: 'smooth',
+      })
+    },
+    beforeTransactionPending: subjectManager.beforeTransactionPending$.next,
+    formValidationFailed: subjectManager.formValidationFailed$.next,
   }
 
   const dispatch = createDispatch(
@@ -225,6 +243,30 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
   )
 
   subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
+
+  subjectManager.beforeTransactionPending$.subscribe(() => {
+    if (config?.onBeforeTransaction) {
+      return config
+        .onBeforeTransaction(pick(config, ['metadata']))
+        .then((transactionOptions = {}) => {
+          dispatch({
+            type: 'beforeTransactionDone',
+            data: pick(transactionOptions, [
+              'externalIdentifier',
+              'shippingDetailsId',
+              'metadata',
+              'token',
+            ]),
+          })
+        })
+        .catch(() => {
+          dispatch({
+            type: 'beforeTransactionError',
+          })
+        })
+    }
+  })
+
   subjectManager.approvalCancelled$.subscribe(() =>
     dispatch({ type: 'approvalCancelled' })
   )
@@ -263,3 +305,10 @@ export function setup(setupConfig: SetupConfig): EmbedInstance {
     },
   }
 }
+
+export type DynamicOptions = Pick<
+  SetupConfig,
+  'externalIdentifier' | 'metadata' | 'token' | 'shippingDetailsId'
+>
+
+export type EmbedInstance = ReturnType<typeof setup>

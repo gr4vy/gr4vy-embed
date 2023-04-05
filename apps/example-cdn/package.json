@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "example-cdn",
-  "version": "2.11.8",
+  "version": "2.21.0",
   "description": "Example project that shows how to use @gr4vy/embed-cdn",
   "main": "lib/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
@@ -9,13 +9,13 @@
   "repository": "github:gr4vy/embed",
   "homepage": "https://gr4vy.com",
   "scripts": {
-    "start": "http-server .. -o -p 9000",
-    "start:ci": "http-server .. -p 9000",
+    "start": "http-server ../.. -o -p 9000",
+    "start:ci": "http-server ../.. -p 9000",
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;",
     "test": "playwright test"
   },
   "dependencies": {
-    "@gr4vy/embed": "^2.11.8"
+    "@gr4vy/embed": "^2.21.0"
   },
   "devDependencies": {
     "@playwright/test": "latest",

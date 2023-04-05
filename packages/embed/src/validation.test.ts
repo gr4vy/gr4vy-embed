@@ -9,6 +9,7 @@ import {
   validate,
   emitArgumentError,
   validateStore,
+  validateCondition,
 } from './validation'
 
 let errorSpy
@@ -21,7 +22,7 @@ afterEach(() => {
   jest.resetAllMocks()
 })
 
-describe('validate()', () => {
+describe('validate', () => {
   test('should successfully validate a valid set of props', () => {
     jest.spyOn(document, 'querySelector').mockImplementation(() => {
       return document.createElement('div')
@@ -39,9 +40,64 @@ describe('validate()', () => {
     })
     expect(valid).toEqual(true)
   })
+
+  test('should validate shipping details', () => {
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return document.createElement('div')
+    })
+
+    const options = {
+      element: `#app`,
+      form: null,
+      amount: 1299,
+      currency: `USD`,
+      iframeHost: `127.0.0.1:8080`,
+      apiHost: `127.0.0.1:3100`,
+      token: `123456`,
+      country: 'US',
+    }
+
+    expect(validate(options)).toBeTruthy()
+    expect(validate({ ...options, shippingDetailsId: '123' })).toBeFalsy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerExternalIdentifier: '123',
+      })
+    ).toBeTruthy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyerId: '123',
+      })
+    ).toBeTruthy()
+  })
 })
 
-describe('emitArgumentError()', () => {
+test('should validate onBeforeTransaction', () => {
+  jest.spyOn(document, 'querySelector').mockImplementation(() => {
+    return document.createElement('div')
+  })
+
+  const options = {
+    element: `#app`,
+    form: null,
+    amount: 1299,
+    currency: `USD`,
+    iframeHost: `127.0.0.1:8080`,
+    apiHost: `127.0.0.1:3100`,
+    token: `123456`,
+    country: 'US',
+    onBeforeTransaction: () => Promise.resolve({}),
+  }
+
+  expect(validate(options)).toBeTruthy()
+  expect(validate({ ...options, onBeforeTransaction: true as any })).toBeFalsy()
+})
+
+describe('emitArgumentError', () => {
   test('should raise a console and callback error', () => {
     const options = {
       argument: 'element',
@@ -73,7 +129,7 @@ describe('emitArgumentError()', () => {
   })
 })
 
-describe('canSkipValidation()', () => {
+describe('canSkipValidation', () => {
   test('should return true if the value is not required and unset', () => {
     expect(canSkipValidation({ required: false, value: null })).toEqual(true)
     expect(canSkipValidation({ required: false, value: undefined })).toEqual(
@@ -90,7 +146,7 @@ describe('canSkipValidation()', () => {
   })
 })
 
-describe('validateHTMLElement()', () => {
+describe('validateHTMLElement', () => {
   const defaultOptions = {
     argument: 'element',
     message: 'must be a valid HTML element',
@@ -487,6 +543,24 @@ describe('validateStore', () => {
     const valid = validateStore(options)
     expect(valid).toEqual(false)
     expect(options.callback).toHaveBeenCalledWith('argumentError', error)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateCondition', () => {
+  test('should return false if condition is not true', () => {
+    const options = {
+      argument: 'foo',
+      message: 'must be true',
+      condition: false,
+    }
+    const error = {
+      argument: 'foo',
+      code: 'argumentError',
+      message: 'must be true',
+    }
+    const valid = validateCondition(options)
+    expect(valid).toEqual(false)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })
 })

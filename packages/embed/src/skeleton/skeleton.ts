@@ -1,5 +1,5 @@
-import { SubjectManager } from '../subjects'
-import { createTheme, injectThemeVariables } from '../theme'
+import { SubjectManager } from 'subjects'
+import { createTheme, injectThemeVariables } from 'theme'
 
 const html = String.raw
 
