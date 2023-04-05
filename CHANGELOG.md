@@ -1,3 +1,47 @@
+# v2.21.0 (Fri Mar 24 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - fix: TransactionFailed event triggering when editing billing details [#140](https://github.com/gr4vy/gr4vy-embed/pull/140) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🐛 Bug Fix
+
+- chore(dev-deps): bump html-webpack-plugin from 4.5.0 to 5.5.0 [#139](https://github.com/gr4vy/gr4vy-embed/pull/139) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
+# v2.20.0 (Thu Mar 16 2023)
+
+#### 🚀 Enhancement
+
+- Bump eventsource from 1.0.7 to 1.1.2 [#90](https://github.com/gr4vy/gr4vy-embed/pull/90) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: allow shippingDetailsId to be updated within onBeforeTransaction callback [#138](https://github.com/gr4vy/gr4vy-embed/pull/138) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🐛 Bug Fix
+
+- Bump loader-utils from 1.4.1 to 1.4.2 [#116](https://github.com/gr4vy/gr4vy-embed/pull/116) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@brunodesde1987](https://github.com/brunodesde1987) [@douglaseggleton](https://github.com/douglaseggleton))
+- Bump json5 from 1.0.1 to 1.0.2 [#125](https://github.com/gr4vy/gr4vy-embed/pull/125) ([@dependabot[bot]](https://github.com/dependabot[bot]) [@brunodesde1987](https://github.com/brunodesde1987) [@douglaseggleton](https://github.com/douglaseggleton))
+- chore: upgrade webpack [#137](https://github.com/gr4vy/gr4vy-embed/pull/137) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- refactor: move example apps outside of packages [#136](https://github.com/gr4vy/gr4vy-embed/pull/136) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.19.0 (Fri Feb 17 2023)
 
 #### 🚀 Enhancement

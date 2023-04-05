@@ -50,6 +50,7 @@ export const createSubjectManager = () => {
     }>(),
     showOverlay$: createSubject(),
     hideOverlay$: createSubject(),
+    formValidationFailed$: createSubject(),
   }
 
   subjects.formSubmit$.subscribe(() => {

@@ -192,6 +192,7 @@ export function setup(setupConfig: SetupConfig) {
       })
     },
     beforeTransactionPending: subjectManager.beforeTransactionPending$.next,
+    formValidationFailed: subjectManager.formValidationFailed$.next,
   }
 
   const dispatch = createDispatch(
@@ -253,6 +254,7 @@ export function setup(setupConfig: SetupConfig) {
             type: 'beforeTransactionDone',
             data: pick(transactionOptions, [
               'externalIdentifier',
+              'shippingDetailsId',
               'metadata',
               'token',
             ]),
@@ -307,7 +309,7 @@ export function setup(setupConfig: SetupConfig) {
 
 export type DynamicOptions = Pick<
   SetupConfig,
-  'externalIdentifier' | 'metadata' | 'token'
+  'externalIdentifier' | 'metadata' | 'token' | 'shippingDetailsId'
 >
 
 export type EmbedInstance = ReturnType<typeof setup>
