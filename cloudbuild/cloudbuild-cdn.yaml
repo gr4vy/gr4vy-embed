@@ -17,7 +17,6 @@ steps:
     name: 'aquasec/trivy:0.38.3'
     args: ['fs', '.']
     env:
-      - 'TRIVY_DEBUG=true'
       - 'TRIVY_EXIT_CODE=0'
       - 'TRIVY_NO_PROGRESS=true'
       - 'TRIVY_IGNORE_UNFIXED=true'
