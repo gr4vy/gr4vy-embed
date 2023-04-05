@@ -81,7 +81,8 @@ jobs:
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
-          echo test $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -d)
+          echo shipit $($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -d)
+          echo version $($GITHUB_WORKSPACE/node_modules/.bin/auto version -d)
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
 #      - name: Push compiled content
