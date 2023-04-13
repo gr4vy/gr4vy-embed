@@ -53,6 +53,7 @@ export const optionKeys = [
   'connectionOptions',
   'fullPageReturnUrl',
   'showDeleteButton',
+  'merchantAccountId',
 ]
 
 // Map of cleanup callbacks
