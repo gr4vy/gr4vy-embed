@@ -14,7 +14,7 @@ steps:
     args: ['install']
 
   - id: 'scan with trivy'
-    name: 'aquasec/trivy:0.38.3'
+    name: 'aquasec/trivy:latest'
     args: ['fs', '.']
     env:
       - 'TRIVY_EXIT_CODE=0'
