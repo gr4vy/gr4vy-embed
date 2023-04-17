@@ -57,6 +57,8 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
       - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -71,10 +73,15 @@ jobs:
           restore-keys: |
             yarn-deps-${{ hashFiles('yarn.lock') }}
 
-      - name: Install Node dependencies
+      - name: Create CDN build
+        env:
+          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn config set workspaces-experimental true
-          yarn setup
+          yarn install --frozen-lockfile
+          yarn bootstrap
+          PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
       - name: Push compiled content
         uses: s0/git-publish-subdir-action@develop
