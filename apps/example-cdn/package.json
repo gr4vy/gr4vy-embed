@@ -1,7 +1,7 @@
 {
   "private": "true",
   "name": "example-cdn",
-  "version": "2.22.0",
+  "version": "2.22.1",
   "description": "Example project that shows how to use @gr4vy/embed-cdn",
   "main": "lib/index.js",
   "author": "Gr4vy <code@gr4vy.com>",
@@ -15,7 +15,7 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@gr4vy/embed": "^2.22.0"
+    "@gr4vy/embed": "^2.22.1"
   },
   "devDependencies": {
     "@playwright/test": "latest",
