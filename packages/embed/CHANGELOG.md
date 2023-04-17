@@ -1,3 +1,15 @@
+# v2.22.0 (Mon Apr 17 2023)
+
+#### 🚀 Enhancement
+
+- feat: add optional merchant account ID [#141](https://github.com/gr4vy/gr4vy-embed/pull/141) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.21.0 (Fri Mar 24 2023)
 
 #### 🚀 Enhancement
