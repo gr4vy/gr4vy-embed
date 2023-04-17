@@ -47,6 +47,7 @@ export type Config = {
     token?: string
   }>
   showDeleteButton?: boolean
+  merchantAccountId?: string
 }
 
 export type CustomOption = {

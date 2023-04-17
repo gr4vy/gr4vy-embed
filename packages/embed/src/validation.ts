@@ -448,4 +448,11 @@ export const validate = (options: SetupConfig) =>
     required: false,
     type: 'function',
     message: 'must be a valid function that returns a promise',
+  }) &&
+  validateType({
+    argument: 'merchantAccountId',
+    value: options.merchantAccountId,
+    message: 'must be a string',
+    required: false,
+    type: 'string',
   })
