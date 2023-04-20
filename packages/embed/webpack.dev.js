@@ -34,14 +34,16 @@ module.exports = {
     ],
   },
   devServer: {
-    overlay: {
-      warnings: true,
-      errors: true,
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
     host: '127.0.0.1',
     port: 8081,
     open: true,
-    disableHostCheck: true,
+    allowedHosts: 'all',
   },
   watchOptions: {
     aggregateTimeout: 300,
