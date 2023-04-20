@@ -43,7 +43,7 @@ jobs:
           yarn test
 
   cdn:
-    if: github.ref == 'refs/heads/main'
+#    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -81,15 +81,16 @@ jobs:
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
           yarn bootstrap
+          git fetch --tags
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
-      - name: Push compiled content
-        uses: s0/git-publish-subdir-action@develop
-        env:
-          REPO: self
-          BRANCH: cdn
-          FOLDER: packages/embed-cdn/lib
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - name: Push compiled content
+#        uses: s0/git-publish-subdir-action@develop
+#        env:
+#          REPO: self
+#          BRANCH: cdn
+#          FOLDER: packages/embed-cdn/lib
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   release:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
