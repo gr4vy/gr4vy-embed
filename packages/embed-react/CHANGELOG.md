@@ -1,3 +1,15 @@
+# v2.22.2 (Thu Apr 20 2023)
+
+#### 🐛 Bug Fix
+
+- fix: webpack dev server [#142](https://github.com/gr4vy/gr4vy-embed/pull/142) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.22.0 (Mon Apr 17 2023)
 
 #### 🚀 Enhancement
