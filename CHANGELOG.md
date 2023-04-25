@@ -1,3 +1,15 @@
+# v2.22.3 (Tue Apr 25 2023)
+
+#### 🐛 Bug Fix
+
+- fix: cdn version [#143](https://github.com/gr4vy/gr4vy-embed/pull/143) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.22.2 (Thu Apr 20 2023)
 
 #### 🐛 Bug Fix
