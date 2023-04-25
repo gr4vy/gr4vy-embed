@@ -42,3 +42,6 @@ CVE-2022-3517
 
 # json5
 CVE-2022-46175
+
+# yaml - Dev Dependency (auto, storybook)
+CVE-2023-2251
