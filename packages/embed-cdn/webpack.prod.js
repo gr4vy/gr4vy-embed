@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
+const { execSync } = require('child_process')
 const path = require('path')
 const { DefinePlugin } = require('webpack')
-const { execSync } = require("child_process");
 
 const getCommitHash = () => {
   try {
@@ -13,7 +13,8 @@ const getCommitHash = () => {
   }
 }
 
-const PACKAGE_VERSION = JSON.stringify(process.env.PACKAGE_VERSION || undefined) || getCommitHash()
+const PACKAGE_VERSION =
+  JSON.stringify(process.env.PACKAGE_VERSION || undefined) || getCommitHash()
 console.log('Building version', PACKAGE_VERSION)
 
 module.exports = {
