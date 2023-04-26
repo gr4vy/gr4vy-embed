@@ -28,8 +28,11 @@ steps:
 
   - id: 'yarn build'
     name: node:${_NODE_VERSION}-alpine
-    entrypoint: yarn
-    args: ['build']
+    entrypoint: ash
+    args:
+      - '-c'
+      - |
+        PACKAGE_VERSION=$(node_modules/.bin/auto shipit -dq) yarn build
 
   - id: 'push to storage bucket'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
