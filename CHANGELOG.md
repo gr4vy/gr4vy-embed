@@ -1,3 +1,15 @@
+# v2.22.4 (Wed Apr 26 2023)
+
+#### 🐛 Bug Fix
+
+- fix: trivy vulnerability [#144](https://github.com/gr4vy/gr4vy-embed/pull/144) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.22.3 (Tue Apr 25 2023)
 
 #### 🐛 Bug Fix
