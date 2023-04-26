@@ -5,7 +5,9 @@ const { DefinePlugin } = require('webpack')
 
 const getCommitHash = () => {
   try {
-    return `#${execSync('cat .git/`cat .git/HEAD | cut -d \\  -f 2`')
+    return `#${execSync(
+      'cat ../../.git/`cat ../../.git/HEAD | cut -d \\  -f 2`'
+    )
       .toString()
       .trim()}`
   } catch (err) {
@@ -13,8 +15,9 @@ const getCommitHash = () => {
   }
 }
 
-const PACKAGE_VERSION =
-  JSON.stringify(process.env.PACKAGE_VERSION || undefined) || getCommitHash()
+const PACKAGE_VERSION = JSON.stringify(
+  process.env.PACKAGE_VERSION || getCommitHash()
+)
 console.log('Building version', PACKAGE_VERSION)
 
 module.exports = {
