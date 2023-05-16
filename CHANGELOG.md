@@ -1,3 +1,16 @@
+# v2.23.0 (Tue May 16 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - fix: cannot call gr4vy.setup more than twice when embed is loaded from cdn [#146](https://github.com/gr4vy/gr4vy-embed/pull/146) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.22.5 (Wed Apr 26 2023)
 
 #### 🐛 Bug Fix
