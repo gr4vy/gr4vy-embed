@@ -297,7 +297,6 @@ export function setup(setupConfig: SetupConfig) {
     window.removeEventListener('message', messageHandler)
     window.removeEventListener('message', apiMessageHandler)
     window.removeEventListener('message', approvalMessageHandler)
-    delete window.gr4vy
   })
 
   return {
