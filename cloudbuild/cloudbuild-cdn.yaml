@@ -104,7 +104,7 @@ steps:
           fail=0
           for instance in $${INSTANCES}; do
             echo "Triggering deploy of main branch to $${instance}-sandbox..."
-            docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+            docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
             if [ $? -ne 0 ]; then
               fail=1
             fi
@@ -132,7 +132,7 @@ steps:
           fail=0
           for instance in $${INSTANCES}; do
             echo "Triggering deploy of main branch to $${instance}-production..."
-            docker run --rm -e GITHUB_TOKEN gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+            docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
             if [ $? -ne 0 ]; then
               fail=1
             fi
