@@ -455,4 +455,11 @@ export const validate = (options: SetupConfig) =>
     message: 'must be a string',
     required: false,
     type: 'string',
+  }) &&
+  validateType({
+    argument: 'billingAddressFields',
+    value: options.billingAddressFields,
+    type: 'object',
+    message: 'must be an object',
+    required: false,
   })
