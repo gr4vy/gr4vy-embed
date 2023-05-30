@@ -53,11 +53,12 @@ export type Config = {
 
 export type BillingAddressFields = {
   address?: {
-    postalCode?: boolean
-    city?: boolean
-    line1?: boolean
-    country?: boolean
     houseNumberOrName?: boolean
+    line1?: boolean
+    city?: boolean
+    postalCode?: boolean
+    state?: boolean
+    country?: boolean
   }
   emailAddress?: boolean
   firstName?: boolean
