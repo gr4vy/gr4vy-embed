@@ -48,6 +48,22 @@ export type Config = {
   }>
   showDeleteButton?: boolean
   merchantAccountId?: string
+  billingAddressFields?: BillingAddressFields
+}
+
+export type BillingAddressFields = {
+  address?: {
+    houseNumberOrName?: boolean
+    line1?: boolean
+    city?: boolean
+    postalCode?: boolean
+    state?: boolean
+    country?: boolean
+  }
+  emailAddress?: boolean
+  firstName?: boolean
+  lastName?: boolean
+  taxId?: boolean
 }
 
 export type CustomOption = {

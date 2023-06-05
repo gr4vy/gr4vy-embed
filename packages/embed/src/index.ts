@@ -54,6 +54,7 @@ export const optionKeys = [
   'fullPageReturnUrl',
   'showDeleteButton',
   'merchantAccountId',
+  'billingAddressFields',
 ]
 
 // Map of cleanup callbacks
