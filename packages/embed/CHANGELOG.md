@@ -1,3 +1,15 @@
+# v2.24.0 (Mon Jun 05 2023)
+
+#### 🚀 Enhancement
+
+- feat: merchant defined billing details [#148](https://github.com/gr4vy/gr4vy-embed/pull/148) ([@theturboboy](https://github.com/theturboboy))
+
+#### Authors: 1
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+
+---
+
 # v2.23.0 (Tue May 16 2023)
 
 #### 🚀 Enhancement

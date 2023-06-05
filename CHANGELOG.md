@@ -1,3 +1,21 @@
+# v2.24.0 (Mon Jun 05 2023)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - feat: merchant defined billing details [#148](https://github.com/gr4vy/gr4vy-embed/pull/148) ([@theturboboy](https://github.com/theturboboy))
+
+#### 🏠 Internal
+
+- build: run the `deployer` tool on the cloudbuild network [#147](https://github.com/gr4vy/gr4vy-embed/pull/147) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### Authors: 2
+
+- Andrei Haidukevich ([@theturboboy](https://github.com/theturboboy))
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+
+---
+
 # v2.23.0 (Tue May 16 2023)
 
 #### 🚀 Enhancement
