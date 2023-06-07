@@ -2,8 +2,8 @@ name: 'Software Escrow'
 on:
   workflow_dispatch:
   schedule:
-    # 03:00 on every day-of-week from Monday through Friday
-    - cron: '0 3 * * 1-5'
+    # 03:20 on every day-of-week from Monday through Friday
+    - cron: '20 3 * * 1-5'
 
 jobs:
   escrow:
