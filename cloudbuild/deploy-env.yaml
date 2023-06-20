@@ -26,6 +26,19 @@ steps:
       ]
     waitFor: ['-']
 
+  - id: 'Add commit SHA label to storage bucket'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    entrypoint: gcloud
+    args:
+      [
+        'storage',
+        'buckets',
+        'update',
+        'gs://$_ARTIFACT_STORAGE_BUCKET/',
+        '--update-labels=commit_sha=${COMMIT_SHA}',
+      ]
+    waitFor: ['Deploy pre-built version (Deprecated)', 'Deploy pre-built version']
+
   - id: 'Invalidate CDN cache'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
     entrypoint: bash
