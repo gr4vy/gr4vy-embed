@@ -49,6 +49,7 @@ export type Config = {
   showDeleteButton?: boolean
   merchantAccountId?: string
   billingAddressFields?: BillingAddressFields
+  antiFraudFingerprint?: string
 }
 
 export type BillingAddressFields = {
