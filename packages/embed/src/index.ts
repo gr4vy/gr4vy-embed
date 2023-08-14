@@ -55,6 +55,7 @@ export const optionKeys = [
   'showDeleteButton',
   'merchantAccountId',
   'billingAddressFields',
+  'antiFraudFingerprint',
 ]
 
 // Map of cleanup callbacks

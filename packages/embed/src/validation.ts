@@ -462,4 +462,11 @@ export const validate = (options: SetupConfig) =>
     type: 'object',
     message: 'must be an object',
     required: false,
+  }) &&
+  validateType({
+    argument: 'antiFraudFingerprint',
+    value: options.antiFraudFingerprint,
+    message: 'must be a string',
+    required: false,
+    type: 'string',
   })
