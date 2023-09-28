@@ -1,16 +1,20 @@
 # List of vulnerability IDs to be ignored by Trivy.
+
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
 
 # Storybook - Dev Dependency
+
 CVE-2021-3807
 CVE-2021-23436
 CVE-2021-3757
 CVE-2021-23440
 
 # postcss - Dev Dependency (Storybook)
+
 CVE-2021-23382
 
 # node-forge - Dev Dependency (Webpack dev server)
+
 GHSA-5rrq-pxf6-6jx5
 GHSA-gf8q-jrpm-jvxq
 CVE-2022-0122
@@ -19,29 +23,46 @@ CVE-2022-24772
 CVE-2022-24773
 
 # node-fetch - Dev Dependency
+
 CVE-2022-0235
 
 # eventsource - Dev Dependency (Webpack dev server)
+
 CVE-2022-1650
 
 # terser - Dev Dependency (Webpack)
+
 CVE-2022-25858
 
 # parse-url - added to get non-code change passing test. Needs fixing.
+
 CVE-2022-2900
 CVE-2022-3224
 
 # loader-utils - dev dependency
+
 CVE-2022-37601
 CVE-2022-37599
 CVE-2022-37603
 
 # Minimatch dependancy
+
 # https://avd.aquasec.com/nvd/2022/cve-2022-3517/
+
 CVE-2022-3517
 
 # json5
+
 CVE-2022-46175
 
 # yaml - Dev Dependency (auto, storybook)
+
 CVE-2023-2251
+
+# lerna - dev dependency
+
+CVE-2023-26136
+
+# semver - dev dependency (jest)
+
+CVE-2022-25883
