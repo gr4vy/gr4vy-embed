@@ -12,6 +12,7 @@ CVE-2021-23440
 # postcss - Dev Dependency (Storybook)
 
 CVE-2021-23382
+CVE-2023-44270
 
 # node-forge - Dev Dependency (Webpack dev server)
 
