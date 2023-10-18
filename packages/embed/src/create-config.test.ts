@@ -53,6 +53,7 @@ test('default configuration', () => {
     currency: 'GBP',
     display: 'all',
     element: mockElement,
+    enableAnimations: false,
     form: mockForm,
     iframeHost: 'embed.test.gr4vy.app',
     iframeUrl: `https://embed.test.gr4vy.app`,

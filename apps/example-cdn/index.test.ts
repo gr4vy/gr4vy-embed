@@ -60,7 +60,7 @@ test('embed is able to load on the page', async ({ page }) => {
   // assert
   const iframe = page.frameLocator('iframe').locator('body')
   await expect(await iframe.innerText()).toBe(
-    '{"amount":1299,"currency":"USD","apiHost":"api.demo.gr4vy.app","gr4vyId":"demo","token":"123456","store":"ask","country":"US","display":"all","apiUrl":"https://api.demo.gr4vy.app","requireSecurityCode":false,"showDeleteButton":false,"supportedApplePayVersion":0,"supportedGooglePayVersion":1,"hasBeforeTransaction":false}'
+    '{"amount":1299,"currency":"USD","apiHost":"api.demo.gr4vy.app","gr4vyId":"demo","token":"123456","store":"ask","country":"US","display":"all","apiUrl":"https://api.demo.gr4vy.app","requireSecurityCode":false,"showDeleteButton":false,"enableAnimations":false,"supportedApplePayVersion":0,"supportedGooglePayVersion":1,"hasBeforeTransaction":false}'
   )
   await expect(await page.locator('.gr4vy__skeleton')).not.toBeVisible()
   await expect(await (await page.locator('iframe').boundingBox()).height).toBe(

@@ -56,6 +56,7 @@ export const optionKeys = [
   'merchantAccountId',
   'billingAddressFields',
   'antiFraudFingerprint',
+  'enableAnimations',
 ]
 
 // Map of cleanup callbacks
