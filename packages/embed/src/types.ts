@@ -163,6 +163,10 @@ export type ThemeOptions = {
      * Focus ring around interactive elements
      */
     focus?: string
+    /**
+     * Payment badge background
+     */
+    badgeBackground?: string
   }
   radii?: {
     /**
