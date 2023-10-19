@@ -1,3 +1,15 @@
+# v2.24.2 (Thu Oct 19 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add badgeBackgorund to theme [#160](https://github.com/gr4vy/gr4vy-embed/pull/160) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.1 (Thu Oct 19 2023)
 
 #### 🐛 Bug Fix
