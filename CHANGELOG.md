@@ -1,3 +1,28 @@
+# v2.24.1 (Thu Oct 19 2023)
+
+#### 🐛 Bug Fix
+
+- chore: upgrade/check dependencies [#156](https://github.com/gr4vy/gr4vy-embed/pull/156) ([@douglaseggleton](https://github.com/douglaseggleton))
+- Software Escrow update [#155](https://github.com/gr4vy/gr4vy-embed/pull/155) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - feat: add prop to enable animations [#159](https://github.com/gr4vy/gr4vy-embed/pull/159) ([@douglaseggleton](https://github.com/douglaseggleton))
+  - feat: add customer antiFraudFingerprint option [#153](https://github.com/gr4vy/gr4vy-embed/pull/153) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### 🏠 Internal
+
+- fix: ignore/upgrade dev dependencies [#158](https://github.com/gr4vy/gr4vy-embed/pull/158) ([@douglaseggleton](https://github.com/douglaseggleton))
+- Cloud Build machineType [#157](https://github.com/gr4vy/gr4vy-embed/pull/157) ([@andrewmackett](https://github.com/andrewmackett))
+- Add commit sha label to bucket when deploying [#150](https://github.com/gr4vy/gr4vy-embed/pull/150) ([@andrewmackett](https://github.com/andrewmackett))
+- Update escrow.yml [#149](https://github.com/gr4vy/gr4vy-embed/pull/149) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### Authors: 3
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Thomas ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+---
+
 # v2.24.0 (Mon Jun 05 2023)
 
 #### 🚀 Enhancement

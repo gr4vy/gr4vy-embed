@@ -1,3 +1,17 @@
+# v2.24.1 (Thu Oct 19 2023)
+
+#### 🐛 Bug Fix
+
+- feat: add prop to enable animations [#159](https://github.com/gr4vy/gr4vy-embed/pull/159) ([@douglaseggleton](https://github.com/douglaseggleton))
+- feat: add customer antiFraudFingerprint option [#153](https://github.com/gr4vy/gr4vy-embed/pull/153) ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+#### Authors: 2
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Thomas ([@thomas-gr4vy](https://github.com/thomas-gr4vy))
+
+---
+
 # v2.24.0 (Mon Jun 05 2023)
 
 #### 🚀 Enhancement
