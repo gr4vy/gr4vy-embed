@@ -24,6 +24,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     : setupConfig.element
 
   return {
+    enableAnimations: false,
     requireSecurityCode: false,
     showDeleteButton: false,
     store: 'ask',

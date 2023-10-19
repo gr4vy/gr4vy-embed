@@ -50,6 +50,7 @@ export type Config = {
   merchantAccountId?: string
   billingAddressFields?: BillingAddressFields
   antiFraudFingerprint?: string
+  enableAnimations?: boolean
 }
 
 export type BillingAddressFields = {
