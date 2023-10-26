@@ -1,3 +1,21 @@
+# v2.24.3 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: add container background on hover theming option [#163](https://github.com/gr4vy/gr4vy-embed/pull/163) ([@douglaseggleton](https://github.com/douglaseggleton))
+  - feat: add option to separate payment options [#161](https://github.com/gr4vy/gr4vy-embed/pull/161) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- Update ci.yml [#162](https://github.com/gr4vy/gr4vy-embed/pull/162) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.2 (Thu Oct 19 2023)
 
 #### 🐛 Bug Fix
