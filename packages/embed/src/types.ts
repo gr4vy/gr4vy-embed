@@ -136,6 +136,7 @@ export type ThemeOptions = {
     /**
      * Bounding boxes that are not input elements
      */
+    containerBackgroundHover?: string
     containerBackgroundUnchecked?: string
     containerBackground?: string
     containerBorder?: string
