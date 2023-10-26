@@ -25,6 +25,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
 
   return {
     enableAnimations: false,
+    separatedPaymentOptions: false,
     requireSecurityCode: false,
     showDeleteButton: false,
     store: 'ask',
