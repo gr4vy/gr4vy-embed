@@ -51,7 +51,7 @@ export type Config = {
   billingAddressFields?: BillingAddressFields
   antiFraudFingerprint?: string
   enableAnimations?: boolean
-  separatedPaymentOptions?: boolean
+  separatePaymentOptions?: boolean
 }
 
 export type BillingAddressFields = {

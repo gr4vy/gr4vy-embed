@@ -57,7 +57,7 @@ export const optionKeys = [
   'billingAddressFields',
   'antiFraudFingerprint',
   'enableAnimations',
-  'separatedPaymentOptions',
+  'separatePaymentOptions',
 ]
 
 // Map of cleanup callbacks
