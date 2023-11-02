@@ -67,3 +67,7 @@ CVE-2023-26136
 # semver - dev dependency (jest)
 
 CVE-2022-25883
+
+# browserify - dev dependency
+
+CVE-2023-46234
