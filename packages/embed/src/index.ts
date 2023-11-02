@@ -284,8 +284,8 @@ export function setup(setupConfig: SetupConfig) {
   subjectManager.appleCancelSession$.subscribe(() =>
     dispatch({ type: 'appleCancelSession' })
   )
-  subjectManager.appleSessionError$.subscribe(() =>
-    dispatch({ type: 'appleSessionError' })
+  subjectManager.appleSessionError$.subscribe((message) =>
+    dispatch({ type: 'appleSessionError', data: message })
   )
   subjectManager.appleCompleteSession$.subscribe(() =>
     dispatch({ type: 'appleCompleteSession' })

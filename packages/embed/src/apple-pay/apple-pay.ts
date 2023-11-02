@@ -44,8 +44,8 @@ export const createApplePayController = (
 
       // start the session
       session.begin()
-    } catch {
-      subjectManager.appleSessionError$.next()
+    } catch (e) {
+      subjectManager.appleSessionError$.next(e?.message)
     }
   })
 
