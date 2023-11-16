@@ -1,22 +1,50 @@
-import { withKnobs, text, select, number } from '@storybook/addon-knobs'
 import React, { useEffect, useRef, useState } from 'react'
 import Gr4vyEmbed, { EmbedInstance } from './'
+import type { Meta, StoryObj } from '@storybook/react'
 
-export default {
-  title: `Embed React`,
-  decorators: [withKnobs],
+const defaultArgs = {
+  amount: 1299,
+  environment: 'sandbox',
+  intent: 'capture',
+  currency: 'USD',
+  apiHost: '127.0.0.1:3100',
+  iframeHost: '127.0.0.1:8082',
+  token: '1234567',
+  country: 'US',
+} as const
+
+const meta: Meta<typeof Gr4vyEmbed> = {
+  title: 'Embed React',
+  component: Gr4vyEmbed,
+  argTypes: {
+    country: {
+      options: ['US', 'GB', 'FR'],
+      control: { type: 'radio' },
+    },
+    currency: {
+      options: ['USD', 'GBP', 'EUR'],
+      control: { type: 'radio' },
+    },
+    intent: {
+      options: ['capture', 'approve'],
+      control: { type: 'radio' },
+    },
+    environment: {
+      options: ['production', 'sandbox'],
+      control: { type: 'radio' },
+      defaultValue: 'sandbox',
+    },
+  },
 }
 
-const currencyOptions = [`USD`, `GBP`, `EUR`]
+export default meta
 
-const intentOptions = [`capture`, `approve`]
+type Story = StoryObj<typeof Gr4vyEmbed>
 
-const environmentOptions = ['production', 'sandbox']
-
-const Template = ({ showRenderControls = false }) => {
+const Template = ({ showRenderControls = false, props }) => {
   const form = useRef<HTMLFormElement>()
   const [formReady, setFormReady] = useState(false)
-  const [amount, setAmount] = useState(number(`Amount`, 1299, {}, `Public`))
+  const [amount, setAmount] = useState(props.amount)
   const [count, setCount] = useState(1)
   const [color, setColor] = useState('green')
 
@@ -46,26 +74,13 @@ const Template = ({ showRenderControls = false }) => {
       {formReady && (
         <Gr4vyEmbed
           form={form.current}
-          amount={amount}
-          intent={select(`Intent`, intentOptions, 'capture', `Public`) as any}
-          currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
-          apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
-          iframeHost={text(`iFrame host`, `127.0.0.1:8082`, `Public`)}
-          token={text(`JWT token`, `1234567`, `Public`)}
-          country="US"
+          {...props}
           theme={{
             colors: {
               primary: color,
             },
           }}
-          environment={
-            select(
-              `Environment`,
-              environmentOptions,
-              'sandbox',
-              `Public`
-            ) as any
-          }
+          amount={amount}
           debug
         />
       )}
@@ -73,37 +88,25 @@ const Template = ({ showRenderControls = false }) => {
   )
 }
 
-export const Default = () => <Template />
-
-export const RenderTest = () => <Template showRenderControls={true} />
-
-RenderTest.parameters = {
-  storyshots: { disable: true },
+export const Default: Story = {
+  render: (props) => <Template props={props} />,
+  args: defaultArgs,
 }
 
-export const WithoutForm = () => {
-  const embed = useRef<EmbedInstance>()
-  return (
-    <>
-      <button onClick={() => embed.current.submit()}>Submit</button>
-      <Gr4vyEmbed
-        ref={embed}
-        amount={number(`Amount`, 1299, {}, `Public`)}
-        intent={select(`Intent`, intentOptions, 'capture', `Public`) as any}
-        currency={select(`Currency`, currencyOptions, `USD`, `Public`)}
-        apiHost={text(`API host`, `127.0.0.1:3100`, `Public`)}
-        iframeHost={text(`iFrame host`, `127.0.0.1:8082`, `Public`)}
-        token={text(`JWT token`, `1234567`, `Public`)}
-        country="US"
-        environment={
-          select(`Environment`, environmentOptions, 'sandbox', `Public`) as any
-        }
-        debug
-      />
-    </>
-  )
+export const RenderTest: Story = {
+  render: (props) => <Template showRenderControls={true} props={props} />,
+  args: defaultArgs,
 }
 
-WithoutForm.parameters = {
-  storyshots: { disable: true },
+export const WithoutForm: Story = {
+  render: (props) => {
+    const embed = useRef<EmbedInstance>()
+    return (
+      <>
+        <button onClick={() => embed.current.submit()}>Submit</button>
+        <Gr4vyEmbed ref={embed} {...(props as any)} debug />
+      </>
+    )
+  },
+  args: defaultArgs,
 }

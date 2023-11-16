@@ -15,7 +15,7 @@
     "build": "tsc",
     "lint": "eslint src dev --ext ts,tsx",
     "prepack": "yarn build",
-    "storybook": "start-storybook",
+    "storybook": "sb dev",
     "test": "jest --colors"
   },
   "files": [
@@ -34,7 +34,12 @@
   },
   "devDependencies": {
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "@storybook/react-webpack5": "^7.5.3",
+    "@storybook/addons": "^7.5.3",
+    "@storybook/react": "^7.5.3",
+    "@storybook/cli": "^7.5.3",
+    "@storybook/addon-essentials": "^7.5.3"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
