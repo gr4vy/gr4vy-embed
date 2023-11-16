@@ -1,6 +1,6 @@
 {
   "name": "@gr4vy/embed-react",
-  "version": "2.24.3",
+  "version": "2.24.4",
   "description": "Embed a credit card form in your React app and store the card details, authorize the card, and capture a transaction.",
   "main": "lib/index",
   "types": "lib/index",
@@ -29,17 +29,17 @@
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@gr4vy/embed": "^2.24.3",
+    "@gr4vy/embed": "^2.24.4",
     "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "@storybook/react-webpack5": "^7.5.3",
+    "@storybook/addon-essentials": "^7.5.3",
     "@storybook/addons": "^7.5.3",
-    "@storybook/react": "^7.5.3",
     "@storybook/cli": "^7.5.3",
-    "@storybook/addon-essentials": "^7.5.3"
+    "@storybook/react": "^7.5.3",
+    "@storybook/react-webpack5": "^7.5.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
