@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - name: Check out the repo
@@ -54,7 +54,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - name: Check out the repository
@@ -103,7 +103,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -144,7 +144,7 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14.x
+          - 16.x
 
     steps:
       - name: Check out the repo
