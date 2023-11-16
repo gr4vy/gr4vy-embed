@@ -1,3 +1,15 @@
+# v2.24.4 (Thu Nov 16 2023)
+
+#### 🔩 Dependency Updates
+
+- chore: upgrade storybook dependencies [#166](https://github.com/gr4vy/gr4vy-embed/pull/166) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.22.2 (Thu Apr 20 2023)
 
 #### 🐛 Bug Fix

@@ -1,3 +1,23 @@
+# v2.24.4 (Thu Nov 16 2023)
+
+#### 🐛 Bug Fix
+
+- chore: update trivy deps [#165](https://github.com/gr4vy/gr4vy-embed/pull/165) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed`
+  - chore(apple-pay): add error message to apple pay session failure [#164](https://github.com/gr4vy/gr4vy-embed/pull/164) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### 🔩 Dependency Updates
+
+- `@gr4vy/embed-react`
+  - chore: upgrade storybook dependencies [#166](https://github.com/gr4vy/gr4vy-embed/pull/166) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.3 (Thu Oct 26 2023)
 
 #### 🐛 Bug Fix

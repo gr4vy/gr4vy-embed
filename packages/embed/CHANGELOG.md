@@ -1,3 +1,16 @@
+# v2.24.4 (Thu Nov 16 2023)
+
+#### 🐛 Bug Fix
+
+- chore(apple-pay): add error message to apple pay session failure [#164](https://github.com/gr4vy/gr4vy-embed/pull/164) ([@douglaseggleton](https://github.com/douglaseggleton) [@cbetta](https://github.com/cbetta))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.3 (Thu Oct 26 2023)
 
 #### 🐛 Bug Fix
