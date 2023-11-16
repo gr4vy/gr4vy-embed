@@ -1,3 +1,20 @@
+# v2.24.5 (Thu Nov 16 2023)
+
+#### 🐛 Bug Fix
+
+- chore(deps): bump loader-utils from 2.0.0 to 2.0.4 [#167](https://github.com/gr4vy/gr4vy-embed/pull/167) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🔩 Dependency Updates
+
+- deps: fix version of parse-url [#169](https://github.com/gr4vy/gr4vy-embed/pull/169) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 2
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.4 (Thu Nov 16 2023)
 
 #### 🐛 Bug Fix
