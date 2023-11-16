@@ -2,13 +2,6 @@
 
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
 
-# Storybook - Dev Dependency
-
-CVE-2021-3807
-CVE-2021-23436
-CVE-2021-3757
-CVE-2021-23440
-
 # postcss - Dev Dependency (Storybook)
 
 CVE-2021-23382
@@ -35,11 +28,6 @@ CVE-2022-1650
 
 CVE-2022-25858
 
-# parse-url - added to get non-code change passing test. Needs fixing.
-
-CVE-2022-2900
-CVE-2022-3224
-
 # loader-utils - dev dependency
 
 CVE-2022-37601
@@ -59,10 +47,6 @@ CVE-2022-46175
 # yaml - Dev Dependency (auto, storybook)
 
 CVE-2023-2251
-
-# lerna - dev dependency
-
-CVE-2023-26136
 
 # semver - dev dependency (jest)
 
