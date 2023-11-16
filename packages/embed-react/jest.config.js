@@ -5,4 +5,5 @@ module.exports = {
   ...config,
   setupFilesAfterEnv: [`./jest.setup.ts`],
   collectCoverageFrom: ['src/**/*.ts', 'src/**/*.tsx', '!**/*.stories.tsx'],
+  testEnvironment: 'jsdom',
 }
