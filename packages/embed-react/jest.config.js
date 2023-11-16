@@ -4,5 +4,5 @@ const config = require('../../jest.config.js')
 module.exports = {
   ...config,
   setupFilesAfterEnv: [`./jest.setup.ts`],
-  collectCoverageFrom: ['src/**/*.ts', 'src/**/*.tsx'],
+  collectCoverageFrom: ['src/**/*.ts', 'src/**/*.tsx', '!**/*.stories.tsx'],
 }
