@@ -21,11 +21,6 @@ steps:
       - 'TRIVY_NO_PROGRESS=true'
       - 'TRIVY_IGNORE_UNFIXED=true'
 
-  - id: 'yarn bootstrap'
-    name: node:${_NODE_VERSION}-alpine
-    entrypoint: yarn
-    args: ['bootstrap']
-
   - id: 'yarn build'
     name: node:${_NODE_VERSION}-alpine
     entrypoint: yarn
