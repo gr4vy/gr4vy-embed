@@ -1,3 +1,15 @@
+# v2.24.6 (Mon Nov 20 2023)
+
+#### 🔩 Dependency Updates
+
+- deps: upgrade lerna/typescript/jest [#170](https://github.com/gr4vy/gr4vy-embed/pull/170) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.4 (Thu Nov 16 2023)
 
 #### 🔩 Dependency Updates

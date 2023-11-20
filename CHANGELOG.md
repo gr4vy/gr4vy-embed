@@ -1,3 +1,20 @@
+# v2.24.6 (Mon Nov 20 2023)
+
+#### 🏠 Internal
+
+- fix: add packages to lerna.json [#171](https://github.com/gr4vy/gr4vy-embed/pull/171) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🔩 Dependency Updates
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - deps: upgrade lerna/typescript/jest [#170](https://github.com/gr4vy/gr4vy-embed/pull/170) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.5 (Thu Nov 16 2023)
 
 #### 🐛 Bug Fix
