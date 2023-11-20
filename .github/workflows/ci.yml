@@ -37,7 +37,6 @@ jobs:
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
-          yarn bootstrap
           yarn build
           yarn lint
           yarn test
@@ -82,7 +81,6 @@ jobs:
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
-          yarn bootstrap
           git fetch --tags
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
 
@@ -133,7 +131,6 @@ jobs:
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
-          yarn bootstrap
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) yarn build
           yarn release
 

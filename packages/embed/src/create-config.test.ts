@@ -8,9 +8,11 @@ const globalDocument = global.document
 const mockElement = globalDocument.createElement('div')
 const mockForm = globalDocument.createElement('form')
 
-beforeAll(() => {
-  delete global.document
-  global.document = {
+let windowSpy
+
+beforeEach(() => {
+  windowSpy = jest.spyOn(global, 'document', 'get')
+  windowSpy.mockImplementation(() => ({
     location: {
       protocol: 'https:',
       host: 'test.com',
@@ -22,12 +24,13 @@ beforeAll(() => {
       if (query === '#form') {
         return mockForm
       }
+      return
     },
-  } as any
+  }))
 })
 
-afterAll(() => {
-  global.document = globalDocument
+afterEach(() => {
+  windowSpy.mockRestore()
 })
 
 jest.mock('./utils/generate-channel-id')
