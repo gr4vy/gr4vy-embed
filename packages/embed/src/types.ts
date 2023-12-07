@@ -52,6 +52,7 @@ export type Config = {
   antiFraudFingerprint?: string
   enableAnimations?: boolean
   separatePaymentOptions?: boolean
+  excludedMethods?: Array<string>
 }
 
 export type BillingAddressFields = {

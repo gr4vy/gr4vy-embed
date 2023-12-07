@@ -58,6 +58,7 @@ export const optionKeys = [
   'antiFraudFingerprint',
   'enableAnimations',
   'separatePaymentOptions',
+  'excludedMethods',
 ]
 
 // Map of cleanup callbacks

@@ -97,6 +97,27 @@ test('should validate onBeforeTransaction', () => {
   expect(validate({ ...options, onBeforeTransaction: true as any })).toBeFalsy()
 })
 
+test('should validate excludedMethods', () => {
+  jest.spyOn(document, 'querySelector').mockImplementation(() => {
+    return document.createElement('div')
+  })
+
+  const options = {
+    element: `#app`,
+    form: null,
+    amount: 1299,
+    currency: `USD`,
+    iframeHost: `127.0.0.1:8080`,
+    apiHost: `127.0.0.1:3100`,
+    token: `123456`,
+    country: 'US',
+    excludedMethods: ['foo'],
+  }
+
+  expect(validate(options)).toBeTruthy()
+  expect(validate({ ...options, excludedMethods: 'true' as any })).toBeFalsy()
+})
+
 describe('emitArgumentError', () => {
   test('should raise a console and callback error', () => {
     const options = {
