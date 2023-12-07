@@ -469,4 +469,11 @@ export const validate = (options: SetupConfig) =>
     message: 'must be a string',
     required: false,
     type: 'string',
+  }) &&
+  validateType({
+    argument: 'excludedMethods',
+    value: options.excludedMethods,
+    message: 'must be a array',
+    required: false,
+    type: 'object',
   })
