@@ -1,3 +1,15 @@
+# v2.25.0 (Thu Dec 07 2023)
+
+#### 🚀 Enhancement
+
+- feat: add excluded methods option [#172](https://github.com/gr4vy/gr4vy-embed/pull/172) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.24.6 (Mon Nov 20 2023)
 
 #### 🔩 Dependency Updates
