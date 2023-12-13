@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>gr4vy/renovate-config:javascript"],
+  "additionalReviewers": ["douglaseggleton"],
+  "ignorePaths": [
+    "cloudbuild/**",
+    ".devcontainer/**",
+    ".github/**",
+    ".vscode/**"
+  ]
+}
