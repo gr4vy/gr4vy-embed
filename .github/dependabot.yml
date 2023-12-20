@@ -1,0 +1,14 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    # prevent PRs from opening except for security updates (renovatebot takes care of the rest)
+    open-pull-requests-limit: 0
+    reviewers:
+      - 'douglaseggleton'
+    labels:
+      - 'vulnerability'
+      - 'dependencies'
