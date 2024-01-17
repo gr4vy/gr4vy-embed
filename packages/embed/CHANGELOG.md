@@ -1,3 +1,15 @@
+# v2.25.1 (Wed Jan 17 2024)
+
+#### 🐛 Bug Fix
+
+- feat(option-labels): add custom option labels [#188](https://github.com/gr4vy/gr4vy-embed/pull/188) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.25.0 (Thu Dec 07 2023)
 
 #### 🚀 Enhancement

@@ -1,3 +1,23 @@
+# v2.25.1 (Wed Jan 17 2024)
+
+#### 🐛 Bug Fix
+
+- Re-add dependabot to handle transitive dependencies vulnerabilities [#180](https://github.com/gr4vy/gr4vy-embed/pull/180) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(option-labels): add custom option labels [#188](https://github.com/gr4vy/gr4vy-embed/pull/188) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🏠 Internal
+
+- chore: Configure Renovate [#173](https://github.com/gr4vy/gr4vy-embed/pull/173) ([@renovate[bot]](https://github.com/renovate[bot]) [@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.25.0 (Thu Dec 07 2023)
 
 #### 🚀 Enhancement
