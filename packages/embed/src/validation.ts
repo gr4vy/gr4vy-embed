@@ -476,4 +476,11 @@ export const validate = (options: SetupConfig) =>
     message: 'must be a array',
     required: false,
     type: 'object',
+  }) &&
+  validateType({
+    argument: 'optionLabels',
+    value: options.optionLabels,
+    type: 'object',
+    message: 'must be an object',
+    required: false,
   })

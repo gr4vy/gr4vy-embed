@@ -53,6 +53,7 @@ export type Config = {
   enableAnimations?: boolean
   separatePaymentOptions?: boolean
   excludedMethods?: Array<string>
+  optionLabels?: Record<string, string>
 }
 
 export type BillingAddressFields = {
