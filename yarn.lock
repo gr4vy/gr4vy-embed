@@ -9059,7 +9059,7 @@ http-proxy@^1.18.0, http-proxy@^1.18.1:
     follow-redirects "^1.0.0"
     requires-port "^1.0.0"
 
-http-server@^13.0.1:
+http-server@^13.1.0:
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/http-server/-/http-server-13.1.0.tgz#ef2ceb4efd08da87e93ac0f33727ecb9f3f4d629"
   integrity sha512-MLqBMXeY/YN0FYMz4ifeOQCcg8pKj8YdmzX1pr/Vb2VrNnbxHN1s4K9BuZRVSyK/j3DQ8UVrrABb8m6EmFjWog==
