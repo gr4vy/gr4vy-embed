@@ -59,6 +59,7 @@ export const optionKeys = [
   'enableAnimations',
   'separatePaymentOptions',
   'excludedMethods',
+  'optionLabels',
 ]
 
 // Map of cleanup callbacks
