@@ -25,7 +25,7 @@ export const createFrameController = (
   // security
   frame.setAttribute(
     'sandbox',
-    'allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
+    'allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-top-navigation-by-user-activation'
   )
 
   subject.frameHeight$.subscribe((height) => {
