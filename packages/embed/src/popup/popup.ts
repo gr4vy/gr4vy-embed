@@ -39,9 +39,10 @@ export const createPopupController = (
 
   subject.approvalUrl$.subscribe((url) => {
     const mode = subject.mode$.value()
+    const requiresPopup = subject.requiresPopup$.value()
 
     // redirect behaviour should only be applied to popups
-    if (mode?.popup) {
+    if (requiresPopup && mode?.popup) {
       if (popup.current) {
         redirectPopup(popup.current.popup, url)
       } else {
