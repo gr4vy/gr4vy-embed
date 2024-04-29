@@ -211,6 +211,10 @@ export type Message = { channel: string; data?: unknown } & (
       data: string
     }
   | {
+      type: 'requiresPopup'
+      data: boolean
+    }
+  | {
       type: 'optionsLoaded'
       data: Array<{
         id?: string

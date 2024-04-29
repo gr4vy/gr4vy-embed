@@ -161,6 +161,7 @@ export function setup(setupConfig: SetupConfig) {
   > = {
     modeUpdated: subjectManager.mode$.next,
     approvalUrl: subjectManager.approvalUrl$.next,
+    requiresPopup: subjectManager.requiresPopup$.next,
     resize: (data) => subjectManager.frameHeight$.next(data?.frame?.height),
     optionsLoaded: subjectManager.optionsLoaded$.next,
     transactionCreated: subjectManager.transactionCreated$.next,

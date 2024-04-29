@@ -15,6 +15,7 @@ export const createPopupController = (
 ) => {
   subject.approvalStarted$.subscribe(() => {
     const mode = subject.mode$.value()
+    const requiresPopup = subject.requiresPopup$.value()
 
     // clear any existing popup references
     if (popup.current) {
@@ -23,7 +24,7 @@ export const createPopupController = (
       popup.current = undefined
     }
 
-    if (mode?.popup && redirectMode === 'fallback') {
+    if (requiresPopup && mode?.popup && redirectMode === 'fallback') {
       popup.current = openPopup(
         popupFeatures(
           mode.popup?.width || DEFAULT_POPUP_WIDTH,

@@ -21,6 +21,7 @@ export const createSubjectManager = () => {
     approvalCancelled$: createSubject(),
     approvalLost$: createSubject(),
     approvalCompleted$: createSubject(),
+    requiresPopup$: createSubject<boolean>(true),
     frameHeight$: createSubject<number>(0),
     optionsLoaded$: createSubject<boolean>(false),
     formSubmit$: createSubject(),
