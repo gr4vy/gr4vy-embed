@@ -1,3 +1,17 @@
+# v2.26.0 (Thu May 02 2024)
+
+#### 🚀 Enhancement
+
+- deps: update auto [#197](https://github.com/gr4vy/gr4vy-embed/pull/197) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed`
+  - feat: add support for push payments [#195](https://github.com/gr4vy/gr4vy-embed/pull/195) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.25.1 (Wed Jan 17 2024)
 
 #### 🐛 Bug Fix
