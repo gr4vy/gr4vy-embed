@@ -53,6 +53,13 @@ export const createFormController = (
       )
     }
 
+    if (transaction?.paymentMethod?.approvalUrl) {
+      formNapperInstance.inject(
+        `gr4vy_approval_url`,
+        transaction.paymentMethod.approvalUrl
+      )
+    }
+
     return typeof onComplete === 'function'
       ? onComplete(transaction)
       : formNapperInstance.submit()

@@ -55,3 +55,7 @@ CVE-2022-25883
 # browserify - dev dependency
 
 CVE-2023-46234
+
+# tar - dev dependency
+
+CVE-2024-28863
