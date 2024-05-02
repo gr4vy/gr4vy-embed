@@ -28,7 +28,7 @@ export const createSubjectManager = () => {
     transactionCreated$: createSubject<{
       id: string
       status: string
-      paymentMethod?: { id?: string }
+      paymentMethod?: { id?: string; approvalUrl?: string }
     }>(),
     beforeTransactionPending$: createSubject(),
     transactionFailed$: createSubject(),
