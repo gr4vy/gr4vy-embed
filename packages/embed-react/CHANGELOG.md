@@ -1,3 +1,15 @@
+# v2.27.0 (Mon May 13 2024)
+
+#### 🐛 Bug Fix
+
+- fix: update version numbers to match npm [#200](https://github.com/gr4vy/gr4vy-embed/pull/200) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 1
+
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.25.1 (Wed Jan 17 2024)
 
 #### 🐛 Bug Fix

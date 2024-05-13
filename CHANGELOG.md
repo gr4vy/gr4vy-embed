@@ -1,3 +1,31 @@
+# v2.26.0 (Mon May 13 2024)
+
+#### 🚀 Enhancement
+
+- deps: update auto [#197](https://github.com/gr4vy/gr4vy-embed/pull/197) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed`
+  - feat: add support for push payments [#195](https://github.com/gr4vy/gr4vy-embed/pull/195) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- chore(dev-deps): update dependency http-server to ^13.1.0 [#181](https://github.com/gr4vy/gr4vy-embed/pull/181) ([@renovate[bot]](https://github.com/renovate[bot]))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - fix: update version numbers to match npm [#200](https://github.com/gr4vy/gr4vy-embed/pull/200) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed`
+  - chore(dev-deps): update dependency @types/applepayjs to ^3.0.4 [#176](https://github.com/gr4vy/gr4vy-embed/pull/176) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠 Internal
+
+- fix: update insecure tar dependency [#199](https://github.com/gr4vy/gr4vy-embed/pull/199) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.25.1 (Wed Jan 17 2024)
 
 #### 🐛 Bug Fix

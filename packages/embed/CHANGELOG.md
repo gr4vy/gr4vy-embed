@@ -1,3 +1,21 @@
+# v2.27.0 (Mon May 13 2024)
+
+#### 🚀 Enhancement
+
+- feat: add support for push payments [#195](https://github.com/gr4vy/gr4vy-embed/pull/195) ([@douglaseggleton](https://github.com/douglaseggleton))
+
+#### 🐛 Bug Fix
+
+- fix: update version numbers to match npm [#200](https://github.com/gr4vy/gr4vy-embed/pull/200) ([@douglaseggleton](https://github.com/douglaseggleton))
+- chore(dev-deps): update dependency @types/applepayjs to ^3.0.4 [#176](https://github.com/gr4vy/gr4vy-embed/pull/176) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+
+---
+
 # v2.25.1 (Wed Jan 17 2024)
 
 #### 🐛 Bug Fix
