@@ -53,8 +53,8 @@ setup({
   form: `#form`,
   intent: 'capture',
   amount: 1299,
-  currency: `USD`,
-  buyerExternalIdentifier: 'user-001',
+  currency: `AUD`,
+  buyerExternalIdentifier: 'user-009',
   ...instance,
   token: process.env.TOKEN ?? `123456`,
   debug: true,
@@ -74,8 +74,10 @@ setup({
       container: 'subtle',
     },
   },
+
+  billingAddressFields: {},
   environment: 'production',
-  country: 'US',
+  country: 'AU',
   display: 'all',
   metadata: {
     foo: 'bar',
