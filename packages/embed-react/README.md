@@ -22,8 +22,8 @@ npm install @gr4vy/embed-react --save-prod
 To use Gr4vy Embed, import the `Gr4vyEmbed` component.
 
 ```js
-const Gr4vyEmbed = require(`@gr4vy/embed-react`)
-// import Gr4vyEmbed from (`@gr4vy/embed-react)
+const Gr4vyEmbed = require("@gr4vy/embed-react")
+// import Gr4vyEmbed from "@gr4vy/embed-react"
 
 <Gr4vyEmbed
   gr4vyId='[GR4VY_ID]'

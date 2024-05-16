@@ -23,8 +23,8 @@ npm install @gr4vy/embed --save-prod
 To use Gr4vy Embed, import the library and call the `.setup()` method.
 
 ```js
-const { setup } = require(`@gr4vy/embed`)
-// import { setup } from (`@gr4vy/embed`)
+const { setup } = require('@gr4vy/embed')
+// import { setup } from "@gr4vy/embed"
 
 setup({
   gr4vyId: '[GR4VY_ID]',
