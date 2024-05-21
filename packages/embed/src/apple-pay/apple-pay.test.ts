@@ -9,6 +9,7 @@ beforeEach(() => {
   mockAppleSession = {
     onvalidatemerchant: jest.fn(),
     onpaymentauthorized: jest.fn(),
+    onpaymentmethodselected: jest.fn(),
     begin: jest.fn(),
     completeMerchantValidation: jest.fn(),
     completePayment: jest.fn(),
@@ -73,6 +74,28 @@ test('should register an onvalidatemerchant callback', (done) => {
 
   // act
   mockAppleSession.onvalidatemerchant({ validationURL: 'test-url' })
+  jest.runAllTimers()
+})
+
+test('should register an onpaymentmethodselected callback', (done) => {
+  createApplePayController(mockSubjectManager, 3)
+  mockSubjectManager.appleStartSession$.next({ foo: 'bar' } as any)
+
+  // assert
+  const subscription = mockSubjectManager.applePaymentMethodSelected$.subscribe(
+    (paymentMethod) => {
+      subscription.unsubscribe()
+      expect(paymentMethod).toEqual({ network: 'visa' })
+      done()
+    }
+  )
+
+  jest.runAllTimers()
+
+  // act
+  mockAppleSession.onpaymentmethodselected({
+    paymentMethod: { network: 'visa' },
+  })
   jest.runAllTimers()
 })
 

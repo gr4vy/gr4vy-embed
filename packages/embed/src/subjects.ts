@@ -35,6 +35,7 @@ export const createSubjectManager = () => {
     transactionCancelled$: createSubject(),
     appleStartSession$: createSubject<ApplePayJS.ApplePayPaymentRequest>(),
     appleValidateMerchant$: createSubject<string>(),
+    applePaymentMethodSelected$: createSubject<ApplePayJS.ApplePayPaymentMethod>(),
     appleCompleteMerchantValidation$: createSubject<any>(),
     applePayAuthorized$: createSubject<ApplePayJS.ApplePayPaymentToken>(),
     appleCompletePayment$: createSubject<boolean>(),

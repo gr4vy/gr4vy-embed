@@ -277,6 +277,9 @@ export function setup(setupConfig: SetupConfig) {
   subjectManager.approvalCancelled$.subscribe(() =>
     dispatch({ type: 'approvalCancelled' })
   )
+  subjectManager.applePaymentMethodSelected$.subscribe((paymentMethod) =>
+    dispatch({ type: 'applePaymentMethodSelected', data: paymentMethod })
+  )
   subjectManager.applePayAuthorized$.subscribe((token) =>
     dispatch({ type: 'applePayAuthorized', data: token })
   )

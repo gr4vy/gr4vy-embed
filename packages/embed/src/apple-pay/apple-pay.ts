@@ -12,6 +12,7 @@ export const createApplePayController = (
     | 'appleAbortSession$'
     | 'appleStartSession$'
     | 'appleValidateMerchant$'
+    | 'applePaymentMethodSelected$'
     | 'applePayAuthorized$'
     | 'appleCompleteMerchantValidation$'
     | 'appleCompletePayment$'
@@ -30,6 +31,10 @@ export const createApplePayController = (
       // handle merchant validation
       session.onvalidatemerchant = (event) => {
         subjectManager.appleValidateMerchant$.next(event.validationURL)
+      }
+
+      session.onpaymentmethodselected = (event) => {
+        subjectManager.applePaymentMethodSelected$.next(event.paymentMethod)
       }
 
       // handle payment authorization
