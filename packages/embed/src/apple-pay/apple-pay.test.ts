@@ -85,7 +85,7 @@ test('should register an onpaymentmethodselected callback', (done) => {
   const subscription = mockSubjectManager.applePaymentMethodSelected$.subscribe(
     (paymentMethod) => {
       subscription.unsubscribe()
-      expect(paymentMethod).toEqual({ network: 'visa' })
+      expect(paymentMethod).toEqual({ network: 'amex' })
       done()
     }
   )
@@ -94,7 +94,7 @@ test('should register an onpaymentmethodselected callback', (done) => {
 
   // act
   mockAppleSession.onpaymentmethodselected({
-    paymentMethod: { network: 'visa' },
+    paymentMethod: { network: 'amex' },
   })
   jest.runAllTimers()
 })
