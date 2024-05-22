@@ -33,12 +33,14 @@ export const createApplePayController = (
         subjectManager.appleValidateMerchant$.next(event.validationURL)
       }
 
-      session.onpaymentmethodselected = (event) => {
-        subjectManager.applePaymentMethodSelected$.next(event.paymentMethod)
-      }
+      // session.onpaymentmethodselected = (event) => {
+      //   subjectManager.applePaymentMethodSelected$.next(event.paymentMethod)
+      //   session.completePaymentMethodSelection(100, [])
+      // }
 
       // handle payment authorization
       session.onpaymentauthorized = (event) => {
+        console.log(event.payment)
         subjectManager.applePayAuthorized$.next(event.payment.token)
       }
 
