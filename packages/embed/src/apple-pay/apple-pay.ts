@@ -34,6 +34,7 @@ export const createApplePayController = (
 
       // handle payment authorization
       session.onpaymentauthorized = (event) => {
+        console.log('onpaymentauthorized', event.payment)
         subjectManager.applePayAuthorized$.next(event.payment.token)
       }
 
