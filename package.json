@@ -72,8 +72,7 @@
     "minimist": "^1.2.6",
     "parse-url": "^8.1.0",
     "parse-path": "^5.0.0",
-    "shell-quote": "^1.7.3",
-    "tar": "^6.2.1"
+    "shell-quote": "^1.7.3"
   },
   "engines": {
     "node": ">=16.0.0"
