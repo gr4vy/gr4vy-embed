@@ -2,56 +2,6 @@
 
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
 
-# postcss - Dev Dependency (Storybook)
-
-CVE-2021-23382
-CVE-2023-44270
-
-# node-forge - Dev Dependency (Webpack dev server)
-
-GHSA-5rrq-pxf6-6jx5
-GHSA-gf8q-jrpm-jvxq
-CVE-2022-0122
-CVE-2022-24771
-CVE-2022-24772
-CVE-2022-24773
-
-# node-fetch - Dev Dependency
-
-CVE-2022-0235
-
-# eventsource - Dev Dependency (Webpack dev server)
-
-CVE-2022-1650
-
-# terser - Dev Dependency (Webpack)
-
-CVE-2022-25858
-
-# loader-utils - dev dependency
-
-CVE-2022-37601
-CVE-2022-37599
-CVE-2022-37603
-
-# Minimatch dependancy
-
-# https://avd.aquasec.com/nvd/2022/cve-2022-3517/
-
-CVE-2022-3517
-
-# json5
-
-CVE-2022-46175
-
-# yaml - Dev Dependency (auto, storybook)
-
-CVE-2023-2251
-
 # semver - dev dependency (jest)
 
 CVE-2022-25883
-
-# browserify - dev dependency
-
-CVE-2023-46234
