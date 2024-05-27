@@ -75,7 +75,7 @@
     "shell-quote": "^1.7.3"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {}
 }
