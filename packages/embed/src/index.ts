@@ -266,9 +266,10 @@ export function setup(setupConfig: SetupConfig) {
             ]),
           })
         })
-        .catch(() => {
+        .catch((error) => {
           dispatch({
             type: 'beforeTransactionError',
+            data: { beforeTransactionError: error },
           })
         })
     }
