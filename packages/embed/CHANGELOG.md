@@ -1,3 +1,17 @@
+# v2.27.1 (Sun Jun 02 2024)
+
+#### 🐛 Bug Fix
+
+- task: improve error logs [#207](https://github.com/gr4vy/gr4vy-embed/pull/207) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- fix: Correct import syntax in docs [#201](https://github.com/gr4vy/gr4vy-embed/pull/201) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.27.0 (Mon May 13 2024)
 
 #### 🚀 Enhancement

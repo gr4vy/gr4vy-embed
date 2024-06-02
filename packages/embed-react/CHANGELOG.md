@@ -1,3 +1,15 @@
+# v2.27.1 (Sun Jun 02 2024)
+
+#### 🐛 Bug Fix
+
+- fix: Correct import syntax in docs [#201](https://github.com/gr4vy/gr4vy-embed/pull/201) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.27.0 (Mon May 13 2024)
 
 #### 🐛 Bug Fix
