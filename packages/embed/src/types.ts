@@ -99,7 +99,7 @@ export type SetupConfig = Omit<
   iframeHost?: string
   apiHost?: string
   element: string | HTMLElement | Element
-  form: string | HTMLElement | Element
+  form?: string | HTMLElement | Element
   secure?: boolean
 }
 
