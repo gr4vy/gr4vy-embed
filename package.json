@@ -66,6 +66,7 @@
     "webpack-dev-server": "^4.13.3"
   },
   "resolutions": {
+    "braces": "^3.0.3",
     "css-what": "^5.0.1"
   },
   "engines": {
