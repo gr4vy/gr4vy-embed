@@ -1,3 +1,8 @@
+export type DeepPartial<T> = {
+  // eslint-disable-next-line
+  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
+}
+
 export type Config = {
   element: HTMLElement // The element to insert the integration at
   form?: Element // The form to bind the integration to
@@ -10,6 +15,7 @@ export type Config = {
   externalIdentifier?: string // an optional external identifier
   buyerId?: string // the ID of the buyer to associate the payment methods to
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
+  buyer?: Buyer
   environment?: 'production' | 'sandbox'
   store?: 'ask' | boolean
   country: string
@@ -56,6 +62,28 @@ export type Config = {
   optionLabels?: Record<string, string>
 }
 
+export type BillingDetails = {
+  firstName: string
+  lastName: string
+  emailAddress: string
+  phoneNumber: string
+  address: {
+    houseNumberOrName: string
+    line1: string
+    line2: string
+    organization: string
+    city: string
+    postalCode: string
+    country: string
+    state?: string
+    stateCode?: string
+  }
+  taxId: {
+    value: string
+    kind: string
+  }
+}
+
 export type BillingAddressFields = {
   address?: {
     houseNumberOrName?: boolean
@@ -69,6 +97,13 @@ export type BillingAddressFields = {
   firstName?: boolean
   lastName?: boolean
   taxId?: boolean
+}
+
+export type ShippingDetails = BillingDetails
+
+export type Buyer = {
+  billingDetails?: DeepPartial<BillingDetails>
+  shippingDetails?: DeepPartial<ShippingDetails>
 }
 
 export type CustomOption = {

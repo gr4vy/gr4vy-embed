@@ -36,6 +36,7 @@ export const optionKeys = [
   'externalIdentifier',
   'buyerId',
   'buyerExternalIdentifier',
+  'buyer',
   'environment',
   'store',
   'country',

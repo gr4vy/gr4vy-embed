@@ -366,6 +366,13 @@ export const validate = (options: SetupConfig) =>
     callback: options.onEvent,
   }) &&
   validateType({
+    argument: 'buyer',
+    value: options.buyer,
+    type: 'object',
+    message: 'must be an object',
+    required: false,
+  }) &&
+  validateType({
     argument: 'environment',
     value: options.environment,
     type: 'string',
