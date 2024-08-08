@@ -73,17 +73,17 @@ describe('validate', () => {
         buyerId: '123',
       })
     ).toBeTruthy()
-    // expect(
-    //   validate({
-    //     ...options,
-    //     shippingDetailsId: '123',
-    //     buyer: {
-    //       billingDetails: {
-    //         firstName: 'John',
-    //       },
-    //     },
-    //   })
-    // ).toBeFalsy()
+    expect(
+      validate({
+        ...options,
+        shippingDetailsId: '123',
+        buyer: {
+          billingDetails: {
+            firstName: 'John',
+          },
+        },
+      })
+    ).toBeFalsy()
   })
 
   test('should validate buyer details', () => {
