@@ -237,7 +237,6 @@ export const validateBuyer = ({
   required,
   expected,
   callback,
-  buyer = buyerObject,
 }: {
   argument: string
   value: any
@@ -245,9 +244,8 @@ export const validateBuyer = ({
   required?: boolean
   expected: typeof buyerObject
   callback?: (name: string, event: { message: string }) => void
-  buyer?: Buyer
 }) => {
-  const valid = value && isObjectWithSchema(value, buyer)
+  const valid = value && isObjectWithSchema(value, buyerObject)
 
   if (canSkipValidation({ required, value }) || valid) {
     return true
