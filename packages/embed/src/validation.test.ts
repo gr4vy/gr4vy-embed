@@ -115,6 +115,11 @@ describe('validate', () => {
             firstName: 'John',
             lastName: null,
           },
+          shippingDetails: {
+            address: {
+              country: 'GB',
+            },
+          },
         },
       })
     ).toBeTruthy()
@@ -127,6 +132,14 @@ describe('validate', () => {
             unknown: 'unknown',
           },
           unknown: 'unknown',
+        } as any,
+      })
+    ).toBeFalsy()
+    expect(
+      validate({
+        ...options,
+        buyer: {
+          billingDetails: {},
         } as any,
       })
     ).toBeFalsy()

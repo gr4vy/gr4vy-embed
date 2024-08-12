@@ -11,10 +11,21 @@ export const canSkipValidation = ({
   return !required && [undefined, null].includes(value)
 }
 
+// checks if object
+export const isObject = (object?: any) =>
+  object && Object.prototype.toString.call(object) === '[object Object]'
+
+// checks if object is empty
+export const isEmptyObject = (object?: any) =>
+  isObject(object) && Object.keys(object).length === 0
+
 // checks if object adheres to another's schema
-export const isObjectWithSchema = (object?: any, schemaObject?: any) =>
-  Object.entries(object).every(([key, val]) => {
-    if (Object.prototype.toString.call(val) === '[object Object]') {
+export const isObjectWithSchema = (object?: any, schemaObject?: any) => {
+  if (isEmptyObject(object)) {
+    return false
+  }
+  return Object.entries(object).every(([key, val]) => {
+    if (isObject(val)) {
       return isObjectWithSchema(val, schemaObject[key])
     }
     return (
@@ -23,6 +34,7 @@ export const isObjectWithSchema = (object?: any, schemaObject?: any) =>
       (typeof schemaObject[key] === typeof val || val === null)
     )
   })
+}
 
 // Validates a HTML element
 export const validateHTMLElement = ({
@@ -206,28 +218,31 @@ export const validateStore = ({
   return false
 }
 
-const buyerObject: Buyer = {
-  billingDetails: {
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    phoneNumber: '',
-    address: {
-      houseNumberOrName: '',
-      line1: '',
-      line2: '',
-      organization: '',
-      city: '',
-      postalCode: '',
-      country: '',
-      state: '',
-      stateCode: '',
-    },
-    taxId: {
-      value: '',
-      kind: '',
-    },
+const buyerDetails = {
+  firstName: '',
+  lastName: '',
+  emailAddress: '',
+  phoneNumber: '',
+  address: {
+    houseNumberOrName: '',
+    line1: '',
+    line2: '',
+    organization: '',
+    city: '',
+    postalCode: '',
+    country: '',
+    state: '',
+    stateCode: '',
   },
+  taxId: {
+    value: '',
+    kind: '',
+  },
+}
+
+const buyerObject: Buyer = {
+  billingDetails: buyerDetails,
+  shippingDetails: buyerDetails,
 }
 
 export const validateBuyer = ({
