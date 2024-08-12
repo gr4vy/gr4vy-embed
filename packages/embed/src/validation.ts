@@ -20,7 +20,7 @@ export const isObjectWithSchema = (object?: any, schemaObject?: any) =>
     return (
       schemaObject &&
       key in schemaObject &&
-      typeof schemaObject[key] === typeof val
+      (typeof schemaObject[key] === typeof val || val === null)
     )
   })
 

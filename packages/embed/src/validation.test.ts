@@ -113,6 +113,7 @@ describe('validate', () => {
         buyer: {
           billingDetails: {
             firstName: 'John',
+            lastName: null,
           },
         },
       })
