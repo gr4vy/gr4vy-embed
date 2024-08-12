@@ -241,6 +241,8 @@ const buyerDetails = {
 }
 
 const buyerObject: Buyer = {
+  displayName: '',
+  externalIdentifier: '',
   billingDetails: buyerDetails,
   shippingDetails: buyerDetails,
 }

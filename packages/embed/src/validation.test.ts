@@ -111,6 +111,8 @@ describe('validate', () => {
       validate({
         ...options,
         buyer: {
+          displayName: 'Test buyer',
+          externalIdentifier: '123',
           billingDetails: {
             firstName: 'John',
             lastName: null,

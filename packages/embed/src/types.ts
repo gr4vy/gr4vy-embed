@@ -102,6 +102,8 @@ export type BillingAddressFields = {
 export type ShippingDetails = BillingDetails
 
 export type Buyer = {
+  displayName?: string
+  externalIdentifier?: string
   billingDetails?: DeepPartial<BillingDetails>
   shippingDetails?: DeepPartial<ShippingDetails>
 }
