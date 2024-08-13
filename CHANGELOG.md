@@ -1,3 +1,28 @@
+# v2.28.0 (Tue Aug 13 2024)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - task: add support for buyer option [#212](https://github.com/gr4vy/gr4vy-embed/pull/212) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- chore(dev-deps): update babel monorepo [#185](https://github.com/gr4vy/gr4vy-embed/pull/185) ([@renovate[bot]](https://github.com/renovate[bot]))
+- Execute service deployment with a user-defined service account [#211](https://github.com/gr4vy/gr4vy-embed/pull/211) ([@andrewmackett](https://github.com/andrewmackett))
+
+#### 🏠 Internal
+
+- `@gr4vy/embed`
+  - chore: make form prop option type optional [#209](https://github.com/gr4vy/gr4vy-embed/pull/209) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.27.1 (Sun Jun 02 2024)
 
 #### 🐛 Bug Fix
