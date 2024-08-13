@@ -1,7 +1,4 @@
-type DeepPartial<T> = {
-  // eslint-disable-next-line
-  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
-}
+import { DeepPartial } from 'types'
 
 export type ThemeOptions = {
   borderWidths: Record<string, string>

@@ -1,4 +1,4 @@
-import { SetupConfig } from './types'
+import { SetupConfig, Buyer } from './types'
 
 // checks if a value needs validation to pass
 export const canSkipValidation = ({
@@ -9,6 +9,31 @@ export const canSkipValidation = ({
   value: any
 }) => {
   return !required && [undefined, null].includes(value)
+}
+
+// checks if object
+export const isObject = (object?: any) =>
+  object && Object.prototype.toString.call(object) === '[object Object]'
+
+// checks if object is empty
+export const isEmptyObject = (object?: any) =>
+  isObject(object) && Object.keys(object).length === 0
+
+// checks if object adheres to another's schema
+export const isObjectWithSchema = (object?: any, schemaObject?: any) => {
+  if (isEmptyObject(object)) {
+    return false
+  }
+  return Object.entries(object).every(([key, val]) => {
+    if (isObject(val)) {
+      return isObjectWithSchema(val, schemaObject[key])
+    }
+    return (
+      schemaObject &&
+      key in schemaObject &&
+      (typeof schemaObject[key] === typeof val || val === null)
+    )
+  })
 }
 
 // Validates a HTML element
@@ -193,6 +218,65 @@ export const validateStore = ({
   return false
 }
 
+const buyerDetails = {
+  firstName: '',
+  lastName: '',
+  emailAddress: '',
+  phoneNumber: '',
+  address: {
+    houseNumberOrName: '',
+    line1: '',
+    line2: '',
+    organization: '',
+    city: '',
+    postalCode: '',
+    country: '',
+    state: '',
+    stateCode: '',
+  },
+  taxId: {
+    value: '',
+    kind: '',
+  },
+}
+
+const buyerObject: Buyer = {
+  displayName: '',
+  externalIdentifier: '',
+  billingDetails: buyerDetails,
+  shippingDetails: buyerDetails,
+}
+
+export const validateBuyer = ({
+  argument,
+  value,
+  message,
+  required,
+  expected,
+  callback,
+}: {
+  argument: string
+  value: any
+  message: string
+  required?: boolean
+  expected: typeof buyerObject
+  callback?: (name: string, event: { message: string }) => void
+}) => {
+  const valid = value && isObjectWithSchema(value, buyerObject)
+
+  if (canSkipValidation({ required, value }) || valid) {
+    return true
+  }
+
+  emitArgumentError({
+    argument,
+    message: `${argument} ${message}`,
+    callback,
+    _expected: expected,
+  })
+  return false
+}
+
 // Validates a type
 export const validateType = ({
   argument,
@@ -248,15 +332,18 @@ export const emitArgumentError = ({
   argument,
   message,
   callback,
+  ...rest
 }: {
   argument: string
   message: string
   callback?: (name: string, event: { message: string }) => void
+  [key: string]: any
 }) => {
   const error = {
     code: `argumentError`,
     argument,
     message,
+    ...rest,
   }
   console.error(`Gr4vy - Error`, error)
   callback?.(`argumentError`, error)
@@ -358,12 +445,44 @@ export const validate = (options: SetupConfig) =>
     callback: options.onEvent,
   }) &&
   validateType({
+    argument: 'buyerExternalIdentifier',
+    value: options.buyerExternalIdentifier && options.buyer,
+    type: 'string',
+    message: 'must be used without a buyer',
+    required: false,
+    callback: options.onEvent,
+  }) &&
+  validateType({
     argument: 'buyerId',
     value: options.buyerId,
     type: 'string',
     message: 'must be a string',
     required: false,
     callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'buyerId',
+    value: options.buyerId && options.buyer,
+    type: 'string',
+    message: 'must be used without a buyer',
+    required: false,
+    callback: options.onEvent,
+  }) &&
+  validateBuyer({
+    argument: 'buyer',
+    value: options.buyer,
+    message: 'must be a valid object',
+    required: false,
+    expected: buyerObject,
+    callback: options.onEvent,
+  }) &&
+  validateType({
+    argument: 'buyer',
+    value:
+      options.buyer && (options.buyerExternalIdentifier || options.buyerId),
+    type: 'object',
+    message: 'must be used without buyerExternalIdentifier or buyerId',
+    required: false,
   }) &&
   validateType({
     argument: 'environment',
@@ -441,6 +560,11 @@ export const validate = (options: SetupConfig) =>
       ? !!(options.buyerId || options.buyerExternalIdentifier)
       : true,
     message: 'must be used with a buyerId or buyerExternalId',
+  }) &&
+  validateCondition({
+    argument: 'shippingDetailsId',
+    condition: options.shippingDetailsId ? !options.buyer : true,
+    message: 'must be used without a buyer',
   }) &&
   validateType({
     argument: 'hasBeforeTransaction',
