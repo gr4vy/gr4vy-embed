@@ -67,7 +67,9 @@
   },
   "resolutions": {
     "braces": "^3.0.3",
-    "css-what": "^5.0.1"
+    "css-what": "^5.0.1",
+    "micromatch": "^4.0.8",
+    "axios": "1.7.5"
   },
   "engines": {
     "node": ">=20.0.0"
