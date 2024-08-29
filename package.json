@@ -68,6 +68,7 @@
   "resolutions": {
     "braces": "^3.0.3",
     "css-what": "^5.0.1",
+    "micromatch": "^4.0.8",
     "webpack": "^5.94.0"
   },
   "engines": {
