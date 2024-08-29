@@ -61,13 +61,14 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2",
-    "webpack": "^5.80.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.3"
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.2"
   },
   "resolutions": {
     "braces": "^3.0.3",
-    "css-what": "^5.0.1"
+    "css-what": "^5.0.1",
+    "webpack": "^5.94.0"
   },
   "engines": {
     "node": ">=20.0.0"
