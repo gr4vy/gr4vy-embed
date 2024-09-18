@@ -21,11 +21,6 @@ steps:
       - 'TRIVY_NO_PROGRESS=true'
       - 'TRIVY_IGNORE_UNFIXED=true'
 
-  - id: 'yarn nx reset'
-    name: node:${_NODE_VERSION}-alpine
-    entrypoint: yarn
-    args: ['nx', 'reset']
-
   - id: 'yarn build'
     name: node:${_NODE_VERSION}-alpine
     entrypoint: yarn
