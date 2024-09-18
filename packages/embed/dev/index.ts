@@ -53,8 +53,8 @@ setup({
   form: `#form`,
   intent: 'capture',
   amount: 1299,
-  currency: `GBP`,
-  buyerExternalIdentifier: 'user-001',
+  currency: `AUD`,
+  buyerExternalIdentifier: 'user-009',
   ...instance,
   token: process.env.TOKEN ?? `123456`,
   debug: true,
@@ -76,8 +76,8 @@ setup({
   },
 
   billingAddressFields: {},
-  environment: 'sandbox',
-  country: 'GB',
+  environment: 'production',
+  country: 'AU',
   display: 'all',
   metadata: {
     foo: 'bar',
@@ -91,6 +91,6 @@ setup({
       <p>Payment Method ID: ${transaction.paymentMethod?.id}</p>
       `
   },
-  secure: true,
+  secure: false,
   showDeleteButton: true,
 })
