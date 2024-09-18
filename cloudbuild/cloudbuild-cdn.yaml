@@ -24,7 +24,7 @@ steps:
   - id: 'yarn build'
     name: node:${_NODE_VERSION}-alpine
     entrypoint: yarn
-    args: ['build']
+    args: ['build', '--skip-nx-cache']
 
   - id: 'push to storage bucket'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
