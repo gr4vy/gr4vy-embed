@@ -15,7 +15,11 @@ steps:
 
   - id: 'scan with trivy'
     name: 'aquasec/trivy:latest'
-    args: ['fs', '.']
+    args:
+      - 'fs'
+      - '--db-repository'
+      - 'us-docker.pkg.dev/gr4vy-admin/ghcr/aquasecurity/trivy-db'
+      - '.'
     env:
       - 'TRIVY_EXIT_CODE=0'
       - 'TRIVY_NO_PROGRESS=true'
