@@ -31,7 +31,7 @@
     "@babel/preset-react": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
     "@peculiar/webcrypto": "^1.4.3",
-    "@types/jest": "^29.5.8",
+    "@types/jest": "^29.5.13",
     "@types/node": "^20.9.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
