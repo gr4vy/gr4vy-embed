@@ -285,8 +285,8 @@ export function setup(setupConfig: SetupConfig) {
   subjectManager.appleValidateMerchant$.subscribe((validationUrl) =>
     dispatch({ type: 'appleValidateMerchant', data: validationUrl })
   )
-  subjectManager.appleCancelSession$.subscribe(() =>
-    dispatch({ type: 'appleCancelSession' })
+  subjectManager.appleCancelSession$.subscribe((sessionError) =>
+    dispatch({ type: 'appleCancelSession', data: sessionError })
   )
   subjectManager.appleSessionError$.subscribe((message) =>
     dispatch({ type: 'appleSessionError', data: message })

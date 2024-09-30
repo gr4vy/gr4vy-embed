@@ -40,7 +40,7 @@ export const createSubjectManager = () => {
     appleCompletePayment$: createSubject<boolean>(),
     appleAbortSession$: createSubject(),
     appleSessionError$: createSubject<string>(),
-    appleCancelSession$: createSubject(),
+    appleCancelSession$: createSubject<ApplePayJS.Event>(),
     appleCompleteSession$: createSubject(),
     googlePaySessionStarted$: createSubject(),
     googlePaySessionCompleted$: createSubject(),

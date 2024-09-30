@@ -38,8 +38,8 @@ export const createApplePayController = (
       }
 
       // cancel the apple pay session
-      session.oncancel = () => {
-        subjectManager.appleCancelSession$.next()
+      session.oncancel = (event: ApplePayJS.Event & { sessionError?: any }) => {
+        subjectManager.appleCancelSession$.next(event.sessionError)
       }
 
       // start the session
