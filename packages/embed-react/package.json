@@ -38,8 +38,8 @@
     "@storybook/cli": "^7.6.20",
     "@storybook/react": "^7.6.20",
     "@storybook/react-webpack5": "^7.6.20",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
