@@ -10,7 +10,7 @@ describe('createSkeletonController', () => {
     } as any
     const subject = createSubjectManager()
     createSkeletonController(mockElement, subject, undefined)
-    subject.optionsLoaded$.next(true)
+    subject.optionsLoaded$.next([])
 
     jest.runAllTimers()
 

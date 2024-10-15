@@ -1,3 +1,9 @@
+import {
+  browserSupportsApplePay,
+  createApplePayController,
+  detectSupportedVersion,
+  loadApplePaySdk,
+} from 'apple-pay'
 import { SubjectManager } from 'subjects'
 
 export const createFrameController = (
@@ -34,7 +40,18 @@ export const createFrameController = (
     }
   })
 
-  subject.optionsLoaded$.subscribe(() => {
+  subject.optionsLoaded$.subscribe(async (data) => {
+    if (data.find((option) => option.mode === 'applepay')) {
+      await loadApplePaySdk()
+
+      const supportedApplePayVersion = browserSupportsApplePay()
+        ? detectSupportedVersion()
+        : 0
+
+      if (supportedApplePayVersion) {
+        createApplePayController(subject, supportedApplePayVersion)
+      }
+    }
     frame.style.visibility = 'unset'
     frame.style.display = 'unset'
   })

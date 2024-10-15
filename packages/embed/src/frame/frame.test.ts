@@ -59,7 +59,7 @@ describe('createFrameController', () => {
     const frameElement = document.createElement('iframe')
     createFrameController(frameElement, iframeUrl, subject)
 
-    subject.optionsLoaded$.next(true)
+    subject.optionsLoaded$.next([])
 
     jest.runAllTimers()
 

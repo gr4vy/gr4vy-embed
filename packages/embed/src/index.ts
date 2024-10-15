@@ -1,8 +1,3 @@
-import {
-  createApplePayController,
-  browserSupportsApplePay,
-  detectSupportedVersion,
-} from './apple-pay'
 import { createConfig } from './create-config'
 import { createFormController } from './form'
 import { createFrameController } from './frame'
@@ -135,15 +130,6 @@ export function setup(setupConfig: SetupConfig) {
   const frame = document.createElement('iframe')
   createFrameController(frame, config.iframeSrc, subjectManager)
 
-  // Apple Pay
-  const supportedApplePayVersion = browserSupportsApplePay()
-    ? detectSupportedVersion()
-    : 0
-
-  if (supportedApplePayVersion) {
-    createApplePayController(subjectManager, supportedApplePayVersion)
-  }
-
   // Attach elements to the DOM
   config.element.append(overlay, loader, frame)
 
@@ -183,7 +169,7 @@ export function setup(setupConfig: SetupConfig) {
         type: 'updateOptions',
         data: {
           ...pick<Config>(config, optionKeys),
-          supportedApplePayVersion,
+          supportedApplePayVersion: 3,
           supportedGooglePayVersion: 1,
           hasBeforeTransaction:
             typeof config?.onBeforeTransaction === 'function',

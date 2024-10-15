@@ -6,6 +6,34 @@ declare global {
   }
 }
 
+export const loadApplePaySdk = (version = 'latest') => {
+  return new Promise<boolean>((resolve, reject) => {
+    if (document.getElementById('apple-pay-sdk')) {
+      return
+    }
+
+    const script = document.createElement('script')
+    script.id = 'apple-pay-sdk'
+    script.type = 'text/javascript'
+    script.src = `https://applepay.cdn-apple.com/jsapi/1.${version}/apple-pay-sdk.js`
+    script.crossOrigin = ''
+    script.onload = () => {
+      if (window.ApplePaySession) {
+        resolve(true)
+      } else {
+        console.error('Apple Pay SDK failed to load.')
+        reject(false)
+      }
+    }
+    script.onerror = () => {
+      console.error('Error loading Apple Pay SDK.')
+      reject(false)
+    }
+
+    document.head.appendChild(script)
+  })
+}
+
 export const createApplePayController = (
   subjectManager: Pick<
     SubjectManager,
