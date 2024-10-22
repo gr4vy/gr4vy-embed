@@ -1,3 +1,25 @@
+# v2.29.0 (Tue Oct 22 2024)
+
+#### 🚀 Enhancement
+
+- chore(dev-deps): update react monorepo to ^17.0.2 [#183](https://github.com/gr4vy/gr4vy-embed/pull/183) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- feat(buyers): document guest buyer [#214](https://github.com/gr4vy/gr4vy-embed/pull/214) ([@gryevns](https://github.com/gryevns) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore: fix vulnerabilities [#224](https://github.com/gr4vy/gr4vy-embed/pull/224) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.27.1 (Sun Jun 02 2024)
 
 #### 🐛 Bug Fix

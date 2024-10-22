@@ -1,3 +1,16 @@
+# v2.29.0 (Tue Oct 22 2024)
+
+#### 🐛 Bug Fix
+
+- feat(buyers): document guest buyer [#214](https://github.com/gr4vy/gr4vy-embed/pull/214) ([@gryevns](https://github.com/gryevns) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.28.0 (Tue Aug 13 2024)
 
 #### 🚀 Enhancement
