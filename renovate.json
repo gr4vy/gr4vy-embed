@@ -7,5 +7,13 @@
     ".devcontainer/**",
     ".github/**",
     ".vscode/**"
+  ],
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "labels": ["dependencies", "internal"],
+      "automerge": true,
+      "semanticCommitScope": "dev-deps"
+    }
   ]
 }

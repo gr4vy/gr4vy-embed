@@ -1,3 +1,45 @@
+# v2.29.0 (Tue Oct 22 2024)
+
+#### 🚀 Enhancement
+
+- chore(deps): bump markdown-to-jsx from 7.3.2 to 7.5.0 [#227](https://github.com/gr4vy/gr4vy-embed/pull/227) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update react monorepo to ^17.0.2 [#183](https://github.com/gr4vy/gr4vy-embed/pull/183) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- deps: fix version of cookie [#228](https://github.com/gr4vy/gr4vy-embed/pull/228) ([@douglaseggleton](https://github.com/douglaseggleton))
+- chore(deps): update node.js to >=20.18.0 [#186](https://github.com/gr4vy/gr4vy-embed/pull/186) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency html-webpack-plugin to ^5.6.2 [#179](https://github.com/gr4vy/gr4vy-embed/pull/179) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @peculiar/webcrypto to ^1.5.0 [#198](https://github.com/gr4vy/gr4vy-embed/pull/198) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-node to ^10.9.2 [#182](https://github.com/gr4vy/gr4vy-embed/pull/182) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.2.5 [#208](https://github.com/gr4vy/gr4vy-embed/pull/208) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency style-loader to ^3.3.4 [#202](https://github.com/gr4vy/gr4vy-embed/pull/202) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @wojtekmaj/enzyme-adapter-react-17 to ^0.8.0 [#225](https://github.com/gr4vy/gr4vy-embed/pull/225) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency dotenv-webpack to ^6.0.4 [#178](https://github.com/gr4vy/gr4vy-embed/pull/178) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/jest to ^29.5.13 [#177](https://github.com/gr4vy/gr4vy-embed/pull/177) ([@renovate[bot]](https://github.com/renovate[bot]))
+- trivy-db repository [#226](https://github.com/gr4vy/gr4vy-embed/pull/226) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(buyers): document guest buyer [#214](https://github.com/gr4vy/gr4vy-embed/pull/214) ([@gryevns](https://github.com/gryevns) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore: enable dev-deps automerge [#221](https://github.com/gr4vy/gr4vy-embed/pull/221) ([@luca-gr4vy](https://github.com/luca-gr4vy) [@douglaseggleton](https://github.com/douglaseggleton))
+- chore: upgrade deps [#217](https://github.com/gr4vy/gr4vy-embed/pull/217) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`
+  - chore: fix vulnerabilities [#224](https://github.com/gr4vy/gr4vy-embed/pull/224) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 6
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.28.0 (Tue Aug 13 2024)
 
 #### 🚀 Enhancement
