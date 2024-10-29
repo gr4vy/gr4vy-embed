@@ -26,7 +26,7 @@ const meta: Meta<typeof Gr4vyEmbed> = {
       control: { type: 'radio' },
     },
     intent: {
-      options: ['capture', 'approve'],
+      options: ['authorize', 'capture'],
       control: { type: 'radio' },
     },
     environment: {
