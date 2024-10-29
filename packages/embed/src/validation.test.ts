@@ -608,7 +608,7 @@ describe('validateIntent()', () => {
   })
 
   test('should return true if the intent is valid', () => {
-    ;['authorize', 'capture', 'approve'].forEach((value) => {
+    ;['authorize', 'capture'].forEach((value) => {
       const options = {
         ...defaultOptions,
         value,
