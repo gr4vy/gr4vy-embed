@@ -1,3 +1,15 @@
+# v2.29.1 (Tue Oct 29 2024)
+
+#### 🐛 Bug Fix
+
+- chore: remove unused `approve` intent from types and validation [#236](https://github.com/gr4vy/gr4vy-embed/pull/236) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.29.0 (Tue Oct 22 2024)
 
 #### 🚀 Enhancement

@@ -1,3 +1,26 @@
+# v2.29.1 (Tue Oct 29 2024)
+
+#### 🐛 Bug Fix
+
+- internal(cloudbuild): increase timeout [#235](https://github.com/gr4vy/gr4vy-embed/pull/235) ([@douglaseggleton](https://github.com/douglaseggleton))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: remove unused `approve` intent from types and validation [#236](https://github.com/gr4vy/gr4vy-embed/pull/236) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency @types/node to ^20.17.1 [#234](https://github.com/gr4vy/gr4vy-embed/pull/234) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency html-webpack-plugin to ^5.6.3 [#232](https://github.com/gr4vy/gr4vy-embed/pull/232) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo [#233](https://github.com/gr4vy/gr4vy-embed/pull/233) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/jest to ^29.5.14 [#231](https://github.com/gr4vy/gr4vy-embed/pull/231) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.29.0 (Tue Oct 22 2024)
 
 #### 🚀 Enhancement

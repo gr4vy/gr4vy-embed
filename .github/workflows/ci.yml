@@ -154,4 +154,4 @@ jobs:
           ignore-unfixed: true
           exit-code: 1
         env:
-          TRIVY_DB_REPOSITORY: us-docker.pkg.dev/gr4vy-admin/ghcr/aquasecurity/trivy-db
+          TRIVY_DB_REPOSITORY: us-docker.pkg.dev/gr4vy-admin/aquasecurity/trivy-db
