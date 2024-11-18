@@ -10,6 +10,7 @@ import {
   emitArgumentError,
   validateStore,
   validateCondition,
+  validateAutoSelectOption,
 } from './validation'
 
 let errorSpy
@@ -675,6 +676,51 @@ describe('validateCondition', () => {
       message: 'must be true',
     }
     const valid = validateCondition(options)
+    expect(valid).toEqual(false)
+    expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
+  })
+})
+
+describe('validateAutoSelectOption()', () => {
+  const defaultOptions = {
+    argument: 'autoSelectOption',
+    message: 'must be "first", "firstStored", "firstNonStored", "none" or null',
+  }
+
+  test('should return true if validation can be skipped', () => {
+    const options = {
+      ...defaultOptions,
+      value: null,
+      required: false,
+    }
+    const valid = validateAutoSelectOption(options)
+    expect(valid).toEqual(true)
+  })
+
+  test('should return true if autoSelectOption is valid', () => {
+    ;['first', 'firstStored', 'firstNonStored', 'none', null].forEach(
+      (value) => {
+        const valid = validateAutoSelectOption({
+          ...defaultOptions,
+          value,
+        })
+        expect(valid).toEqual(true)
+      }
+    )
+  })
+
+  test('should return false if autoSelectOption is not valid', () => {
+    const options = {
+      ...defaultOptions,
+      value: true,
+    }
+    const error = {
+      argument: 'autoSelectOption',
+      code: 'argumentError',
+      message:
+        'true must be "first", "firstStored", "firstNonStored", "none" or null',
+    }
+    const valid = validateAutoSelectOption(options)
     expect(valid).toEqual(false)
     expect(errorSpy).toHaveBeenCalledWith('Gr4vy - Error', error)
   })

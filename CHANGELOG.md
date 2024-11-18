@@ -1,3 +1,37 @@
+# v2.30.0 (Mon Nov 18 2024)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - task: add new autoSelectOption setup property [#246](https://github.com/gr4vy/gr4vy-embed/pull/246) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- chore(deps): bump http-proxy-middleware from 2.0.6 to 2.0.7 [#230](https://github.com/gr4vy/gr4vy-embed/pull/230) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency @babel/eslint-parser to ^7.25.9 [#248](https://github.com/gr4vy/gr4vy-embed/pull/248) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#247](https://github.com/gr4vy/gr4vy-embed/pull/247) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.96.1 [#244](https://github.com/gr4vy/gr4vy-embed/pull/244) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency typescript to ^5.6.3 [#243](https://github.com/gr4vy/gr4vy-embed/pull/243) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.48.2 [#241](https://github.com/gr4vy/gr4vy-embed/pull/241) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency css-loader to ^6.11.0 [#240](https://github.com/gr4vy/gr4vy-embed/pull/240) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency auto to ^11.3.0 [#239](https://github.com/gr4vy/gr4vy-embed/pull/239) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency lerna to ^8.1.9 [#238](https://github.com/gr4vy/gr4vy-embed/pull/238) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/node to ^20.17.6 [#237](https://github.com/gr4vy/gr4vy-embed/pull/237) ([@renovate[bot]](https://github.com/renovate[bot]))
+- trivy-db repository (again) [#229](https://github.com/gr4vy/gr4vy-embed/pull/229) ([@andrewmackett](https://github.com/andrewmackett) [@douglaseggleton](https://github.com/douglaseggleton))
+
+#### Authors: 5
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Douglas Eggleton ([@douglaseggleton](https://github.com/douglaseggleton))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.29.1 (Tue Oct 29 2024)
 
 #### 🐛 Bug Fix
