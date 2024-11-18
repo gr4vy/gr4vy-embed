@@ -23,7 +23,11 @@ export const loadApplePaySdk = () => {
       script.crossOrigin = ''
       script.onload = () => {
         if (window.ApplePaySession) {
-          log('Apple Pay SDK loaded', { version: '1.latest' }, { debug: true })
+          log(
+            'Apple Pay JS SDK loaded',
+            { version: '1.latest' },
+            { debug: true }
+          )
           resolve(true)
         } else {
           error(
