@@ -1,3 +1,15 @@
+# v2.30.0 (Mon Nov 18 2024)
+
+#### 🚀 Enhancement
+
+- task: add new autoSelectOption setup property [#246](https://github.com/gr4vy/gr4vy-embed/pull/246) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.29.1 (Tue Oct 29 2024)
 
 #### 🐛 Bug Fix
