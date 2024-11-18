@@ -60,6 +60,7 @@ export type Config = {
   separatePaymentOptions?: boolean
   excludedMethods?: Array<string>
   optionLabels?: Record<string, string>
+  autoSelectOption?: 'first' | 'firstStored' | 'firstNonStored' | 'none' | null
 }
 
 export type BillingDetails = {
