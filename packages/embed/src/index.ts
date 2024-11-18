@@ -61,6 +61,7 @@ export const optionKeys = [
   'separatePaymentOptions',
   'excludedMethods',
   'optionLabels',
+  'autoSelectOption',
 ]
 
 // Map of cleanup callbacks

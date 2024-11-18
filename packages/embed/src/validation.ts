@@ -326,6 +326,34 @@ export const validateCondition = ({
   return false
 }
 
+export const validateAutoSelectOption = ({
+  argument,
+  value,
+  message,
+  required,
+}: {
+  argument: string
+  value: any
+  message: string
+  required?: boolean
+  callback?: (name: string, event: { message: string }) => void
+}): boolean => {
+  const valid =
+    (typeof value === 'string' &&
+      ['first', 'firstStored', 'firstNonStored', 'none'].includes(value)) ||
+    null
+
+  if (canSkipValidation({ required, value }) || valid) {
+    return true
+  }
+
+  emitArgumentError({
+    argument,
+    message: `${value} ${message}`,
+  })
+  return false
+}
+
 // Emites an argument error to the command line and to the `onEvent` handler.
 export const emitArgumentError = ({
   argument,
@@ -605,5 +633,11 @@ export const validate = (options: SetupConfig) =>
     value: options.optionLabels,
     type: 'object',
     message: 'must be an object',
+    required: false,
+  }) &&
+  validateAutoSelectOption({
+    argument: 'autoSelectOption',
+    value: options.autoSelectOption,
+    message: 'must be "first", "firstStored", "firstNonStored", "none" or null',
     required: false,
   })
