@@ -1,5 +1,9 @@
 import { createSubjectManager } from 'subjects'
-import { createApplePayController } from './apple-pay'
+import {
+  APPLE_PAY_TIMEOUT,
+  createApplePayController,
+  loadApplePaySdk,
+} from './apple-pay'
 
 jest.useFakeTimers()
 
@@ -157,4 +161,105 @@ test('should abort an applepay session', () => {
   jest.runAllTimers()
 
   expect(mockAppleSession.abort).toHaveBeenCalledWith()
+})
+
+describe('loadApplePaySdk', () => {
+  const globalDocument = global.document
+  let createElementSpy: jest.SpyInstance
+  let appendChildSpy: jest.SpyInstance
+  let windowSpy: jest.SpyInstance
+  let mockScript: HTMLScriptElement
+
+  beforeEach(() => {
+    appendChildSpy = jest.spyOn(document.head, 'appendChild')
+    windowSpy = jest.spyOn(global, 'document', 'get')
+
+    mockScript = globalDocument.createElement('script')
+    createElementSpy = jest
+      .spyOn(document, 'createElement')
+      .mockImplementation(() => mockScript)
+    window.ApplePaySession = undefined
+  })
+
+  afterEach(() => {
+    appendChildSpy.mockRestore()
+    windowSpy.mockRestore()
+  })
+
+  it('skips adding the script if ApplePaySession already exists', async () => {
+    window.ApplePaySession = ({
+      begin: jest.fn(),
+    } as unknown) as ApplePaySession
+
+    const result = await loadApplePaySdk()
+    expect(result).toBe(true)
+    expect(document.head.appendChild).not.toHaveBeenCalled()
+  })
+
+  it('loads the script successfully', async () => {
+    const logSpy = jest.spyOn(console, 'log').mockImplementation()
+    appendChildSpy.mockImplementation((script) => {
+      window.ApplePaySession = ({
+        begin: jest.fn(),
+      } as unknown) as ApplePaySession
+      script?.onload()
+      return script
+    })
+
+    const result = await loadApplePaySdk()
+    expect(result).toBe(true)
+    expect(document.head.appendChild).toHaveBeenCalledWith(mockScript)
+    expect(logSpy).toHaveBeenCalledWith('Gr4vy - Apple Pay JS SDK loaded', {
+      version: '1.latest',
+    })
+  })
+
+  it('fails to load the script', async () => {
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation()
+    appendChildSpy.mockImplementation((script) => {
+      script?.onerror('Load error')
+      return script
+    })
+
+    const result = await loadApplePaySdk()
+    expect(result).toBe(false)
+    expect(errorSpy).toHaveBeenCalledWith(
+      'Gr4vy - Error loading the Apple Pay JS SDK.',
+      'Load error'
+    )
+  })
+
+  it('handles the loading timeout', async () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation()
+    const loadPromise = loadApplePaySdk()
+
+    jest.advanceTimersByTime(APPLE_PAY_TIMEOUT)
+
+    const result = await loadPromise
+    expect(result).toBe(false)
+    expect(warnSpy).toHaveBeenCalledWith(
+      'Gr4vy - Loading the Apple Pay JS SDK too too long. Consider adding the script directly to the page instead.',
+      null
+    )
+  })
+
+  it('sets the correct script attributes', async () => {
+    appendChildSpy.mockImplementation((script) => {
+      window.ApplePaySession = ({
+        begin: jest.fn(),
+      } as unknown) as ApplePaySession
+      script?.onload()
+      return script
+    })
+
+    await loadApplePaySdk()
+
+    const createdScript = createElementSpy.mock.results[0].value
+    expect(createdScript.id).toBe('apple-pay-sdk')
+    expect(createdScript.type).toBe('text/javascript')
+    expect(createdScript.src).toBe(
+      'https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js'
+    )
+    expect(createdScript.crossOrigin).toBe('')
+  })
 })

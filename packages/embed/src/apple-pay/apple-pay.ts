@@ -1,7 +1,7 @@
 import { SubjectManager } from 'subjects'
 import { error, log, warn } from 'utils'
 
-const APPLE_PAY_TIMEOUT = 1000
+export const APPLE_PAY_TIMEOUT = 1000
 
 declare global {
   interface Window {
