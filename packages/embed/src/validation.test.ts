@@ -609,7 +609,7 @@ describe('validateIntent()', () => {
   })
 
   test('should return true if the intent is valid', () => {
-    ;['authorize', 'capture'].forEach((value) => {
+    ;['authorize', 'preferAuthorize', 'capture'].forEach((value) => {
       const options = {
         ...defaultOptions,
         value,
@@ -617,7 +617,7 @@ describe('validateIntent()', () => {
       }
       const valid = validateIntent({
         ...defaultOptions,
-        value: 'authorize',
+        value,
         callback: jest.fn(),
       })
       expect(valid).toEqual(true)

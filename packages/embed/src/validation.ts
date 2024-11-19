@@ -176,7 +176,8 @@ export const validateIntent = ({
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
   const valid =
-    typeof value === 'string' && ['authorize', 'capture'].includes(value)
+    typeof value === 'string' &&
+    ['authorize', 'preferAuthorize', 'capture'].includes(value)
 
   if (canSkipValidation({ required, value }) || valid) {
     return true
