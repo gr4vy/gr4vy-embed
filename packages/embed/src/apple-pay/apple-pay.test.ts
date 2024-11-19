@@ -171,10 +171,9 @@ describe('loadApplePaySdk', () => {
   let mockScript: HTMLScriptElement
 
   beforeEach(() => {
+    mockScript = globalDocument.createElement('script')
     appendChildSpy = jest.spyOn(document.head, 'appendChild')
     windowSpy = jest.spyOn(global, 'document', 'get')
-
-    mockScript = globalDocument.createElement('script')
     createElementSpy = jest
       .spyOn(document, 'createElement')
       .mockImplementation(() => mockScript)
