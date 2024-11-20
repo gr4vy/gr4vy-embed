@@ -71,6 +71,9 @@ const cleanup = new Map<string, () => void>()
 // Stores of count of unique embed instances
 let embedId = 0
 
+// Load Apple Pay SDK
+const hasLoadedApplePaySdk = loadApplePaySdk()
+
 /**
  * Setup function for the Embed integration.
  *
@@ -174,7 +177,7 @@ export function setup(setupConfig: SetupConfig) {
       clearTimeout(frameLoadWarn)
 
       // Apple Pay
-      await loadApplePaySdk()
+      await hasLoadedApplePaySdk
 
       const supportedApplePayVersion = browserSupportsApplePay()
         ? detectSupportedVersion()
