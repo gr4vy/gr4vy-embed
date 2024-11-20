@@ -12,6 +12,10 @@ declare global {
 export const loadApplePaySdk = () => {
   return Promise.race([
     new Promise<boolean>((resolve) => {
+      if (typeof window === 'undefined') {
+        return resolve(false)
+      }
+
       if (window.ApplePaySession || document.getElementById('apple-pay-sdk')) {
         return resolve(true)
       }
