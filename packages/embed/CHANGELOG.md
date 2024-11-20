@@ -1,3 +1,15 @@
+# v2.31.0 (Wed Nov 20 2024)
+
+#### 🚀 Enhancement
+
+- task: auto load Apple Pay JS SDK on init [#251](https://github.com/gr4vy/gr4vy-embed/pull/251) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.30.0 (Mon Nov 18 2024)
 
 #### 🚀 Enhancement

@@ -1,3 +1,21 @@
+# v2.31.0 (Wed Nov 20 2024)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - task: auto load Apple Pay JS SDK on init [#251](https://github.com/gr4vy/gr4vy-embed/pull/251) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- feat(PE-656): adding logsBucket to trigger [#245](https://github.com/gr4vy/gr4vy-embed/pull/245) ([@gaPanza](https://github.com/gaPanza))
+
+#### Authors: 2
+
+- Gabriel Panza ([@gaPanza](https://github.com/gaPanza))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.30.0 (Mon Nov 18 2024)
 
 #### 🚀 Enhancement
