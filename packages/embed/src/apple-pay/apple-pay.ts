@@ -1,9 +1,68 @@
 import { SubjectManager } from 'subjects'
+import { error, log, warn } from 'utils'
+
+export const APPLE_PAY_TIMEOUT = 1000
 
 declare global {
   interface Window {
     ApplePaySession?: ApplePaySession
   }
+}
+
+export const loadApplePaySdk = () => {
+  return Promise.race([
+    new Promise<boolean>((resolve) => {
+      if (typeof window === 'undefined') {
+        return resolve(false)
+      }
+
+      if (window.ApplePaySession || document.getElementById('apple-pay-sdk')) {
+        return resolve(true)
+      }
+
+      const script = document.createElement('script')
+      script.id = 'apple-pay-sdk'
+      script.type = 'text/javascript'
+      script.src = `https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js`
+      script.crossOrigin = ''
+      script.onload = () => {
+        if (window.ApplePaySession) {
+          log(
+            'Apple Pay JS SDK loaded',
+            { version: '1.latest' },
+            { debug: true }
+          )
+          resolve(true)
+        } else {
+          error(
+            'Error loading the Apple Pay JS SDK. window.ApplePaySession is not defined.',
+            null,
+            { debug: true }
+          )
+          resolve(false)
+        }
+      }
+      script.onerror = (e) => {
+        error('Error loading the Apple Pay JS SDK.', e, { debug: true })
+        resolve(false)
+      }
+
+      document.head.appendChild(script)
+    }),
+    new Promise((resolve) => {
+      setTimeout(() => {
+        if (!window.ApplePaySession) {
+          warn(
+            'Loading the Apple Pay JS SDK too too long. Consider adding the script directly to the page instead.',
+            null,
+            { debug: true }
+          )
+          return resolve(false)
+        }
+        resolve(true)
+      }, APPLE_PAY_TIMEOUT)
+    }),
+  ])
 }
 
 export const createApplePayController = (

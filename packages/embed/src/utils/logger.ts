@@ -1,6 +1,6 @@
 type Options = {
   debug?: boolean
-  level?: 'log' | 'warn'
+  level?: 'log' | 'warn' | 'error'
 }
 
 const defaultOptions: Options = {
@@ -23,4 +23,8 @@ export const log = (
 
 export const warn = (key: string, object: any, options: Options) => {
   log(key, object, { ...options, level: 'warn' })
+}
+
+export const error = (key: string, object: any, options: Options) => {
+  log(key, object, { ...options, level: 'error' })
 }
