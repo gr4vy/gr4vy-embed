@@ -7,7 +7,7 @@ export type Config = {
   element: HTMLElement // The element to insert the integration at
   form?: Element // The form to bind the integration to
   amount: number // The amount of a given currency to charge
-  intent?: 'authorize' | 'capture' // Defines the intent of this API call. This determines the desired initial state of the transaction.
+  intent?: 'authorize' | 'preferAuthorize' | 'capture' // Defines the intent of this API call. This determines the desired initial state of the transaction.
   currency: string // Currency to charge the amount in
   token: string // the JWT access token used to authenticate the API
   debug?: boolean // wether to output any debug messages.
