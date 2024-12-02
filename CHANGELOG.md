@@ -1,3 +1,30 @@
+# v2.32.0 (Mon Dec 02 2024)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat: add support to preferAuthorize intent [#252](https://github.com/gr4vy/gr4vy-embed/pull/252) ([@brunodesde1987](https://github.com/brunodesde1987) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- chore(deps): bump cross-spawn from 7.0.3 to 7.0.6 [#250](https://github.com/gr4vy/gr4vy-embed/pull/250) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - refactor: add preferAuthorize intent to the README [#256](https://github.com/gr4vy/gr4vy-embed/pull/256) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency typescript to ^5.7.2 [#255](https://github.com/gr4vy/gr4vy-embed/pull/255) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.49.0 [#254](https://github.com/gr4vy/gr4vy-embed/pull/254) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.31.0 (Wed Nov 20 2024)
 
 #### 🚀 Enhancement

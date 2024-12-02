@@ -1,3 +1,20 @@
+# v2.32.0 (Mon Dec 02 2024)
+
+#### 🚀 Enhancement
+
+- feat: add support to preferAuthorize intent [#252](https://github.com/gr4vy/gr4vy-embed/pull/252) ([@brunodesde1987](https://github.com/brunodesde1987) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- refactor: add preferAuthorize intent to the README [#256](https://github.com/gr4vy/gr4vy-embed/pull/256) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.31.0 (Wed Nov 20 2024)
 
 #### 🚀 Enhancement
