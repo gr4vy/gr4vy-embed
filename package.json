@@ -61,7 +61,7 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2",
-    "webpack": "^5.96.1",
+    "webpack": "^5.97.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
@@ -70,7 +70,7 @@
     "css-what": "^5.0.1",
     "micromatch": "^4.0.8",
     "nx": "^19.1.4",
-    "webpack": "^5.96.1",
+    "webpack": "^5.97.1",
     "ws": "^8.17.1",
     "cookie": "0.7.0"
   },
