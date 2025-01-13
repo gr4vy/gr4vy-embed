@@ -473,26 +473,10 @@ export const validate = (options: SetupConfig) =>
     callback: options.onEvent,
   }) &&
   validateType({
-    argument: 'buyerExternalIdentifier',
-    value: options.buyerExternalIdentifier && options.buyer,
-    type: 'string',
-    message: 'must be used without a buyer',
-    required: false,
-    callback: options.onEvent,
-  }) &&
-  validateType({
     argument: 'buyerId',
     value: options.buyerId,
     type: 'string',
     message: 'must be a string',
-    required: false,
-    callback: options.onEvent,
-  }) &&
-  validateType({
-    argument: 'buyerId',
-    value: options.buyerId && options.buyer,
-    type: 'string',
-    message: 'must be used without a buyer',
     required: false,
     callback: options.onEvent,
   }) &&
@@ -503,14 +487,6 @@ export const validate = (options: SetupConfig) =>
     required: false,
     expected: buyerObject,
     callback: options.onEvent,
-  }) &&
-  validateType({
-    argument: 'buyer',
-    value:
-      options.buyer && (options.buyerExternalIdentifier || options.buyerId),
-    type: 'object',
-    message: 'must be used without buyerExternalIdentifier or buyerId',
-    required: false,
   }) &&
   validateType({
     argument: 'environment',
@@ -588,11 +564,6 @@ export const validate = (options: SetupConfig) =>
       ? !!(options.buyerId || options.buyerExternalIdentifier)
       : true,
     message: 'must be used with a buyerId or buyerExternalId',
-  }) &&
-  validateCondition({
-    argument: 'shippingDetailsId',
-    condition: options.shippingDetailsId ? !options.buyer : true,
-    message: 'must be used without a buyer',
   }) &&
   validateType({
     argument: 'hasBeforeTransaction',
