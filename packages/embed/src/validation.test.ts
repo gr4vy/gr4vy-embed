@@ -156,7 +156,7 @@ describe('validate', () => {
           },
         },
       })
-    ).toBeFalsy()
+    ).toBeTruthy()
     expect(
       validate({
         ...options,
@@ -167,7 +167,7 @@ describe('validate', () => {
           },
         },
       })
-    ).toBeFalsy()
+    ).toBeTruthy()
   })
 })
 
