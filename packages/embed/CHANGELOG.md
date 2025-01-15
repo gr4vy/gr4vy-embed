@@ -1,3 +1,15 @@
+# v2.33.0 (Wed Jan 15 2025)
+
+#### 🚀 Enhancement
+
+- chore: update buyer validations [#269](https://github.com/gr4vy/gr4vy-embed/pull/269) ([@gryevns](https://github.com/gryevns))
+
+#### Authors: 1
+
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.32.0 (Mon Dec 02 2024)
 
 #### 🚀 Enhancement

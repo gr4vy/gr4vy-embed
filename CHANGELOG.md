@@ -1,3 +1,32 @@
+# v2.33.0 (Wed Jan 15 2025)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - chore: update buyer validations [#269](https://github.com/gr4vy/gr4vy-embed/pull/269) ([@gryevns](https://github.com/gryevns))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency typescript to ^5.7.3 [#268](https://github.com/gr4vy/gr4vy-embed/pull/268) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-loader to ^9.5.2 [#267](https://github.com/gr4vy/gr4vy-embed/pull/267) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @babel/plugin-transform-typescript to ^7.26.5 [#265](https://github.com/gr4vy/gr4vy-embed/pull/265) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/node to ^20.17.12 [#266](https://github.com/gr4vy/gr4vy-embed/pull/266) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-react to ^7.37.3 [#263](https://github.com/gr4vy/gr4vy-embed/pull/263) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/node to ^20.17.11 [#264](https://github.com/gr4vy/gr4vy-embed/pull/264) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack-dev-server to ^5.2.0 [#262](https://github.com/gr4vy/gr4vy-embed/pull/262) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.49.1 [#261](https://github.com/gr4vy/gr4vy-embed/pull/261) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/node to ^20.17.10 [#260](https://github.com/gr4vy/gr4vy-embed/pull/260) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.97.1 [#258](https://github.com/gr4vy/gr4vy-embed/pull/258) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo to ^7.26.3 [#257](https://github.com/gr4vy/gr4vy-embed/pull/257) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update node.js to >=20.18.1 [#253](https://github.com/gr4vy/gr4vy-embed/pull/253) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Gary Evans ([@gryevns](https://github.com/gryevns))
+
+---
+
 # v2.32.0 (Mon Dec 02 2024)
 
 #### 🚀 Enhancement
