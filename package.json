@@ -70,6 +70,7 @@
     "css-what": "^5.0.1",
     "micromatch": "^4.0.8",
     "nx": "^19.1.4",
+    "path-to-regexp": "^0.1.12",
     "webpack": "^5.97.1",
     "ws": "^8.17.1",
     "cookie": "0.7.0"
