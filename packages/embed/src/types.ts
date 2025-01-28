@@ -17,7 +17,7 @@ export type Config = {
   buyerExternalIdentifier?: string // the external ID of the buyer to associate the payment methods to
   buyer?: Buyer
   environment?: 'production' | 'sandbox'
-  store?: 'ask' | boolean
+  store?: 'ask' | 'preselect' | boolean
   country: string
   iframeHost: string
   iframeUrl: string

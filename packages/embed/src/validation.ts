@@ -204,7 +204,7 @@ export const validateStore = ({
   required?: boolean
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
-  const valid = [true, false, 'ask'].includes(value)
+  const valid = [true, false, 'ask', 'preselect'].includes(value)
 
   if (canSkipValidation({ required, value }) || valid) {
     return true
@@ -499,7 +499,7 @@ export const validate = (options: SetupConfig) =>
   validateStore({
     argument: 'store',
     value: options.store,
-    message: 'must be true, false or "ask"',
+    message: 'must be true, false, "ask" or "preselect"',
     required: false,
   }) &&
   validateType({
