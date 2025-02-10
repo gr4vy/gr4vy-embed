@@ -1,3 +1,15 @@
+# v2.34.0 (Mon Feb 10 2025)
+
+#### 🐛 Bug Fix
+
+- fix(buyers): Update readme to remove buyer restriction [#270](https://github.com/gr4vy/gr4vy-embed/pull/270) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.32.0 (Mon Dec 02 2024)
 
 #### 🚀 Enhancement

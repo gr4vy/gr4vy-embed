@@ -1,3 +1,31 @@
+# v2.34.0 (Mon Feb 10 2025)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed`
+  - feat: add preselect store option [#275](https://github.com/gr4vy/gr4vy-embed/pull/275) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - fix(buyers): Update readme to remove buyer restriction [#270](https://github.com/gr4vy/gr4vy-embed/pull/270) ([@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency playwright to ^1.50.1 [#279](https://github.com/gr4vy/gr4vy-embed/pull/279) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix: path-to-regexp vulnerability [#273](https://github.com/gr4vy/gr4vy-embed/pull/273) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update eslint [#272](https://github.com/gr4vy/gr4vy-embed/pull/272) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/node to ^20.17.14 [#271](https://github.com/gr4vy/gr4vy-embed/pull/271) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.33.0 (Wed Jan 15 2025)
 
 #### 🚀 Enhancement
