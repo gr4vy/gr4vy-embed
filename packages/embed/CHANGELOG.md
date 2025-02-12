@@ -1,3 +1,20 @@
+# v2.34.0 (Mon Feb 10 2025)
+
+#### 🚀 Enhancement
+
+- feat: add preselect store option [#275](https://github.com/gr4vy/gr4vy-embed/pull/275) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🐛 Bug Fix
+
+- fix(buyers): Update readme to remove buyer restriction [#270](https://github.com/gr4vy/gr4vy-embed/pull/270) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.33.0 (Wed Jan 15 2025)
 
 #### 🚀 Enhancement

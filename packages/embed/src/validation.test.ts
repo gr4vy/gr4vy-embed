@@ -644,17 +644,18 @@ describe('validateIntent()', () => {
 })
 
 describe('validateStore', () => {
+  const errorMessage = 'must be true, false, "ask" or "preselect"'
   test('should return false if store is not valid', () => {
     const options = {
       argument: 'store',
-      message: 'must be true, false or "ask"',
+      message: errorMessage,
       value: 123,
       callback: jest.fn(),
     }
     const error = {
       argument: 'store',
       code: 'argumentError',
-      message: '123 must be true, false or "ask"',
+      message: `123 ${errorMessage}`,
     }
     const valid = validateStore(options)
     expect(valid).toEqual(false)
