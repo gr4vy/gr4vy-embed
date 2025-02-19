@@ -29,10 +29,12 @@
     "CHANGELOG.md"
   ],
   "dependencies": {
-    "form-napper": "^2.0.0"
+    "form-napper": "^2.0.0",
+    "lodash.throttle": "^4.1.1"
   },
   "devDependencies": {
-    "@types/applepayjs": "^3.0.4"
+    "@types/applepayjs": "^3.0.4",
+    "@types/lodash.throttle": "^4.1.7"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
