@@ -84,14 +84,14 @@ export const createApplePayController = (
 
   subjectManager.appleStartSession$.subscribe((data) => {
     try {
-      // if (session) {
-      //   warn(
-      //     "Apple Pay session already exists. This might be caused by a double submission of Embed. If you're using `embed.submit()`, please ensure there's no `form` option set at the same time.",
-      //     session,
-      //     { debug: true }
-      //   )
-      //   return
-      // }
+      if (session) {
+        warn(
+          "Apple Pay session already exists. This might be caused by a double submission of Embed. If you're using `embed.submit()`, please ensure there's no `form` option set at the same time.",
+          session,
+          { debug: true }
+        )
+        return
+      }
 
       session = new ApplePaySession(version, data)
 
@@ -107,14 +107,14 @@ export const createApplePayController = (
 
       // cancel the apple pay session
       session.oncancel = () => {
-        // session = null
+        session = null
         subjectManager.appleCancelSession$.next()
       }
 
       // start the session
       session.begin()
     } catch (e) {
-      // session = null
+      session = null
       subjectManager.appleSessionError$.next(e?.message)
     }
   })
