@@ -155,6 +155,9 @@ availableSecrets:
     - versionName: ${_GITHUB_TOKEN_LOCATION}
       env: 'GITHUB_TOKEN'
 
+tags:
+  - 'gr4vy-build'
+
 options:
   dynamic_substitutions: true
   substitution_option: 'ALLOW_LOOSE'
