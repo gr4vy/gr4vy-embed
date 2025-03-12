@@ -71,6 +71,9 @@ const cleanup = new Map<string, () => void>()
 // Stores of count of unique embed instances
 let embedId = 0
 
+// Stores timestamp of last submission
+let lastSubmitted = 0
+
 // Load Apple Pay SDK
 const hasLoadedApplePaySdk = loadApplePaySdk()
 
@@ -258,7 +261,19 @@ export function setup(setupConfig: SetupConfig) {
     )
   )
 
-  subjectManager.formSubmit$.subscribe(() => dispatch({ type: 'submitForm' }))
+  subjectManager.formSubmit$.subscribe(() => {
+    dispatch({ type: 'submitForm' })
+
+    const now = Date.now()
+    if (now - lastSubmitted < 250) {
+      warn(
+        "Embed has been submitted more than once in quick succession. If you're using `embed.submit()`, please ensure there's no `form` option set at the same time.",
+        null,
+        { debug: true }
+      )
+    }
+    lastSubmitted = now
+  })
 
   subjectManager.beforeTransactionPending$.subscribe(() => {
     if (config?.onBeforeTransaction) {
