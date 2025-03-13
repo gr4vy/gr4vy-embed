@@ -245,6 +245,8 @@ const MyComponent = () => {
 
 ```
 
+Please note that if you both have the `form` prop set and use `embed.current.submit()` you might notice Embed submitting twice in a row and you'll see a warning log in debug mode. This is generally not an issue, except for wallets where sessions are created twice potentially leading to errors such as Apple Pay's "Page already has an active payment session.". If you're submitting Embed without a form, you should not pass the `form` prop to avoid such issues.
+
 ## Custom Options
 
 Embed will render custom payment options if you need to integrate with existing checkouts. This will not trigger any processing by
