@@ -1,3 +1,27 @@
+# v2.34.1 (Thu Mar 13 2025)
+
+#### 🐛 Bug Fix
+
+- Cloud Build tags [#284](https://github.com/gr4vy/gr4vy-embed/pull/284) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - task: add warning log for double submissions [#290](https://github.com/gr4vy/gr4vy-embed/pull/290) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: add the preselect store option to readme [#276](https://github.com/gr4vy/gr4vy-embed/pull/276) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update babel monorepo to ^7.26.9 [#281](https://github.com/gr4vy/gr4vy-embed/pull/281) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo to ^7.26.8 [#278](https://github.com/gr4vy/gr4vy-embed/pull/278) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.0 (Mon Feb 10 2025)
 
 #### 🚀 Enhancement
