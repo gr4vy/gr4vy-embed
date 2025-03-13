@@ -1,3 +1,17 @@
+# v2.34.1 (Thu Mar 13 2025)
+
+#### 🐛 Bug Fix
+
+- task: add warning log for double submissions [#290](https://github.com/gr4vy/gr4vy-embed/pull/290) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore: add the preselect store option to readme [#276](https://github.com/gr4vy/gr4vy-embed/pull/276) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.0 (Mon Feb 10 2025)
 
 #### 🚀 Enhancement

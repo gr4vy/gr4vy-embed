@@ -1,3 +1,15 @@
+# v2.34.1 (Thu Mar 13 2025)
+
+#### 🐛 Bug Fix
+
+- chore: add the preselect store option to readme [#276](https://github.com/gr4vy/gr4vy-embed/pull/276) ([@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 1
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+
+---
+
 # v2.34.0 (Mon Feb 10 2025)
 
 #### 🐛 Bug Fix
