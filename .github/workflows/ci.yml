@@ -26,7 +26,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: yarn-deps-${{ hashFiles('yarn.lock') }}
@@ -67,7 +67,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: yarn-deps-${{ hashFiles('yarn.lock') }}
@@ -117,7 +117,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: yarn-deps-${{ hashFiles('yarn.lock') }}
