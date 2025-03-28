@@ -1,3 +1,29 @@
+# v2.34.2 (Fri Mar 28 2025)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - task: update custom submission docs [#293](https://github.com/gr4vy/gr4vy-embed/pull/293) ([@luca-gr4vy](https://github.com/luca-gr4vy) [@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency playwright to ^1.51.1 [#296](https://github.com/gr4vy/gr4vy-embed/pull/296) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo to ^7.26.10 [#295](https://github.com/gr4vy/gr4vy-embed/pull/295) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.98.0 [#283](https://github.com/gr4vy/gr4vy-embed/pull/283) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency typescript to ^5.8.2 [#288](https://github.com/gr4vy/gr4vy-embed/pull/288) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.51.0 [#289](https://github.com/gr4vy/gr4vy-embed/pull/289) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency lerna to ^8.2.1 [#287](https://github.com/gr4vy/gr4vy-embed/pull/287) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.2.6 [#286](https://github.com/gr4vy/gr4vy-embed/pull/286) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @babel/eslint-parser to ^7.26.10 [#282](https://github.com/gr4vy/gr4vy-embed/pull/282) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.1 (Thu Mar 13 2025)
 
 #### 🐛 Bug Fix

@@ -1,3 +1,16 @@
+# v2.34.2 (Fri Mar 28 2025)
+
+#### 🐛 Bug Fix
+
+- task: update custom submission docs [#293](https://github.com/gr4vy/gr4vy-embed/pull/293) ([@luca-gr4vy](https://github.com/luca-gr4vy) [@cbetta](https://github.com/cbetta))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.1 (Thu Mar 13 2025)
 
 #### 🐛 Bug Fix
