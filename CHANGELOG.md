@@ -1,3 +1,35 @@
+# v2.34.3 (Mon May 05 2025)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - feat: update billingAddressFields type [#314](https://github.com/gr4vy/gr4vy-embed/pull/314) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`
+  - chore: update react dev app to mimic the standard SDK one [#311](https://github.com/gr4vy/gr4vy-embed/pull/311) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update babel monorepo to ^7.27.1 [#313](https://github.com/gr4vy/gr4vy-embed/pull/313) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @babel/eslint-parser to ^7.27.1 [#312](https://github.com/gr4vy/gr4vy-embed/pull/312) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.52.0 [#309](https://github.com/gr4vy/gr4vy-embed/pull/309) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.99.7 [#308](https://github.com/gr4vy/gr4vy-embed/pull/308) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.99.5 [#307](https://github.com/gr4vy/gr4vy-embed/pull/307) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.3.2 [#306](https://github.com/gr4vy/gr4vy-embed/pull/306) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency lerna to ^8.2.2 [#305](https://github.com/gr4vy/gr4vy-embed/pull/305) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency typescript to ^5.8.3 [#304](https://github.com/gr4vy/gr4vy-embed/pull/304) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-react to ^7.37.5 [#303](https://github.com/gr4vy/gr4vy-embed/pull/303) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @babel/eslint-parser to ^7.27.0 [#300](https://github.com/gr4vy/gr4vy-embed/pull/300) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.3.1 [#301](https://github.com/gr4vy/gr4vy-embed/pull/301) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo to ^7.27.0 [#299](https://github.com/gr4vy/gr4vy-embed/pull/299) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack-dev-server to ^5.2.1 [#298](https://github.com/gr4vy/gr4vy-embed/pull/298) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.2 (Fri Mar 28 2025)
 
 #### 🐛 Bug Fix

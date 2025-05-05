@@ -1,3 +1,15 @@
+# v2.34.3 (Mon May 05 2025)
+
+#### 🐛 Bug Fix
+
+- chore: update react dev app to mimic the standard SDK one [#311](https://github.com/gr4vy/gr4vy-embed/pull/311) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.2 (Fri Mar 28 2025)
 
 #### 🐛 Bug Fix
