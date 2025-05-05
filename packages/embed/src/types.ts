@@ -89,6 +89,7 @@ export type BillingAddressFields = {
   address?: {
     houseNumberOrName?: boolean
     line1?: boolean
+    line2?: boolean
     city?: boolean
     postalCode?: boolean
     state?: boolean
