@@ -3,10 +3,7 @@ const custom = require(`../webpack.dev.js`)
 
 module.exports = {
   stories: [`../**/*.stories.tsx`],
-  addons: [
-    `@storybook/addon-essentials`,
-    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-  ],
+  addons: [getAbsolutePath('@storybook/addon-webpack5-compiler-babel')],
   webpackFinal: async (config) => {
     return {
       ...config,
