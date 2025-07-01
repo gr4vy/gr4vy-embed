@@ -1,13 +1,28 @@
+import { dirname, join } from 'path'
 const custom = require(`../webpack.dev.js`)
 
 module.exports = {
   stories: [`../**/*.stories.tsx`],
-  addons: [`@storybook/addon-essentials`],
+  addons: [
+    `@storybook/addon-essentials`,
+    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
+    '@chromatic-com/storybook',
+  ],
+
   webpackFinal: async (config) => {
     return {
       ...config,
       module: { ...config.module, rules: custom.module.rules },
     }
   },
-  framework: '@storybook/react-webpack5',
+
+  framework: getAbsolutePath('@storybook/react-webpack5'),
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
+}
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, 'package.json')))
 }
