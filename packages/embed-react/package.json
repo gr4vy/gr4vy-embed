@@ -36,19 +36,11 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
     "@storybook/cli": "9.0.15",
     "@storybook/react-webpack5": "9.0.15",
-    "@types/jest": "^30.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "babel-jest": "^30.0.2",
-    "babel-loader": "^10.0.0",
-    "css-loader": "^7.1.2",
-    "eslint-plugin-jest": "^29.0.1",
-    "eslint-plugin-storybook": "9.0.15",
-    "jest": "^30.0.3",
-    "jest-environment-jsdom": "^30.0.2",
-    "lerna": "^8.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "eslint-plugin-storybook": "9.0.15"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
