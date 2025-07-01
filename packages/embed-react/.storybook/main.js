@@ -6,18 +6,14 @@ module.exports = {
   addons: [
     `@storybook/addon-essentials`,
     getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-    '@chromatic-com/storybook',
   ],
-
   webpackFinal: async (config) => {
     return {
       ...config,
       module: { ...config.module, rules: custom.module.rules },
     }
   },
-
   framework: getAbsolutePath('@storybook/react-webpack5'),
-
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
