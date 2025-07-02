@@ -40,6 +40,7 @@ describe('createSubjectManager', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
     })
 
