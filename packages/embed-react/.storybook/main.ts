@@ -4,17 +4,14 @@ import custom from '../webpack.dev.js'
 
 const config: StorybookConfig = {
   stories: [`../**/*.stories.tsx`],
-  addons: [
-    `@storybook/addon-essentials`,
-    getAbsolutePath('@storybook/addon-webpack5-compiler-babel'),
-  ],
+  addons: [getAbsolutePath('@storybook/addon-webpack5-compiler-babel')],
   webpackFinal: async (config) => {
     return {
       ...config,
       module: { ...config.module, rules: custom.module.rules },
     }
   },
-  framework: '@storybook/react-webpack5',
+  framework: getAbsolutePath('@storybook/react-webpack5'),
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
