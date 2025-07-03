@@ -35,6 +35,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
     })
     subject.approvalStarted$.next()
@@ -53,6 +54,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
         height: 34,
         width: 52,
       },
@@ -75,6 +77,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
     })
     subject.approvalStarted$.next()
@@ -97,6 +100,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
     })
     subject.approvalUrl$.next('test-url')
@@ -122,6 +126,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
     })
     subject.approvalUrl$.next('https://test-url')
@@ -203,6 +208,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
       overlay: {
         title: 'Test',
@@ -234,6 +240,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
       overlay: {
         title: 'Test',
@@ -260,6 +267,7 @@ describe('registerSubscriptions', () => {
       popup: {
         title: 'Test',
         message: 'Test Message',
+        locale: 'en',
       },
       overlay: {
         title: 'Test',

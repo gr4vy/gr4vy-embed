@@ -6,6 +6,7 @@ export const createSubjectManager = () => {
       popup?: {
         message: string
         title: string
+        locale: string
         width?: number
         height?: number
       }
