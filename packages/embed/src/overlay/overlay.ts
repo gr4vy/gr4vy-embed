@@ -67,6 +67,7 @@ export const createOverlayController = (
     Container.innerHTML = html`
       <iframe
         src="${src}"
+        title="Secure payment frame via Gr4vy"
         frameborder="0"
         class="gr4vy__frame"
         allowtransparency="true"

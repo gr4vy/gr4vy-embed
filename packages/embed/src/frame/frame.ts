@@ -7,7 +7,7 @@ export const createFrameController = (
 ) => {
   // default style
   frame.src = url
-  frame.title = 'Secure payment frame - Gr4vy'
+  frame.title = 'Secure payment frame via Gr4vy'
   frame.style.visibility = 'hidden'
   frame.style.display = 'none'
   frame.style.width = '100%'

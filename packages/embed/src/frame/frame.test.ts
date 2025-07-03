@@ -17,7 +17,7 @@ describe('createFrameController', () => {
 
     expect(frameElement.getAttribute('src')).toEqual('http://localhost:8000')
     expect(frameElement.getAttribute('title')).toEqual(
-      'Secure payment frame - Gr4vy'
+      'Secure payment frame via Gr4vy'
     )
     expect(frameElement.getAttribute('style')).toEqual(
       'visibility: hidden; display: none; width: 100%; height: 0px; border: 0px; overflow: hidden;'
