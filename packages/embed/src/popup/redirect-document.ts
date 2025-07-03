@@ -1,7 +1,7 @@
 const html = String.raw
 
-export const redirectDocument = ({ title, message }) => html`
-  <html>
+export const redirectDocument = ({ title, message, locale }) => html`
+  <html lang="${locale?.toLowerCase() || 'en'}">
     <head>
       <title>${title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
