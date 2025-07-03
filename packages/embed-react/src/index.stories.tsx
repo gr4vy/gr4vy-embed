@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Gr4vyEmbed, { EmbedInstance } from './'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const defaultArgs = {
   amount: 1299,

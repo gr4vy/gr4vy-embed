@@ -15,7 +15,7 @@
     "build": "tsc",
     "lint": "eslint src dev --ext ts,tsx",
     "prepack": "yarn build",
-    "storybook": "sb dev",
+    "storybook": "storybook dev",
     "test": "jest --colors"
   },
   "files": [
@@ -25,21 +25,24 @@
     "CHANGELOG.md"
   ],
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": ">=18.3.1",
+    "react-dom": ">=18.3.1"
   },
   "dependencies": {
+    "@babel/runtime": "^7.27.6",
     "@gr4vy/embed": "^2.34.3",
     "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.20",
-    "@storybook/addons": "^7.6.20",
-    "@storybook/cli": "^7.6.20",
-    "@storybook/react": "^7.6.20",
-    "@storybook/react-webpack5": "^7.6.20",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.6",
+    "@storybook/cli": "9.0.15",
+    "@storybook/react-webpack5": "9.0.15",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "eslint-plugin-storybook": "9.0.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook": "9.0.15"
   },
   "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
 }
