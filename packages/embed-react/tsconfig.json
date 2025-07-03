@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./lib",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "target": "es2015"
   },
   "include": ["./src/*.ts", "./src/*.tsx"],
   "exclude": ["./src/**/*.test.*"]

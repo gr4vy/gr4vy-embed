@@ -1,3 +1,29 @@
+# v2.34.4 (Thu Jul 03 2025)
+
+#### 🐛 Bug Fix
+
+- chore(deps): upgrade dependencies TA-12136 [#331](https://github.com/gr4vy/gr4vy-embed/pull/331) ([@brunodesde1987](https://github.com/brunodesde1987))
+- chore(deps): bump tar-fs from 2.1.1 to 2.1.3 [#320](https://github.com/gr4vy/gr4vy-embed/pull/320) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed-react`
+  - chore(deps): bump storybook v9 (fix vulnerabilities) TA-12136 [#332](https://github.com/gr4vy/gr4vy-embed/pull/332) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update babel monorepo to ^7.27.4 [#319](https://github.com/gr4vy/gr4vy-embed/pull/319) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.99.9 [#318](https://github.com/gr4vy/gr4vy-embed/pull/318) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.3.4 [#317](https://github.com/gr4vy/gr4vy-embed/pull/317) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.99.8 [#316](https://github.com/gr4vy/gr4vy-embed/pull/316) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @babel/preset-env to ^7.27.2 [#315](https://github.com/gr4vy/gr4vy-embed/pull/315) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.34.3 (Mon May 05 2025)
 
 #### 🐛 Bug Fix
