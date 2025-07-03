@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import Embed from '../src'
 
 const MemoEmbed = memo(function MemoEmbed({
@@ -48,4 +48,6 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'))
+const container = document.getElementById('app')
+const root = createRoot(container!)
+root.render(<App />)

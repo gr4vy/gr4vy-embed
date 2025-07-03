@@ -1,3 +1,16 @@
+# v2.34.4 (Thu Jul 03 2025)
+
+#### 🐛 Bug Fix
+
+- chore(deps): bump storybook v9 (fix vulnerabilities) TA-12136 [#332](https://github.com/gr4vy/gr4vy-embed/pull/332) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.34.3 (Mon May 05 2025)
 
 #### 🐛 Bug Fix
