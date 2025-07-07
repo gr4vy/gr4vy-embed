@@ -1,3 +1,31 @@
+# v2.34.5 (Mon Jul 07 2025)
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - fix(eaa): frames must have accessible names [#328](https://github.com/gr4vy/gr4vy-embed/pull/328) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+  - fix(eaa): remove custom error background color [#327](https://github.com/gr4vy/gr4vy-embed/pull/327) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+  - fix(eea) Fix popup "<html> element must have a lang attribute" accessibility violation TA-11528 [#330](https://github.com/gr4vy/gr4vy-embed/pull/330) ([@GiordanoArman](https://github.com/GiordanoArman) [@brunodesde1987](https://github.com/brunodesde1987))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update eslint [#321](https://github.com/gr4vy/gr4vy-embed/pull/321) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency ts-jest to ^29.4.0 [#324](https://github.com/gr4vy/gr4vy-embed/pull/324) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.53.2 [#323](https://github.com/gr4vy/gr4vy-embed/pull/323) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo to ^7.28.0 [#325](https://github.com/gr4vy/gr4vy-embed/pull/325) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency lerna to ^8.2.3 [#326](https://github.com/gr4vy/gr4vy-embed/pull/326) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack-dev-server to ^5.2.2 [#322](https://github.com/gr4vy/gr4vy-embed/pull/322) ([@renovate[bot]](https://github.com/renovate[bot]))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update react monorepo [#333](https://github.com/gr4vy/gr4vy-embed/pull/333) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.34.4 (Thu Jul 03 2025)
 
 #### 🐛 Bug Fix

@@ -1,3 +1,15 @@
+# v2.34.5 (Mon Jul 07 2025)
+
+#### 🏠 Internal
+
+- chore(dev-deps): update react monorepo [#333](https://github.com/gr4vy/gr4vy-embed/pull/333) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v2.34.4 (Thu Jul 03 2025)
 
 #### 🐛 Bug Fix

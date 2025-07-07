@@ -1,3 +1,18 @@
+# v2.34.5 (Mon Jul 07 2025)
+
+#### 🐛 Bug Fix
+
+- fix(eaa): frames must have accessible names [#328](https://github.com/gr4vy/gr4vy-embed/pull/328) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+- fix(eaa): remove custom error background color [#327](https://github.com/gr4vy/gr4vy-embed/pull/327) ([@brunodesde1987](https://github.com/brunodesde1987) [@GiordanoArman](https://github.com/GiordanoArman))
+- fix(eea) Fix popup "<html> element must have a lang attribute" accessibility violation TA-11528 [#330](https://github.com/gr4vy/gr4vy-embed/pull/330) ([@GiordanoArman](https://github.com/GiordanoArman) [@brunodesde1987](https://github.com/brunodesde1987))
+
+#### Authors: 2
+
+- Bruno Carvalho ([@brunodesde1987](https://github.com/brunodesde1987))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.34.3 (Mon May 05 2025)
 
 #### 🐛 Bug Fix
