@@ -66,7 +66,6 @@ setup({
     colors: {
       primary: 'blue',
       danger: 'red',
-      dangerBackground: 'pink',
       focus: 'orange',
     },
     radii: {
