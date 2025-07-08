@@ -210,6 +210,18 @@ Returned when the form encounters an API error.
 }
 ```
 
+#### `cardDetailsChanged`
+
+Returned when the card BIN changes in the form. It contains information on the inputted card, such as the BIN, card type and scheme.
+
+```json
+{
+  "bin": "42424242",
+  "scheme": "visa",
+  "cardType": "debit"
+}
+```
+
 ### Custom Form Submission
 
 Embed will automatically submit the payment form with hidden inputs, this can be prevented using the `onComplete` callback.
