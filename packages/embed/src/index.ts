@@ -234,6 +234,7 @@ export function setup(setupConfig: SetupConfig) {
           'paymentMethodSelected',
           'transactionCancelled',
           'optionsLoaded',
+          'cardDetailsChanged',
         ].includes(message.type)
       ) {
         config.onEvent?.(message.type, message.data)
