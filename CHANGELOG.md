@@ -1,3 +1,16 @@
+# v2.35.0 (Thu Jul 10 2025)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - task: expose cardDetailsChanged event to onEvent handler [#334](https://github.com/gr4vy/gr4vy-embed/pull/334) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.34.5 (Mon Jul 07 2025)
 
 #### 🐛 Bug Fix
