@@ -35,14 +35,7 @@ This will open a development preview of Gr4vy Embed and the React component.
 ## Accessibility
 
 This project follows EAA compliance requirements, implementing [WCAG 2.1](https://www.w3.org/TR/WCAG21/) Level AA and [EN 301-549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf) standards.
-For detailed accessibility guidelines, see our [Web Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/1410727952/Web+Accessibility) documentation and [Frontend Coding Standards - Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/253657097/Frontend+Coding+Standards).
-
-### Testing Tools
-
-- [axe-core](https://github.com/dequelabs/axe-core-npm#readme) - Integrated with Playwright for page/frame-level audits
-- [vitest-axe](https://github.com/chaance/vitest-axe) - Component-level testing in unit tests
-
-Accessibility audits run locally and in CI
+For detailed accessibility guidelines, see our [Web Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/1410727952/Web+Accessibility) documentation and [Frontend Coding Standards - Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/253657097/Frontend+Coding+Standards)
 
 ### Developer Guidelines
 
