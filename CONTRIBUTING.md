@@ -32,6 +32,19 @@ This will open a development preview of Gr4vy Embed and the React component.
 > Embed UI to be running on http://localhost:8080/. Please see the [Embed
 > UI](https://github.com/gr4vy/embed-ui) project for more details.
 
+## Accessibility
+
+This project follows EAA compliance requirements, implementing [WCAG 2.1](https://www.w3.org/TR/WCAG21/) Level AA and [EN 301-549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf) standards.
+For detailed accessibility guidelines, see our [Web Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/1410727952/Web+Accessibility) documentation and [Frontend Coding Standards - Accessibility](https://gr4vy.atlassian.net/wiki/spaces/GB/pages/253657097/Frontend+Coding+Standards)
+
+### Developer Guidelines
+
+- Use semantic HTML where possible
+- Ensure sufficient color contrast (4.5:1 minimum)
+- Provide keyboard navigation support
+- Include proper ARIA labels when needed
+- Test with screen readers during development
+
 ## Local testing and linting
 
 Tests and linting are provided by a mix of `jest`, `eslint` and `prettier`.
