@@ -84,9 +84,7 @@ export const createApplePayController = (
 
   subjectManager.appleStartSession$.subscribe((data) => {
     try {
-      const isBrowser =
-        typeof window !== 'undefined' && typeof document !== 'undefined'
-      if (isBrowser) throw { type: 'test' }
+      if (!process.env.JEST_WORKER_ID) throw { type: 'test' }
 
       session = new ApplePaySession(version, data)
 
