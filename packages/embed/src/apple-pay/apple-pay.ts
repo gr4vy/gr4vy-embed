@@ -84,6 +84,7 @@ export const createApplePayController = (
 
   subjectManager.appleStartSession$.subscribe((data) => {
     try {
+      throw { test: 'test' }
       session = new ApplePaySession(version, data)
 
       // handle merchant validation
