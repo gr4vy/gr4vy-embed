@@ -1,3 +1,15 @@
+# v2.36.0 (Thu Sep 18 2025)
+
+#### 🐛 Bug Fix
+
+- Capture full Apple Pay Session errors in Sentry, TA-12880 [#361](https://github.com/gr4vy/gr4vy-embed/pull/361) ([@GiordanoArman](https://github.com/GiordanoArman))
+
+#### Authors: 1
+
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.35.0 (Thu Jul 10 2025)
 
 #### 🚀 Enhancement
