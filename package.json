@@ -71,7 +71,8 @@
     "path-to-regexp": "^0.1.12",
     "cookie": "0.7.0",
     "lru-cache": "^8.0.0",
-    "serialize-javascript": "^6.0.2"
+    "serialize-javascript": "^6.0.2",
+    "on-headers": "1.1.0"
   },
   "engines": {
     "node": ">=20.18.1"
