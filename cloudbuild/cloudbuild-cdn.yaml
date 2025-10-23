@@ -144,7 +144,7 @@ steps:
         fi;
 
 substitutions:
-  _NODE_VERSION: '20'
+  _NODE_VERSION: '24'
   _ARTIFACT_STORAGE_BUCKET: ''
   _CACHE_BUCKET: ''
   _GITHUB_TOKEN_LOCATION: ''
