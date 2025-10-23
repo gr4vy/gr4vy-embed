@@ -1,3 +1,15 @@
+# v2.36.1 (Wed Oct 22 2025)
+
+#### 🐛 Bug Fix
+
+- Bugfix: ESM import to use namespace syntax for compatibility with lib/index.js exports [#382](https://github.com/gr4vy/gr4vy-embed/pull/382) ([@ClaraLeigh](https://github.com/ClaraLeigh))
+
+#### Authors: 1
+
+- Clara ([@ClaraLeigh](https://github.com/ClaraLeigh))
+
+---
+
 # v2.36.0 (Thu Sep 18 2025)
 
 #### 🐛 Bug Fix
