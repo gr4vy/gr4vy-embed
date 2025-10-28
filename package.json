@@ -72,7 +72,8 @@
     "cookie": "0.7.0",
     "lru-cache": "^8.0.0",
     "serialize-javascript": "^6.0.2",
-    "on-headers": "1.1.0"
+    "on-headers": "1.1.0",
+    "tmp": "0.2.4"
   },
   "engines": {
     "node": ">=20.19.0"
