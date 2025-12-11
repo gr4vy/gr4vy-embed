@@ -14,6 +14,8 @@ export const createFrameController = (
   frame.style.height = '0px'
   frame.style.border = '0'
   frame.style.overflow = 'hidden'
+  // for hackathon card scan feature
+  frame.allow = 'camera'
 
   // deprecated fields
   frame.setAttribute('frameBorder', '0')
