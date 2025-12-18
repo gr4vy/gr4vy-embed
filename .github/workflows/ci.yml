@@ -47,7 +47,6 @@ jobs:
     timeout-minutes: 5
     permissions:
       contents: write
-      id-token: write
 
     needs:
       - test
@@ -66,11 +65,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Upgrade npm for trusted publishing (needs npm >= 11.5.1 which comes with Node 24)
-        if: matrix.node-version < '24'
-        run: npm install -g npm@^11.5.1
-        shell: bash
 
       - name: Cache node modules
         uses: actions/cache@v4
@@ -140,6 +134,7 @@ jobs:
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          NPM_TOKEN: '' # placeholder to prevent yarn from failing on ${NPM_TOKEN} expansion (OIDC token is written to ~/.npmrc by auto)
         run: |
           yarn config set workspaces-experimental true
           yarn install --frozen-lockfile
