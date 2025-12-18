@@ -34,5 +34,10 @@
   "devDependencies": {
     "@types/applepayjs": "^3.0.4"
   },
-  "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
+  "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "provenance": true
+  }
 }
