@@ -1,3 +1,16 @@
+# v2.36.2 (Thu Dec 18 2025)
+
+#### 🐛 Bug Fix
+
+- fix: npm's provenance [#400](https://github.com/gr4vy/gr4vy-embed/pull/400) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- task: support ODIC for secure releases [#399](https://github.com/gr4vy/gr4vy-embed/pull/399) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.36.1 (Wed Oct 22 2025)
 
 #### 🐛 Bug Fix
