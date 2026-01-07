@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Get repository name
         run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
@@ -53,11 +53,11 @@ jobs:
           git config --global user.email "code@gr4vy.com"
           git config --global user.name "gr4vy-code"
           ssh-keyscan -H github.com > ~/.ssh/known_hosts
-          GIT_SSH='ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts'
+          GIT_SSH='ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=~/.ssh/known_hosts -o IdentitiesOnly=yes'
 
           # clone the storage repo
           CLONE_DIR=$(mktemp -d)
-          GIT_SSH_COMMAND=$GIT_SSH git clone git@github.com:gr4vy-escrow/software-escrow.git "$CLONE_DIR"
+          GIT_SSH_COMMAND=$GIT_SSH git clone --depth 1 git@github.com:gr4vy-escrow/software-escrow.git "$CLONE_DIR"
 
           # copy the new encrypted archive file
           cp -R "${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz.gpg" "$CLONE_DIR"
@@ -68,6 +68,4 @@ jobs:
           git add .
           git commit --message "$INPUT_COMMIT_MESSAGE"
           GIT_SSH_COMMAND=$GIT_SSH git push -u origin main
-
-          echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
