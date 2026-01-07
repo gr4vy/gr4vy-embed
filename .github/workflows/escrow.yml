@@ -67,6 +67,7 @@ jobs:
           cd "$CLONE_DIR"
           git add .
           git commit --message "$INPUT_COMMIT_MESSAGE"
+          $GIT_SSH git pull
           GIT_SSH_COMMAND=$GIT_SSH git push -u origin main
 
           echo "commit_hash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
