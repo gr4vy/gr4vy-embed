@@ -57,7 +57,7 @@ jobs:
 
           # clone the storage repo
           CLONE_DIR=$(mktemp -d)
-          GIT_SSH_COMMAND=$GIT_SSH git clone git@github.com:gr4vy-escrow/software-escrow.git "$CLONE_DIR"
+          GIT_SSH_COMMAND=$GIT_SSH git clone --depth 1 git@github.com:gr4vy-escrow/software-escrow.git "$CLONE_DIR"
 
           # copy the new encrypted archive file
           cp -R "${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz.gpg" "$CLONE_DIR"
