@@ -72,6 +72,7 @@ export const createOverlayController = (
         class="gr4vy__frame"
         allowtransparency="true"
         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+        allow="local-network-access"
       ></iframe>
     `
   }
