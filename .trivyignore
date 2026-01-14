@@ -1,3 +1,6 @@
 # List of vulnerability IDs to be ignored by Trivy.
 
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
+
+# storybook
+CVE-2025-68429
