@@ -7,7 +7,8 @@ const html = String.raw
 
 export const createOverlayController = (
   element: HTMLDivElement,
-  subject: SubjectManager
+  subject: SubjectManager,
+  allowLocalNetworkAccess = false
 ) => {
   if (isFirstLoad) {
     require('./overlay.css')
@@ -72,6 +73,9 @@ export const createOverlayController = (
         class="gr4vy__frame"
         allowtransparency="true"
         sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+        ${process.env.NODE_ENV === 'development' || allowLocalNetworkAccess
+          ? 'allow="local-network-access"'
+          : ''}
       ></iframe>
     `
   }

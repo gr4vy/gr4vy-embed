@@ -63,6 +63,7 @@ export const optionKeys = [
   'excludedMethods',
   'optionLabels',
   'autoSelectOption',
+  'allowLocalNetworkAccess',
   'installmentCount',
 ]
 
@@ -115,7 +116,11 @@ export function setup(setupConfig: SetupConfig) {
 
   // Overlay
   const overlay = document.createElement('div')
-  createOverlayController(overlay, subjectManager)
+  createOverlayController(
+    overlay,
+    subjectManager,
+    config.allowLocalNetworkAccess
+  )
 
   // Submit Transaction
   if (config.form) {
