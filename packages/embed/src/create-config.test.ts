@@ -69,6 +69,7 @@ test('default configuration', () => {
     gr4vyId: 'test',
     requireSecurityCode: false,
     showDeleteButton: false,
+    allowLocalNetworkAccess: false,
   })
 })
 
