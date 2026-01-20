@@ -111,16 +111,20 @@ export const validateNumber = ({
   value,
   message,
   required = true,
+  min = 0,
+  max = 99999999,
   callback,
 }: {
   argument: string
   value: any
   message: string
   required?: boolean
+  min?: number
+  max?: number
   callback?: (name: string, event: { message: string }) => void
 }): boolean => {
   const number = Number(value)
-  const valid = number >= 0 && number <= 99999999
+  const valid = number >= min && number <= max
 
   if (canSkipValidation({ required, value }) || valid) {
     return true
@@ -612,4 +616,12 @@ export const validate = (options: SetupConfig) =>
     value: options.autoSelectOption,
     message: 'must be "first", "firstStored", "firstNonStored", "none" or null',
     required: false,
+  }) &&
+  validateNumber({
+    argument: 'installmentCount',
+    value: options.installmentCount,
+    message: 'must be valid non-negative number between 1 and 100',
+    required: false,
+    min: 1,
+    max: 100,
   })

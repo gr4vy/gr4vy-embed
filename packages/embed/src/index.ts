@@ -63,6 +63,7 @@ export const optionKeys = [
   'excludedMethods',
   'optionLabels',
   'autoSelectOption',
+  'installmentCount',
 ]
 
 // Map of cleanup callbacks

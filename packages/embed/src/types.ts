@@ -61,6 +61,7 @@ export type Config = {
   excludedMethods?: Array<string>
   optionLabels?: Record<string, string>
   autoSelectOption?: 'first' | 'firstStored' | 'firstNonStored' | 'none' | null
+  installmentCount?: number
 }
 
 export type BillingDetails = {
