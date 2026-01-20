@@ -1,3 +1,18 @@
+# v2.36.3 (Tue Jan 20 2026)
+
+#### 🐛 Bug Fix
+
+- chore: fix escrow workflow [#406](https://github.com/gr4vy/gr4vy-embed/pull/406) ([@andrewmackett](https://github.com/andrewmackett))
+- `@gr4vy/embed`
+  - task: allow local-network-access to fix 3DS locally [#407](https://github.com/gr4vy/gr4vy-embed/pull/407) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.36.2 (Thu Dec 18 2025)
 
 #### 🐛 Bug Fix
