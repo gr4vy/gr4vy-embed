@@ -3,4 +3,9 @@
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
 
 # storybook
+
 CVE-2025-68429
+
+# tar
+
+CVE-2026-23745
