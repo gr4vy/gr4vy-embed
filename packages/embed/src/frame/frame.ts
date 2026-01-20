@@ -28,9 +28,6 @@ export const createFrameController = (
     'allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation'
   )
 
-  // local network access for Chrome 142+ when using Embed locally
-  frame.setAttribute('allow', 'local-network-access')
-
   subject.frameHeight$.subscribe((height) => {
     if (frame.style.visibility === 'unset') {
       frame.style.height = `${height}px`
