@@ -64,6 +64,7 @@ export const optionKeys = [
   'optionLabels',
   'autoSelectOption',
   'allowLocalNetworkAccess',
+  'installmentCount',
 ]
 
 // Map of cleanup callbacks

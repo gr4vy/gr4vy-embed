@@ -62,6 +62,7 @@ export type Config = {
   optionLabels?: Record<string, string>
   autoSelectOption?: 'first' | 'firstStored' | 'firstNonStored' | 'none' | null
   allowLocalNetworkAccess?: boolean
+  installmentCount?: number
 }
 
 export type BillingDetails = {
