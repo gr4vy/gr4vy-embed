@@ -1,3 +1,25 @@
+# v2.37.0 (Wed Jan 21 2026)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - task: allow passing installmentCount and validate [#410](https://github.com/gr4vy/gr4vy-embed/pull/410) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency webpack to ^5.104.1 [#405](https://github.com/gr4vy/gr4vy-embed/pull/405) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack-dev-server to ^5.2.3 [#409](https://github.com/gr4vy/gr4vy-embed/pull/409) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency html-webpack-plugin to ^5.6.6 [#408](https://github.com/gr4vy/gr4vy-embed/pull/408) ([@renovate[bot]](https://github.com/renovate[bot]))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update eslint [#404](https://github.com/gr4vy/gr4vy-embed/pull/404) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.36.3 (Tue Jan 20 2026)
 
 #### 🐛 Bug Fix

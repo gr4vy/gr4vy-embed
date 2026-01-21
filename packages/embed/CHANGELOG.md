@@ -1,3 +1,15 @@
+# v2.37.0 (Wed Jan 21 2026)
+
+#### 🚀 Enhancement
+
+- task: allow passing installmentCount and validate [#410](https://github.com/gr4vy/gr4vy-embed/pull/410) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.36.3 (Tue Jan 20 2026)
 
 #### 🐛 Bug Fix
