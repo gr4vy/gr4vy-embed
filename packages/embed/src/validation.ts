@@ -620,7 +620,7 @@ export const validate = (options: SetupConfig) =>
   validateNumber({
     argument: 'installmentCount',
     value: options.installmentCount,
-    message: 'must be valid non-negative number between 1 and 100',
+    message: 'must be valid number between 1 and 100 (inclusive)',
     required: false,
     min: 1,
     max: 100,
