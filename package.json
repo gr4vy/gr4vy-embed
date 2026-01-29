@@ -73,7 +73,8 @@
     "lru-cache": "^8.0.0",
     "serialize-javascript": "^6.0.2",
     "on-headers": "1.1.0",
-    "tar": "7.5.7"
+    "tar": "7.5.7",
+    "lodash": "4.17.23"
   },
   "engines": {
     "node": ">=20.19.0"
