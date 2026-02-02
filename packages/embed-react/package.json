@@ -29,7 +29,7 @@
     "react-dom": ">=18.3.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.27.6",
+    "@babel/runtime": "^7.28.6",
     "@gr4vy/embed": "^2.37.0",
     "lodash.isequal": "^4.5.0"
   },
