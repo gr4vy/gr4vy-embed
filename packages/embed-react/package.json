@@ -37,7 +37,7 @@
     "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
     "@storybook/cli": "10.2.9",
     "@storybook/react-webpack5": "10.2.9",
-    "@types/react": "^18.3.27",
+    "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
     "eslint-plugin-storybook": "10.2.9",
     "react": "^18.3.1",
