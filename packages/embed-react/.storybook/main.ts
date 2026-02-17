@@ -23,6 +23,6 @@ const config: StorybookConfig = {
 
 export default config
 
-function getAbsolutePath(value) {
+function getAbsolutePath(value: string) {
   return dirname(require.resolve(join(value, 'package.json')))
 }
