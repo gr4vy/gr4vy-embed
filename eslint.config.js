@@ -33,6 +33,10 @@ module.exports = defineConfig([
       )
     ),
 
+    linterOptions: {
+      reportUnusedDisableDirectives: false,
+    },
+
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 6,
@@ -58,15 +62,18 @@ module.exports = defineConfig([
     },
 
     rules: {
+      '@typescript-eslint/no-require-imports': 0,
+      '@typescript-eslint/no-unused-expressions': 0,
       '@typescript-eslint/ban-ts-ignore': 0,
       '@typescript-eslint/ban-ts-comment': 0,
-      '@typescript-eslint/ban-types': 0,
       '@typescript-eslint/explicit-function-return-type': 0,
       '@typescript-eslint/explicit-module-boundary-types': 0,
       '@typescript-eslint/no-explicit-any': 0,
       '@typescript-eslint/no-empty-function': 0,
+      '@typescript-eslint/no-restricted-types': 0,
+      '@typescript-eslint/no-unsafe-function-type': 0,
+      '@typescript-eslint/no-wrapper-object-types': 0,
       'no-shadow': 0,
-      '@typescript-eslint/no-extra-semi': 0,
       'import/named': 0,
       'prettier/prettier': 'error',
       'jest/no-disabled-tests': 'warn',
