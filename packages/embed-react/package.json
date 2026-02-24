@@ -13,7 +13,7 @@
     "dev": "webpack serve --config webpack.dev.js",
     "prebuild": "yarn clean",
     "build": "tsc",
-    "lint": "eslint src dev --ext ts,tsx",
+    "lint": "eslint src/**/*.{ts,tsx} dev/**/*.tsx",
     "prepack": "yarn build",
     "storybook": "storybook dev",
     "test": "jest --colors"
