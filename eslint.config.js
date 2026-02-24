@@ -1,64 +1,42 @@
 const { defineConfig, globalIgnores } = require('eslint/config')
 
-const { fixupConfigRules, fixupPluginRules } = require('@eslint/compat')
-
-const tsParser = require('@typescript-eslint/parser')
-const typescriptEslint = require('@typescript-eslint/eslint-plugin')
-const jest = require('eslint-plugin-jest')
-const prettier = require('eslint-plugin-prettier')
+const js = require('@eslint/js')
+const tseslint = require('typescript-eslint')
+const importPlugin = require('eslint-plugin-import')
+const jestPlugin = require('eslint-plugin-jest')
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended')
+const eslintPluginReactRecommended = require('eslint-plugin-react/configs/recommended')
 const storybook = require('eslint-plugin-storybook')
 const globals = require('globals')
-const js = require('@eslint/js')
 
-const { FlatCompat } = require('@eslint/eslintrc')
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-})
+const tseslintRecommended = Array.isArray(tseslint.configs.recommended)
+  ? tseslint.configs.recommended
+  : [tseslint.configs.recommended]
 
 module.exports = defineConfig([
   {
-    extends: fixupConfigRules(
-      compat.extends(
-        'eslint:recommended',
-        'plugin:@typescript-eslint/eslint-recommended',
-        'plugin:@typescript-eslint/recommended',
-        'plugin:react/recommended',
-        'plugin:prettier/recommended',
-        'plugin:import/errors',
-        'plugin:import/warnings',
-        'plugin:import/typescript'
-      )
-    ),
-
-    linterOptions: {
-      reportUnusedDisableDirectives: false,
-    },
+    files: ['**/*.{mjs,cjs,ts,tsx}'],
+    extends: [
+      js.configs.recommended,
+      ...tseslintRecommended,
+      eslintPluginReactRecommended,
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
+      eslintPluginPrettierRecommended,
+    ],
 
     languageOptions: {
-      parser: tsParser,
       ecmaVersion: 6,
       sourceType: 'module',
-
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
         },
       },
-
       globals: {
         ...globals.browser,
-        ...jest.environments.globals.globals,
         ...globals.node,
       },
-    },
-
-    plugins: {
-      '@typescript-eslint': fixupPluginRules(typescriptEslint),
-      jest,
-      prettier: fixupPluginRules(prettier),
     },
 
     rules: {
@@ -76,14 +54,8 @@ module.exports = defineConfig([
       'no-shadow': 0,
       'import/named': 0,
       'prettier/prettier': 'error',
-      'jest/no-disabled-tests': 'warn',
-      'jest/no-focused-tests': 'error',
-      'jest/no-identical-title': 'error',
-      'jest/prefer-to-have-length': 'warn',
-      'jest/valid-expect': 'error',
       'react/jsx-uses-react': 'off',
       'react/react-in-jsx-scope': 'off',
-
       'import/order': [
         'error',
         {
@@ -113,6 +85,23 @@ module.exports = defineConfig([
       react: {
         version: 'detect',
       },
+    },
+  },
+
+  {
+    files: ['**/*.{spec,test}.{ts,tsx}'],
+    plugins: {
+      jest: jestPlugin,
+    },
+    languageOptions: {
+      globals: jestPlugin.environments.globals.globals,
+    },
+    rules: {
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'error',
+      'jest/no-identical-title': 'error',
+      'jest/prefer-to-have-length': 'warn',
+      'jest/valid-expect': 'error',
     },
   },
 

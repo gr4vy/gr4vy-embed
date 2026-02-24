@@ -4,10 +4,10 @@ import {
 } from './browser-support'
 
 beforeEach(() => {
-  window.ApplePaySession = ({
+  window.ApplePaySession = {
     canMakePayments: jest.fn(),
     supportsVersion: jest.fn(),
-  } as unknown) as ApplePaySession
+  } as unknown as ApplePaySession
 })
 
 test('checks support for apple pay version 3', () => {

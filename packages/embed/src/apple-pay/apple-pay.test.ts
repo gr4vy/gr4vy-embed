@@ -19,9 +19,9 @@ beforeEach(() => {
     abort: jest.fn(),
     oncancel: jest.fn(),
   }
-  window.ApplePaySession = (jest
+  window.ApplePaySession = jest
     .fn()
-    .mockReturnValue(mockAppleSession) as unknown) as ApplePaySession
+    .mockReturnValue(mockAppleSession) as unknown as ApplePaySession
   ;(window.ApplePaySession as any).STATUS_SUCCESS = 1
   ;(window.ApplePaySession as any).STATUS_FAILURE = 0
   mockSubjectManager = createSubjectManager()
@@ -34,9 +34,10 @@ test('should start a session with version 3 and session data', () => {
 
   jest.runAllTimers()
 
-  expect(
-    (window.ApplePaySession as unknown) as jest.Mock
-  ).toHaveBeenCalledWith(3, { foo: 'bar' })
+  expect(window.ApplePaySession as unknown as jest.Mock).toHaveBeenCalledWith(
+    3,
+    { foo: 'bar' }
+  )
   expect(mockAppleSession.begin).toHaveBeenCalled()
 })
 
@@ -186,9 +187,9 @@ describe('loadApplePaySdk', () => {
   })
 
   it('skips adding the script if ApplePaySession already exists', async () => {
-    window.ApplePaySession = ({
+    window.ApplePaySession = {
       begin: jest.fn(),
-    } as unknown) as ApplePaySession
+    } as unknown as ApplePaySession
 
     const result = await loadApplePaySdk()
     expect(result).toBe(true)
@@ -198,9 +199,9 @@ describe('loadApplePaySdk', () => {
   it('loads the script successfully', async () => {
     const logSpy = jest.spyOn(console, 'log').mockImplementation()
     appendChildSpy.mockImplementation((script) => {
-      window.ApplePaySession = ({
+      window.ApplePaySession = {
         begin: jest.fn(),
-      } as unknown) as ApplePaySession
+      } as unknown as ApplePaySession
       script?.onload()
       return script
     })
@@ -244,9 +245,9 @@ describe('loadApplePaySdk', () => {
 
   it('sets the correct script attributes', async () => {
     appendChildSpy.mockImplementation((script) => {
-      window.ApplePaySession = ({
+      window.ApplePaySession = {
         begin: jest.fn(),
-      } as unknown) as ApplePaySession
+      } as unknown as ApplePaySession
       script?.onload()
       return script
     })
