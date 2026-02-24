@@ -15,7 +15,7 @@ const tseslintRecommended = Array.isArray(tseslint.configs.recommended)
 
 module.exports = defineConfig([
   {
-    files: ['**/*.{mjs,cjs,ts,tsx}'],
+    files: ['**/*.{ts,tsx}'],
     extends: [
       js.configs.recommended,
       ...tseslintRecommended,
@@ -106,23 +106,10 @@ module.exports = defineConfig([
   },
 
   {
-    files: ['packages/embed/**'],
     settings: {
       'import/resolver': {
-        node: {
-          paths: ['src'],
-        },
-      },
-    },
-  },
-
-  {
-    files: ['packages/embed-react/**'],
-    settings: {
-      'import/resolver': {
-        node: {
-          paths: ['src'],
-        },
+        typescript: true,
+        node: true,
       },
     },
   },
