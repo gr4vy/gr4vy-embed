@@ -5,21 +5,17 @@ const tseslint = require('typescript-eslint')
 const importPlugin = require('eslint-plugin-import')
 const jestPlugin = require('eslint-plugin-jest')
 const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended')
-const eslintPluginReactRecommended = require('eslint-plugin-react/configs/recommended')
+const reactPlugin = require('eslint-plugin-react')
 const storybook = require('eslint-plugin-storybook')
 const globals = require('globals')
-
-const tseslintRecommended = Array.isArray(tseslint.configs.recommended)
-  ? tseslint.configs.recommended
-  : [tseslint.configs.recommended]
 
 module.exports = defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
       js.configs.recommended,
-      ...tseslintRecommended,
-      eslintPluginReactRecommended,
+      tseslint.configs.recommended,
+      reactPlugin.configs.flat.recommended,
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
       eslintPluginPrettierRecommended,
