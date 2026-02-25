@@ -18,7 +18,7 @@
     "dev": "webpack serve --config webpack.dev.js",
     "build": "tsc && webpack --config webpack.prod.js",
     "prepack": "yarn build",
-    "lint": "eslint src/ --ext ts",
+    "lint": "eslint src/**/*.ts",
     "test": "jest --colors"
   },
   "files": [

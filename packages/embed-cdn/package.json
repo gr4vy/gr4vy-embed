@@ -12,7 +12,7 @@
     "clean": "rm -rf lib",
     "prebuild": "yarn clean",
     "build": "webpack --config webpack.prod.js",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src/**/*.ts",
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
