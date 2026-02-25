@@ -1,3 +1,56 @@
+# v2.37.0 (Wed Jan 21 2026)
+
+#### 🚀 Enhancement
+
+- task: allow passing installmentCount and validate [#410](https://github.com/gr4vy/gr4vy-embed/pull/410) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update eslint [#404](https://github.com/gr4vy/gr4vy-embed/pull/404) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.36.2 (Thu Dec 18 2025)
+
+#### 🐛 Bug Fix
+
+- fix: npm's provenance [#400](https://github.com/gr4vy/gr4vy-embed/pull/400) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- task: support ODIC for secure releases [#399](https://github.com/gr4vy/gr4vy-embed/pull/399) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency @types/react to ^18.3.27 [#388](https://github.com/gr4vy/gr4vy-embed/pull/388) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#384](https://github.com/gr4vy/gr4vy-embed/pull/384) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.36.1 (Wed Oct 22 2025)
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency eslint-plugin-storybook to v9.1.13 [#379](https://github.com/gr4vy/gr4vy-embed/pull/379) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/react to ^18.3.26 [#373](https://github.com/gr4vy/gr4vy-embed/pull/373) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-storybook to v9.1.10 [#370](https://github.com/gr4vy/gr4vy-embed/pull/370) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/react to ^18.3.25 [#369](https://github.com/gr4vy/gr4vy-embed/pull/369) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-storybook to v9.1.8 [#366](https://github.com/gr4vy/gr4vy-embed/pull/366) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-storybook to v9.1.7 [#363](https://github.com/gr4vy/gr4vy-embed/pull/363) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v2.36.0 (Thu Sep 18 2025)
 
 #### 🏠 Internal

@@ -8,7 +8,8 @@ updates:
     # prevent PRs from opening except for security updates (renovatebot takes care of the rest)
     open-pull-requests-limit: 0
     reviewers:
-      - 'douglaseggleton'
+      - 'luca-gr4vy'
+      - 'GiordanoArman'
     labels:
       - 'vulnerability'
       - 'dependencies'

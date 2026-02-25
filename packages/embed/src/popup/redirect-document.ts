@@ -10,8 +10,9 @@ export const redirectDocument = ({ title, message, locale }) => html`
         body {
           margin: 0;
           padding: 0;
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          font-family:
+            -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+            Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
             'Segoe UI Symbol';
           text-align: center;
         }

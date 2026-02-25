@@ -1,2 +1,2 @@
-import Gr4vy from '../lib/index.js'
+import * as Gr4vy from '../lib/index.js'
 export const setup = Gr4vy.setup

@@ -1,12 +1,12 @@
 {
   "name": "@gr4vy/embed",
-  "version": "2.36.0",
+  "version": "2.37.0",
   "description": "Embed a credit card form in your web app and store the card details, authorize the card, and capture a transaction.",
   "main": "lib/index",
   "types": "lib/index",
   "author": "Gr4vy <code@gr4vy.com>",
   "license": "MIT",
-  "repository": "github:gr4vy/embed",
+  "repository": "https://github.com/gr4vy/gr4vy-embed",
   "homepage": "https://gr4vy.com",
   "exports": {
     "require": "./lib/index.js",
@@ -18,7 +18,7 @@
     "dev": "webpack serve --config webpack.dev.js",
     "build": "tsc && webpack --config webpack.prod.js",
     "prepack": "yarn build",
-    "lint": "eslint src/ --ext ts",
+    "lint": "eslint src/**/*.ts",
     "test": "jest --colors"
   },
   "files": [
@@ -34,5 +34,10 @@
   "devDependencies": {
     "@types/applepayjs": "^3.0.4"
   },
-  "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049"
+  "gitHead": "6606f868e978fc1aa7368557d2730d52170a9049",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org",
+    "provenance": true
+  }
 }

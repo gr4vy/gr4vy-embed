@@ -1,6 +1,10 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { createRequire } from 'node:module'
 import { dirname, join } from 'path'
 import type { StorybookConfig } from '@storybook/react-webpack5'
 import custom from '../webpack.dev.js'
+
+const require = createRequire(import.meta.url)
 
 const config: StorybookConfig = {
   stories: [`../**/*.stories.tsx`],
@@ -19,6 +23,6 @@ const config: StorybookConfig = {
 
 export default config
 
-function getAbsolutePath(value) {
+function getAbsolutePath(value: string) {
   return dirname(require.resolve(join(value, 'package.json')))
 }

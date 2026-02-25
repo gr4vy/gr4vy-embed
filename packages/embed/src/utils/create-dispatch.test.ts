@@ -9,7 +9,7 @@ test('it should call the callback', () => {
   const dispatch = createDispatch(
     'my-origin',
     '123',
-    (windowMock as unknown) as Window,
+    windowMock as unknown as Window,
     callback
   )
   dispatch(message)

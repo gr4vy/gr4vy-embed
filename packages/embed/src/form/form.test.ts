@@ -38,9 +38,11 @@ describe('createFormController', () => {
       jest.runAllTimers()
 
       expect(
-        (document.getElementsByName(
-          'gr4vy_transaction_id'
-        )[0] as HTMLInputElement).value
+        (
+          document.getElementsByName(
+            'gr4vy_transaction_id'
+          )[0] as HTMLInputElement
+        ).value
       ).toBe('123')
     })
 

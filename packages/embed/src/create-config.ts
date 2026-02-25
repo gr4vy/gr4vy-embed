@@ -28,6 +28,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     separatePaymentOptions: false,
     requireSecurityCode: false,
     showDeleteButton: false,
+    allowLocalNetworkAccess: false,
     store: 'ask',
     display: 'all',
     apiHost,

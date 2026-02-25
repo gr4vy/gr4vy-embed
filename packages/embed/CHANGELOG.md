@@ -1,3 +1,52 @@
+# v2.37.0 (Wed Jan 21 2026)
+
+#### 🚀 Enhancement
+
+- task: allow passing installmentCount and validate [#410](https://github.com/gr4vy/gr4vy-embed/pull/410) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.36.3 (Tue Jan 20 2026)
+
+#### 🐛 Bug Fix
+
+- task: allow local-network-access to fix 3DS locally [#407](https://github.com/gr4vy/gr4vy-embed/pull/407) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.36.2 (Thu Dec 18 2025)
+
+#### 🐛 Bug Fix
+
+- fix: npm's provenance [#400](https://github.com/gr4vy/gr4vy-embed/pull/400) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- task: support ODIC for secure releases [#399](https://github.com/gr4vy/gr4vy-embed/pull/399) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 1
+
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
+# v2.36.1 (Wed Oct 22 2025)
+
+#### 🐛 Bug Fix
+
+- Bugfix: ESM import to use namespace syntax for compatibility with lib/index.js exports [#382](https://github.com/gr4vy/gr4vy-embed/pull/382) ([@ClaraLeigh](https://github.com/ClaraLeigh))
+
+#### Authors: 1
+
+- Clara ([@ClaraLeigh](https://github.com/ClaraLeigh))
+
+---
+
 # v2.36.0 (Thu Sep 18 2025)
 
 #### 🐛 Bug Fix
