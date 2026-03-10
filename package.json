@@ -79,7 +79,8 @@
     "lodash": "4.17.23",
     "webpack": "^5.105.2",
     "**/nx/minimatch": "9.0.7",
-    "**/@nx/devkit/minimatch": "9.0.7"
+    "**/@nx/devkit/minimatch": "9.0.7",
+    "@tootallnate/once": "3.0.1"
   },
   "engines": {
     "node": ">=20.20.0"
