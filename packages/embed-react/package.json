@@ -39,7 +39,7 @@
     "@storybook/react-webpack5": "10.2.19",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
-    "eslint-plugin-storybook": "10.2.19",
+    "eslint-plugin-storybook": "10.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "storybook": "10.2.19"
