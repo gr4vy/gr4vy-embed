@@ -34,7 +34,7 @@
     "lodash.isequal": "^4.5.0"
   },
   "devDependencies": {
-    "@storybook/addon-webpack5-compiler-babel": "^4.0.0",
+    "@storybook/addon-webpack5-compiler-babel": "^4.0.1",
     "@storybook/cli": "10.3.2",
     "@storybook/react-webpack5": "10.3.2",
     "@types/react": "^18.3.28",
