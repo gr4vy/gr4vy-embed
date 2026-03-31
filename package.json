@@ -70,7 +70,7 @@
     "axios": "^1.13.5",
     "braces": "^3.0.3",
     "css-what": "^5.0.1",
-    "path-to-regexp": "^0.1.12",
+    "path-to-regexp": "^0.1.13",
     "cookie": "0.7.0",
     "lru-cache": "^8.0.0",
     "serialize-javascript": "^7.0.3",
