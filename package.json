@@ -79,10 +79,12 @@
     "lodash": "4.17.23",
     "webpack": "^5.105.4",
     "**/nx/minimatch": "9.0.7",
+    "**/nx/yaml": "^2.8.3",
     "**/@nx/devkit/minimatch": "9.0.7",
     "@tootallnate/once": "3.0.1",
     "flatted": "^3.4.0",
-    "handlebars": "^4.7.9"
+    "handlebars": "^4.7.9",
+    "auto/**/yaml": "^1.10.3"
   },
   "engines": {
     "node": ">=20.20.0"
