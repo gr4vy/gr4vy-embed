@@ -63,7 +63,7 @@ export type Config = {
   autoSelectOption?: 'first' | 'firstStored' | 'firstNonStored' | 'none' | null
   allowLocalNetworkAccess?: boolean
   installmentCount?: number
-  approvalExpiresAt?: string
+  approvalExpiresAt?: string | null
 }
 
 export type BillingDetails = {
