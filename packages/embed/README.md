@@ -105,6 +105,7 @@ The options for this integration are as follows.
 | `autoSelectOption`        | `null`       | `first`, `firstStored`, `firstNonStored`, `none` - Can be used to tell Embed to automatically select either the very first payment method available, the first stored method, the first non-stored method or not to select any method at all. By default, Embed will automatically select the card method if no stored methods are active.                                                                                                                                                                                                                                                                                                                                                                                                            |
 
 | `installmentCount` | `number` | An optional value that indicates the number of installments a buyer is required to make. |
+| `approvalExpiresAt` | `string` | An optional ISO 8601 datetime string that sets the expiration date for transaction approval. |
 
 ### Theming
 

@@ -65,6 +65,7 @@ export const optionKeys = [
   'autoSelectOption',
   'allowLocalNetworkAccess',
   'installmentCount',
+  'approvalExpiresAt',
 ]
 
 // Map of cleanup callbacks
