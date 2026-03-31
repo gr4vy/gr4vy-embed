@@ -70,7 +70,7 @@
     "axios": "^1.13.5",
     "braces": "^3.0.3",
     "css-what": "^5.0.1",
-    "path-to-regexp": "^0.1.12",
+    "path-to-regexp": "^0.1.13",
     "cookie": "0.7.0",
     "lru-cache": "^8.0.0",
     "serialize-javascript": "^7.0.3",
@@ -79,9 +79,12 @@
     "lodash": "4.17.23",
     "webpack": "^5.105.4",
     "**/nx/minimatch": "9.0.7",
+    "**/nx/yaml": "^2.8.3",
     "**/@nx/devkit/minimatch": "9.0.7",
     "@tootallnate/once": "3.0.1",
-    "flatted": "^3.4.0"
+    "flatted": "^3.4.0",
+    "handlebars": "^4.7.9",
+    "auto/**/yaml": "^1.10.3"
   },
   "engines": {
     "node": ">=20.20.0"
