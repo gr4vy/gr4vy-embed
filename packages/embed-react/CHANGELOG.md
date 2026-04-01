@@ -1,3 +1,36 @@
+# v2.38.0 (Wed Apr 01 2026)
+
+#### 🚀 Enhancement
+
+- feat(transactions): Add approval_expires_at support [#458](https://github.com/gr4vy/gr4vy-embed/pull/458) ([@cbetta](https://github.com/cbetta))
+- chore(dev-deps): update babel monorepo to ^7.29.2 [#443](https://github.com/gr4vy/gr4vy-embed/pull/443) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update babel monorepo [#347](https://github.com/gr4vy/gr4vy-embed/pull/347) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update storybook monorepo to v10.3.3 [#455](https://github.com/gr4vy/gr4vy-embed/pull/455) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#454](https://github.com/gr4vy/gr4vy-embed/pull/454) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @storybook/addon-webpack5-compiler-babel to ^4.0.1 [#453](https://github.com/gr4vy/gr4vy-embed/pull/453) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.3.2 [#445](https://github.com/gr4vy/gr4vy-embed/pull/445) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#444](https://github.com/gr4vy/gr4vy-embed/pull/444) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.2.19 [#440](https://github.com/gr4vy/gr4vy-embed/pull/440) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency eslint-plugin-storybook to v10.2.19 [#438](https://github.com/gr4vy/gr4vy-embed/pull/438) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.2.17 [#433](https://github.com/gr4vy/gr4vy-embed/pull/433) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#427](https://github.com/gr4vy/gr4vy-embed/pull/427) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.2.12 [#353](https://github.com/gr4vy/gr4vy-embed/pull/353) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#425](https://github.com/gr4vy/gr4vy-embed/pull/425) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore: upgrade to eslint v9 [#424](https://github.com/gr4vy/gr4vy-embed/pull/424) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency @types/react to ^18.3.28 [#417](https://github.com/gr4vy/gr4vy-embed/pull/417) ([@renovate[bot]](https://github.com/renovate[bot]))
+- task: upgrade to storybook 10 [#414](https://github.com/gr4vy/gr4vy-embed/pull/414) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.37.0 (Wed Jan 21 2026)
 
 #### 🚀 Enhancement

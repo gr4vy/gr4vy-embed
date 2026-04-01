@@ -1,3 +1,71 @@
+# v2.38.0 (Wed Apr 01 2026)
+
+#### 🚀 Enhancement
+
+- chore(deps): bump qs from 6.11.0 to 6.14.2 [#420](https://github.com/gr4vy/gr4vy-embed/pull/420) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(transactions): Add approval_expires_at support [#458](https://github.com/gr4vy/gr4vy-embed/pull/458) ([@cbetta](https://github.com/cbetta))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update babel monorepo to ^7.29.2 [#443](https://github.com/gr4vy/gr4vy-embed/pull/443) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update babel monorepo [#347](https://github.com/gr4vy/gr4vy-embed/pull/347) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- chore(deps): update dependency serialize-javascript to v7.0.5 [vulnerability] [#456](https://github.com/gr4vy/gr4vy-embed/pull/456) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore: pin GitHub actions to specific commit SHA [#448](https://github.com/gr4vy/gr4vy-embed/pull/448) ([@andrewmackett](https://github.com/andrewmackett))
+- Trivy supply chain attack [#447](https://github.com/gr4vy/gr4vy-embed/pull/447) ([@andrewmackett](https://github.com/andrewmackett))
+- chore(deps): update dependency flatted to v3.4.2 [vulnerability] [#446](https://github.com/gr4vy/gr4vy-embed/pull/446) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency tar to v7.5.11 [vulnerability] [#434](https://github.com/gr4vy/gr4vy-embed/pull/434) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency tar to v7.5.8 [vulnerability] [#423](https://github.com/gr4vy/gr4vy-embed/pull/423) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore: update renovate / dependanbot reviewer [#422](https://github.com/gr4vy/gr4vy-embed/pull/422) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🏠 Internal
+
+- fix: vulnerabilities [#457](https://github.com/gr4vy/gr4vy-embed/pull/457) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- fix: picomatch vulnerabilities [#449](https://github.com/gr4vy/gr4vy-embed/pull/449) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency lerna to v9.0.7 [#439](https://github.com/gr4vy/gr4vy-embed/pull/439) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix: flatted trivy vulnerability [#441](https://github.com/gr4vy/gr4vy-embed/pull/441) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency webpack to ^5.105.4 [#432](https://github.com/gr4vy/gr4vy-embed/pull/432) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix: @tootallnate/once vulnerability [#436](https://github.com/gr4vy/gr4vy-embed/pull/436) ([@luca-gr4vy](https://github.com/luca-gr4vy) [@GiordanoArman](https://github.com/GiordanoArman))
+- chore(dev-deps): update dependency prettier to ^3.8.1 [#431](https://github.com/gr4vy/gr4vy-embed/pull/431) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency globals to ^15.15.0 [#428](https://github.com/gr4vy/gr4vy-embed/pull/428) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix: minimatch, tar, serialize-javascript vulnerabilities [#435](https://github.com/gr4vy/gr4vy-embed/pull/435) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency lerna to v9.0.5 [#429](https://github.com/gr4vy/gr4vy-embed/pull/429) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.105.2 [#419](https://github.com/gr4vy/gr4vy-embed/pull/419) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update node.js to >=20.20.0 [#277](https://github.com/gr4vy/gr4vy-embed/pull/277) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.58.2 [#418](https://github.com/gr4vy/gr4vy-embed/pull/418) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency lerna to v9.0.4 [#421](https://github.com/gr4vy/gr4vy-embed/pull/421) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.58.1 [#415](https://github.com/gr4vy/gr4vy-embed/pull/415) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency playwright to ^1.58.0 [#412](https://github.com/gr4vy/gr4vy-embed/pull/412) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix: tar / lodash vulnerabilities [#413](https://github.com/gr4vy/gr4vy-embed/pull/413) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update storybook monorepo to v10.3.3 [#455](https://github.com/gr4vy/gr4vy-embed/pull/455) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#454](https://github.com/gr4vy/gr4vy-embed/pull/454) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update dependency @storybook/addon-webpack5-compiler-babel to ^4.0.1 [#453](https://github.com/gr4vy/gr4vy-embed/pull/453) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update storybook monorepo to v10.3.2 [#445](https://github.com/gr4vy/gr4vy-embed/pull/445) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#444](https://github.com/gr4vy/gr4vy-embed/pull/444) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update storybook monorepo to v10.2.19 [#440](https://github.com/gr4vy/gr4vy-embed/pull/440) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update dependency eslint-plugin-storybook to v10.2.19 [#438](https://github.com/gr4vy/gr4vy-embed/pull/438) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update storybook monorepo to v10.2.17 [#433](https://github.com/gr4vy/gr4vy-embed/pull/433) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#427](https://github.com/gr4vy/gr4vy-embed/pull/427) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update storybook monorepo to v10.2.12 [#353](https://github.com/gr4vy/gr4vy-embed/pull/353) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#425](https://github.com/gr4vy/gr4vy-embed/pull/425) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update dependency @types/react to ^18.3.28 [#417](https://github.com/gr4vy/gr4vy-embed/pull/417) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - task: upgrade to storybook 10 [#414](https://github.com/gr4vy/gr4vy-embed/pull/414) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- `@gr4vy/embed-cdn`, `@gr4vy/embed-react`, `@gr4vy/embed`
+  - chore: upgrade to eslint v9 [#424](https://github.com/gr4vy/gr4vy-embed/pull/424) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 6
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Andrew Mackett ([@andrewmackett](https://github.com/andrewmackett))
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.37.0 (Wed Jan 21 2026)
 
 #### 🚀 Enhancement

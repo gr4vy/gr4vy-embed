@@ -1,3 +1,20 @@
+# v2.38.0 (Wed Apr 01 2026)
+
+#### 🚀 Enhancement
+
+- feat(transactions): Add approval_expires_at support [#458](https://github.com/gr4vy/gr4vy-embed/pull/458) ([@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- chore: upgrade to eslint v9 [#424](https://github.com/gr4vy/gr4vy-embed/pull/424) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.37.0 (Wed Jan 21 2026)
 
 #### 🚀 Enhancement
