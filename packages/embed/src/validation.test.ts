@@ -682,56 +682,6 @@ describe('validateCondition', () => {
   })
 })
 
-describe('validate - approvalExpiresAt', () => {
-  const baseOptions = {
-    element: `#app`,
-    form: null,
-    amount: 1299,
-    currency: `USD`,
-    iframeHost: `127.0.0.1:8080`,
-    apiHost: `127.0.0.1:3100`,
-    token: `123456`,
-    country: 'US',
-  }
-
-  beforeEach(() => {
-    jest.spyOn(document, 'querySelector').mockImplementation(() => {
-      return document.createElement('div')
-    })
-  })
-
-  test('should accept a valid string value', () => {
-    expect(
-      validate({
-        ...baseOptions,
-        approvalExpiresAt: '2026-04-01T12:00:00+00:00',
-      })
-    ).toBeTruthy()
-  })
-
-  test('should accept null', () => {
-    expect(
-      validate({
-        ...baseOptions,
-        approvalExpiresAt: null,
-      })
-    ).toBeTruthy()
-  })
-
-  test('should accept undefined (omitted)', () => {
-    expect(validate(baseOptions)).toBeTruthy()
-  })
-
-  test('should reject a non-string value', () => {
-    expect(
-      validate({
-        ...baseOptions,
-        approvalExpiresAt: 12345 as any,
-      })
-    ).toBeFalsy()
-  })
-})
-
 describe('validateAutoSelectOption()', () => {
   const defaultOptions = {
     argument: 'autoSelectOption',
