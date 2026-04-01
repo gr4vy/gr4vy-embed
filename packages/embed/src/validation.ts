@@ -624,4 +624,11 @@ export const validate = (options: SetupConfig) =>
     required: false,
     min: 1,
     max: 100,
+  }) &&
+  validateType({
+    argument: 'approvalExpiresAt',
+    value: options.approvalExpiresAt,
+    message: 'must be a string',
+    required: false,
+    type: 'string',
   })
