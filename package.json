@@ -76,7 +76,7 @@
     "serialize-javascript": "^7.0.3",
     "on-headers": "1.1.0",
     "tar": "7.5.11",
-    "lodash": "4.17.23",
+    "lodash": "4.18.0",
     "webpack": "^5.105.4",
     "**/nx/minimatch": "9.0.7",
     "**/nx/yaml": "^2.8.3",
