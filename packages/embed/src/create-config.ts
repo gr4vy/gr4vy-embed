@@ -26,6 +26,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
   return {
     enableAnimations: false,
     separatePaymentOptions: false,
+    compactPaymentOptions: false,
     requireSecurityCode: false,
     showDeleteButton: false,
     allowLocalNetworkAccess: false,
