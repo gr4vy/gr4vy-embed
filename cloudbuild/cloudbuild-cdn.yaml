@@ -166,4 +166,4 @@ options:
 
 logsBucket: 'gs://cloud-build-log-storage'
 
-timeout: 1200s
+timeout: 1800s
