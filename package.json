@@ -81,6 +81,7 @@
     "**/nx/minimatch": "9.0.7",
     "**/nx/yaml": "^2.8.3",
     "**/@nx/devkit/minimatch": "9.0.7",
+    "**/webpack-dev-server/**/uuid": "^14.0.0",
     "@tootallnate/once": "3.0.1",
     "flatted": "^3.4.0",
     "handlebars": "^4.7.9",
