@@ -60,6 +60,7 @@ export const optionKeys = [
   'antiFraudFingerprint',
   'enableAnimations',
   'separatePaymentOptions',
+  'compactPaymentOptions',
   'excludedMethods',
   'optionLabels',
   'autoSelectOption',
