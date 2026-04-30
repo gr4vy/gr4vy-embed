@@ -127,7 +127,7 @@ jobs:
 
       - name: Upgrade npm for trusted publishing (needs npm >= 11.5.1 which comes with Node 24)
         if: matrix.node-version < '24'
-        run: npm install -g npm@^11.5.1
+        run: npm install -g npm@11.13.0
         shell: bash
 
       - name: Cache node modules
