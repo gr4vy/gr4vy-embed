@@ -62,7 +62,7 @@ dependencies, and call the `build` command.
 ```sh
 git clone git@github.com:gr4vy/embed.git
 cd embed/packages/embed-cdn
-yarn install
+yarn install --frozen-lockfile
 yarn build
 ```
 
