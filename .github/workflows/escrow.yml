@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Get repository name
         run: echo "REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}" >> $GITHUB_ENV
@@ -35,13 +37,13 @@ jobs:
             --output ${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz.gpg \
             ${{ runner.temp }}/${{ env.REPOSITORY_NAME }}.tar.gz
 
-# A GitHub Action would have been prefered, but all seem to have issues.
-# 
-# dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083 seems to have an issue with using env vars in it's inputs.
-# cpina/github-action-push-to-another-repository@9e487f29582587eeb4837c0552c886bb0644b6b9 removes all existing files from the destiation repo.
-# leigholiver/commit-with-deploy-key@9562ffd1c0965c6d4f264e2555a569bd33ac7d05 seems to have an issue with using env vars in it's inputs.
-# 
-# Very basic solution to get us going:
+      # A GitHub Action would have been prefered, but all seem to have issues.
+      #
+      # dmnemec/copy_file_to_another_repo_action@bbebd3da22e4a37d04dca5f782edd5201cb97083 seems to have an issue with using env vars in it's inputs.
+      # cpina/github-action-push-to-another-repository@9e487f29582587eeb4837c0552c886bb0644b6b9 removes all existing files from the destiation repo.
+      # leigholiver/commit-with-deploy-key@9562ffd1c0965c6d4f264e2555a569bd33ac7d05 seems to have an issue with using env vars in it's inputs.
+      #
+      # Very basic solution to get us going:
       - name: Commit to storage repo
         run: |
           # setup the github deploy key
@@ -68,4 +70,3 @@ jobs:
           git add .
           git commit --message "$INPUT_COMMIT_MESSAGE"
           GIT_SSH_COMMAND=$GIT_SSH git push -u origin main
-
