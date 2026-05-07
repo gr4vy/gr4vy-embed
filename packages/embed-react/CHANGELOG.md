@@ -1,3 +1,21 @@
+# v2.39.0 (Thu May 07 2026)
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency eslint-plugin-storybook to v10.3.6 [#486](https://github.com/gr4vy/gr4vy-embed/pull/486) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.3.6 [#487](https://github.com/gr4vy/gr4vy-embed/pull/487) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.3.5 [#467](https://github.com/gr4vy/gr4vy-embed/pull/467) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#466](https://github.com/gr4vy/gr4vy-embed/pull/466) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#461](https://github.com/gr4vy/gr4vy-embed/pull/461) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.3.4 [#462](https://github.com/gr4vy/gr4vy-embed/pull/462) ([@renovate[bot]](https://github.com/renovate[bot]) [@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.38.0 (Wed Apr 01 2026)
 
 #### 🚀 Enhancement

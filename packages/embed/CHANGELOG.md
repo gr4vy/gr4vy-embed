@@ -1,3 +1,15 @@
+# v2.39.0 (Thu May 07 2026)
+
+#### 🚀 Enhancement
+
+- feat(ux): add compactPaymentOptions passthrough [#477](https://github.com/gr4vy/gr4vy-embed/pull/477) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.38.0 (Wed Apr 01 2026)
 
 #### 🚀 Enhancement
