@@ -58,6 +58,7 @@ test('default configuration', () => {
     element: mockElement,
     enableAnimations: false,
     separatePaymentOptions: false,
+    compactPaymentOptions: false,
     form: mockForm,
     iframeHost: 'embed.test.gr4vy.app',
     iframeUrl: `https://embed.test.gr4vy.app`,

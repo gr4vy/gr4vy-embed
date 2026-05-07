@@ -74,7 +74,21 @@ setup({
     },
   },
 
-  billingAddressFields: {},
+  billingAddressFields: {
+    address: {
+      houseNumberOrName: true,
+      line1: true,
+      line2: true,
+      city: true,
+      postalCode: true,
+      state: true,
+      country: true,
+    },
+    emailAddress: true,
+    firstName: true,
+    lastName: true,
+    taxId: true,
+  },
   environment: 'production',
   country: 'AU',
   display: 'all',
@@ -92,4 +106,5 @@ setup({
   },
   secure: false,
   showDeleteButton: true,
+  compactPaymentOptions: true,
 })

@@ -58,6 +58,7 @@ export type Config = {
   antiFraudFingerprint?: string
   enableAnimations?: boolean
   separatePaymentOptions?: boolean
+  compactPaymentOptions?: boolean
   excludedMethods?: Array<string>
   optionLabels?: Record<string, string>
   autoSelectOption?: 'first' | 'firstStored' | 'firstNonStored' | 'none' | null
