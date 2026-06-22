@@ -5,3 +5,7 @@
 # @babel/core (low) - dev dependencies
 
 CVE-2026-49356
+
+# js-yaml - dev dependencies
+
+CVE-2026-53550
