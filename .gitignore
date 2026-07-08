@@ -1,6 +1,5 @@
 dist
 lib
-yarn-error.log
 *.tgz
 coverage
 package-lock.json

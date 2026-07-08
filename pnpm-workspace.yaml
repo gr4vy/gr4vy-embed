@@ -1,0 +1,37 @@
+packages:
+  - 'packages/*'
+  - 'apps/*'
+
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+
+linkWorkspacePackages: true
+
+overrides:
+  # Enzyme's React 18 adapter pulls in cheerio for jsdom traversal. Newer
+  # cheerio releases (1.1+) ship an ESM-only entry point that Jest's default
+  # CJS transform can't parse (https://github.com/cheeriojs/cheerio/issues/4014).
+  # Pin to the last version already in use to avoid an unplanned break.
+  cheerio: 1.0.0-rc.5
+  axios: 1.16.0
+  braces: ^3.0.3
+  css-what: ^5.0.1
+  path-to-regexp: ^0.1.13
+  cookie: 0.7.0
+  lru-cache: ^8.0.0
+  serialize-javascript: ^7.0.3
+  on-headers: 1.1.0
+  tar: 7.5.16
+  lodash: ^4.18.1
+  webpack: ^5.107.2
+  sockjs>uuid: ^14.0.0
+  '@tootallnate/once': 3.0.1
+  flatted: ^3.4.0
+  handlebars: ^4.7.9
+  yaml: ^1.10.3
+  fast-uri: ^3.1.2
+  ip-address: ^10.1.1
+  qs: ^6.15.2
+  ws: ^8.20.1
+  form-data: ^4.0.6
