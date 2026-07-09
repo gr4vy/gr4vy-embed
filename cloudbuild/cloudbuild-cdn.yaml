@@ -8,11 +8,20 @@ steps:
         '--key_fallback=node_modules-',
       ]
 
+  - id: 'restore pnpm store cache'
+    name: gcr.io/${PROJECT_ID}/restore_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}',
+        '--key=pnpm-store-v1',
+      ]
+
   - id: 'pnpm install'
     name: node:${_NODE_VERSION}-alpine
     script: |
       #!/usr/bin/env ash
       corepack enable
+      pnpm config set store-dir /workspace/.pnpm-store
       pnpm install --frozen-lockfile
 
   - id: 'scan with trivy'
@@ -79,6 +88,17 @@ steps:
         '--bucket=gs://${_CACHE_BUCKET}',
         '--key=node_modules-$( checksum pnpm-lock.yaml )',
         '--path=node_modules',
+        '--no-clobber',
+      ]
+
+  - id: 'save pnpm store cache'
+    waitFor: ['pnpm install']
+    name: gcr.io/${PROJECT_ID}/save_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}',
+        '--key=pnpm-store-v1',
+        '--path=/workspace/.pnpm-store',
         '--no-clobber',
       ]
 
