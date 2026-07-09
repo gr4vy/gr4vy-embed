@@ -164,7 +164,7 @@ jobs:
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          NPM_TOKEN: '' # placeholder to prevent pnpm from failing on ${NPM_TOKEN} expansion (OIDC token is written to ~/.npmrc by auto)
+          NPM_TOKEN: '' # placeholder so auto's npm plugin doesn't crash writing ~/.npmrc's ${NPM_TOKEN} template (actual auth is npm's OIDC trusted publishing, not this)
         run: |
           pnpm install --frozen-lockfile
           PACKAGE_VERSION=$($GITHUB_WORKSPACE/node_modules/.bin/auto shipit -dq) pnpm run build
