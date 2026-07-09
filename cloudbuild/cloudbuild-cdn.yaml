@@ -24,7 +24,6 @@ steps:
       - 'TRIVY_EXIT_CODE=0'
       - 'TRIVY_NO_PROGRESS=true'
       - 'TRIVY_IGNORE_UNFIXED=true'
-      - 'TRIVY_INCLUDE_DEV_DEPS=true'
 
   - id: 'pnpm build'
     name: node:${_NODE_VERSION}-alpine
