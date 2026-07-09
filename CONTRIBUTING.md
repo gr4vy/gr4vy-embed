@@ -11,7 +11,7 @@ that depends on `pnpm` workspaces to manage multiple packages
 ```sh
 git clone git@github.com:gr4vy/embed.git
 cd embed
-# corepack enable
+corepack enable
 pnpm run setup
 ```
 
