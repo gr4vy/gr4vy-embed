@@ -49,6 +49,7 @@ jobs:
       - name: Lint the content
         run: |
           pnpm install --frozen-lockfile
+          pnpm --filter example-cdn exec playwright install --with-deps chromium
           pnpm run build
           pnpm run lint
           pnpm run test

@@ -1,6 +1,16 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 
 const html = String.raw
+
+// The mocked embed-ui iframe below only writes its body once it's received
+// the `updateOptions` postMessage from Gr4vy Embed, an async round-trip that
+// hasn't necessarily finished by the time the page's own navigation
+// settles. Poll until there's something to parse.
+const getIframeData = async (page: Page) => {
+  const iframe = page.frameLocator('iframe').locator('body')
+  await expect(iframe).not.toBeEmpty()
+  return JSON.parse(await iframe.innerText())
+}
 
 const EMBED_UI_TEMPLATE = html`<html>
   <script>
@@ -55,11 +65,15 @@ test.beforeEach(async ({ page }) => {
 
 test('embed is able to load on the page', async ({ page }) => {
   // act
-  await page.goto('')
+  // 'load' never resolves here: the browser only fires it once every nested
+  // iframe has also fired its own 'load', and the mocked embed-ui iframe
+  // (routed via page.route above) doesn't reliably do so - 'domcontentloaded'
+  // is enough since the assertions below already poll for the real content.
+  await page.goto('', { waitUntil: 'domcontentloaded' })
 
   // assert
-  const iframe = page.frameLocator('iframe').locator('body')
-  await expect(JSON.parse(await iframe.innerText())).toEqual({
+  await expect(await getIframeData(page)).toEqual({
+    allowLocalNetworkAccess: false,
     amount: 1299,
     currency: 'USD',
     apiHost: 'api.demo.gr4vy.app',
@@ -105,12 +119,12 @@ dataset.forEach(([key, value]) => {
     await page.goto(
       `?options=${Buffer.from(JSON.stringify({ [key]: value })).toString(
         'base64'
-      )}`
+      )}`,
+      { waitUntil: 'domcontentloaded' }
     )
 
     // assert
-    const iframe = page.frameLocator('iframe').locator('body')
-    await expect(JSON.parse(await iframe.innerText())[key]).toBe(value)
+    await expect((await getIframeData(page))[key]).toBe(value)
   })
 })
 
@@ -128,15 +142,14 @@ test(`should pass a buyer id with shipping details id`, async ({ page }) => {
         buyerId: '1e8b009c-6d3f-44c5-8668-3c3d0537ce72',
         shippingDetailsId: '2b39ff28-22c5-4847-a355-e3bcdc3137b7',
       })
-    ).toString('base64')}`
+    ).toString('base64')}`,
+    { waitUntil: 'domcontentloaded' }
   )
 
   // assert
-  const iframe = page.frameLocator('iframe').locator('body')
-  await expect(JSON.parse(await iframe.innerText())['buyerId']).toBe(
-    '1e8b009c-6d3f-44c5-8668-3c3d0537ce72'
-  )
-  await expect(JSON.parse(await iframe.innerText())['shippingDetailsId']).toBe(
+  const data = await getIframeData(page)
+  await expect(data['buyerId']).toBe('1e8b009c-6d3f-44c5-8668-3c3d0537ce72')
+  await expect(data['shippingDetailsId']).toBe(
     '2b39ff28-22c5-4847-a355-e3bcdc3137b7'
   )
 })
@@ -154,14 +167,12 @@ test(`should pass a connectionOptions`, async ({ page }) => {
       JSON.stringify({
         connectionOptions: { foo: 'bar' },
       })
-    ).toString('base64')}`
+    ).toString('base64')}`,
+    { waitUntil: 'domcontentloaded' }
   )
 
   // assert
-  const iframe = page.frameLocator('iframe').locator('body')
-  await expect(
-    JSON.parse(await iframe.innerText())['connectionOptions']
-  ).toEqual({
+  await expect((await getIframeData(page))['connectionOptions']).toEqual({
     foo: 'bar',
   })
 })
