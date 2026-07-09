@@ -1,18 +1,14 @@
 packages:
   - 'packages/*'
   - 'apps/*'
-
 allowBuilds:
   esbuild: true
   unrs-resolver: true
-
 linkWorkspacePackages: true
-
 minimumReleaseAge: 4320
 trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 43200
 blockExoticSubdeps: true
-
 overrides:
   cheerio: 1.0.0-rc.5
   css-what: ^5.0.1
