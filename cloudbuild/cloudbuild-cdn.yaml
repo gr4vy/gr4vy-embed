@@ -10,8 +10,10 @@ steps:
 
   - id: 'pnpm install'
     name: node:${_NODE_VERSION}-alpine
-    entrypoint: npx
-    args: ['--yes', 'pnpm@10.34.4', 'install', '--frozen-lockfile']
+    script: |
+      #!/usr/bin/env ash
+      corepack enable
+      pnpm install --frozen-lockfile
 
   - id: 'scan with trivy'
     name: 'aquasec/trivy@sha256:bcc376de8d77cfe086a917230e818dc9f8528e3c852f7b1aff648949b6258d1c'
@@ -27,8 +29,10 @@ steps:
 
   - id: 'pnpm build'
     name: node:${_NODE_VERSION}-alpine
-    entrypoint: npx
-    args: ['--yes', 'pnpm@10.34.4', 'run', 'build']
+    script: |
+      #!/usr/bin/env ash
+      corepack enable
+      pnpm run build
 
   - id: 'push to storage bucket'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'

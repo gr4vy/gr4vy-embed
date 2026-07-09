@@ -38,6 +38,8 @@ jobs:
         with:
           path: node_modules
           key: pnpm-deps-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-deps-
 
       - name: Lint the content
         run: |
@@ -81,6 +83,8 @@ jobs:
         with:
           path: node_modules
           key: pnpm-deps-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-deps-
 
       - name: Create CDN build
         env:
@@ -139,6 +143,8 @@ jobs:
         with:
           path: node_modules
           key: pnpm-deps-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-deps-
 
       - name: Create Release
         env:
