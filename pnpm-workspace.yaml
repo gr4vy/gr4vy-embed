@@ -16,30 +16,47 @@ trustPolicy: no-downgrade
 trustPolicyIgnoreAfter: 43200
 blockExoticSubdeps: true
 
+# Already resolved and in use in the committed lockfile prior to this
+# setting's addition; excluded so re-resolving the workspace (e.g. after an
+# overrides change) doesn't get blocked re-validating a version we've
+# already adopted.
+minimumReleaseAgeExclude:
+  - typescript-eslint@8.63.0
+  - '@typescript-eslint/eslint-plugin@8.63.0'
+  - '@typescript-eslint/parser@8.63.0'
+  - '@typescript-eslint/project-service@8.63.0'
+  - '@typescript-eslint/scope-manager@8.63.0'
+  - '@typescript-eslint/tsconfig-utils@8.63.0'
+  - '@typescript-eslint/type-utils@8.63.0'
+  - '@typescript-eslint/types@8.63.0'
+  - '@typescript-eslint/typescript-estree@8.63.0'
+  - '@typescript-eslint/utils@8.63.0'
+  - '@typescript-eslint/visitor-keys@8.63.0'
+
 overrides:
   # Enzyme's React 18 adapter pulls in cheerio for jsdom traversal. Newer
   # cheerio releases (1.1+) ship an ESM-only entry point that Jest's default
   # CJS transform can't parse (https://github.com/cheeriojs/cheerio/issues/4014).
   # Pin to the last version already in use to avoid an unplanned break.
   cheerio: 1.0.0-rc.5
-  axios: 1.16.0
-  braces: ^3.0.3
+
+  # CVE-2021-33587: css-what <5.0.1 has a ReDoS in attribute-selector parsing.
+  # cheerio-select-tmp (pulled in by the pinned cheerio above) caps its own
+  # css-what dependency below 5.0.0, so it never resolves the fix on its own.
   css-what: ^5.0.1
-  path-to-regexp: ^0.1.13
-  cookie: 0.7.0
-  lru-cache: ^8.0.0
-  serialize-javascript: ^7.0.3
-  on-headers: 1.1.0
-  tar: 7.5.16
-  lodash: ^4.18.1
-  webpack: ^5.107.2
+
+  # CVE-2026-41907: uuid's v3/v5/v6 generators have an out-of-bounds write.
+  # sockjs (via webpack-dev-server) caps its own uuid dependency at ^8.3.2,
+  # which never received a backported fix (8.3.2 was uuid's last 8.x release).
   sockjs>uuid: ^14.0.0
-  '@tootallnate/once': 3.0.1
-  flatted: ^3.4.0
-  handlebars: ^4.7.9
-  yaml: ^1.10.3
-  fast-uri: ^3.1.2
-  ip-address: ^10.1.1
-  qs: ^6.15.2
-  ws: ^8.20.1
-  form-data: ^4.0.6
+
+  # NOTE: CVE-2025-25288/25289/25290 (ReDoS in @octokit/plugin-paginate-rest,
+  # @octokit/request, @octokit/request-error, pulled in transitively by
+  # `auto`) are intentionally NOT overridden here. Every fixed release of
+  # plugin-paginate-rest requires @octokit/core >=5, a breaking major bump
+  # from the v3.x that @auto-it/core (the code that actually calls it) was
+  # written against - forcing it risks a runtime crash during an actual
+  # release, which is worse than the vulnerability itself (auto only parses
+  # GitHub's own trusted API responses, not attacker-controlled input).
+  # Tracked/accepted in .trivyignore pending an upstream `auto` release that
+  # bumps its own @octokit dependencies.

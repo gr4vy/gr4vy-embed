@@ -2,10 +2,15 @@
 
 # Please provide a comment with each vulnerability ID describing why it has been ignored.
 
-# @babel/core (low) - dev dependencies
+# @octokit/plugin-paginate-rest, @octokit/request, @octokit/request-error -
+# ReDoS in devDependency `auto` (release automation only, not shipped).
+# Every fixed release of plugin-paginate-rest requires @octokit/core >=5, a
+# breaking major bump from the v3.x that @auto-it/core's own code was written
+# against; forcing it risks a runtime crash during an actual release, which
+# is worse than the vulnerability itself (auto only parses GitHub's own
+# trusted API responses, not attacker-controlled input). Revisit once auto
+# ships a release that bumps its own @octokit dependencies.
 
-CVE-2026-49356
-
-# js-yaml - dev dependencies
-
-CVE-2026-53550
+CVE-2025-25288
+CVE-2025-25289
+CVE-2025-25290

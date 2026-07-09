@@ -193,3 +193,6 @@ jobs:
           exit-code: 1
         env:
           TRIVY_DB_REPOSITORY: us-docker.pkg.dev/gr4vy-admin/aquasecurity/trivy-db
+          # pnpm's lockfile scanner excludes devDependencies by default;
+          # include them since that's most of what this repo has.
+          TRIVY_INCLUDE_DEV_DEPS: true
