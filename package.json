@@ -5,13 +5,13 @@
   "packageManager": "pnpm@10.34.4",
   "scripts": {
     "setup": "pnpm run clean; pnpm run build;",
-    "clean": "pnpm -r run clean",
-    "lint": "pnpm -r run lint",
-    "test": "pnpm -r --stream run test",
-    "build": "pnpm -r run build",
-    "dev": "pnpm -r --parallel run dev",
+    "clean": "pnpm --filter \"./packages/**\" run clean",
+    "lint": "pnpm --filter \"./packages/**\" run lint",
+    "test": "pnpm --filter \"./packages/**\" --stream run test",
+    "build": "pnpm --filter \"./packages/**\" run build",
+    "dev": "pnpm --filter \"./packages/**\" --parallel run dev",
     "release": "auto shipit",
-    "storybook": "pnpm -r --parallel run storybook"
+    "storybook": "pnpm --filter \"./packages/**\" --parallel run storybook"
   },
   "auto": {
     "onlyPublishWithReleaseLabel": true,
