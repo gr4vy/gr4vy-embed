@@ -205,9 +205,6 @@ importers:
       '@storybook/react-webpack5':
         specifier: 10.4.6
         version: 10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.16)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.4)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.108.4))
-      '@types/applepayjs':
-        specifier: ^3.0.4
-        version: 3.0.4
       '@types/react':
         specifier: ^18.3.31
         version: 18.3.31
