@@ -2,11 +2,19 @@ packages:
   - 'packages/*'
   - 'apps/*'
 
-onlyBuiltDependencies:
-  - esbuild
-  - unrs-resolver
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
 
 linkWorkspacePackages: true
+
+# Supply-chain hardening: require newly published versions to sit for 3 days
+# before they're installable (npm/PyPI-style "cooldown"), and refuse to
+# install a package whose trust level has regressed since a prior release.
+minimumReleaseAge: 4320
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200
+blockExoticSubdeps: true
 
 overrides:
   # Enzyme's React 18 adapter pulls in cheerio for jsdom traversal. Newer
