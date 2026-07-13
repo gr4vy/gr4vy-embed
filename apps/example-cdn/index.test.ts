@@ -60,7 +60,6 @@ test('embed is able to load on the page', async ({ page }) => {
 
   // assert
   const iframe = page.frameLocator('iframe').locator('body')
-  console.log('iframe', iframe)
   await expect(JSON.parse(await iframe.innerText())).toEqual({
     allowLocalNetworkAccess: false,
     amount: 1299,
