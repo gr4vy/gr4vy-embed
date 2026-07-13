@@ -34,7 +34,7 @@ const EMBED_UI_TEMPLATE = html`<html>
         )
 
         document.write(JSON.stringify(message.data)) // write to the page so that it can be used to assert
-        document.close() // close the document so that the page can be used to assert
+        document.close() // close the document so iframe fires load and page.goto's default wait resolves
       }
     })
   </script>
