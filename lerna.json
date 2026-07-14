@@ -1,0 +1,11 @@
+{
+  "npmClient": "pnpm",
+  "version": "2.39.0",
+  "command": {
+    "publish": {
+      "verifyAccess": false
+    }
+  },
+  "packages": ["packages/*"],
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
+}
