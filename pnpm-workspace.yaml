@@ -4,6 +4,9 @@ packages:
 allowBuilds:
   esbuild: true
   unrs-resolver: true
+  # lerna dependency; its postinstall only primes the nx daemon/cache,
+  # lerna works without it — keep the script blocked
+  nx: false
 linkWorkspacePackages: true
 managePackageManagerVersions: false
 minimumReleaseAge: 4320
