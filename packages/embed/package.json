@@ -14,10 +14,10 @@
   },
   "scripts": {
     "clean": "rm -rf lib *.tgz",
-    "prebuild": "yarn clean",
+    "prebuild": "pnpm run clean",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "tsc && webpack --config webpack.prod.js",
-    "prepack": "yarn build",
+    "prepack": "pnpm run build",
     "lint": "eslint src/**/*.ts",
     "test": "jest --colors"
   },

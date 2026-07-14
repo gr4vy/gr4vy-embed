@@ -14,7 +14,7 @@ Via the command line, install this package as follows.
 
 ```bash
 npm install @gr4vy/embed-react --save-prod
-# yarn add @gr4vy/embed-react --save
+# pnpm add @gr4vy/embed-react --save
 ```
 
 ## Get started

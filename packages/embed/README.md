@@ -15,7 +15,7 @@ Via the command line, install this package as follows.
 
 ```bash
 npm install @gr4vy/embed --save-prod
-# yarn add @gr4vy/embed --save
+# pnpm add @gr4vy/embed --save
 ```
 
 ## Get started

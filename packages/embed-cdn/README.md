@@ -62,8 +62,8 @@ dependencies, and call the `build` command.
 ```sh
 git clone git@github.com:gr4vy/embed.git
 cd embed/packages/embed-cdn
-yarn install --frozen-lockfile
-yarn build
+pnpm install --frozen-lockfile
+pnpm run build
 ```
 
 This will generate a CDN ready file at `./lib/gr4vy-embed.js`.

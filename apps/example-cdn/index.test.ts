@@ -34,6 +34,7 @@ const EMBED_UI_TEMPLATE = html`<html>
         )
 
         document.write(JSON.stringify(message.data)) // write to the page so that it can be used to assert
+        document.close() // close the document so iframe fires load and page.goto's default wait resolves
       }
     })
   </script>
@@ -60,6 +61,7 @@ test('embed is able to load on the page', async ({ page }) => {
   // assert
   const iframe = page.frameLocator('iframe').locator('body')
   await expect(JSON.parse(await iframe.innerText())).toEqual({
+    allowLocalNetworkAccess: false,
     amount: 1299,
     currency: 'USD',
     apiHost: 'api.demo.gr4vy.app',

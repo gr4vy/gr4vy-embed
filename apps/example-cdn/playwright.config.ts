@@ -3,7 +3,7 @@ import { PlaywrightTestConfig } from '@playwright/test'
 const config: PlaywrightTestConfig = {
   timeout: 5000,
   webServer: {
-    command: 'yarn start:ci',
+    command: 'pnpm run start:ci',
     url: 'http://localhost:9000',
     timeout: 120 * 1000,
   },

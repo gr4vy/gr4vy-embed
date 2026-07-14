@@ -4,14 +4,25 @@ steps:
     args:
       [
         '--bucket=gs://${_CACHE_BUCKET}',
-        '--key=node_modules-$( checksum yarn.lock )',
+        '--key=node_modules-$( checksum pnpm-lock.yaml )',
         '--key_fallback=node_modules-',
       ]
 
-  - id: 'yarn install'
+  - id: 'restore pnpm store cache'
+    name: gcr.io/${PROJECT_ID}/restore_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}',
+        '--key=pnpm-store-v1',
+      ]
+
+  - id: 'pnpm install'
     name: node:${_NODE_VERSION}-alpine
-    entrypoint: yarn
-    args: ['install', '--frozen-lockfile']
+    script: |
+      #!/usr/bin/env ash
+      corepack enable
+      pnpm config set store-dir /workspace/.pnpm-store
+      pnpm install --frozen-lockfile
 
   - id: 'scan with trivy'
     name: 'aquasec/trivy@sha256:bcc376de8d77cfe086a917230e818dc9f8528e3c852f7b1aff648949b6258d1c'
@@ -25,10 +36,12 @@ steps:
       - 'TRIVY_NO_PROGRESS=true'
       - 'TRIVY_IGNORE_UNFIXED=true'
 
-  - id: 'yarn build'
+  - id: 'pnpm build'
     name: node:${_NODE_VERSION}-alpine
-    entrypoint: yarn
-    args: ['build']
+    script: |
+      #!/usr/bin/env ash
+      corepack enable
+      pnpm run build
 
   - id: 'push to storage bucket'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
@@ -68,13 +81,24 @@ steps:
       ]
 
   - id: 'save cache'
-    waitFor: ['yarn build']
+    waitFor: ['pnpm build']
     name: gcr.io/${PROJECT_ID}/save_cache
     args:
       [
         '--bucket=gs://${_CACHE_BUCKET}',
-        '--key=node_modules-$( checksum yarn.lock )',
+        '--key=node_modules-$( checksum pnpm-lock.yaml )',
         '--path=node_modules',
+        '--no-clobber',
+      ]
+
+  - id: 'save pnpm store cache'
+    waitFor: ['pnpm install']
+    name: gcr.io/${PROJECT_ID}/save_cache
+    args:
+      [
+        '--bucket=gs://${_CACHE_BUCKET}',
+        '--key=pnpm-store-v1',
+        '--path=/workspace/.pnpm-store',
         '--no-clobber',
       ]
 
@@ -144,7 +168,7 @@ steps:
         fi;
 
 substitutions:
-  _NODE_VERSION: '20'
+  _NODE_VERSION: '22'
   _ARTIFACT_STORAGE_BUCKET: ''
   _CACHE_BUCKET: ''
   _GITHUB_TOKEN_LOCATION: ''

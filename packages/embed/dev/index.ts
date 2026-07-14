@@ -2,7 +2,7 @@ import { setup } from '../src'
 
 /**
  * Simple entry point for the dev server. This is loaded when
- * running `yarn dev` or `yarn start`.
+ * running `pnpm run dev` or `pnpm run start`.
  */
 
 const log = (key, payload) => {
