@@ -157,8 +157,7 @@ jobs:
           NPM_TOKEN: '' # placeholder so auto's npm plugin doesn't crash writing ~/.npmrc's ${NPM_TOKEN} template (actual auth is npm's OIDC trusted publishing, not this)
         run: |
           pnpm install --frozen-lockfile
-          # --force: publish a canary even though this PR has no release label
-          $GITHUB_WORKSPACE/node_modules/.bin/auto canary --force
+          pnpm run release
 
   release:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository_owner == 'gr4vy' && github.ref == 'refs/heads/main'"
