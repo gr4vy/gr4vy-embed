@@ -1,3 +1,20 @@
+# v2.40.0 (Wed Jul 15 2026)
+
+#### 🚀 Enhancement
+
+- task: migrate from yarn v1 to pnpm [#538](https://github.com/gr4vy/gr4vy-embed/pull/538) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+#### 🐛 Bug Fix
+
+- feat(embed): Add missing Embed options [#521](https://github.com/gr4vy/gr4vy-embed/pull/521) ([@kim4tGr4vy](https://github.com/kim4tGr4vy))
+
+#### Authors: 2
+
+- Kim ([@kim4tGr4vy](https://github.com/kim4tGr4vy))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.39.0 (Thu May 07 2026)
 
 #### 🚀 Enhancement

@@ -1,3 +1,36 @@
+# v2.40.0 (Wed Jul 15 2026)
+
+#### 🚀 Enhancement
+
+- task: migrate from yarn v1 to pnpm [#538](https://github.com/gr4vy/gr4vy-embed/pull/538) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update babel monorepo to ^7.29.7 [#507](https://github.com/gr4vy/gr4vy-embed/pull/507) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- feat(embed): Add missing Embed options [#521](https://github.com/gr4vy/gr4vy-embed/pull/521) ([@kim4tGr4vy](https://github.com/kim4tGr4vy))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update eslint [#540](https://github.com/gr4vy/gr4vy-embed/pull/540) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.4.6 [#526](https://github.com/gr4vy/gr4vy-embed/pull/526) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update react monorepo [#520](https://github.com/gr4vy/gr4vy-embed/pull/520) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#519](https://github.com/gr4vy/gr4vy-embed/pull/519) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.4.2 [#514](https://github.com/gr4vy/gr4vy-embed/pull/514) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update react monorepo to ^18.3.30 [#513](https://github.com/gr4vy/gr4vy-embed/pull/513) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#512](https://github.com/gr4vy/gr4vy-embed/pull/512) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update storybook monorepo to v10.4.1 [#510](https://github.com/gr4vy/gr4vy-embed/pull/510) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#503](https://github.com/gr4vy/gr4vy-embed/pull/503) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency @types/react to ^18.3.29 [#501](https://github.com/gr4vy/gr4vy-embed/pull/501) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#500](https://github.com/gr4vy/gr4vy-embed/pull/500) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Kim ([@kim4tGr4vy](https://github.com/kim4tGr4vy))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.39.0 (Thu May 07 2026)
 
 #### 🏠 Internal
