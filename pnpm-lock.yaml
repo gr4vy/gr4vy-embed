@@ -7,7 +7,7 @@ settings:
 overrides:
   cheerio: 1.0.0-rc.5
   css-what: ^5.0.1
-  sockjs>uuid: ^14.0.0
+  sockjs>uuid: ^14.0.1
 
 importers:
 
