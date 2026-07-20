@@ -15,7 +15,7 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@gr4vy/embed": "^2.26.0"
+    "@gr4vy/embed": "^2.40.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1"
