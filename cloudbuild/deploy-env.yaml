@@ -1,6 +1,6 @@
 steps:
   - id: 'Deploy pre-built version (Deprecated)'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli:540.0.0-alpine'
     entrypoint: gsutil
     args:
       [
@@ -13,7 +13,7 @@ steps:
     waitFor: ['-']
 
   - id: 'Deploy pre-built version'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli:540.0.0-alpine'
     entrypoint: gsutil
     args:
       [
@@ -27,7 +27,7 @@ steps:
     waitFor: ['-']
 
   - id: 'Add commit SHA label to storage bucket'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli:540.0.0-alpine'
     entrypoint: gcloud
     args:
       [
@@ -40,7 +40,7 @@ steps:
     waitFor: ['Deploy pre-built version (Deprecated)', 'Deploy pre-built version']
 
   - id: 'Invalidate CDN cache'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli:540.0.0-alpine'
     entrypoint: bash
     args:
       - '-eEuo'
