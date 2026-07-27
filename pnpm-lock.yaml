@@ -162,7 +162,7 @@ importers:
   apps/example-react:
     dependencies:
       '@gr4vy/embed-react':
-        specifier: ^2.24.5
+        specifier: ^2.40.0
         version: link:../../packages/embed-react
       react:
         specifier: ^17.0.2
