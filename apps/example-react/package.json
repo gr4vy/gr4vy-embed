@@ -13,7 +13,7 @@
     "prepack": "echo 'This is a private project and should not be packed.'; exit 1;"
   },
   "dependencies": {
-    "@gr4vy/embed-react": "^2.24.5",
+    "@gr4vy/embed-react": "^2.40.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
