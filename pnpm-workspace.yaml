@@ -17,3 +17,9 @@ overrides:
   cheerio: 1.0.0-rc.5
   css-what: ^5.0.1
   sockjs>uuid: ^14.0.1
+  # lerna/nx pin these transitively to exact vulnerable versions, so there is
+  # no in-range upgrade available — drop each override once lerna ships a bump
+  lerna>tar: ^7.5.21
+  lerna>js-yaml: ^4.3.0
+  nx>axios: ^1.18.0
+  nx>brace-expansion: ^5.0.8
