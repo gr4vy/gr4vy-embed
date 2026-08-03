@@ -22,4 +22,4 @@ overrides:
   lerna>tar: ^7.5.21
   lerna>js-yaml: ^4.3.0
   nx>axios: ^1.18.0
-  nx>brace-expansion: ^5.0.8
+  nx>brace-expansion: ^5.0.9
