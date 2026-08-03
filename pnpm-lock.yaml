@@ -96,8 +96,8 @@ importers:
         specifier: ^15.15.0
         version: 15.15.0
       html-webpack-plugin:
-        specifier: ^5.6.7
-        version: 5.6.7(webpack@5.109.0)
+        specifier: ^5.6.8
+        version: 5.6.8(webpack@5.109.0)
       http-server:
         specifier: ^13.1.0
         version: 13.1.0
@@ -4587,11 +4587,11 @@ packages:
     engines: {node: '>=12'}
     hasBin: true
 
-  html-webpack-plugin@5.6.7:
-    resolution: {integrity: sha512-md+vXtdCAe60s1k6AU3dUyMJnDxUyQAwfwPKoLisvgUF1IXjtlLsk2se54+qfL9Mdm26bbwvjJybpNx48NKRLw==}
+  html-webpack-plugin@5.6.8:
+    resolution: {integrity: sha512-MZmKQcTnhEh1SPSyMiEytIeDZDUoBZVorNHivQGXMASHf/BSGGOrKa2xQ5bGx3TCe1n109ecCt+cpww7wwWhKA==}
     engines: {node: '>=10.13.0'}
     peerDependencies:
-      '@rspack/core': 0.x || 1.x
+      '@rspack/core': 0.x || 1.x || 2.x
       webpack: ^5.20.0
     peerDependenciesMeta:
       '@rspack/core':
@@ -10085,7 +10085,7 @@ snapshots:
       css-loader: 7.1.4(webpack@5.109.0(postcss@8.5.22)(webpack-cli@5.1.4))
       es-module-lexer: 1.7.0
       fork-ts-checker-webpack-plugin: 9.1.0(typescript@5.9.3)(webpack@5.109.0(postcss@8.5.22)(webpack-cli@5.1.4))
-      html-webpack-plugin: 5.6.7(webpack@5.109.0)
+      html-webpack-plugin: 5.6.8(webpack@5.109.0)
       magic-string: 0.30.21
       storybook: 10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.6)(react@18.3.1)
       style-loader: 4.0.0(webpack@5.109.0(postcss@8.5.22)(webpack-cli@5.1.4))
@@ -12904,7 +12904,7 @@ snapshots:
       relateurl: 0.2.7
       terser: 5.49.0
 
-  html-webpack-plugin@5.6.7(webpack@5.109.0):
+  html-webpack-plugin@5.6.8(webpack@5.109.0):
     dependencies:
       '@types/html-minifier-terser': 6.1.0
       html-minifier-terser: 6.1.0
