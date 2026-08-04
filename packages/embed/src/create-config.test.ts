@@ -107,7 +107,10 @@ const iframeParam = (config: SetupConfig, param: string) =>
 
 test('should set the topLevelDomain in the iframeUrl when given', () => {
   expect(
-    iframeParam({ ...setupConfig, topLevelDomain: 'shop.test.com' }, 'topLevelDomain')
+    iframeParam(
+      { ...setupConfig, topLevelDomain: 'shop.test.com' },
+      'topLevelDomain'
+    )
   ).toEqual('shop.test.com')
 })
 
