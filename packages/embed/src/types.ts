@@ -65,11 +65,6 @@ export type Config = {
   allowLocalNetworkAccess?: boolean
   installmentCount?: number
   approvalExpiresAt?: string | null
-  /**
-   * The top-level page's domain (e.g. `shop.example.com`), for when the page
-   * hosting Embed is itself inside an iframe. Wallets validate against the
-   * top-level domain, which a framed page cannot read reliably.
-   */
   topLevelDomain?: string
 }
 

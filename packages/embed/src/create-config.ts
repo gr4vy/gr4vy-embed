@@ -39,8 +39,6 @@ export const createConfig = (setupConfig: SetupConfig) => {
     iframeUrl,
     iframeSrc: appendUrlParams(iframeUrl, {
       parentUrl: `${document.location.protocol}//${document.location.host}`,
-      // `parentUrl` stays the immediate parent — the iframe targets its
-      // postMessage calls at it — so wallets need this second value.
       topLevelDomain: setupConfig.topLevelDomain,
       font: setupConfig.theme?.fonts?.body
         ? encodeURIComponent(setupConfig.theme.fonts.body)
