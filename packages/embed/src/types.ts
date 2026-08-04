@@ -65,7 +65,7 @@ export type Config = {
   allowLocalNetworkAccess?: boolean
   installmentCount?: number
   approvalExpiresAt?: string | null
-  topLevelDomain?: string
+  topLevelDomain?: string | null
 }
 
 export type BillingDetails = {

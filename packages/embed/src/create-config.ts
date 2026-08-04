@@ -39,7 +39,7 @@ export const createConfig = (setupConfig: SetupConfig) => {
     iframeUrl,
     iframeSrc: appendUrlParams(iframeUrl, {
       parentUrl: `${document.location.protocol}//${document.location.host}`,
-      topLevelDomain: setupConfig.topLevelDomain,
+      topLevelDomain: setupConfig.topLevelDomain ?? undefined,
       font: setupConfig.theme?.fonts?.body
         ? encodeURIComponent(setupConfig.theme.fonts.body)
         : undefined,

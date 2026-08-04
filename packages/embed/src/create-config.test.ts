@@ -114,6 +114,12 @@ test('should omit the topLevelDomain when not given', () => {
   expect(createConfig(setupConfig).iframeSrc).not.toContain('topLevelDomain')
 })
 
+test('should omit the topLevelDomain when null', () => {
+  expect(
+    createConfig({ ...setupConfig, topLevelDomain: null }).iframeSrc
+  ).not.toContain('topLevelDomain')
+})
+
 test('should set the font in the iframeUrl', () => {
   expect(
     createConfig({
