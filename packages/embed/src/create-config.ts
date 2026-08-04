@@ -1,5 +1,5 @@
 import { SetupConfig, Config } from './types'
-import { hostToUrl, appendUrlParams, resolveTopLevelUrl } from './utils'
+import { hostToUrl, appendUrlParams } from './utils'
 import { generateChannelId } from './utils/generate-channel-id'
 
 export const createConfig = (setupConfig: SetupConfig) => {
@@ -39,11 +39,9 @@ export const createConfig = (setupConfig: SetupConfig) => {
     iframeUrl,
     iframeSrc: appendUrlParams(iframeUrl, {
       parentUrl: `${document.location.protocol}//${document.location.host}`,
-      // The top-level page, which differs from `parentUrl` only when the host
-      // page is itself framed. Wallets validate against this, not `parentUrl`.
-      // `parentUrl` stays the immediate parent because it is also what the
-      // iframe targets its postMessage calls at.
-      topLevelUrl: setupConfig.topLevelUrl ?? resolveTopLevelUrl(),
+      // `parentUrl` stays the immediate parent — the iframe targets its
+      // postMessage calls at it — so wallets need this second value.
+      topLevelDomain: setupConfig.topLevelDomain,
       font: setupConfig.theme?.fonts?.body
         ? encodeURIComponent(setupConfig.theme.fonts.body)
         : undefined,

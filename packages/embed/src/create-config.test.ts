@@ -63,7 +63,7 @@ test('default configuration', () => {
     iframeHost: 'embed.test.gr4vy.app',
     iframeUrl: `https://embed.test.gr4vy.app`,
     redirectMode: 'fallback',
-    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
+    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
     store: 'ask',
     token: '123',
     environment: undefined,
@@ -80,7 +80,7 @@ test('should set url values based on a gr4vy id', () => {
     apiUrl: `https://api.test.gr4vy.app`,
     iframeHost: `embed.test.gr4vy.app`,
     iframeUrl: `https://embed.test.gr4vy.app`,
-    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
+    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
   })
 })
 
@@ -92,7 +92,7 @@ test('should prefix URLs if for the sandbox environment', () => {
     apiUrl: `https://api.sandbox.test.gr4vy.app`,
     iframeHost: `embed.sandbox.test.gr4vy.app`,
     iframeUrl: `https://embed.sandbox.test.gr4vy.app`,
-    iframeSrc: `https://embed.sandbox.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
+    iframeSrc: `https://embed.sandbox.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&channel=${CHANNEL_ID}`,
   })
 })
 
@@ -100,6 +100,18 @@ test('should default store to "ask"', () => {
   expect(createConfig(setupConfig)).toMatchObject({
     store: 'ask',
   })
+})
+
+test('should set the topLevelDomain in the iframeUrl when given', () => {
+  expect(
+    createConfig({ ...setupConfig, topLevelDomain: 'shop.test.com' })
+  ).toMatchObject({
+    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelDomain=shop.test.com&channel=${CHANNEL_ID}`,
+  })
+})
+
+test('should omit the topLevelDomain when not given', () => {
+  expect(createConfig(setupConfig).iframeSrc).not.toContain('topLevelDomain')
 })
 
 test('should set the font in the iframeUrl', () => {
@@ -113,6 +125,6 @@ test('should set the font in the iframeUrl', () => {
       },
     })
   ).toMatchObject({
-    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelUrl=https%3A%2F%2Ftest.com&font=Lato&channel=${CHANNEL_ID}`,
+    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&font=Lato&channel=${CHANNEL_ID}`,
   })
 })

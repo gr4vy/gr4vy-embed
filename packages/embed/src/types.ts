@@ -66,19 +66,11 @@ export type Config = {
   installmentCount?: number
   approvalExpiresAt?: string | null
   /**
-   * The origin of the top-level page, e.g. `https://shop.example.com`.
-   *
-   * Only needed when the page hosting Embed is itself inside an iframe. Wallets
-   * validate against the top-level document's domain — Apple Pay treats it as
-   * the merchant session's `initiativeContext` — so a nested host page has to
-   * say what the top-level origin is.
-   *
-   * Detected automatically where the browser allows it
-   * (`location.ancestorOrigins`, then the referrer), so set this only when
-   * detection can't work: Firefox, a strict referrer policy, or frames nested
-   * more than one level deep. Ignored when Embed is not framed.
+   * The top-level page's domain (e.g. `shop.example.com`), for when the page
+   * hosting Embed is itself inside an iframe. Wallets validate against the
+   * top-level domain, which a framed page cannot read reliably.
    */
-  topLevelUrl?: string
+  topLevelDomain?: string
 }
 
 export type BillingDetails = {
