@@ -102,22 +102,23 @@ test('should default store to "ask"', () => {
   })
 })
 
+const iframeParam = (config: SetupConfig, param: string) =>
+  new URL(createConfig(config).iframeSrc).searchParams.get(param)
+
 test('should set the topLevelDomain in the iframeUrl when given', () => {
   expect(
-    createConfig({ ...setupConfig, topLevelDomain: 'shop.test.com' })
-  ).toMatchObject({
-    iframeSrc: `https://embed.test.gr4vy.app/?parentUrl=https%3A%2F%2Ftest.com&topLevelDomain=shop.test.com&channel=${CHANNEL_ID}`,
-  })
+    iframeParam({ ...setupConfig, topLevelDomain: 'shop.test.com' }, 'topLevelDomain')
+  ).toEqual('shop.test.com')
 })
 
 test('should omit the topLevelDomain when not given', () => {
-  expect(createConfig(setupConfig).iframeSrc).not.toContain('topLevelDomain')
+  expect(iframeParam(setupConfig, 'topLevelDomain')).toBeNull()
 })
 
 test('should omit the topLevelDomain when null', () => {
   expect(
-    createConfig({ ...setupConfig, topLevelDomain: null }).iframeSrc
-  ).not.toContain('topLevelDomain')
+    iframeParam({ ...setupConfig, topLevelDomain: null }, 'topLevelDomain')
+  ).toBeNull()
 })
 
 test('should set the font in the iframeUrl', () => {
