@@ -1,3 +1,40 @@
+# v2.41.0 (Wed Aug 05 2026)
+
+#### 🚀 Enhancement
+
+- chore(deps): update dependency @gr4vy/embed-react to ^2.40.0 [#550](https://github.com/gr4vy/gr4vy-embed/pull/550) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency @gr4vy/embed to ^2.40.0 [#546](https://github.com/gr4vy/gr4vy-embed/pull/546) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- tech improvement: fix ip-address vulnerabilities - TA-18302 [#557](https://github.com/gr4vy/gr4vy-embed/pull/557) ([@GiordanoArman](https://github.com/GiordanoArman))
+
+#### 🏠 Internal
+
+- chore(deps): update dependency lerna>tar to ^7.5.22 [#552](https://github.com/gr4vy/gr4vy-embed/pull/552) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency html-webpack-plugin to ^5.6.8 [#555](https://github.com/gr4vy/gr4vy-embed/pull/555) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix(deps): resolve open Dependabot vulnerability alerts [#551](https://github.com/gr4vy/gr4vy-embed/pull/551) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency ts-jest to ^29.4.12 [#548](https://github.com/gr4vy/gr4vy-embed/pull/548) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency prettier to ^3.9.6 [#547](https://github.com/gr4vy/gr4vy-embed/pull/547) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update pnpm to v10.34.5 [#544](https://github.com/gr4vy/gr4vy-embed/pull/544) ([@renovate[bot]](https://github.com/renovate[bot]))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update dependency eslint-plugin-storybook to v10.5.5 [#554](https://github.com/gr4vy/gr4vy-embed/pull/554) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update dependency eslint-plugin-storybook to v10.5.4 [#549](https://github.com/gr4vy/gr4vy-embed/pull/549) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#545](https://github.com/gr4vy/gr4vy-embed/pull/545) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): update dependency nx>brace-expansion to ^5.0.9 [#553](https://github.com/gr4vy/gr4vy-embed/pull/553) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency sockjs>uuid to ^14.0.1 [#543](https://github.com/gr4vy/gr4vy-embed/pull/543) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.40.0 (Wed Jul 15 2026)
 
 #### 🚀 Enhancement
