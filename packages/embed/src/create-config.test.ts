@@ -102,6 +102,28 @@ test('should default store to "ask"', () => {
   })
 })
 
+const iframeParam = (config: SetupConfig, param: string) =>
+  new URL(createConfig(config).iframeSrc).searchParams.get(param)
+
+test('should set the topLevelDomain in the iframeUrl when given', () => {
+  expect(
+    iframeParam(
+      { ...setupConfig, topLevelDomain: 'shop.test.com' },
+      'topLevelDomain'
+    )
+  ).toEqual('shop.test.com')
+})
+
+test('should omit the topLevelDomain when not given', () => {
+  expect(iframeParam(setupConfig, 'topLevelDomain')).toBeNull()
+})
+
+test('should omit the topLevelDomain when null', () => {
+  expect(
+    iframeParam({ ...setupConfig, topLevelDomain: null }, 'topLevelDomain')
+  ).toBeNull()
+})
+
 test('should set the font in the iframeUrl', () => {
   expect(
     createConfig({

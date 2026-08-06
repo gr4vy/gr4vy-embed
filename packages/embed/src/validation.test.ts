@@ -42,6 +42,43 @@ describe('validate', () => {
     expect(valid).toEqual(true)
   })
 
+  test('should validate the topLevelDomain', () => {
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return document.createElement('div')
+    })
+
+    const options = {
+      element: `#app`,
+      form: null,
+      amount: 1299,
+      currency: `USD`,
+      iframeHost: `127.0.0.1:8080`,
+      apiHost: `127.0.0.1:3100`,
+      token: `123456`,
+      country: 'US',
+    }
+
+    expect(validate({ ...options, topLevelDomain: 'shop.test.com' })).toEqual(
+      true
+    )
+    expect(
+      validate({ ...options, topLevelDomain: 'shop.test.com:8443' })
+    ).toEqual(true)
+
+    const onEvent = jest.fn()
+    expect(
+      validate({
+        ...options,
+        topLevelDomain: 'https://shop.test.com',
+        onEvent,
+      })
+    ).toEqual(false)
+    expect(onEvent).toHaveBeenCalledWith(
+      'argumentError',
+      expect.objectContaining({ argument: 'topLevelDomain' })
+    )
+  })
+
   test('should validate shipping details', () => {
     jest.spyOn(document, 'querySelector').mockImplementation(() => {
       return document.createElement('div')
