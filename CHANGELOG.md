@@ -1,3 +1,31 @@
+# v2.42.0 (Mon Aug 10 2026)
+
+#### 🚀 Enhancement
+
+- `@gr4vy/embed-react`, `@gr4vy/embed`
+  - feat(apple-pay): add a topLevelDomain option for framed host pages [#556](https://github.com/gr4vy/gr4vy-embed/pull/556) ([@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- fix(deps): bump js-yaml to patch CVE-2026-59870 [#564](https://github.com/gr4vy/gr4vy-embed/pull/564) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency webpack to ^5.109.2 [#561](https://github.com/gr4vy/gr4vy-embed/pull/561) ([@renovate[bot]](https://github.com/renovate[bot]))
+- tech improvement: fix vulnerabilities - TA-18305 [#558](https://github.com/gr4vy/gr4vy-embed/pull/558) ([@GiordanoArman](https://github.com/GiordanoArman))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update eslint [#562](https://github.com/gr4vy/gr4vy-embed/pull/562) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): update dependency postcss to ^8.5.26 [#560](https://github.com/gr4vy/gr4vy-embed/pull/560) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 4
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.41.0 (Wed Aug 05 2026)
 
 #### 🚀 Enhancement

@@ -1,3 +1,15 @@
+# v2.42.0 (Mon Aug 10 2026)
+
+#### 🚀 Enhancement
+
+- feat(apple-pay): add a topLevelDomain option for framed host pages [#556](https://github.com/gr4vy/gr4vy-embed/pull/556) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.40.0 (Wed Jul 15 2026)
 
 #### 🚀 Enhancement

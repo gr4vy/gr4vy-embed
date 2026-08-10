@@ -1,3 +1,20 @@
+# v2.42.0 (Mon Aug 10 2026)
+
+#### 🚀 Enhancement
+
+- feat(apple-pay): add a topLevelDomain option for framed host pages [#556](https://github.com/gr4vy/gr4vy-embed/pull/556) ([@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update eslint [#562](https://github.com/gr4vy/gr4vy-embed/pull/562) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.41.0 (Wed Aug 05 2026)
 
 #### 🏠 Internal
