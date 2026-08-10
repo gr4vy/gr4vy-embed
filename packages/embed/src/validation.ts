@@ -418,6 +418,13 @@ export const validate = (options: SetupConfig) =>
     required: !options.gr4vyId,
     callback: options.onEvent,
   }) &&
+  validateHost({
+    argument: 'topLevelDomain',
+    value: options.topLevelDomain,
+    message: 'must be a valid hostname with an optional :port',
+    required: false,
+    callback: options.onEvent,
+  }) &&
   validateIntent({
     argument: 'intent',
     value: options.intent,
