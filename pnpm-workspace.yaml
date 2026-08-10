@@ -25,5 +25,5 @@ overrides:
   ip-address: ^10.4.0
   nx>axios: ^1.18.0
   nx>brace-expansion: ^5.0.9
-  postcss: ^8.5.23
+  postcss: ^8.5.26
   undici: ^6.28.0
