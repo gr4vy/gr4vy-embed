@@ -106,6 +106,7 @@ The options for this integration are as follows.
 | `autoSelectOption`        | `null`       | `first`, `firstStored`, `firstNonStored`, `none` - Can be used to tell Embed to automatically select either the very first payment method available, the first stored method, the first non-stored method or not to select any method at all. By default, Embed will automatically select the card method if no stored methods are active.                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `installmentCount` | `number` | An optional value that indicates the number of installments a buyer is required to make. |
 | `approvalExpiresAt` | `null` | An optional datetime string (ISO 8601 format recommended) that sets the expiration date for transaction approval. If set to `null`, it is treated the same as if it were omitted. |
+| `topLevelDomain` | `null` | An optional domain of the top level page, for example `shop.example.com`. Set this when the page hosting Embed is itself inside an iframe: wallets validate against the top level document's domain, which a nested page cannot read reliably. The domain must also be registered for the wallet on the merchant account. Ignored when Embed is not framed. |
 
 ### Theming
 
