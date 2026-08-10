@@ -21,9 +21,12 @@ overrides:
   # lerna/nx pin these transitively to exact vulnerable versions, so there is
   # no in-range upgrade available — drop each override once lerna ships a bump
   lerna>tar: ^7.5.22
-  lerna>js-yaml: ^4.3.0
+  lerna>js-yaml: ^4.3.1
   ip-address: ^10.4.0
   nx>axios: ^1.18.0
   nx>brace-expansion: ^5.0.9
   postcss: ^8.5.26
   undici: ^6.28.0
+minimumReleaseAgeExclude:
+  # Renovate security update: js-yaml@4.3.1
+  - js-yaml@4.3.1

@@ -10,7 +10,7 @@ overrides:
   fast-uri: ^3.1.5
   sockjs>uuid: ^14.0.1
   lerna>tar: ^7.5.22
-  lerna>js-yaml: ^4.3.0
+  lerna>js-yaml: ^4.3.1
   ip-address: ^10.4.0
   nx>axios: ^1.18.0
   nx>brace-expansion: ^5.0.9
@@ -5211,6 +5211,10 @@ packages:
 
   js-yaml@4.3.0:
     resolution: {integrity: sha512-1td788aAnnZ5qs7V2QIRl1owjtYpbKt749Y3xauqQgwIIGF/xXWz1wMTEBx5O3LK3lXLVuqXPdPxj2BoFHaW9Q==}
+    hasBin: true
+
+  js-yaml@4.3.1:
+    resolution: {integrity: sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==}
     hasBin: true
 
   jscodeshift@0.15.2:
@@ -11624,7 +11628,7 @@ snapshots:
     dependencies:
       env-paths: 2.2.1
       import-fresh: 3.3.1
-      js-yaml: 4.3.0
+      js-yaml: 4.3.1
       parse-json: 5.2.0
     optionalDependencies:
       typescript: 5.9.3
@@ -13726,6 +13730,10 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
+  js-yaml@4.3.1:
+    dependencies:
+      argparse: 2.0.1
+
   jscodeshift@0.15.2(@babel/preset-env@7.29.7(@babel/core@7.29.7)):
     dependencies:
       '@babel/core': 7.29.7
@@ -13882,7 +13890,7 @@ snapshots:
       inquirer: 12.9.6(@types/node@20.19.43)
       is-ci: 3.0.1
       jest-diff: 30.4.1
-      js-yaml: 4.3.0
+      js-yaml: 4.3.1
       libnpmaccess: 10.0.3
       libnpmpublish: 11.1.2
       load-json-file: 6.2.0
