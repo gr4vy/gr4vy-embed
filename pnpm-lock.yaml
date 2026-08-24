@@ -11,7 +11,7 @@ overrides:
   sockjs>uuid: ^14.0.1
   lerna>tar: ^7.5.22
   lerna>js-yaml: ^4.3.1
-  ip-address: ^10.4.0
+  ip-address: ^10.5.0
   nx>axios: ^1.18.0
   nx>brace-expansion: ^5.0.9
   postcss: ^8.5.26
@@ -4832,8 +4832,8 @@ packages:
     peerDependencies:
       fp-ts: ^2.5.0
 
-  ip-address@10.4.0:
-    resolution: {integrity: sha512-oSK96Grm3aP6OrS263xVxbNDGVL7rzBtYdpGqlDG8iQdoenDoTs/nkki+DflYbAEE8Xl6o5YxhxlrKvI3nqKXQ==}
+  ip-address@10.5.0:
+    resolution: {integrity: sha512-R5SnVLJmgYYvf2F2ZgwSBnelz5G4q5AxIC277GDfUaNbrZKNANcBC7RHqYYePlszf4kBolVkJauG0ZjHHFh55g==}
     engines: {node: '>= 12'}
 
   ipaddr.js@1.9.1:
@@ -13223,7 +13223,7 @@ snapshots:
     dependencies:
       fp-ts: 2.16.11
 
-  ip-address@10.4.0: {}
+  ip-address@10.5.0: {}
 
   ipaddr.js@1.9.1: {}
 
@@ -15753,7 +15753,7 @@ snapshots:
 
   socks@2.8.9:
     dependencies:
-      ip-address: 10.4.0
+      ip-address: 10.5.0
       smart-buffer: 4.2.0
 
   source-map-js@1.2.1: {}
