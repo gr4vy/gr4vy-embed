@@ -44,7 +44,7 @@ steps:
       pnpm run build
 
   - id: 'push to storage bucket'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:512.0.0-alpine'
     entrypoint: gsutil
     args:
       [
@@ -57,7 +57,7 @@ steps:
       ]
 
   - id: 'remove cache-control metadata'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:512.0.0-alpine'
     entrypoint: gsutil
     args:
       [
@@ -69,7 +69,7 @@ steps:
       ]
 
   - id: 'Set cache-control on assets'
-    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:340.0.0-alpine'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:512.0.0-alpine'
     entrypoint: gsutil
     args:
       [
