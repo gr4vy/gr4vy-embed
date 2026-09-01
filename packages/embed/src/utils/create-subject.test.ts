@@ -25,4 +25,29 @@ describe('createSubject', () => {
     test$.next(123)
     expect(value).toBe(321)
   })
+
+  test('sync option delivers events synchronously', () => {
+    const test$ = createSubject<number>(undefined, { sync: true })
+    let value = 0
+    test$.subscribe((newValue) => {
+      value = newValue
+    })
+    test$.next(123)
+    // With sync: true, the value should be updated immediately
+    expect(value).toBe(123)
+  })
+
+  test('async delivery (default) defers events', (done) => {
+    const test$ = createSubject<number>()
+    let value = 0
+    test$.subscribe((newValue) => {
+      value = newValue
+      // This runs after the setTimeout
+      expect(value).toBe(123)
+      done()
+    })
+    test$.next(123)
+    // Value should still be 0 immediately after next() because of setTimeout
+    expect(value).toBe(0)
+  })
 })
