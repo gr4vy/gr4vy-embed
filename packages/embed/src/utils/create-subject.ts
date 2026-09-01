@@ -25,9 +25,6 @@ export const createSubject = <T = void>(
     },
     next: (nextValue: T) => {
       value = nextValue
-      // By default, setTimeout ensures events are called async.
-      // For Apple Pay, we need synchronous delivery to stay within
-      // the user gesture handler required by WebKit.
       subscribers.forEach((callbackFn) =>
         sync ? callbackFn(value) : setTimeout(() => callbackFn(value), 0)
       )
