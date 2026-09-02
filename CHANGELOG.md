@@ -1,3 +1,36 @@
+# v2.43.0 (Wed Sep 02 2026)
+
+#### 🚀 Enhancement
+
+- chore(deps): update dependency @gr4vy/embed to ^2.42.0 [#566](https://github.com/gr4vy/gr4vy-embed/pull/566) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency @gr4vy/embed-react to ^2.42.0 [#567](https://github.com/gr4vy/gr4vy-embed/pull/567) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - bug: address Apple Pay session creation bug - TA-18711 [#577](https://github.com/gr4vy/gr4vy-embed/pull/577) ([@GiordanoArman](https://github.com/GiordanoArman))
+
+#### 🏠 Internal
+
+- task: Fix "manifest unknown" error for cloud-sdk (Google build) - TA-18721 [#578](https://github.com/gr4vy/gr4vy-embed/pull/578) ([@GiordanoArman](https://github.com/GiordanoArman))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update dependency eslint-plugin-storybook to v10.5.10 [#570](https://github.com/gr4vy/gr4vy-embed/pull/570) ([@renovate[bot]](https://github.com/renovate[bot]))
+  - chore(dev-deps): update eslint [#565](https://github.com/gr4vy/gr4vy-embed/pull/565) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): update dependency sockjs>uuid to ^14.0.2 [#569](https://github.com/gr4vy/gr4vy-embed/pull/569) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency css-what to ^5.1.0 [#571](https://github.com/gr4vy/gr4vy-embed/pull/571) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency ip-address to ^10.5.0 [#572](https://github.com/gr4vy/gr4vy-embed/pull/572) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency lerna>js-yaml to ^4.3.1 [#559](https://github.com/gr4vy/gr4vy-embed/pull/559) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 2
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.42.0 (Mon Aug 10 2026)
 
 #### 🚀 Enhancement

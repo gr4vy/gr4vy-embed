@@ -1,3 +1,16 @@
+# v2.43.0 (Wed Sep 02 2026)
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency eslint-plugin-storybook to v10.5.10 [#570](https://github.com/gr4vy/gr4vy-embed/pull/570) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update eslint [#565](https://github.com/gr4vy/gr4vy-embed/pull/565) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v2.42.0 (Mon Aug 10 2026)
 
 #### 🚀 Enhancement

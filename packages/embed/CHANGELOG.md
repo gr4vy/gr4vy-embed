@@ -1,3 +1,15 @@
+# v2.43.0 (Wed Sep 02 2026)
+
+#### 🐛 Bug Fix
+
+- bug: address Apple Pay session creation bug - TA-18711 [#577](https://github.com/gr4vy/gr4vy-embed/pull/577) ([@GiordanoArman](https://github.com/GiordanoArman))
+
+#### Authors: 1
+
+- GiordanoArman ([@GiordanoArman](https://github.com/GiordanoArman))
+
+---
+
 # v2.42.0 (Mon Aug 10 2026)
 
 #### 🚀 Enhancement
