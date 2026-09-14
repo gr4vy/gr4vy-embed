@@ -25,6 +25,7 @@ overrides:
   ip-address: ^10.7.0
   nx>axios: ^1.20.0
   nx>brace-expansion: ^5.0.9
+  nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
 minimumReleaseAgeExclude:
