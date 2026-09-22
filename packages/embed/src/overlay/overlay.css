@@ -54,6 +54,7 @@
 }
 
 .gr4vy__frame {
+  /* avoids opaque backdrop when parent page has `dark` color scheme */
   color-scheme: light;
   height: 100vh;
   width: 100vw;
