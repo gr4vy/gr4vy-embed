@@ -1,3 +1,15 @@
+# v2.44.0 (Tue Sep 22 2026)
+
+#### 🐛 Bug Fix
+
+- fix(overlay): pin the approval frame's colour scheme [#593](https://github.com/gr4vy/gr4vy-embed/pull/593) ([@cbetta](https://github.com/cbetta))
+
+#### Authors: 1
+
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+
+---
+
 # v2.43.0 (Wed Sep 02 2026)
 
 #### 🐛 Bug Fix

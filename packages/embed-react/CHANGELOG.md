@@ -1,3 +1,15 @@
+# v2.44.0 (Tue Sep 22 2026)
+
+#### 🏠 Internal
+
+- chore(dev-deps): update eslint [#587](https://github.com/gr4vy/gr4vy-embed/pull/587) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v2.43.0 (Wed Sep 02 2026)
 
 #### 🏠 Internal

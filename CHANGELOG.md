@@ -1,3 +1,45 @@
+# v2.44.0 (Tue Sep 22 2026)
+
+#### 🚀 Enhancement
+
+- chore(deps): update dependency @gr4vy/embed-react to ^2.43.0 [#582](https://github.com/gr4vy/gr4vy-embed/pull/582) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency @gr4vy/embed to ^2.43.0 [#581](https://github.com/gr4vy/gr4vy-embed/pull/581) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🐛 Bug Fix
+
+- `@gr4vy/embed`
+  - fix(overlay): pin the approval frame's colour scheme [#593](https://github.com/gr4vy/gr4vy-embed/pull/593) ([@cbetta](https://github.com/cbetta))
+
+#### 🏠 Internal
+
+- chore(dev-deps): update dependency prettier to ^3.9.8 [#592](https://github.com/gr4vy/gr4vy-embed/pull/592) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(dev-deps): update dependency webpack to ^5.110.3 [#586](https://github.com/gr4vy/gr4vy-embed/pull/586) ([@renovate[bot]](https://github.com/renovate[bot]))
+- fix(deps): resolve smol-toml and js-yaml vulnerabilities [#588](https://github.com/gr4vy/gr4vy-embed/pull/588) ([@luca-gr4vy](https://github.com/luca-gr4vy))
+- chore(dev-deps): update dependency @playwright/test to ^1.63.0 [#585](https://github.com/gr4vy/gr4vy-embed/pull/585) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency fast-uri to ^3.1.7 [vulnerability] [#579](https://github.com/gr4vy/gr4vy-embed/pull/579) ([@renovate[bot]](https://github.com/renovate[bot]))
+- `@gr4vy/embed-react`
+  - chore(dev-deps): update eslint [#587](https://github.com/gr4vy/gr4vy-embed/pull/587) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### 🔩 Dependency Updates
+
+- chore(deps): update dependency fast-uri to ^3.1.8 [#589](https://github.com/gr4vy/gr4vy-embed/pull/589) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency ip-address to ^10.7.2 [#590](https://github.com/gr4vy/gr4vy-embed/pull/590) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency nx>brace-expansion to ^5.0.12 [#591](https://github.com/gr4vy/gr4vy-embed/pull/591) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency undici to ^6.28.1 [#584](https://github.com/gr4vy/gr4vy-embed/pull/584) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency lerna>js-yaml to ^4.3.2 [#574](https://github.com/gr4vy/gr4vy-embed/pull/574) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency postcss to ^8.5.28 [#580](https://github.com/gr4vy/gr4vy-embed/pull/580) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency nx>axios to ^1.20.0 [#575](https://github.com/gr4vy/gr4vy-embed/pull/575) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update node.js to >=22.23.2 [#576](https://github.com/gr4vy/gr4vy-embed/pull/576) ([@renovate[bot]](https://github.com/renovate[bot]))
+- chore(deps): update dependency ip-address to ^10.7.0 [#583](https://github.com/gr4vy/gr4vy-embed/pull/583) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 3
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+- Cristiano Betta ([@cbetta](https://github.com/cbetta))
+- Luca Allievi ([@luca-gr4vy](https://github.com/luca-gr4vy))
+
+---
+
 # v2.43.0 (Wed Sep 02 2026)
 
 #### 🚀 Enhancement
