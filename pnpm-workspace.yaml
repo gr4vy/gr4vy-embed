@@ -18,6 +18,7 @@ overrides:
   css-what: ^5.1.0
   fast-uri: ^3.1.8 # fixes https://github.com/gr4vy/gr4vy-embed/security/dependabot/266
   brace-expansion@1: ^1.1.21
+  pacote@21: ^21.5.1
   sockjs>uuid: ^14.0.2
   # lerna/nx pin these transitively to exact vulnerable versions, so there is
   # no in-range upgrade available — drop each override once lerna ships a bump
