@@ -149,7 +149,7 @@ importers:
   apps/example-cdn:
     dependencies:
       '@gr4vy/embed':
-        specifier: ^2.43.0
+        specifier: ^2.44.0
         version: link:../../packages/embed
     devDependencies:
       '@playwright/test':
@@ -159,13 +159,13 @@ importers:
   apps/example-cjs:
     dependencies:
       '@gr4vy/embed':
-        specifier: ^2.43.0
+        specifier: ^2.44.0
         version: link:../../packages/embed
 
   apps/example-esm:
     dependencies:
       '@gr4vy/embed':
-        specifier: ^2.43.0
+        specifier: ^2.44.0
         version: link:../../packages/embed
 
   apps/example-react:
