@@ -19,6 +19,7 @@ overrides:
   nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
+  webpack-dev-middleware: ^7.4.6
 
 importers:
 
@@ -218,7 +219,7 @@ importers:
         version: 10.4.6(@babel/preset-env@7.29.7(@babel/core@7.29.7))(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1)
       '@storybook/react-webpack5':
         specifier: 10.4.6
-        version: 10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))
+        version: 10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(tslib@2.8.1)(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))
       '@types/react':
         specifier: ^18.3.31
         version: 18.3.31
@@ -7517,17 +7518,8 @@ packages:
       webpack-dev-server:
         optional: true
 
-  webpack-dev-middleware@6.1.3:
-    resolution: {integrity: sha512-A4ChP0Qj8oGociTs6UdlRUGANIGrCDL3y+pmQMc+dSsraXHCatFpmMey4mYELA+juqwUqwQsUgJJISXl1KWmiw==}
-    engines: {node: '>= 14.15.0'}
-    peerDependencies:
-      webpack: ^5.0.0
-    peerDependenciesMeta:
-      webpack:
-        optional: true
-
-  webpack-dev-middleware@7.4.5:
-    resolution: {integrity: sha512-uxQ6YqGdE4hgDKNf7hUiPXOdtkXvBJXrfEGYSx7P7LC8hnUYGK70X6xQXUvXeNyBDDcsiQXpG2m3G9vxowaEuA==}
+  webpack-dev-middleware@7.4.6:
+    resolution: {integrity: sha512-yBWCMvIfUmuhAE8vdqUKzH0vg9kuWN0KeG4vBnqRplUFHRU7lMQjkiJWxVQzvo2BTewqhPhDlMB41rAt2jVA9A==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       webpack: ^5.0.0
@@ -10108,7 +10100,7 @@ snapshots:
       - supports-color
       - webpack
 
-  '@storybook/builder-webpack5@10.4.6(postcss@8.5.28)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))':
+  '@storybook/builder-webpack5@10.4.6(postcss@8.5.28)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(tslib@2.8.1)(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))':
     dependencies:
       '@storybook/core-webpack': 10.4.6(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))
       case-sensitive-paths-webpack-plugin: 2.4.0
@@ -10123,7 +10115,7 @@ snapshots:
       terser-webpack-plugin: 5.6.1(postcss@8.5.28)(webpack@5.110.3(postcss@8.5.28)(webpack-cli@5.1.4))
       ts-dedent: 2.3.0
       webpack: 5.110.3(postcss@8.5.28)(webpack-cli@5.1.4)
-      webpack-dev-middleware: 6.1.3(webpack@5.110.3(postcss@8.5.28)(webpack-cli@5.1.4))
+      webpack-dev-middleware: 7.4.6(tslib@2.8.1)(webpack@5.110.3)
       webpack-hot-middleware: 2.26.1
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
@@ -10145,6 +10137,7 @@ snapshots:
       - postcss
       - sharp
       - svgo
+      - tslib
       - uglify-js
       - webpack-cli
 
@@ -10258,9 +10251,9 @@ snapshots:
       '@types/react': 18.3.31
       '@types/react-dom': 18.3.7(@types/react@18.3.31)
 
-  '@storybook/react-webpack5@10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))':
+  '@storybook/react-webpack5@10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(postcss@8.5.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(tslib@2.8.1)(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))':
     dependencies:
-      '@storybook/builder-webpack5': 10.4.6(postcss@8.5.28)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))
+      '@storybook/builder-webpack5': 10.4.6(postcss@8.5.28)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(tslib@2.8.1)(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))
       '@storybook/preset-react-webpack': 10.4.6(postcss@8.5.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)(webpack-cli@5.1.4(webpack-dev-server@5.2.6)(webpack@5.110.3))
       '@storybook/react': 10.4.6(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.4.6(@testing-library/dom@10.4.1)(@types/react@18.3.31)(prettier@3.9.9)(react@18.3.1))(typescript@5.9.3)
       react: 18.3.1
@@ -10288,6 +10281,7 @@ snapshots:
       - sharp
       - supports-color
       - svgo
+      - tslib
       - uglify-js
       - webpack-cli
 
@@ -16442,17 +16436,7 @@ snapshots:
     optionalDependencies:
       webpack-dev-server: 5.2.6(tslib@2.8.1)(webpack-cli@5.1.4)(webpack@5.110.3)
 
-  webpack-dev-middleware@6.1.3(webpack@5.110.3(postcss@8.5.28)(webpack-cli@5.1.4)):
-    dependencies:
-      colorette: 2.0.20
-      memfs: 3.5.3
-      mime-types: 2.1.35
-      range-parser: 1.3.0
-      schema-utils: 4.3.3
-    optionalDependencies:
-      webpack: 5.110.3(postcss@8.5.28)(webpack-cli@5.1.4)
-
-  webpack-dev-middleware@7.4.5(tslib@2.8.1)(webpack@5.110.3):
+  webpack-dev-middleware@7.4.6(tslib@2.8.1)(webpack@5.110.3):
     dependencies:
       colorette: 2.0.20
       memfs: 4.64.0(tslib@2.8.1)
@@ -16493,7 +16477,7 @@ snapshots:
       serve-index: 1.9.2
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 7.4.5(tslib@2.8.1)(webpack@5.110.3)
+      webpack-dev-middleware: 7.4.6(tslib@2.8.1)(webpack@5.110.3)
       ws: 8.21.1
     optionalDependencies:
       webpack: 5.110.3(postcss@8.5.28)(webpack-cli@5.1.4)

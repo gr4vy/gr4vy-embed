@@ -30,6 +30,9 @@ overrides:
   nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
+  # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
+  # in the 6.x line, which the advisory's "<7.4.5" range also flags
+  webpack-dev-middleware: ^7.4.6
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
