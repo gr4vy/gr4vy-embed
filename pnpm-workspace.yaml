@@ -38,6 +38,8 @@ overrides:
   proxy-addr: ^2.0.8
   # fixes https://github.com/advisories/GHSA-pqg4-j6r4-53mv
   shell-quote: ^1.11.0
+  # fixes https://github.com/advisories/GHSA-68fv-2mgg-jv7q
+  source-map-js: ^1.2.2
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
