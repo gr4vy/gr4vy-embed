@@ -27,7 +27,6 @@ overrides:
   ip-address: ^10.7.3
   nx>axios: ^1.20.0
   nx>brace-expansion: ^5.0.12
-  nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
   # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
