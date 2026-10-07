@@ -17,6 +17,8 @@ overrides:
   cheerio: 1.0.0-rc.5
   css-what: ^5.1.0
   fast-uri: ^3.1.8 # fixes https://github.com/gr4vy/gr4vy-embed/security/dependabot/266
+  brace-expansion@1: ^1.1.21
+  pacote@21: ^21.5.1
   sockjs>uuid: ^14.0.2
   # lerna/nx pin these transitively to exact vulnerable versions, so there is
   # no in-range upgrade available — drop each override once lerna ships a bump
@@ -28,6 +30,9 @@ overrides:
   nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
+  # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
+  # in the 6.x line, which the advisory's "<7.4.5" range also flags
+  webpack-dev-middleware: ^7.4.6
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
