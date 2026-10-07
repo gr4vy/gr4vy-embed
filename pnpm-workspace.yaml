@@ -44,6 +44,9 @@ overrides:
   nx: ^22.7.9
   # fixes https://github.com/advisories/GHSA-vc2v-76pw-4v95
   compression: ^1.8.2
+  # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
+  # https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
+  qs: ^6.16.0
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
