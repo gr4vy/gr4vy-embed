@@ -26,6 +26,7 @@ overrides:
   nx: ^22.7.9
   compression: ^1.8.2
   qs: ^6.16.0
+  smol-toml: ^1.9.0
 
 importers:
 

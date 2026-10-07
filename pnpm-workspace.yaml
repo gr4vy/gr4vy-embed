@@ -47,6 +47,8 @@ overrides:
   # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
   # https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
   qs: ^6.16.0
+  #fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
+  smol-toml: ^1.9.0
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
