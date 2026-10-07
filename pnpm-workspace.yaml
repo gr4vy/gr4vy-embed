@@ -27,12 +27,29 @@ overrides:
   ip-address: ^10.7.3
   nx>axios: ^1.20.0
   nx>brace-expansion: ^5.0.12
-  nx>smol-toml: ^1.7.1
   postcss: ^8.5.28
   undici: ^6.28.1
   # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
   # in the 6.x line, which the advisory's "<7.4.5" range also flags
   webpack-dev-middleware: ^7.4.6
+  # express pins this transitively and the lockfile hadn't picked up the patch yet
+  # fixes https://github.com/advisories/GHSA-jqcg-44mw-7w3h
+  proxy-addr: ^2.0.8
+  # fixes https://github.com/advisories/GHSA-pqg4-j6r4-53mv
+  shell-quote: ^1.11.0
+  # fixes https://github.com/advisories/GHSA-68fv-2mgg-jv7q
+  source-map-js: ^1.2.2
+  # fixes https://github.com/advisories/GHSA-w2vw-w76x-qr89
+  nx: ^22.7.9
+  # fixes https://github.com/advisories/GHSA-vc2v-76pw-4v95
+  compression: ^1.8.2
+  # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
+  # https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
+  qs: ^6.16.0
+  #fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
+  smol-toml: ^1.9.0
+  # fixes https://github.com/advisories/GHSA-rj75-hqrm-r3gf
+  postcss-selector-parser: ^7.1.6
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
