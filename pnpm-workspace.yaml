@@ -40,6 +40,8 @@ overrides:
   shell-quote: ^1.11.0
   # fixes https://github.com/advisories/GHSA-68fv-2mgg-jv7q
   source-map-js: ^1.2.2
+  # fixes https://github.com/advisories/GHSA-w2vw-w76x-qr89
+  nx: ^22.7.9
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
