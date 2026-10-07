@@ -36,6 +36,8 @@ overrides:
   # express pins this transitively and the lockfile hadn't picked up the patch yet
   # fixes https://github.com/advisories/GHSA-jqcg-44mw-7w3h
   proxy-addr: ^2.0.8
+  # fixes https://github.com/advisories/GHSA-pqg4-j6r4-53mv
+  shell-quote: ^1.11.0
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
