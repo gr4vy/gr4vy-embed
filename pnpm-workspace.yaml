@@ -40,7 +40,7 @@ overrides:
   # fixes https://github.com/advisories/GHSA-68fv-2mgg-jv7q
   source-map-js: ^1.2.2
   # fixes https://github.com/advisories/GHSA-w2vw-w76x-qr89
-  nx: ^22.7.9
+  nx: ^22.7.12
   # fixes https://github.com/advisories/GHSA-vc2v-76pw-4v95
   compression: ^1.8.2
   # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
