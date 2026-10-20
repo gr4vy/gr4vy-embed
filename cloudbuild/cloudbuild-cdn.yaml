@@ -104,68 +104,63 @@ steps:
 
   - id: verify github checks completed successfully
     name: 'gcr.io/${PROJECT_ID}/github-checks:1.0'
-    args:
-      - '--repo=${REPO_NAME}'
-      - '--ref=${COMMIT_SHA}'
-      - '--ignore=${TRIGGER_NAME} (${PROJECT_ID})'
+    script: |
+      #!/usr/bin/env bash
+      export GITHUB_TOKEN=${GITHUB_TOKEN_CHECKS}
+      github_checks \
+        --repo="${REPO_NAME}" \
+        --ref="${COMMIT_SHA}" \
+        --ignore="${TRIGGER_NAME} (${PROJECT_ID})"
     secretEnv:
-      - GITHUB_TOKEN
+      - GITHUB_TOKEN_CHECKS
 
-  - id: 'deploy to sandbox environments'
-    name: 'docker:20.10.5'
-    entrypoint: 'ash'
+  - id: "deploy to sandbox environments"
+    name: "gcr.io/cloud-builders/docker"
     secretEnv:
-      - GITHUB_TOKEN
-    args:
-      - '-c'
-      - |
-        # backslash-escape any non-delimiter whitespace and all other characters that
-        # have special meaning to the shell, e.g. globs, parenthesis, ampersands, etc.
-        INSTANCES='${_GR4VY_INSTANCES}'
+      - GITHUB_TOKEN_DEPLOY
+    script: |
+      #!/usr/bin/env bash
+      export GITHUB_TOKEN=${GITHUB_TOKEN_DEPLOY}
 
-        if [ "${BRANCH_NAME}" = "main" ]; then
-          fail=0
-          for instance in $${INSTANCES}; do
-            echo "Triggering deploy of main branch to $${instance}-sandbox..."
-            docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
-            if [ $? -ne 0 ]; then
-              fail=1
-            fi
-          done
-          if [ $fail -eq 1 ]; then
-            exit 1
+      if [ "${BRANCH_NAME}" = "main" ]; then
+        fail=0
+        for instance in ${_GR4VY_INSTANCES}; do
+          echo "Triggering deploy of main branch to ${instance}-sandbox..."
+          docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id ${instance} --sandbox --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+          if [ $? -ne 0 ]; then
+            fail=1
           fi
-        else
-          echo "This is the ${BRANCH_NAME} branch. Not deploying to sandbox environments."
-        fi;
+        done
+        if [ $fail -eq 1 ]; then
+          exit 1
+        fi
+      else
+        echo "This is the ${BRANCH_NAME} branch. Not deploying to sandbox environments."
+      fi;
 
-  - id: 'deploy to production environments'
-    name: 'docker:20.10.5'
-    entrypoint: 'ash'
+  - id: "deploy to production environments"
+    name: "gcr.io/cloud-builders/docker"
     secretEnv:
-      - GITHUB_TOKEN
-    args:
-      - '-c'
-      - |
-        # backslash-escape any non-delimiter whitespace and all other characters that
-        # have special meaning to the shell, e.g. globs, parenthesis, ampersands, etc.
-        INSTANCES='${_GR4VY_INSTANCES}'
+      - GITHUB_TOKEN_DEPLOY
+    script: |
+      #!/usr/bin/env bash
+      export GITHUB_TOKEN=${GITHUB_TOKEN_DEPLOY}
 
-        if [ "${BRANCH_NAME}" = "main" ]; then
-          fail=0
-          for instance in $${INSTANCES}; do
-            echo "Triggering deploy of main branch to $${instance}-production..."
-            docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id $${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
-            if [ $? -ne 0 ]; then
-              fail=1
-            fi
-          done
-          if [ $fail -eq 1 ]; then
-            exit 1
+      if [ "${BRANCH_NAME}" = "main" ]; then
+        fail=0
+        for instance in ${_GR4VY_INSTANCES}; do
+          echo "Triggering deploy of main branch to ${instance}-production..."
+          docker run --rm -e GITHUB_TOKEN --network=cloudbuild gcr.io/${PROJECT_ID}/deployer:latest deploy --id ${instance} --production --repo ${REPO_NAME} --ref ${COMMIT_SHA} --skip-checks
+          if [ $? -ne 0 ]; then
+            fail=1
           fi
-        else
-          echo "This is the ${BRANCH_NAME} branch. Not deploying to production environments."
-        fi;
+        done
+        if [ $fail -eq 1 ]; then
+          exit 1
+        fi
+      else
+        echo "This is the ${BRANCH_NAME} branch. Not deploying to production environments."
+      fi;
 
 substitutions:
   _NODE_VERSION: '22'
@@ -176,13 +171,16 @@ substitutions:
 
 availableSecrets:
   secretManager:
-    - versionName: ${_GITHUB_TOKEN_LOCATION}
-      env: 'GITHUB_TOKEN'
+    - versionName: "projects/500372214742/secrets/gr4vy-code-read-only-github-token-classic-repo/versions/latest"
+      env: 'GITHUB_TOKEN_CHECKS'
+    - versionName: "projects/500372214742/secrets/gr4vy-code-github-token-deployments/versions/latest"
+      env: 'GITHUB_TOKEN_DEPLOY'
 
 tags:
   - 'gr4vy-build'
 
 options:
+  automapSubstitutions: true
   dynamic_substitutions: true
   substitution_option: 'ALLOW_LOOSE'
   machineType: 'E2_MEDIUM'
