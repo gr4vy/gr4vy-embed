@@ -163,7 +163,7 @@ steps:
       fi;
 
 substitutions:
-  _NODE_VERSION: '22'
+  _NODE_VERSION: '22.23.4'
   _ARTIFACT_STORAGE_BUCKET: ''
   _CACHE_BUCKET: ''
   _GITHUB_TOKEN_LOCATION: ''
