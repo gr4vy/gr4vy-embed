@@ -24,10 +24,10 @@ overrides:
   # no in-range upgrade available — drop each override once lerna ships a bump
   lerna>tar: ^7.5.22
   lerna>js-yaml: ^4.3.2
-  ip-address: ^10.7.3
+  ip-address: ^10.7.4
   nx>axios: ^1.20.0
   nx>brace-expansion: ^5.0.12
-  postcss: ^8.5.29
+  postcss: ^8.5.31
   undici: ^6.28.1
   # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
   # in the 6.x line, which the advisory's "<7.4.5" range also flags
@@ -45,7 +45,7 @@ overrides:
   compression: ^1.8.2
   # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
   # https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
-  qs: ^6.16.0
+  qs: ^6.16.1
   #fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
   smol-toml: ^1.9.0
   # fixes https://github.com/advisories/GHSA-rj75-hqrm-r3gf
