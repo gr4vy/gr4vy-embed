@@ -37,7 +37,8 @@ steps:
         'gs://$_ARTIFACT_STORAGE_BUCKET/',
         '--update-labels=commit_sha=${COMMIT_SHA}',
       ]
-    waitFor: ['Deploy pre-built version (Deprecated)', 'Deploy pre-built version']
+    waitFor:
+      ['Deploy pre-built version (Deprecated)', 'Deploy pre-built version']
 
   - id: 'Invalidate CDN cache'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
@@ -61,7 +62,7 @@ substitutions:
   _GR4VY_ID: ${PROJECT_ID%-*}
   _GR4VY_ENV: 'sandbox'
   _ARTIFACT_STORAGE_BUCKET: ${PROJECT_ID}-cdn-${_GR4VY_ENV}
-  _URL_MAP_SHARED: ${_GR4VY_ID}-${_GR4VY_ENV}-url-map
+  _URL_MAP_SHARED: ${_GR4VY_ID}-${_GR4VY_ENV}-global-url-map
 
 options:
   dynamic_substitutions: true
