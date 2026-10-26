@@ -16,7 +16,7 @@ blockExoticSubdeps: true
 overrides:
   cheerio: 1.0.0-rc.5
   css-what: ^5.1.0
-  fast-uri: ^3.1.8 # fixes https://github.com/gr4vy/gr4vy-embed/security/dependabot/266
+  fast-uri: ^3.1.9 # fixes https://github.com/gr4vy/gr4vy-embed/security/dependabot/266
   brace-expansion@1: ^1.1.21
   pacote@21: ^21.5.1
   sockjs>uuid: ^14.0.2
