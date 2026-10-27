@@ -28,6 +28,7 @@ overrides:
   smol-toml: ^1.9.0
   postcss-selector-parser: ^7.1.6
   follow-redirects: ^1.16.1
+  '@octokit/request-error@<5.1.1': ^5.1.1
 
 importers:
 
@@ -1866,9 +1867,6 @@ packages:
     resolution: {integrity: sha512-qrKT1Yl/KuwGSC6/oHpLBot3ooC9rq0/ryDYBCpkRtoj+R8T47xTMDT6Tk2CxWopFota/8Pi/2SqArqwC0JPow==}
     peerDependencies:
       '@octokit/core': ^3.5.0
-
-  '@octokit/request-error@2.1.0':
-    resolution: {integrity: sha512-1VIvgXxs9WHSjicsRwq8PlR2LR2x6DwsJAaFgzdi0JfJoGSO8mYI/cHJQ+9FbN21aa+DrgNLnwObmyeSC8Rmpg==}
 
   '@octokit/request-error@5.1.1':
     resolution: {integrity: sha512-v9iyEQJH6ZntoENr9/yXxjuezh4My67CBSu9r6Ve/05Iu5gNgnisNWOsoJHTP6k0Rr0+HQIpnH+kyammu90q/g==}
@@ -9695,7 +9693,7 @@ snapshots:
       '@octokit/auth-token': 2.5.0
       '@octokit/graphql': 4.8.0(encoding@0.1.13)
       '@octokit/request': 5.6.3(encoding@0.1.13)
-      '@octokit/request-error': 2.1.0
+      '@octokit/request-error': 5.1.1
       '@octokit/types': 6.41.0
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
@@ -9743,7 +9741,7 @@ snapshots:
 
   '@octokit/plugin-enterprise-compatibility@1.3.0':
     dependencies:
-      '@octokit/request-error': 2.1.0
+      '@octokit/request-error': 5.1.1
       '@octokit/types': 6.41.0
 
   '@octokit/plugin-enterprise-rest@6.0.1': {}
@@ -9788,12 +9786,6 @@ snapshots:
       '@octokit/types': 6.41.0
       bottleneck: 2.19.5
 
-  '@octokit/request-error@2.1.0':
-    dependencies:
-      '@octokit/types': 6.41.0
-      deprecation: 2.3.1
-      once: 1.4.0
-
   '@octokit/request-error@5.1.1':
     dependencies:
       '@octokit/types': 13.10.0
@@ -9803,7 +9795,7 @@ snapshots:
   '@octokit/request@5.6.3(encoding@0.1.13)':
     dependencies:
       '@octokit/endpoint': 6.0.12
-      '@octokit/request-error': 2.1.0
+      '@octokit/request-error': 5.1.1
       '@octokit/types': 6.41.0
       is-plain-object: 5.0.0
       node-fetch: 2.6.7(encoding@0.1.13)

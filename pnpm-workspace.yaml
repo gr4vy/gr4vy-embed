@@ -53,6 +53,10 @@ overrides:
   # fixes https://github.com/advisories/GHSA-q3jh-wrc6-jgq8
   #       https://github.com/advisories/GHSA-8r9p-f939-6h3c
   follow-redirects: ^1.16.1
+  # the auto package pins @octokit/core v3, which only accepts request-error 2.x;
+  # 5.1.1 is runtime-compatible (same CJS API) — drop once auto upgrades octokit
+  # fixes https://github.com/advisories/GHSA-xx4v-prfh-6cgc
+  '@octokit/request-error@<5.1.1': ^5.1.1
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7
