@@ -46,10 +46,13 @@ overrides:
   # fixes https://github.com/advisories/GHSA-x5fp-wj9c-mxmx and
   # https://github.com/advisories/GHSA-4mjr-xmp4-gh2g
   qs: ^6.16.1
-  #fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
+  # fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
   smol-toml: ^1.9.0
   # fixes https://github.com/advisories/GHSA-rj75-hqrm-r3gf
   postcss-selector-parser: ^7.1.6
+  # fixes https://github.com/advisories/GHSA-q3jh-wrc6-jgq8
+  #       https://github.com/advisories/GHSA-8r9p-f939-6h3c
+  follow-redirects: ^1.16.1
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7

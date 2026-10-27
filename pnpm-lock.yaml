@@ -27,6 +27,7 @@ overrides:
   qs: ^6.16.1
   smol-toml: ^1.9.0
   postcss-selector-parser: ^7.1.6
+  follow-redirects: ^1.16.1
 
 importers:
 
@@ -4379,15 +4380,6 @@ packages:
   flow-parser@0.323.0:
     resolution: {integrity: sha512-uTw5ffLYxQDnSe4Ch5mo1Sp7kFOrhOglz3nqgpQRrYpt4ucQTxrQRCLdC0F1hyhcIK7j5GjdxzV1d4DN68eDzA==}
     engines: {node: '>=0.4.0'}
-
-  follow-redirects@1.16.0:
-    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
 
   follow-redirects@1.16.1:
     resolution: {integrity: sha512-FNvFGzoMLWmE6Yj9spb/zjd7yiNCHiAW9/Tg9CXrQ8wuu32HtlJOwWO11OJafl5FfY3DxTdQ0vj42zU1kvv5jg==}
@@ -12764,10 +12756,6 @@ snapshots:
     dependencies:
       flow-estree: 0.323.0
 
-  follow-redirects@1.16.0(debug@4.4.3(supports-color@7.2.0)):
-    optionalDependencies:
-      debug: 4.4.3(supports-color@7.2.0)
-
   follow-redirects@1.16.1(debug@4.4.3(supports-color@7.2.0)):
     optionalDependencies:
       debug: 4.4.3(supports-color@7.2.0)
@@ -14642,7 +14630,7 @@ snapshots:
       escape-string-regexp: 1.0.5
       figures: 3.2.0
       flat: 5.0.2
-      follow-redirects: 1.16.0(debug@4.4.3(supports-color@7.2.0))
+      follow-redirects: 1.16.1(debug@4.4.3(supports-color@7.2.0))
       form-data: 4.0.6
       fs-constants: 1.0.0
       function-bind: 1.1.2
