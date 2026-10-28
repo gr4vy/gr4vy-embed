@@ -63,10 +63,13 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.6"
   },
+  "engines": {
+    "node": ">=22.23.4"
+  },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": "^22.23.4",
+      "version": "22.23.4",
       "onFail": "error"
     }
   }
