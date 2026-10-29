@@ -49,7 +49,7 @@ overrides:
   #fixes https://github.com/advisories/GHSA-r4xh-jqrq-34v2
   smol-toml: ^1.9.0
   # fixes https://github.com/advisories/GHSA-rj75-hqrm-r3gf
-  postcss-selector-parser: ^7.1.6
+  postcss-selector-parser: ^7.1.7
 minimumReleaseAgeExclude:
   # Renovate security update: fast-uri@3.1.7
   - fast-uri@3.1.7

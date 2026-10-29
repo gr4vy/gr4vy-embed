@@ -26,7 +26,7 @@ overrides:
   compression: ^1.8.2
   qs: ^6.16.1
   smol-toml: ^1.9.0
-  postcss-selector-parser: ^7.1.6
+  postcss-selector-parser: ^7.1.7
 
 importers:
 
@@ -6291,8 +6291,8 @@ packages:
     peerDependencies:
       postcss: ^8.5.31
 
-  postcss-selector-parser@7.1.6:
-    resolution: {integrity: sha512-7qASPzhKF2l2KLboRZux8CCTRMdGiV08vWmyKzPz22qZ7ZjQBOeY7rNzNoCLSUiftJ7HUq0GERHmxw/t0dCdMw==}
+  postcss-selector-parser@7.1.7:
+    resolution: {integrity: sha512-wWBro/7hJ40ye6TPiXkUQoXKCw23xSsjriUvqd7Uls9Sso3oLiON1flc18cCdnjgCRXw4fBVqUJJeOdDTh3P3g==}
     engines: {node: '>=4'}
 
   postcss-value-parser@4.2.0:
@@ -9636,7 +9636,7 @@ snapshots:
 
   '@npmcli/query@4.0.1':
     dependencies:
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   '@npmcli/redact@3.2.2': {}
 
@@ -15125,20 +15125,20 @@ snapshots:
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.31)
       postcss: 8.5.31
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
       postcss-value-parser: 4.2.0
 
   postcss-modules-scope@3.2.1(postcss@8.5.31):
     dependencies:
       postcss: 8.5.31
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   postcss-modules-values@4.0.0(postcss@8.5.31):
     dependencies:
       icss-utils: 5.1.0(postcss@8.5.31)
       postcss: 8.5.31
 
-  postcss-selector-parser@7.1.6:
+  postcss-selector-parser@7.1.7:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
