@@ -10,7 +10,7 @@ overrides:
   fast-uri: ^3.1.8
   brace-expansion@1: ^1.1.21
   pacote@21: ^21.5.1
-  sockjs>uuid: ^14.0.2
+  sockjs>uuid: ^14.0.3
   lerna>tar: ^7.5.22
   lerna>js-yaml: ^4.3.2
   ip-address: ^10.7.4
@@ -7482,8 +7482,8 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
 
-  uuid@14.0.2:
-    resolution: {integrity: sha512-xZe/16rV4aa+HGSOCiY2YeLT1OybRLrrkL/Rqaq7p7GMVXjFh+6wN4oMYgjFmnSnhY8t6Xpdl2l9qmnHYuMHwQ==}
+  uuid@14.0.3:
+    resolution: {integrity: sha512-Sc5u1VVln93y1Xnz4R+CunOZc7R9LUcTmhj7Rc7Eg3HVcf7rVn2FOoa812fe0W8p3jD7xeoGSYbfqCGGH2B6xw==}
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -15765,7 +15765,7 @@ snapshots:
   sockjs@0.3.24:
     dependencies:
       faye-websocket: 0.11.4
-      uuid: 14.0.2
+      uuid: 14.0.3
       websocket-driver: 0.7.5
 
   socks-proxy-agent@8.0.5:
@@ -16408,7 +16408,7 @@ snapshots:
 
   utils-merge@1.0.1: {}
 
-  uuid@14.0.2: {}
+  uuid@14.0.3: {}
 
   v8-compile-cache-lib@3.0.1: {}
 
