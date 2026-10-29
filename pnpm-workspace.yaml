@@ -28,7 +28,7 @@ overrides:
   nx>axios: ^1.20.0
   nx>brace-expansion: ^5.0.12
   postcss: ^8.5.31
-  undici: ^6.28.1
+  undici: ^6.29.1
   # forced globally (not scoped to @7) since @storybook/builder-webpack5 pulls
   # in the 6.x line, which the advisory's "<7.4.5" range also flags
   webpack-dev-middleware: ^7.4.6
@@ -55,3 +55,5 @@ minimumReleaseAgeExclude:
   - fast-uri@3.1.7
   # Renovate security update: storybook@10.6.2
   - storybook@10.6.2
+  # Renovate security update: undici@6.29.1
+  - undici@6.29.1
