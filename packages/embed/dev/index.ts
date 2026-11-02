@@ -54,7 +54,7 @@ setup({
   intent: 'capture',
   amount: 1299,
   currency: `AUD`,
-  buyerExternalIdentifier: 'user-001',
+  buyerExternalIdentifier: 'user-009',
   ...instance,
   token: process.env.TOKEN ?? `123456`,
   debug: true,
