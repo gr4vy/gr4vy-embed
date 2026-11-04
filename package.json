@@ -30,7 +30,7 @@
     "@babel/preset-typescript": "^7.29.7",
     "@chalbert/enzyme-adapter-react-18": "^0.7.2",
     "@eslint/js": "^9.39.5",
-    "@peculiar/webcrypto": "^1.7.1",
+    "@peculiar/webcrypto": "^1.7.2",
     "@types/jest": "^29.5.14",
     "@types/node": "^20.19.43",
     "auto": "^11.3.6",
