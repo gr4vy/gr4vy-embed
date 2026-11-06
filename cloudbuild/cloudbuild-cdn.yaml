@@ -103,7 +103,7 @@ steps:
       ]
 
   - id: verify github checks completed successfully
-    name: 'gcr.io/${PROJECT_ID}/github-checks:1.0'
+    name: 'gcr.io/${PROJECT_ID}/github-checks@sha256:00e2feaf874901de7bc501bba8810b1a6759407c043d1d322e2bd66b0a8eb36c' # 2.0
     script: |
       #!/usr/bin/env bash
       export GITHUB_TOKEN=${GITHUB_TOKEN_CHECKS}
